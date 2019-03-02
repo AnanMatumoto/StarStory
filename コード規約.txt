@@ -43,33 +43,36 @@
 アッパーキャメルで構造体名を表記すること。
 クラスはアッパーキャメルで表記すること。
 
+※尚、宣言は「公開」→「非公開」の順に。
+
 例）
 　struct  t_Hoge{
 	int AddNum(int a, int b){
 	   return a+b;
-	}
+　　}；
 
    class Fuga{
       public:
 	int m_num;
 	int DivNum(int a, int b){
 	      return  a/b;
+　　private:
+	・・・・
 	}
-   }
+   }；
 --------------------------------------------------------
 ◆メンバ変数
 　　「m_変数名」で統一
 　
 例）
-　　class Hoge{
-	private:
+　 class Hoge{
+       public:
+	const D3DXVECTOR2& GetPos()const{
+	　return m_pos;
+       private:
 
   	D3DXVECTOR2 m_pos;
 	int m_timer;
-
-	public:
-	const D3DXVECTOR2& GetPos()const{
-	　return m_pos;
 	}
 
 ---------------------------------------------------------
