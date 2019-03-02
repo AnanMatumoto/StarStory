@@ -1,0 +1,119 @@
+﻿
+＊＊＊コード規約＊＊＊＊
+
+参考URL：http://www.c-lang.org/detail/naming_conventions.html
+以下のことを守ってコードを書いてください
+
+
+◆基本コード
+　基本：スネークケース
+ ＜概要＞
+　単語間をアンダースコアで繋げる表記方法
+   原則的にすべて小文字で表記します。
+
+例）・HogeData　 →キャメルケース（C#などの場合）
+　　・hoge_data　→スネークケース（C/C++）
+
+---------------------------------------------------------
+◆グローバル変数
+　　プレフィックス「g_」をつけたアッパーキャメル
+例）
+　int g_HogeNum;
+--------------------------------------------------------
+◆ローカル変数　と　引数
+　　ローワーキャメル
+例）
+　　void hoge( int num ){
+ 　　       int a =1;
+     	num+a;    
+   }
+-------------------------------------------------------
+◆定数　および　マクロ定義
+　　すべて大文字
+例）
+　　const int DATA_NUM =100;
+      const char* IMAGE = "Resource/player.png";
+    #define  WINDOW_H 1920
+
+
+==============================
+	クラス　および　構造体について
+＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+構造体の場合は先頭にプレフィックス「ｔ_」をつけて
+アッパーキャメルで構造体名を表記すること。
+クラスはアッパーキャメルで表記すること。
+
+例）
+　struct  t_Hoge{
+	int AddNum(int a, int b){
+	   return a+b;
+	}
+
+   class Fuga{
+      public:
+	int m_num;
+	int DivNum(int a, int b){
+	      return  a/b;
+	}
+   }
+--------------------------------------------------------
+◆メンバ変数
+　　「m_変数名」で統一
+　
+例）
+　　class Hoge{
+	private:
+
+  	D3DXVECTOR2 m_pos;
+	int m_timer;
+
+	public:
+	const D3DXVECTOR2& GetPos()const{
+	　return m_pos;
+	}
+
+---------------------------------------------------------
+◆メンバ関数
+　　　・public(公開)の場合
+	→　	
+　　　　
+　　　・private(非公開)の場合
+　　　　　→
+
+--------------------------------------------------------
+==============================
+	略語について
+==============================
+
+単語の後半を省略する。例:current → curr
+
+その他↓
+＜略語一覧＞
+◆アプリパート
+position : pos
+command : cmd
+value : val
+image : img
+picture : pic
+manager : mgr
+message : msg
+animation : ani
+source : src
+result : rslt
+flag : flg
+tem : itm
+library : lib
+object : obj
+control : ctl
+
+◆エンジンパート
+buffer : buf
+configuration : conf
+define : def
+array : ary
+string : str
+length : len
+pointer : ptr
+current : curr
+
+i
