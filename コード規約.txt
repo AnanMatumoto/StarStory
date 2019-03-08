@@ -34,7 +34,13 @@
 　　const int DATA_NUM =100;
       const char* IMAGE = "Resource/player.png";
     #define  WINDOW_H 1920
-
+-------------------------------------------------------
+◆フラグ変数
+	is_変数名、　has_変数名
+例）
+    if(m_velocity >= 0.f){
+　　is_trun = true; 　//状態が分かりやすい
+  }
 
 ==============================
 	クラス　および　構造体について
@@ -81,12 +87,6 @@
 　　　・public(公開)の場合
 	→　void GetPos(){~}
 
-　　※・静的メンバ関数などの場合
-	先頭に「_(アンダーバー)」をつける
-　　　　→　static Hoge* _getInterface{
-	        Hoge hoge = new Hoge();
-	        teturn & i_hoge;(iはインスタンスのプレフィックス) 
-	}
 --------------------------------------------------------
 ==============================
 	略語について
@@ -101,14 +101,10 @@ position : pos
 command : cmd
 value : val
 image : img
-picture : pic
 manager : mgr
 message : msg
 animation : ani
 source : src
-result : rslt
-flag : flg
-tem : itm
 library : lib
 object : obj
 control : ctl
@@ -117,10 +113,7 @@ control : ctl
 buffer : buf
 configuration : conf
 define : def
-array : ary
 string : str
 length : len
 pointer : ptr
 current : curr
-
-i
