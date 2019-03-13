@@ -58,7 +58,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	while (Lib::ProcessMessage()) {
 
 		Lib::DrawBegin(0xe0e0ff);
-		Lib::GetPoint(&p.x, &p.y);
+		Lib::GetMousePoint(&p.x, &p.y);
 
 
 		BackGraund();
@@ -72,3 +72,4 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	Lib::AppEnd();
 	return 0;
 }
+
