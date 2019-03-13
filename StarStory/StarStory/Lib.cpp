@@ -2,6 +2,8 @@
 #include "Lib.h"
 #include "Common.h"
 #include <unordered_map>
+
+
 #define VERTEX_FVF (D3DFVF_XYZRHW|D3DFVF_DIFFUSE|D3DFVF_TEX1)
 
 
@@ -197,9 +199,11 @@ namespace Lib {
 	void AppEnd() {
 		if (dev) {
 			dev->Release();
+			dev = nullptr;
 		}
 		if (d3d) {
 			d3d->Release();
+			d3d = nullptr;
 		}
 	}
 
@@ -327,7 +331,7 @@ namespace Lib {
 	//==========================================
 	// キー・マウス関連
 	//==========================================
-	inline bool KeyTest(const BYTE k) {
+	 bool KeyTest(const BYTE k) {
 		return ((k & 0x80) != 0);
 	}
 	//------------------------------------------
