@@ -20,9 +20,8 @@ struct Vertex
 namespace Lib {
 
 	extern HWND hWnd;
+	extern LPDIRECT3D9 d3d;
 	extern LPDIRECT3DDEVICE9 dev;
-
-	
 
 	//================================================
 	//　デバイス設定関連
@@ -39,7 +38,30 @@ namespace Lib {
 		}
 		AppEnd();							 // アプリ終了処理
 	*/
-	void Init(int w, int h, const char* title);
+	LRESULT CALLBACK WinProc(
+		HWND hwnd, UINT msg,
+		WPARAM wp, LPARAM lp
+	);
+
+	void Init(
+		int w, int h,
+		const char* title
+	);
+	
+	void SetWinDevice(
+		HINSTANCE h_instance,
+		const char* class_name,
+		WNDCLASSEX *wc
+	);
+
+	void MakeWindow(
+		HINSTANCE h_instance,
+		const char* class_name,
+		const char* title,
+		int w, int h
+	);
+
+	void InitD3D9();
 	void AppEnd();
 	bool ProcessMessage();
 	void DrawBegin(DWORD back_color = 0xe0e0ff
@@ -119,7 +141,7 @@ namespace Lib {
 	bool KeyOn(int nVirtKey);
 	bool KeyPress(int nVirtKey);
 	bool KeyOff(int nVirtKey);
-	POINT GetPoint(float* x, float* y);
+	POINT GetMousePoint(float* x, float* y);
 	//============================================
 	// 2D描画処理
 	//============================================
@@ -214,3 +236,4 @@ namespace Lib {
 		DWORD color	= 0x00ffffff
 	);
 };
+

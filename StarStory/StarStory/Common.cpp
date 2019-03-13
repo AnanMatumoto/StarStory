@@ -1,7 +1,16 @@
-#include "Common.h"
+ï»¿#include "Common.h"
+#include <Windows.h>
+
+
+//--------------------------------------------
+//ã‚¨ãƒ©ãƒ¼ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸å‡¦ç†
+void ErrMsg(const char* _msg) {
+	MessageBox(0, _msg, nullptr, MB_OK);
+	PostQuitMessage(0);
+}
 
 //=========================================
-// 2ŸŒ³ƒwƒ‹ƒp[ŒQ
+// 2æ¬¡å…ƒãƒ˜ãƒ«ãƒ‘ãƒ¼ç¾¤
 //=========================================
 t_Float2::t_Float2(float x_, float y_) {
 
@@ -58,3 +67,4 @@ Vec2 Vec2::operator = (const t_Float2& r) {
 
 	return vec2;
 }
+
