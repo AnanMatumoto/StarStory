@@ -6,8 +6,8 @@
 
 namespace {
 
-	const int INPUT_FRAME  = 2;
-	const int KEYNUM       = 256;
+	const int INPUT_FRAME = 2;
+	const int KEYNUM = 256;
 
 	enum FLAME {
 

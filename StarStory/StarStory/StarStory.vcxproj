@@ -127,11 +127,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Common.cpp" />
-    <ClCompile Include="Lib.cpp">
+    <ClCompile Include="Device.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Draw2D.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KeyBoard.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
       <SubType>
       </SubType>
     </ClCompile>
