@@ -121,8 +121,8 @@ namespace Lib {
 
 
 
-//---------------------------------------
-//回転を行う三角形ポリゴン
+	//---------------------------------------
+	//回転を行う三角形ポリゴン
 	void RotTriangle2D(
 		const Texture& tex,
 		float angle,
@@ -170,6 +170,35 @@ namespace Lib {
 			D3DPT_TRIANGLEFAN,
 			1, vtx, sizeof(Vertex));
 
+	}
+
+	//-------------------------------------
+	//　αブレンドの設定
+	void SetAlphaBlend() {
+		//ブレンディングモードの設定
+		dev->SetTextureStageState(
+			0, D3DTSS_COLOROP,
+			D3DTOP_SELECTARG1);
+		dev->SetTextureStageState(
+			0, D3DTSS_COLORARG1,
+			D3DTA_TEXTURE);
+		//αブレンドの設定
+		dev->SetTextureStageState(
+			0, D3DTSS_ALPHAOP,
+			D3DTOP_SELECTARG1);
+		dev->SetTextureStageState(
+			0, D3DTSS_ALPHAARG1,
+			D3DTA_TEXTURE);
+		//出力したα値の反映方法を指定する
+		dev->SetRenderState(
+			D3DRS_ALPHABLENDENABLE,
+			TRUE);
+		dev->SetRenderState(
+			D3DRS_SRCBLEND,
+			D3DBLEND_SRCALPHA);
+		dev->SetRenderState(
+			D3DRS_DESTBLEND,
+			D3DBLEND_INVSRCALPHA);
 	}
 }
 

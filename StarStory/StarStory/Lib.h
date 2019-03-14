@@ -235,5 +235,8 @@ namespace Lib {
 		float ox=0.5f, float oy=0.5f,
 		DWORD color	= 0x00ffffff
 	);
+
+	//αブレンドの設定（外部での使用はできない）
+	void SetAlphaBlend();
 };
 
