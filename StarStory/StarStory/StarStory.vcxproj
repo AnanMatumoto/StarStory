@@ -155,6 +155,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SelectScene.cpp">
       <SubType>
       </SubType>
@@ -178,6 +182,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Scene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
       <SubType>
       </SubType>
     </ClInclude>
