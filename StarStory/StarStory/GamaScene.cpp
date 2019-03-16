@@ -1,4 +1,5 @@
 ﻿#include "Scene.h"
+#include "Lib.h"
 
 //-----------------------------
 //　ゲームシーン初期化
@@ -28,8 +29,10 @@ void GameScene::Update() {
 	if (stage->GetStageID() == STAGE_END) {
 		Scene::Scene::g_StateID = SS_END;
 	}*/
-
-	Scene::g_StateID = SS_END;
+	if (Lib::KeyPress(VK_SPACE))
+	{
+		Scene::g_StateID = SS_END;
+	}
 }
 
 //-------------------------------
@@ -50,13 +53,17 @@ void GameScene::Control() {
 	switch (Scene::g_StateID)
 	{
 	case SS_INIT:
-		Init(); break;
+		Init(); 
+		break;
 
 	case SS_UPDATE:
-		Update(); break;
+		Update(); 
+		Draw();
+		break;
 
 	case SS_END:
-		End(); break;
+		End();
+		break;
 	}
 }
 
@@ -64,4 +71,10 @@ void GameScene::Control() {
 //　ゲームシーン描画
 void GameScene::Draw() {
 
+	Lib::DrawPx2D(
+		"Resource/test_image/back_sample.jpg",
+		0, 0,
+		1920,1080
+	);
+	
 }
