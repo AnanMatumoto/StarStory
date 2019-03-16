@@ -1,5 +1,5 @@
 ﻿#include "Scene.h"
-
+#include "Lib.h"
 //--------------------------
 //　セレクトシーン初期化
 void SelectScene::Init() {
@@ -11,7 +11,9 @@ void SelectScene::Init() {
 //　セレクトシーン更新
 void SelectScene::Update() {
 
-	Scene::g_StateID = SS_END;
+	if (Lib::KeyOn(VK_SPACE)) {
+		Scene::g_StateID = SS_END;
+	}
 }
 
 //---------------------------
@@ -30,18 +32,27 @@ void SelectScene::Control() {
 	switch (Scene::g_StateID)
 	{
 	case SS_INIT:
-		Init(); break;
+		Init();
+		break;
 
 	case SS_UPDATE:
-		Update(); break;
+		Update();
+		Draw();
+		break;
 
 	case SS_END:
-		End(); break;
+		End();
+		break;
 	}
 }
 
 //----------------------------
 //　セレクトシーン描画
 void SelectScene::Draw() {
+
+	Lib::DrawBox2D(
+		"Resource/test_image/select_samp.png",
+		0, 0
+	);
 
 }
