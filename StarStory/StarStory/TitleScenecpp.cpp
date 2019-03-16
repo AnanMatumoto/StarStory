@@ -1,9 +1,11 @@
 ﻿#include "Scene.h"
+#include "Lib.h"
+
 
 namespace Scene {
 
-	int g_StateID = SS_INIT;
-	int g_SceneID = SC_TITLE;
+	int g_StateID;
+	int g_SceneID;
 }
 
 //-----------------------------
@@ -17,7 +19,9 @@ void TitleScene::Init() {
 //　タイトルシーン更新
 void TitleScene::Update() {
 
-	Scene::g_StateID = SS_END;
+	if (Lib::KeyOn(VK_SPACE)) {
+		Scene::g_StateID = SS_END;
+	}
 }
 
 //-----------------------------
@@ -49,5 +53,9 @@ void TitleScene::Control() {
 //　タイトルシーン描画
 void TitleScene::Draw() {
 
+	Lib::DrawBox2D(
+		"samp_title.png",
+		0, 0
+	);
 }
 
