@@ -1,5 +1,5 @@
 ﻿#include "Scene.h"
-
+#include "Lib.h"
 //-----------------------------
 //　カスタムシーン初期化
 void CustomScene::Init() {
@@ -11,7 +11,9 @@ void CustomScene::Init() {
 //　カスタムシーン更新
 void CustomScene::Update() {
 
-	Scene::g_StateID = SS_END;
+	if (Lib::KeyPress(VK_SPACE)) {
+		Scene::g_StateID = SS_END;
+	}
 }
 
 //----------------------------
@@ -29,16 +31,26 @@ void CustomScene::Control() {
 	switch (Scene::g_StateID)
 	{
 	case SS_INIT:
-		Init(); break;
+		Init();
+		break;
+
 	case SS_UPDATE:
-		Update(); break;
+		Update();
+		Draw();
+		break;
+
 	case SS_END:
-		End(); break;
+		End();
+		break;
 	}
 }
 
 //----------------------------
 //　カスタムシーン描画
 void CustomScene::Draw() {
-
+	
+	Lib::DrawBox2D(
+		"Resource/test_image/samp_custom.png",
+		0, 0
+	);
 }
