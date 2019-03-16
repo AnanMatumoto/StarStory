@@ -19,7 +19,7 @@ void TitleScene::Init() {
 //　タイトルシーン更新
 void TitleScene::Update() {
 
-	if (Lib::KeyOn(VK_SPACE)) {
+	if (Lib::KeyPress(VK_SPACE)) {
 		Scene::g_StateID = SS_END;
 	}
 }
@@ -39,13 +39,17 @@ void TitleScene::Control() {
 	switch (Scene::g_StateID)
 	{
 	case SS_INIT:
-		Init(); break;
+		Init();
+		break;
 
 	case SS_UPDATE:
-		Update(); break;
+		Update(); 
+		Draw();
+		break;
 
 	case SS_END:
-		End(); break;
+		End();
+		break;
 	}
 }
 
@@ -54,7 +58,7 @@ void TitleScene::Control() {
 void TitleScene::Draw() {
 
 	Lib::DrawBox2D(
-		"samp_title.png",
+		"Resource/test_image/samp_title.png",
 		0, 0
 	);
 }
