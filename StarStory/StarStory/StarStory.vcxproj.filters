@@ -19,6 +19,9 @@
     <Filter Include="ソース ファイル\Config">
       <UniqueIdentifier>{b3e2d190-35a2-45f4-9c7b-14c73f6acc27}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Scene">
+      <UniqueIdentifier>{95208b06-5755-4eca-ac6a-22c5290aa8fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +42,21 @@
     <ClCompile Include="Device.cpp">
       <Filter>ソース ファイル\Lib</Filter>
     </ClCompile>
+    <ClCompile Include="TitleScenecpp.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomScene.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectScene.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GamaScene.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultScene.cpp">
+      <Filter>ソース ファイル\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lib.h">
@@ -46,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="Common.h">
       <Filter>ソース ファイル\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>ソース ファイル\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
