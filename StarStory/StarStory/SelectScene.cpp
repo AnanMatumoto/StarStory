@@ -11,7 +11,7 @@ void SelectScene::Init() {
 //　セレクトシーン更新
 void SelectScene::Update() {
 
-	if (Lib::KeyOn(VK_SPACE)) {
+	if (Lib::KeyPress(VK_SPACE)) {
 		Scene::g_StateID = SS_END;
 	}
 }
