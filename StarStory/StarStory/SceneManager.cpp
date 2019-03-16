@@ -22,9 +22,8 @@ void SceneManager::Update() {
 	switch (Scene::g_SceneID)
 	{
 	case SC_TITLE:
-		scene = new TitleScene;
+		scene = new TitleScene();
 		scene->Control();
-		scene->Draw();
 		break;
 
 	case SC_CUSTOM:
@@ -35,19 +34,16 @@ void SceneManager::Update() {
 	case SC_SELECT:
 		scene = new SelectScene();
 		scene->Control();
-		scene->Draw();
 		break;
 
 	case SC_GAME:
-		scene = new GameScene;
+		scene = new GameScene();
 		scene->Control();
-		scene->Draw();
 		break;
 
 	case SC_RESULT:
-		scene = new GameScene;
+		scene = new ResultScene();
 		scene->Control();
-		scene->Draw();
 		break;
 	}
 
@@ -59,3 +55,4 @@ void SceneManager::Update() {
 void SceneManager::AddGameObject() {
 
 }
+
