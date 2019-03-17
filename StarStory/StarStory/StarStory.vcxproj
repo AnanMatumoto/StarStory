@@ -91,6 +91,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\Star Story\StarStory\StarStory\Lib;D:\Star Story\StarStory\StarStory\Scene;D:\Star Story\StarStory\StarStory\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -118,6 +119,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>D:\Star Story\StarStory\StarStory\Lib;D:\Star Story\StarStory\StarStory\Scene;D:\Star Story\StarStory\StarStory\Common;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -126,24 +128,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Common.cpp" />
-    <ClCompile Include="CustomScene.cpp">
+    <ClCompile Include="Common\Common.cpp" />
+    <ClCompile Include="Scene\CustomScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Device.cpp">
+    <ClCompile Include="Lib\Device.cpp">
+      <SubType>
+      </SubType>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Star Story\StarStory\StarStory\Scene;D:\Star Story\StarStory\StarStory\Lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Star Story\StarStory\StarStory\Scene;D:\Star Story\StarStory\StarStory\Lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="Lib\Draw2D.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Draw2D.cpp">
+    <ClCompile Include="Scene\GamaScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="GamaScene.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="KeyBoard.cpp">
+    <ClCompile Include="Lib\KeyBoard.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -151,41 +155,41 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="ResultScene.cpp">
+    <ClCompile Include="Scene\ResultScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SceneManager.cpp">
+    <ClCompile Include="Scene\SceneManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SelectScene.cpp">
+    <ClCompile Include="Scene\SelectScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
+    <ClCompile Include="Lib\Texture.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="TitleScenecpp.cpp">
+    <ClCompile Include="Scene\TitleScenecpp.cpp">
       <SubType>
       </SubType>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Common.h">
+    <ClInclude Include="Common\Common.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Lib.h">
+    <ClInclude Include="Lib\Lib.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Scene.h">
+    <ClInclude Include="Scene\Scene.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SceneManager.h">
+    <ClInclude Include="Scene\SceneManager.h">
       <SubType>
       </SubType>
     </ClInclude>
