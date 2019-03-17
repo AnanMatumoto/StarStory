@@ -1,5 +1,5 @@
-﻿#include "Scene.h"
-#include "Lib.h"
+﻿#include "Scene/Scene.h"
+#include "Lib/Lib.h"
 //--------------------------
 //　セレクトシーン初期化
 void SelectScene::Init() {

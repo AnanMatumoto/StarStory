@@ -1,5 +1,5 @@
-﻿#include "Scene.h"
-#include "Lib.h"
+﻿#include "Scene/Scene.h"
+#include "Lib/Lib.h"
 
 //-----------------------------
 //　ゲームシーン初期化
