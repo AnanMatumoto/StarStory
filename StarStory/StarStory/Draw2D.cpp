@@ -1,4 +1,4 @@
-﻿#include "Lib/Lib.h"
+﻿#include "Lib.h"
 
 #define VERTEX_FVF (D3DFVF_XYZRHW|D3DFVF_DIFFUSE|D3DFVF_TEX1)
 

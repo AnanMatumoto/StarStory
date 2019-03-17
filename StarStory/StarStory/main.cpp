@@ -1,5 +1,5 @@
-﻿#include "Lib/Lib.h"
-#include "Scene/SceneManager.h"
+﻿#include "Lib.h"
+#include "SceneManager.h"
 
 
 // メイン

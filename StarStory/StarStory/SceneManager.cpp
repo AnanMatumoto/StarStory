@@ -1,5 +1,5 @@
-﻿#include "Scene/SceneManager.h"
-#include "Scene/Scene.h"
+﻿#include "SceneManager.h"
+#include "Scene.h"
 
 SceneManager::SceneManager() {
 
