@@ -1,10 +1,12 @@
-﻿#include "Scene.h"
+﻿#include "CustomScene.h"
+#include "SceneManager.h"
 #include "Lib.h"
+
 //-----------------------------
 //　カスタムシーン初期化
 void CustomScene::Init() {
 
-	Scene::g_StateID = SS_UPDATE;
+	state_id = SS_UPDATE;
 }
 
 //----------------------------
@@ -12,7 +14,7 @@ void CustomScene::Init() {
 void CustomScene::Update() {
 
 	if (Lib::KeyPress(VK_SPACE)) {
-		Scene::g_StateID = SS_END;
+		state_id = SS_END;
 	}
 }
 
@@ -20,15 +22,16 @@ void CustomScene::Update() {
 // 　カスタムシーン更新
 void CustomScene::End() {
 
-	Scene::g_StateID = SS_INIT;
-	Scene::g_SceneID = SC_SELECT;
+	state_id = SS_INIT;
+	SceneManager& sm = SceneManager::GetInstance();
+	sm.CreateNextScene(SC_SELECT);
 }
 
 //----------------------------
 //	カスタムシーン状態管理
 void CustomScene::Control() {
 
-	switch (Scene::g_StateID)
+	switch (state_id)
 	{
 	case SS_INIT:
 		Init();
