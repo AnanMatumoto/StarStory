@@ -1,10 +1,11 @@
-﻿#include "Scene.h"
+﻿#include "ResultScene.h"
+#include "SceneManager.h"
 #include "Lib.h"
 
 //----------------------------
 // リザルトシーン初期化
 void ResultScene::Init() {
-	Scene::g_StateID = SS_UPDATE;
+	state_id = SS_UPDATE;
 }
 
 //----------------------------
@@ -18,21 +19,22 @@ void ResultScene::Update() {
 		/* ゲームオーバー処理 */
 	//}
 	if (Lib::KeyPress(VK_SPACE)) {
-		Scene::g_StateID = SS_END;
+		state_id = SS_END;
 	}
 }
 
 //----------------------------
 // リザルトシーン終了
 void ResultScene::End() {
-	Scene::g_StateID = SS_INIT;
-	Scene::g_SceneID = SC_TITLE;
+	state_id = SS_INIT;
+	SceneManager& sm = SceneManager::GetInstance();
+	sm.CreateNextScene(SC_TITLE);
 }
 
 //----------------------------
 //　リザルトシーン状態管理
 void ResultScene::Control() {
-	switch (Scene::g_StateID)
+	switch (state_id)
 	{
 	case SS_INIT:
 		Init();
