@@ -19,16 +19,12 @@ public:
 	static SceneManager& GetInstance();
 	void Init();
 	void Update();
-	void CreateNextScene(SceneID);
-	void SetSceneID(SceneID sc_id);
+	void ChangeScene(SceneID);
 	//void AddGameObject();
 	~SceneManager();
 
 private:
-	void SceneRegister(
-		SceneID scene_id,
-		SceneBase* scene
-	);
+	
 	
 	std::unordered_map<SceneID, SceneBase*> scene_list;
 	SceneBase* scene;

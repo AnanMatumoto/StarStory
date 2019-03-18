@@ -17,11 +17,11 @@ SceneManager& SceneManager::GetInstance() {
 void SceneManager::Init() {
 
 	//シーンの登録
-	SceneRegister(SC_TITLE,  new TitleScene());
-	SceneRegister(SC_CUSTOM, new CustomScene());
-	SceneRegister(SC_SELECT, new SelectScene());
-	SceneRegister(SC_GAME,   new GameScene());
-	SceneRegister(SC_RESULT, new ResultScene());
+	scene_list.emplace(SC_TITLE,  new TitleScene());
+	scene_list.emplace(SC_CUSTOM, new CustomScene());
+	scene_list.emplace(SC_SELECT, new SelectScene());
+	scene_list.emplace(SC_GAME,   new GameScene());
+	scene_list.emplace(SC_RESULT, new ResultScene());
 
 	auto it = scene_list.find(SC_TITLE);
 	scene = it->second;
@@ -31,53 +31,15 @@ void SceneManager::Init() {
 //　シーン更新
 void SceneManager::Update() {
 
-
-	switch (scene_id)
-	{
-	case SC_TITLE:
-		scene->Control();
-		break;
-
-	case SC_CUSTOM:
-		scene->Control();
-		break;
-	
-	case SC_SELECT:
-		scene->Control();
-		break;
-
-	case SC_GAME:
-		scene->Control();
-		break;
-
-	case SC_RESULT:
-		scene->Control();
-		break;
-	}
-}
-
-//------------------------------------
-//　シーンの登録
-void SceneManager::SceneRegister(
-	SceneID id,
-	SceneBase* sb
-) {
-	scene_list.emplace(id, sb);
+	scene->Control();
 }
 
 //-------------------------------------
 //　シーン遷移
-void SceneManager::CreateNextScene(SceneID scene_id) {
+void SceneManager::ChangeScene(SceneID scene_id) {
 	auto itr = scene_list.find(scene_id);
 	scene = itr->second;
 }
-
-//--------------------------------------
-//　シーンIDのセッター
-void SceneManager::SetSceneID(SceneID sc_id) {
-	scene_id = sc_id;
-}
-
 
 //--------------------------------------
 //　デストラクタ
@@ -85,8 +47,9 @@ SceneManager::~SceneManager() {
 
 	//リスト内の破棄
 	for (auto & it : scene_list) {
-		it.second->~SceneBase();
+		delete it.second;
 	}
+	delete scene;
 }
 
 
