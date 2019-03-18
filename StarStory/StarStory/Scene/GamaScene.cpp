@@ -1,11 +1,12 @@
-﻿#include "Scene.h"
+﻿#include "GameScene.h"
+#include "SceneManager.h"
 #include "Lib.h"
 
 //-----------------------------
 //　ゲームシーン初期化
 void GameScene::Init() {
 
-	Scene::g_StateID = SS_UPDATE;
+	state_id = SS_UPDATE;
 	//stage = new StageBase();
 }
 
@@ -31,7 +32,7 @@ void GameScene::Update() {
 	}*/
 	if (Lib::KeyPress(VK_SPACE))
 	{
-		Scene::g_StateID = SS_END;
+		state_id = SS_END;
 	}
 }
 
@@ -42,15 +43,16 @@ void GameScene::End() {
 	/*if (stage->IsClear()) {
 		is_clear = true;
 	}*/
-	Scene::g_StateID = SS_INIT;
-	Scene::g_SceneID = SC_RESULT;
+	state_id = SS_INIT;
+	SceneManager& sm = SceneManager::GetInstance();
+	sm.CreateNextScene(SC_RESULT);
 }
 
 //------------------------------
 //　ゲームシーン状態更新
 void GameScene::Control() {
 
-	switch (Scene::g_StateID)
+	switch (state_id)
 	{
 	case SS_INIT:
 		Init(); 
