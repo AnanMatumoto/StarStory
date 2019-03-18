@@ -185,11 +185,31 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Scene\CustomScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scene\GameScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scene\ResultScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Scene\Scene.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Scene\SceneManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scene\SelectScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scene\TitleScene.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -1,15 +1,14 @@
-﻿#include "Lib/Lib.h"
-#include "Scene/SceneManager.h"
+﻿#include "Lib.h"
+#include "SceneManager.h"
 
 
 // メイン
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	Lib::Init(1920, 1080, "StarStory");
-	SceneManager* sm = new SceneManager();
-	sm->Init();
+	SceneManager& sm = SceneManager::GetInstance();
+	sm.Init();
 
-	int c = 0;
 	while (Lib::ProcessMessage()) {
 
 		Lib::KeyUpdate();
@@ -18,7 +17,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		Lib::DrawBegin(0xe0e0ff);
 		
 	
-		sm->Update();
+		sm.Update();
 		
 		//　描画終了
 		Lib::DrawEnd();

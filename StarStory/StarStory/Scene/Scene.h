@@ -1,10 +1,5 @@
 ﻿#pragma once
 
-namespace Scene {
-
-	extern int g_StateID;
-	extern int g_SceneID;
-};
 
 //================================
 //　状態ID
@@ -50,92 +45,12 @@ public:
 	virtual void End() {}
 	virtual void Control() {}
 	virtual void Draw() {}
-	~SceneBase() {}
+	virtual ~SceneBase() {}
 
 protected:
 
 	bool is_clear;
-};
-
-//==================================
-// タイトル画面クラス
-//==================================
-
-class TitleScene : public SceneBase {
-
-private:
-
-	void Init()override;
-	void Update()override;
-	void End()override;
-	void Control() override;
-	void Draw()override;
-	~TitleScene() {}
-};
-
-//==================================
-//	ステージセレクト画面クラス
-//==================================
-
-
-class SelectScene : public SceneBase {
-
-private:
-
-	void Init()override;
-	void Update()override;
-	void End()override;
-	void Control()override;
-	void Draw() override;
-	~SelectScene() {}
-};
-
-//=================================
-//  カスタム画面クラス
-//=================================
-
-class CustomScene :public SceneBase {
-
-private:
-
-	void Init()override;
-	void Update() override;
-	void End() override;
-	void Control() override;
-	void Draw() override;
-	~CustomScene() {}
-
-};
-
-//=================================
-//　ゲーム画面クラス
-//=================================
-
-class GameScene : public SceneBase {
-
-private:
-	void Init() override;
-	void Update()override;
-	void End()override;
-	void Control() override;
-	void Draw() override;
-	~GameScene() {}
-	//StageBase* stage;
+	int state_id;
 };
 
 
-//=================================
-// リザルト画面クラス
-//=================================
-
-class ResultScene : public SceneBase {
-
-private:
-	void Init() override;
-	void Update() override;
-	void End() override;
-	void Control() override;
-	void Draw() override;
-	~ResultScene() {}
-
-};
