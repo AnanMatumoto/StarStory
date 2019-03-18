@@ -1,18 +1,13 @@
-﻿#include "Scene.h"
+﻿#include "TitleScene.h"
+#include "SceneManager.h"
 #include "Lib.h"
 
-
-namespace Scene {
-
-	int g_StateID;
-	int g_SceneID;
-}
 
 //-----------------------------
 //　タイトルシーン初期化
 void TitleScene::Init() {
 
-	Scene::g_StateID = SS_UPDATE;
+	state_id = SS_UPDATE;
 }
 
 //-----------------------------
@@ -20,7 +15,7 @@ void TitleScene::Init() {
 void TitleScene::Update() {
 
 	if (Lib::KeyPress(VK_SPACE)) {
-		Scene::g_StateID = SS_END;
+		state_id = SS_END;
 	}
 }
 
@@ -28,15 +23,16 @@ void TitleScene::Update() {
 //  タイトルシーン終了
 void TitleScene::End() {
 
-	Scene::g_StateID = SS_INIT;
-	Scene::g_SceneID = SC_CUSTOM;
+	state_id = SS_INIT;
+	SceneManager& sm = SceneManager::GetInstance();
+	sm.CreateNextScene(SC_CUSTOM);
 }
 
 //-----------------------------
 //　状態管理
 void TitleScene::Control() {
 
-	switch (Scene::g_StateID)
+	switch (state_id)
 	{
 	case SS_INIT:
 		Init();
