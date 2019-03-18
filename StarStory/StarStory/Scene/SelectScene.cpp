@@ -1,10 +1,12 @@
-﻿#include "Scene.h"
+﻿#include"SelectScene.h"
+#include"SceneManager.h"
 #include "Lib.h"
+
 //--------------------------
 //　セレクトシーン初期化
 void SelectScene::Init() {
 
-	Scene::g_StateID = SS_UPDATE;
+	state_id = SS_UPDATE;
 }
 
 //---------------------------
@@ -12,7 +14,7 @@ void SelectScene::Init() {
 void SelectScene::Update() {
 
 	if (Lib::KeyPress(VK_SPACE)) {
-		Scene::g_StateID = SS_END;
+		state_id = SS_END;
 	}
 }
 
@@ -20,8 +22,9 @@ void SelectScene::Update() {
 //　セレクトシーン終了
 void SelectScene::End() {
 
-	Scene::g_StateID = SS_INIT;
-	Scene::g_SceneID = SC_GAME;
+	state_id = SS_INIT;
+	SceneManager& sm = SceneManager::GetInstance();
+	sm.CreateNextScene(SC_GAME);
 
 }
 
@@ -29,7 +32,7 @@ void SelectScene::End() {
 //　セレクトシーン状態管理
 void SelectScene::Control() {
 
-	switch (Scene::g_StateID)
+	switch (state_id)
 	{
 	case SS_INIT:
 		Init();
