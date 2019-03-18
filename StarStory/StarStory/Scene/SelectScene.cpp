@@ -24,7 +24,7 @@ void SelectScene::End() {
 
 	state_id = SS_INIT;
 	SceneManager& sm = SceneManager::GetInstance();
-	sm.CreateNextScene(SC_GAME);
+	sm.ChangeScene(SC_GAME);
 
 }
 

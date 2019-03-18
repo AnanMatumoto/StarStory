@@ -25,7 +25,7 @@ void TitleScene::End() {
 
 	state_id = SS_INIT;
 	SceneManager& sm = SceneManager::GetInstance();
-	sm.CreateNextScene(SC_CUSTOM);
+	sm.ChangeScene(SC_CUSTOM);
 }
 
 //-----------------------------

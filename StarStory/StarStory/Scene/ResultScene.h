@@ -13,7 +13,7 @@ private:
 	void End() override;
 	void Control() override;
 	void Draw() override;
-	~ResultScene() {}
+	~ResultScene() override{}
 
 };
 
