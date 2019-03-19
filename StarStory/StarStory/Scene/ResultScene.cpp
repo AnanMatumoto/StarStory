@@ -25,15 +25,15 @@ void ResultScene::Update() {
 
 //----------------------------
 // リザルトシーン終了
-void ResultScene::End() {
+SceneID ResultScene::End() {
 	state_id = SS_INIT;
-	SceneManager& sm = SceneManager::GetInstance();
-	sm.ChangeScene(SC_TITLE);
+	return SC_TITLE;
 }
 
 //----------------------------
 //　リザルトシーン状態管理
-void ResultScene::Control() {
+SceneID ResultScene::Control() {
+
 	switch (state_id)
 	{
 	case SS_INIT:
@@ -46,9 +46,10 @@ void ResultScene::Control() {
 		break;
 
 	case SS_END:
-		End();
+		return End();
 		break;
 	}
+	return SC_RESULT;
 }
 
 //-----------------------------

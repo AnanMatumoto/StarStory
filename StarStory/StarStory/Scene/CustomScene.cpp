@@ -20,16 +20,15 @@ void CustomScene::Update() {
 
 //----------------------------
 // 　カスタムシーン更新
-void CustomScene::End() {
+SceneID CustomScene::End() {
 
 	state_id = SS_INIT;
-	SceneManager& sm = SceneManager::GetInstance();
-	sm.ChangeScene(SC_SELECT);
+	return SC_SELECT;
 }
 
 //----------------------------
 //	カスタムシーン状態管理
-void CustomScene::Control() {
+SceneID CustomScene::Control() {
 
 	switch (state_id)
 	{
@@ -43,9 +42,10 @@ void CustomScene::Control() {
 		break;
 
 	case SS_END:
-		End();
+		return End();
 		break;
 	}
+	return SC_CUSTOM;
 }
 
 //----------------------------

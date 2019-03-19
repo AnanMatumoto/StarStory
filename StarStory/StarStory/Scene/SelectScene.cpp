@@ -20,17 +20,15 @@ void SelectScene::Update() {
 
 //---------------------------
 //　セレクトシーン終了
-void SelectScene::End() {
+SceneID SelectScene::End() {
 
 	state_id = SS_INIT;
-	SceneManager& sm = SceneManager::GetInstance();
-	sm.ChangeScene(SC_GAME);
-
+	return SC_GAME;
 }
 
 //----------------------------
 //　セレクトシーン状態管理
-void SelectScene::Control() {
+SceneID SelectScene::Control() {
 
 	switch (state_id)
 	{
@@ -44,9 +42,10 @@ void SelectScene::Control() {
 		break;
 
 	case SS_END:
-		End();
+		return End();
 		break;
 	}
+	return SC_SELECT;
 }
 
 //----------------------------

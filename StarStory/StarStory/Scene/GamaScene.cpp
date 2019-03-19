@@ -38,19 +38,18 @@ void GameScene::Update() {
 
 //-------------------------------
 //　ゲームシーン終了
-void GameScene::End() {
+SceneID GameScene::End() {
 
 	/*if (stage->IsClear()) {
 		is_clear = true;
 	}*/
 	state_id = SS_INIT;
-	SceneManager& sm = SceneManager::GetInstance();
-	sm.ChangeScene(SC_RESULT);
+	return SC_RESULT;
 }
 
 //------------------------------
 //　ゲームシーン状態更新
-void GameScene::Control() {
+SceneID GameScene::Control() {
 
 	switch (state_id)
 	{
@@ -64,9 +63,10 @@ void GameScene::Control() {
 		break;
 
 	case SS_END:
-		End();
+		return End();
 		break;
 	}
+	return SC_GAME;
 }
 
 //-------------------------------

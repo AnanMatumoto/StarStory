@@ -21,16 +21,15 @@ void TitleScene::Update() {
 
 //-----------------------------
 //  タイトルシーン終了
-void TitleScene::End() {
+SceneID TitleScene::End() {
 
 	state_id = SS_INIT;
-	SceneManager& sm = SceneManager::GetInstance();
-	sm.ChangeScene(SC_CUSTOM);
+	return SC_CUSTOM;
 }
 
 //-----------------------------
 //　状態管理
-void TitleScene::Control() {
+SceneID TitleScene::Control() {
 
 	switch (state_id)
 	{
@@ -44,9 +43,10 @@ void TitleScene::Control() {
 		break;
 
 	case SS_END:
-		End();
+		return End();
 		break;
 	}
+	return SC_TITLE;
 }
 
 //------------------------------
