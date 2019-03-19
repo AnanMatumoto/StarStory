@@ -24,21 +24,27 @@ void SceneManager::Init() {
 	scene_list.emplace(SC_RESULT, new ResultScene());
 
 	auto it = scene_list.find(SC_TITLE);
-	scene = it->second;
+	m_scene = it->second;
 }
 
 //---------------------------------
 //　シーン更新
 void SceneManager::Update() {
 
-	scene->Control();
+	m_now_scene = m_scene->Control();
+	ChangeScene();
 }
 
 //-------------------------------------
 //　シーン遷移
-void SceneManager::ChangeScene(SceneID scene_id) {
-	auto itr = scene_list.find(scene_id);
-	scene = itr->second;
+void SceneManager::ChangeScene() {
+	
+	if (m_scene->Control() != m_now_scene) {
+		//現在のシ―ンが終了に差しかかった時
+		m_now_scene = m_scene->End();
+	}
+	auto it = scene_list.find(m_now_scene);
+	m_scene = it->second;
 }
 
 //--------------------------------------
@@ -49,7 +55,6 @@ SceneManager::~SceneManager() {
 	for (auto & it : scene_list) {
 		delete it.second;
 	}
-	delete scene;
 }
 
 
