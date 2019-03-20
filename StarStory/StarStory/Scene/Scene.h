@@ -43,21 +43,21 @@ class SceneBase {
 public:
 
 	SceneBase() {}
-	virtual void Init() {}
-	virtual void Update() {}
+	virtual void Init()   = 0;
+	virtual void Update() = 0;
 	virtual SceneID End() {
 		return NO_SCENE;
 	}
 	virtual SceneID Control() {
 		return NO_SCENE;
 	}
-	virtual void Draw() {}
-	virtual ~SceneBase() {}
+	virtual void Draw()  = 0;
+	virtual ~SceneBase() = 0;
 
 protected:
 
-	bool is_clear;
-	int state_id;
+	//bool is_clear;	
+	int state_id;	//　自身の状態ID
 };
 
 
