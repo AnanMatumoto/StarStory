@@ -52,7 +52,7 @@ public:
 		return NO_SCENE;
 	}
 	virtual void Draw()  = 0;
-	virtual ~SceneBase() = 0;
+	virtual ~SceneBase() {};
 
 protected:
 

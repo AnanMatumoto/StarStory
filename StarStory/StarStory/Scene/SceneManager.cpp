@@ -43,7 +43,7 @@ void SceneManager::ChangeScene(SceneID scene_id) {
 	
 	if (scene_id != m_now_id) {
 		//現在のシ―ンが終了に差しかかった時
-		m_now_id = m_scene->End();
+		m_now_id = scene_id;
 	}
 	auto it = scene_list.find(m_now_id);
 	m_scene = it->second;
