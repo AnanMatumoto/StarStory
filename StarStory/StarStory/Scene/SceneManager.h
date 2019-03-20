@@ -2,40 +2,45 @@
 #include "Scene.h"
 #include <unordered_map>
 
-/*
-	＜シーンマネージャークラス＞
+//=================================
+// シーンマネージャークラス
+//=================================
 
-	このクラスはシングルトンで構成されています。
-	
-	呼び出し方：
-		SceneManager& sm = SceneManager::GetInstance();
-
-	その他メソッド：
-	・Init
-		初期化処理。各シーンをリストに登録。
-		初めにタイトルシーンをセットする。
-
-	・Update
-	　	更新処理。シーン間の遷移を管理する。
-
-	・ChangeScene
-		現在のシーンの終わりをnow_sceneで取得し、
-		シーンの切り替えを行う。
-*/
 class SceneManager {
 
 public:
 
+	/*
+	このクラスはシングルトンで構成されています。
+	呼び出し方：
+		SceneManager& sm = SceneManager::GetInstance();
+	*/
 	static SceneManager& GetInstance();
+	/*
+	 Init：
+		初期化処理。各シーンをリストに登録。
+		初めにタイトルシーンをセットする。
+	*/
 	void Init();
+
+	/*
+  	  Update:
+		更新処理。シーン間の遷移を管理する。
+	*/
 	void Update();
-	void ChangeScene();
+
+	/*
+	 ChangeScene:
+		現在のシーンの終わりをnow_sceneで取得し、
+		シーンの切り替えを行う。
+	*/
+	void ChangeScene(SceneID scene_id);
 	~SceneManager();
 
 private:
 
-	std::unordered_map<SceneID, SceneBase*> scene_list; //	シーンリスト
-	SceneBase* m_scene;		//　リスト内シーン格納用
-	SceneID    m_now_scene; //	更新されるシーンID格納用
+	std::unordered_map<SceneID, SceneBase*> scene_list; //  シーンリスト
+	SceneBase* m_scene;		// 現行シーン格納用
+	SceneID    m_now_id;	// 更新されるシーンID格納用
 
 };

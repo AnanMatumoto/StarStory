@@ -31,19 +31,21 @@ void SceneManager::Init() {
 //　シーン更新
 void SceneManager::Update() {
 
-	m_now_scene = m_scene->Control();
-	ChangeScene();
+	SceneID scene_id;
+
+	scene_id = m_scene->Control();
+	ChangeScene(scene_id);
 }
 
 //-------------------------------------
 //　シーン遷移
-void SceneManager::ChangeScene() {
+void SceneManager::ChangeScene(SceneID scene_id) {
 	
-	if (m_scene->Control() != m_now_scene) {
+	if (scene_id != m_now_id) {
 		//現在のシ―ンが終了に差しかかった時
-		m_now_scene = m_scene->End();
+		m_now_id = m_scene->End();
 	}
-	auto it = scene_list.find(m_now_scene);
+	auto it = scene_list.find(m_now_id);
 	m_scene = it->second;
 }
 
