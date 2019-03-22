@@ -1,13 +1,14 @@
-﻿#pragma once
-#pragma once
-#define NOMINMAX
+﻿#include "../Common/Common.h"
 #include <d3d9.h>
 #include<d3dx9.h>
 #include <string>
-#include "../Common/Common.h"
 
+#pragma once
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")
+
+#define NOMINMAX
+
 
 struct Vertex
 {
