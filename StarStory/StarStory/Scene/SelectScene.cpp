@@ -1,6 +1,6 @@
 ﻿#include"SelectScene.h"
 #include"SceneManager.h"
-#include "Lib.h"
+#include "../Lib/Lib.h"
 
 //--------------------------
 //　セレクトシーン初期化

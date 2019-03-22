@@ -1,6 +1,6 @@
 ﻿#include "TitleScene.h"
 #include "SceneManager.h"
-#include "Lib.h"
+#include "../Lib/Lib.h"
 
 
 //-----------------------------

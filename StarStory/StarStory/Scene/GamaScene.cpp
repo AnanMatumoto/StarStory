@@ -1,6 +1,6 @@
 ﻿#include "GameScene.h"
 #include "SceneManager.h"
-#include "Lib.h"
+#include "../Lib/Lib.h"
 
 //-----------------------------
 //　ゲームシーン初期化

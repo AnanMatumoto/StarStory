@@ -1,6 +1,6 @@
 ﻿#include "ResultScene.h"
 #include "SceneManager.h"
-#include "Lib.h"
+#include "../Lib/Lib.h"
 
 //----------------------------
 // リザルトシーン初期化
