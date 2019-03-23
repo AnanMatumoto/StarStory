@@ -37,7 +37,8 @@ namespace Lib {
 		dev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtx, sizeof(Vertex));
 	}
 
-
+	//----------------------------------------
+	//四角形描画関数
 	void DrawBox2D(
 		const Texture& tex,
 		float pos_x,
@@ -170,6 +171,48 @@ namespace Lib {
 			D3DPT_TRIANGLEFAN,
 			1, vtx, sizeof(Vertex));
 
+	}
+
+	//---------------------------------------
+	//回転付菱形描画関数
+	void DrawDaiamond2D(
+		const Texture& tex,
+		float pos_x, float pos_y,
+		float h, float w,
+		float angle,
+		DWORD color,
+		float ox, float oy
+	) {
+		Vertex vtx[4] = {
+			{{-ox, (0.5f - oy), 0.f,1.f},color,{0.f,0.5f}},
+			{{(0.5f - ox),-oy,0.f,1.f},color,{0.5f,1.f}},
+			{{(1.f - ox),(0.5f - oy),0.f,1.f},color,{1.f,0.5f}},
+			{{(0.5f - ox),(1.f - oy),0.f,1.f},color,{0.5f, 0.f}}
+		};
+
+		D3DXMATRIX mtx;
+		D3DXMatrixScaling(&mtx, w, h, 1.f);
+
+		if (angle != 0) {
+			D3DXMATRIX rot_mtx;
+			D3DXMatrixRotationZ(&rot_mtx, angle);
+			mtx *= rot_mtx;
+		}
+		mtx._41 = pos_x;
+		mtx._42 = pos_y;
+
+		D3DXVec2TransformCoordArray(
+			(D3DXVECTOR2*)vtx, sizeof(Vertex),
+			(D3DXVECTOR2*)vtx, sizeof(Vertex),
+			&mtx, 4
+		);
+
+		dev->SetTexture(0, tex);
+		dev->SetFVF(VERTEX_FVF);
+		dev->DrawPrimitiveUP(
+			D3DPT_TRIANGLEFAN,
+			2, vtx,
+			sizeof(Vertex));
 	}
 
 	//-------------------------------------

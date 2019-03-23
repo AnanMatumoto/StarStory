@@ -237,6 +237,29 @@ namespace Lib {
 		DWORD color	= 0x00ffffff
 	);
 
+	/*
+		回転付菱形描画関数
+
+		第1　：指定するテクスチャ
+		第2,3：XY座標
+		第4,5：対角線（幅高）
+		第6  ：回転角度
+		第7　：色相
+		第8,9：オフセット値（デフォルト中心座標）
+
+		（※オフセット値0.5で中心を軸に回転）
+	*/
+	void DrawDaiamond2D(
+		const Texture& tex,
+		float pos_x, float pos_y,
+		float h, float w,
+		float angle,
+		DWORD color = 0x00ffffff,
+		float ox = 0.5f, float oy = 0.5f
+	);
+
+
+
 	//αブレンドの設定（外部での使用はできない）
 	void SetAlphaBlend();
 };
