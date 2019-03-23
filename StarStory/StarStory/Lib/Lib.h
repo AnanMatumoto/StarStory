@@ -195,6 +195,27 @@ namespace Lib {
 	);
 
 	/*
+		透過効果付板ポリゴン
+	
+		第1  ：指定するテクスチャ
+		第2,3：XY座標
+		第4　：色相
+		第6,7：幅高
+		第8,9：オフセット値
+	
+	*/
+	void DrawBoxAlpha(
+		const Texture& tex,
+		float pos_x,
+		float pos_y,
+		D3DXCOLOR color,
+		float width = 1.f,
+		float height = 1.f,
+		float ox = 0.f, float oy = 0.f
+	);
+
+
+	/*
 		三角形描画関数（ピクセルサイズ）
 
 		◆注意

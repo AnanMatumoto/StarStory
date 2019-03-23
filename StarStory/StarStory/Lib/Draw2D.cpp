@@ -60,6 +60,41 @@ namespace Lib {
 	}
 
 	//-----------------------------------------------
+	// α指定付板ポリゴン
+	void DrawBoxAlpha(
+		const Texture& tex,
+		float pos_x,
+		float pos_y,
+		D3DXCOLOR color,
+		float width,
+		float height,
+		float ox, float oy
+
+	) {
+		D3DXCOLOR col;
+		col.r = color.r;
+		col.g = color.g;
+		col.b = color.b;
+		col.a = color.a;
+
+		float x1 = pos_x - width * ox;
+		float y1 = pos_y - height * oy;
+		float x2 = pos_x + width * (1.f - ox);
+		float y2 = pos_y + height * (1.f - oy);
+		Vertex vtx[4] = {
+			{{x1, y1, 0.f,1.f}, col, {0.f,0.f}},
+			{{x2, y1, 0.f,1.f}, col, {1.f,0.f}},
+			{{x2, y2, 0.f,1.f}, col, {1.f,1.f}},
+			{{x1, y2, 0.f,1.f} ,col, {0.f,1.f}}
+		};
+		dev->SetTexture(0, tex);
+		dev->SetFVF(VERTEX_FVF);
+		SetAlphaBlend();
+		dev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtx, sizeof(Vertex));
+
+	}
+
+	//-----------------------------------------------
 	//座標から上向きに頂点を作る三角形
 	void DrawTriangle2D(
 		const Texture& tex,
