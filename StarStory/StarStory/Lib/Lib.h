@@ -279,7 +279,26 @@ namespace Lib {
 		float ox = 0.5f, float oy = 0.5f
 	);
 
+	/*
+		回転付菱形描画関数（複数指定可能）
 
+		第1  ：指定するテクスチャ
+		第2,3：XY座標（中心座標）
+		第4  ：オブジェクトの最大数
+		第5,6：中心から頂点角までの長さ（対角線の半分）
+		第7  ：回転角度
+		第8　：オフセット値
+		第9　：色相
+	*/
+	void DrawDaiamonds2D(
+		const Texture& tex,
+		float pos_x[], float pos_y[],
+		float obj_num,
+		float h, float w,
+		float angle,
+		DWORD color,
+		float ox, float oy
+	)
 
 	//αブレンドの設定（外部での使用はできない）
 	void SetAlphaBlend();

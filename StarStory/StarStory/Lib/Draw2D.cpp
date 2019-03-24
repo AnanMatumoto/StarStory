@@ -250,6 +250,52 @@ namespace Lib {
 			sizeof(Vertex));
 	}
 
+	//---------------------------------------
+    //(複数)回転付菱形描画関数
+	void DrawDaiamonds2D(
+		const Texture& tex,
+		float pos_x[], float pos_y[],
+		float obj_num,
+		float h, float w,
+		float angle,
+		DWORD color,
+		float ox, float oy
+	) {
+		Vertex vtx[4] = {
+			{{-ox, (0.5f - oy), 0.f,1.f},color,{0.f,0.5f}},
+			{{(0.5f - ox),-oy,0.f,1.f},color,{0.5f,1.f}},
+			{{(1.f - ox),(0.5f - oy),0.f,1.f},color,{1.f,0.5f}},
+			{{(0.5f - ox),(1.f - oy),0.f,1.f},color,{0.5f, 0.f}}
+		};
+
+		D3DXMATRIX mtx;
+		D3DXMatrixScaling(&mtx, w, h, 1.f);
+
+		if (angle != 0) {
+			D3DXMATRIX rot_mtx;
+			D3DXMatrixRotationZ(&rot_mtx, angle);
+			mtx *= rot_mtx;
+		}
+
+		for (int i = 0; i < obj_num; ++i) {
+			mtx._41 = pos_x[i];
+			mtx._42 = pos_y[i];
+		}
+
+		D3DXVec2TransformCoordArray(
+			(D3DXVECTOR2*)vtx, sizeof(Vertex),
+			(D3DXVECTOR2*)vtx, sizeof(Vertex),
+			&mtx, 4
+		);
+
+		dev->SetTexture(0, tex);
+		dev->SetFVF(VERTEX_FVF);
+		dev->DrawPrimitiveUP(
+			D3DPT_TRIANGLEFAN,
+			2, vtx,
+			sizeof(Vertex));
+	}
+
 	//-------------------------------------
 	//　αブレンドの設定
 	void SetAlphaBlend() {
