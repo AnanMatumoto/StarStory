@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "Scene.h"
-
 //=================================
 //　ゲーム画面クラス
 //=================================
@@ -22,4 +21,6 @@ private:
 
 	~GameScene() override{}
 	//StageBase* stage;
+
+
 };

@@ -73,10 +73,6 @@ SceneID GameScene::Control() {
 //　ゲームシーン描画
 void GameScene::Draw() {
 
-	Lib::DrawPx2D(
-		"Resource/test_image/back_sample.jpg",
-		0, 0,
-		1920,1080
-	);
+
 	
 }
