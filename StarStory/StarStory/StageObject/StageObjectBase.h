@@ -28,3 +28,4 @@ protected:
 	t_Float2 pos; // 座標
 	float rot;    // 回転角度
 };
+
