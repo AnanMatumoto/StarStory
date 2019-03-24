@@ -22,6 +22,9 @@
     <Filter Include="ソース ファイル\Scene">
       <UniqueIdentifier>{95208b06-5755-4eca-ac6a-22c5290aa8fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\StageObject">
+      <UniqueIdentifier>{1fda91db-b7c4-40cb-92ce-30e78a52b88d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -88,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="Scene\ResultScene.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject\StageObjectBase.h">
+      <Filter>ソース ファイル\StageObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
