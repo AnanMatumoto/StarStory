@@ -1,5 +1,18 @@
 ﻿#pragma once
+
 #include "Scene.h"
+#include "../StageObject/Factory.h"
+#include <map>
+
+//================================
+// ゲームエンティティ
+//================================
+enum GameEntity {
+
+	GM_TEST1,
+	GM_TEST2
+};
+
 //=================================
 //　ゲーム画面クラス
 //=================================
@@ -19,8 +32,9 @@ private:
 	//　描画処理
 	void Draw() override;
 
-	~GameScene() override{}
+	~GameScene() override;
 	//StageBase* stage;
 
-
+	Factory* m_factory;
+	std::map<GameEntity, ObjectBase*> obj_list;
 };

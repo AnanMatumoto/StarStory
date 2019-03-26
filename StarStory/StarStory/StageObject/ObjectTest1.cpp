@@ -5,7 +5,7 @@
 //　コンストラクタ
 ObjectTest1::ObjectTest1() {
 
-	pos = { 0,0 };
+	pos = { 500,500 };
 	rot = 0;
 }
 

@@ -1,6 +1,7 @@
 ﻿#include "GameScene.h"
 #include "SceneManager.h"
 #include "../Lib/Lib.h"
+#include "../StageObject/StageObjectFactory.h"
 
 //-----------------------------
 //　ゲームシーン初期化
@@ -8,32 +9,32 @@ void GameScene::Init() {
 
 	state_id = SS_UPDATE;
 	//stage = new StageBase();
+
+	m_factory = new StageObjectFactory();
+	obj_list.emplace(GM_TEST1, m_factory->Create(OBJ_TEST1));
 }
 
 //------------------------------
 //　ゲームシーン更新
 void GameScene::Update() {
 
-	/*
-	switch (ステージのID番号)
-	{
-	case STAGE_1:
-		stage = new Stage::Stage1;
-		stage->GameControl();
-		break;
-
-	case STAGE_2:
-		stage = new Stage::Stage2;
-		stage->GameControl();
-		break;
-	}
-	if (stage->GetStageID() == STAGE_END) {
-		Scene::Scene::g_StateID = SS_END;
-	}*/
+	
 	if (Lib::KeyPress(VK_SPACE))
 	{
 		state_id = SS_END;
 	}
+
+	//ステージオブジェクト更新
+	for (auto &it : obj_list) {
+		it.second->Update();
+	}
+
+	// ＊＊＊問題の箇所＊＊＊
+	if (Lib::KeyOn('A')) {
+	/*	auto itr =obj_list.find(GM_TEST1);
+		itr->second->Delete();*/
+	} 
+
 }
 
 //-------------------------------
@@ -73,6 +74,20 @@ SceneID GameScene::Control() {
 //　ゲームシーン描画
 void GameScene::Draw() {
 
-
+	Lib::DrawPx2D(
+		"Resource/test_image/back_sample.jpg",
+		0, 0,
+		1920, 1080
+	);
 	
+	for (auto &it : obj_list) {
+		it.second->Draw();
+	}
+}
+
+GameScene::~GameScene() {
+
+	for (auto& it : obj_list) {
+		it.second->Delete();
+	}
 }
