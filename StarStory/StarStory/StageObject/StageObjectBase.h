@@ -19,13 +19,13 @@ class StageObjectBase {
 public:
 
 	StageObjectBase() {
-		pos.m_x = 0;
-		pos.m_y = 0;
+		m_pos.m_x = 0;
+		m_pos.m_y = 0;
 
-		rot = 0;
+		m_rot = 0;
 	}
-	virtual void Update(){}
-	virtual void Draw(){}
+	virtual void Update() = 0;
+	virtual void Draw() = 0;
 	virtual void Delete() {
 		
 		delete this;
@@ -33,8 +33,8 @@ public:
 
 protected:
 
-	t_Float2 pos; // 座標
-	float rot;    // 回転角度
+	t_Float2 m_pos; // 座標
+	float m_rot;    // 回転角度
 
 private:
 
