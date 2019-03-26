@@ -213,7 +213,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StageObject\StageObjectBase.h">
+    <ClInclude Include="StageObject\ObjectBase.h">
       <SubType>
       </SubType>
     </ClInclude>

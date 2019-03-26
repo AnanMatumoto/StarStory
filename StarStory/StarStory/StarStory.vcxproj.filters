@@ -92,7 +92,7 @@
     <ClInclude Include="Scene\ResultScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="StageObject\StageObjectBase.h">
+    <ClInclude Include="StageObject\ObjectBase.h">
       <Filter>ソース ファイル\StageObject</Filter>
     </ClInclude>
   </ItemGroup>
