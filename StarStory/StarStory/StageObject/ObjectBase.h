@@ -11,6 +11,7 @@
 
 	Update：更新処理
 	Draw　：描画処理
+	Delete：自作解放処理
 
 */
 
@@ -19,8 +20,11 @@ class ObjectBase {
 public:
 
 	ObjectBase(){}
-	virtual void Update(){}
-	virtual void Draw(){}
+	virtual void Update() = 0;
+	virtual void Draw() = 0;
+	virtual void Delete() {
+		delete this;
+	}
 	virtual ~ObjectBase(){}
 
 protected:
