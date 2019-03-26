@@ -14,14 +14,14 @@
 
 */
 
-class StageObjectBase {
+class ObjectBase {
 	
 public:
 
-	StageObjectBase(){}
+	ObjectBase(){}
 	virtual void Update(){}
 	virtual void Draw(){}
-	virtual ~StageObjectBase(){}
+	virtual ~ObjectBase(){}
 
 protected:
 
