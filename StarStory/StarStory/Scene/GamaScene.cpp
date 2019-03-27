@@ -12,8 +12,7 @@ void GameScene::Init() {
 
 
 	//ステージオブジェクトの登録
-	ObjectManager&  obj_mngr = ObjectManager::GetInstance();
-	obj_mngr.Register(OBJ_TEST1);
+	ObjectManager::GetInstance().Register(OBJ_TEST1);
 }
 
 //------------------------------------------
@@ -27,8 +26,7 @@ void GameScene::Update() {
 	}
 
 	// ステージオブジェクト更新
-	ObjectManager&  obj_mngr = ObjectManager::GetInstance();
-	obj_mngr.Update();
+	ObjectManager::GetInstance().Update();
 
 }
 
@@ -76,8 +74,7 @@ void GameScene::Draw() {
 	);
 	
 	// ステージオブジェクト描画
-	ObjectManager&  obj_mngr = ObjectManager::GetInstance();
-	obj_mngr.Draw();
+	ObjectManager::GetInstance().Draw();
 }
 
 //-----------------------------------------
@@ -85,7 +82,6 @@ void GameScene::Draw() {
 GameScene::~GameScene() {
 
 	// オブジェクトの削除
-	ObjectManager&  obj_mngr = ObjectManager::GetInstance();
-	obj_mngr.AllDelete();
+	ObjectManager::GetInstance().AllDelete();
 	
 }
