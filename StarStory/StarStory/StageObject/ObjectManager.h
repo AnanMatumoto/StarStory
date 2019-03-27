@@ -1,0 +1,31 @@
+﻿#pragma once
+#include "Factory.h"
+#include "StageObjectFactory.h"
+#include <unordered_map>
+
+//==================================
+// ステージオブジェクト管理クラス
+//==================================
+
+class ObjectManager {
+
+public:
+	//　インスタンス生成処理
+	static ObjectManager& GetInstance();
+	//　ステージオブジェクトの登録処理
+	void Register(StageObjectID id);
+	//　更新処理
+	void Update();
+	//  描画処理
+	void Draw();
+	//  IDで指定したオブジェクトを削除する
+	void Delete(StageObjectID id);
+	//　リスト内にあるオブジェクトを全て削除する
+	void AllDelete();
+
+private:
+
+	std::unordered_map<StageObjectID, ObjectBase*> obj_list; // オブジェクトリスト
+	Factory* m_factory;	  // オブジェクト生成クラス
+
+};
