@@ -1,20 +1,22 @@
 ﻿#include "GameScene.h"
 #include "SceneManager.h"
 #include "../Lib/Lib.h"
-#include "../StageObject/StageObjectFactory.h"
+#include "../StageObject/ObjectManager.h"
 
-//-----------------------------
+//-------------------------------------------
 //　ゲームシーン初期化
 void GameScene::Init() {
 
 	state_id = SS_UPDATE;
 	//stage = new StageBase();
 
-	m_factory = new StageObjectFactory();
-	obj_list.emplace(GM_TEST1, m_factory->Create(OBJ_TEST1));
+
+	//ステージオブジェクトの登録
+	ObjectManager&  obj_mngr = ObjectManager::GetInstance();
+	obj_mngr.Register(OBJ_TEST1);
 }
 
-//------------------------------
+//------------------------------------------
 //　ゲームシーン更新
 void GameScene::Update() {
 
@@ -24,20 +26,13 @@ void GameScene::Update() {
 		state_id = SS_END;
 	}
 
-	//ステージオブジェクト更新
-	for (auto &it : obj_list) {
-		it.second->Update();
-	}
-
-	// ＊＊＊問題の箇所＊＊＊
-	if (Lib::KeyOn('A')) {
-	/*	auto itr =obj_list.find(GM_TEST1);
-		itr->second->Delete();*/
-	} 
+	// ステージオブジェクト更新
+	ObjectManager&  obj_mngr = ObjectManager::GetInstance();
+	obj_mngr.Update();
 
 }
 
-//-------------------------------
+//------------------------------------------
 //　ゲームシーン終了
 SceneID GameScene::End() {
 
@@ -48,7 +43,7 @@ SceneID GameScene::End() {
 	return SC_RESULT;
 }
 
-//------------------------------
+//-----------------------------------------
 //　ゲームシーン状態更新
 SceneID GameScene::Control() {
 
@@ -70,7 +65,7 @@ SceneID GameScene::Control() {
 	return SC_GAME;
 }
 
-//-------------------------------
+//-----------------------------------------
 //　ゲームシーン描画
 void GameScene::Draw() {
 
@@ -80,14 +75,17 @@ void GameScene::Draw() {
 		1920, 1080
 	);
 	
-	for (auto &it : obj_list) {
-		it.second->Draw();
-	}
+	// ステージオブジェクト描画
+	ObjectManager&  obj_mngr = ObjectManager::GetInstance();
+	obj_mngr.Draw();
 }
 
+//-----------------------------------------
+// デストラクタ
 GameScene::~GameScene() {
 
-	for (auto& it : obj_list) {
-		it.second->Delete();
-	}
+	// オブジェクトの削除
+	ObjectManager&  obj_mngr = ObjectManager::GetInstance();
+	obj_mngr.AllDelete();
+	
 }
