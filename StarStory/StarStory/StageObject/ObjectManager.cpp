@@ -1,4 +1,6 @@
 ﻿#include "ObjectManager.h"
+#include "Factory.h"
+#include "StageObjectFactory.h"
 #include "../Lib/Lib.h"
 
 //-----------------------------------
@@ -13,8 +15,8 @@ ObjectManager& ObjectManager::GetInstance() {
 //　オブジェクト登録処理
 void ObjectManager::Register(StageObjectID id) {
 
-	m_factory = new StageObjectFactory();
-	obj_list.emplace(id, m_factory->Create(id));
+	Factory* factory = new StageObjectFactory();
+	obj_list.emplace(id, factory->Create(id));
 }
 
 //-----------------------------------
@@ -56,11 +58,8 @@ void ObjectManager::Delete(StageObjectID id) {
 	if (itr != obj_list.end()) {
 		ObjectBase* obj = itr->second;
 
-		if (obj->IsDelete()) {
-
-			if (obj != nullptr) {
+		if (obj != nullptr) {
 				delete obj;
-			}
 		}
 		itr = obj_list.erase(itr);
 	}

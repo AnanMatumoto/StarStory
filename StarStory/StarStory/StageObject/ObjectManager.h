@@ -1,6 +1,6 @@
 ﻿#pragma once
-#include "Factory.h"
-#include "StageObjectFactory.h"
+
+#include"ObjectBase.h"
 #include <unordered_map>
 
 //==================================
@@ -26,6 +26,6 @@ public:
 private:
 
 	std::unordered_map<StageObjectID, ObjectBase*> obj_list; // オブジェクトリスト
-	Factory* m_factory;	  // オブジェクト生成クラス
 
 };
+
