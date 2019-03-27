@@ -175,6 +175,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="StageObject\ObjectManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="StageObject\ObjectTest1.cpp">
       <SubType>
       </SubType>
@@ -226,6 +230,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="StageObject\ObjectBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StageObject\ObjectManager.h">
       <SubType>
       </SubType>
     </ClInclude>
