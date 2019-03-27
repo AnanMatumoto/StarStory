@@ -18,9 +18,9 @@ private:
 	//　描画処理
 	void Draw()override;
 	//　解放処理
-	void Delete(bool is_del)override;
+	void Delete()override;
 	//  解放状態かどうか
-	const bool& IsDelete()const;
+	const bool IsDelete()const override;
 
 	~ObjectTest1(){}
 

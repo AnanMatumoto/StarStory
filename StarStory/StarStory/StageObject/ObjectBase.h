@@ -2,6 +2,15 @@
 
 #include "../Lib/Lib.h"
 
+//================================
+// ステージオブジェクトID
+//================================
+enum StageObjectID {
+
+	OBJ_TEST1,
+};
+
+
 //===================================
 //　ステージオブジェクト基底クラス
 //===================================
@@ -29,8 +38,8 @@ public:
 
 	virtual void Update()   = 0;
 	virtual void Draw  ()   = 0;
-	virtual void Delete(bool is_del)    = 0;
-	virtual const bool& IsDelete()const = 0;
+	virtual void Delete()    = 0;
+	virtual const bool IsDelete()const = 0;
 	virtual ~ObjectBase  (){}
 
 protected:

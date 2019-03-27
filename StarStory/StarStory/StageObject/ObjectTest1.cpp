@@ -29,16 +29,14 @@ void ObjectTest1::Draw() {
 
 //---------------------------------
 //　フラグを解放状態にセットする
-void ObjectTest1::Delete(bool is_del) {
+void ObjectTest1::Delete() {
 	
-	if (is_del) {
-		is_delete = is_del;
-	}
+	is_delete = true;
 }
 
 //---------------------------------
 //  解放状態であるかを返す
-const bool& ObjectTest1::IsDelete() const{
+const bool ObjectTest1::IsDelete() const{
 	
 	return is_delete;
 }
