@@ -1,4 +1,5 @@
 ﻿#pragma once
+
 #include "ObjectBase.h"
 
 //================================
@@ -17,7 +18,10 @@ private:
 	//　描画処理
 	void Draw()override;
 	//　解放処理
-	void Delete()override;
+	void Delete(bool is_del)override;
+	//  解放状態かどうか
+	const bool& IsDelete()const;
+
 	~ObjectTest1(){}
 
 };

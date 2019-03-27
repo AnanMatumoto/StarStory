@@ -28,9 +28,18 @@ void ObjectTest1::Draw() {
 }
 
 //---------------------------------
-//　解放処理
-void ObjectTest1::Delete() {
+//　フラグを解放状態にセットする
+void ObjectTest1::Delete(bool is_del) {
+	
+	if (is_del) {
+		is_delete = is_del;
+	}
+}
 
-	delete this;
+//---------------------------------
+//  解放状態であるかを返す
+const bool& ObjectTest1::IsDelete() const{
+	
+	return is_delete;
 }
 
