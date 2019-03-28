@@ -15,15 +15,15 @@ ObjectManager& ObjectManager::GetInstance() {
 //　オブジェクト登録処理
 void ObjectManager::Register(StageObjectID id) {
 
-	Factory* factory = new StageObjectFactory();
-	obj_list.emplace(id, factory->Create(id));
+	StageObjectFactory factory;
+	m_obj_list.emplace(id, factory.Create(id));
 }
 
 //-----------------------------------
 //　オブジェクトの更新
 void ObjectManager::Update() {
 
-	for (auto it : obj_list) {
+	for (auto it : m_obj_list) {
 		if (it.second->IsDelete()) {
 			continue;
 		}
@@ -39,7 +39,7 @@ void ObjectManager::Update() {
 // オブジェクトの描画
 void ObjectManager::Draw() {
 
-	for (auto it : obj_list) {
+	for (auto it : m_obj_list) {
 
 		if (it.second->IsDelete()) {
 			continue;
@@ -53,15 +53,15 @@ void ObjectManager::Draw() {
 void ObjectManager::Delete(StageObjectID id) {
 
 	// idと相応する要素を取得
-	auto itr = obj_list.find(id);
+	auto itr = m_obj_list.find(id);
 
-	if (itr != obj_list.end()) {
+	if (itr != m_obj_list.end()) {
 		ObjectBase* obj = itr->second;
 
 		if (obj != nullptr) {
 				delete obj;
 		}
-		itr = obj_list.erase(itr);
+		itr = m_obj_list.erase(itr);
 	}
 }
 
@@ -70,7 +70,7 @@ void ObjectManager::Delete(StageObjectID id) {
 void ObjectManager::AllDelete() {
 
 	// 全要素にあるオブジェクトをすべて解放
-	for (auto it : obj_list) {
+	for (auto it : m_obj_list) {
 
 		ObjectBase* obj = it.second;
 		if (obj != nullptr) {
@@ -78,5 +78,5 @@ void ObjectManager::AllDelete() {
 		}
 	}
 	//　要素をすべて削除
-	obj_list.clear();
+	m_obj_list.clear();
 }
