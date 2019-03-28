@@ -38,7 +38,7 @@ public:
 
 	virtual void Update()   = 0;
 	virtual void Draw  ()   = 0;
-	virtual void Delete()    = 0;
+	virtual void Delete() { is_delete = true; };
 	virtual const bool IsDelete()const = 0;
 	virtual ~ObjectBase  (){}
 
