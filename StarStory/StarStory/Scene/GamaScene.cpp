@@ -33,7 +33,8 @@ void GameScene::Update() {
 	}
 
 	if (Lib::KeyPress('D')) {
-		om.GetClone(OBJ_TEST1);
+		om.GetClone(OBJ_TEST1, OBJ_CLONE1);
+		//※※改良の余地あり（new_id）※※
 	}
 
 }

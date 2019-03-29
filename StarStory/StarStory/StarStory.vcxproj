@@ -229,10 +229,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StageObject\Cloneable.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="StageObject\Factory.h">
       <SubType>
       </SubType>
