@@ -1,13 +1,12 @@
 ﻿#pragma once
 
 #include "Factory.h"
-#include "Cloneable.h"
 
 //===================================
 //　ステージオブジェクト生成クラス
 //===================================
 
-class StageObjectFactory:public Factory,public Cloneable{
+class StageObjectFactory:public Factory {
 
 public:
 	StageObjectFactory(){}

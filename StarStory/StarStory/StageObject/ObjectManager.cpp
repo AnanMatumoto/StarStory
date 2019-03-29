@@ -78,7 +78,10 @@ void ObjectManager::AllDelete() {
 
 
 //-----------------------------------
-Cloneable* ObjectManager::GetClone(StageObjectID id) {
+ObjectBase* ObjectManager::GetClone(StageObjectID id, StageObjectID new_id) {
 
-	return m_obj_list[id]->Clone();
+	auto itr = m_obj_list[id]->Clone();
+	m_obj_list.emplace(new_id, itr);
+
+	return itr;
 }
