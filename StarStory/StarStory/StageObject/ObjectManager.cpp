@@ -30,9 +30,7 @@ void ObjectManager::Update() {
 		it.second->Update();
 	}
 
-	if (Lib::KeyOn('A')) {
-		Delete(OBJ_TEST1);
-	}
+
 }
 
 //-----------------------------------
@@ -57,11 +55,8 @@ void ObjectManager::Delete(StageObjectID id) {
 
 	if (itr != m_obj_list.end()) {
 		ObjectBase* obj = itr->second;
-
-		if (obj != nullptr) {
-				delete obj;
-		}
-		itr = m_obj_list.erase(itr);
+		// フラグを削除状態にセットする
+		obj->Delete();
 	}
 }
 
@@ -79,4 +74,11 @@ void ObjectManager::AllDelete() {
 	}
 	//　要素をすべて削除
 	m_obj_list.clear();
+}
+
+
+//-----------------------------------
+Cloneable* ObjectManager::GetClone(StageObjectID id) {
+
+	return m_obj_list[id]->Clone();
 }

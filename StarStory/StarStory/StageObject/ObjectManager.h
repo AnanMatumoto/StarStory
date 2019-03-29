@@ -23,6 +23,10 @@ public:
 	//　リスト内にあるオブジェクトを全て削除する
 	void AllDelete();
 
+	//  複製処理
+	Cloneable* GetClone(StageObjectID id);
+
+
 private:
 
 	std::unordered_map<StageObjectID, ObjectBase*> m_obj_list; // オブジェクトリスト
