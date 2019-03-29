@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "../Lib/Lib.h"
-#include "Cloneable.h"
 
 //================================
 // ステージオブジェクトID
@@ -9,6 +8,7 @@
 enum StageObjectID {
 
 	OBJ_TEST1,
+	OBJ_CLONE1,
 };
 
 
@@ -27,7 +27,7 @@ enum StageObjectID {
 
 */
 
-class ObjectBase :public Cloneable{
+class ObjectBase {
 	
 public:
 
@@ -37,7 +37,7 @@ public:
 	virtual void Draw  ()   = 0;
 	virtual void Delete();
 	virtual const bool IsDelete()const = 0;
-	virtual Cloneable* Clone() override;
+	virtual ObjectBase* Clone();
 	virtual ~ObjectBase  (){}
 
 protected:

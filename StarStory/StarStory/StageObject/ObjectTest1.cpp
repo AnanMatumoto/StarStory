@@ -40,5 +40,6 @@ const bool ObjectTest1::IsDelete() const{
 ObjectBase* ObjectTest1::Clone() {
 
 	return new ObjectTest1();
+	
 }
 

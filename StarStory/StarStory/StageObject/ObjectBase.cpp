@@ -20,6 +20,6 @@ void ObjectBase::Delete() {
 
 //---------------------------------
 //　複製処理
-Cloneable* ObjectBase::Clone() {
+ObjectBase* ObjectBase::Clone() {
 	return this;
 }

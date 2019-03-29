@@ -10,7 +10,7 @@ class ObjectTest1 :public ObjectBase {
 
 public:
 	ObjectTest1();
-
+	~ObjectTest1()override {}
 private:
 
 	//　更新処理
@@ -20,10 +20,10 @@ private:
 	//  解放状態かどうか
 	const bool IsDelete()const override;
 	// 複製処理
-	Cloneable* Clone() override;
+	ObjectBase* Clone() override;
 
 
-	~ObjectTest1(){}
+	
 
 };
 
