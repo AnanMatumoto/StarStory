@@ -18,7 +18,6 @@ class Factory {
 public:
 	Factory(){}
 	virtual ObjectBase* Create(int id) = 0;
-	virtual ObjectBase* Clone (int id) = 0;
 	~Factory(){}
 
 };

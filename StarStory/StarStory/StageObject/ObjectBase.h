@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "../Lib/Lib.h"
+#include "Cloneable.h"
 
 //================================
 // ステージオブジェクトID
@@ -26,26 +27,22 @@ enum StageObjectID {
 
 */
 
-class ObjectBase {
+class ObjectBase :public Cloneable{
 	
 public:
 
-	ObjectBase(){
-		pos = { 0,0 };
-		rot = 0;
-		is_delete = false;
-	}
+	ObjectBase();
 
 	virtual void Update()   = 0;
 	virtual void Draw  ()   = 0;
-	virtual void Delete() { is_delete = true; };
+	virtual void Delete();
 	virtual const bool IsDelete()const = 0;
+	virtual Cloneable* Clone() override;
 	virtual ~ObjectBase  (){}
 
 protected:
-
-	t_Float2 pos;   // 座標
-	float rot;      // 回転角度
-	bool  is_delete;// 削除状態を示すフラグ
+	t_Float2 pos;     // 座標
+	float	 rot;      // 回転角度
+	bool	 is_delete;// 削除状態を示すフラグ
 };
 

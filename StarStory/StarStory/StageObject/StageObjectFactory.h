@@ -1,12 +1,13 @@
 ﻿#pragma once
 
 #include "Factory.h"
+#include "Cloneable.h"
 
 //===================================
 //　ステージオブジェクト生成クラス
 //===================================
 
-class StageObjectFactory:public Factory{
+class StageObjectFactory:public Factory,public Cloneable{
 
 public:
 	StageObjectFactory(){}
@@ -14,8 +15,5 @@ public:
 
 	// オブジェクト生成処理
 	ObjectBase* Create(int id)override;
-	// クローン生成処理
-	ObjectBase* Clone(int id)override;
-
 };
 

@@ -7,6 +7,7 @@ ObjectTest1::ObjectTest1() {
 
 	pos = { 500,500 };
 	rot = 0;
+	is_delete = false;
 }
 
 //--------------------------------
@@ -32,5 +33,12 @@ void ObjectTest1::Draw() {
 const bool ObjectTest1::IsDelete() const{
 	
 	return is_delete;
+}
+
+//--------------------------------
+//　複製処理
+ObjectBase* ObjectTest1::Clone() {
+
+	return new ObjectTest1();
 }
 

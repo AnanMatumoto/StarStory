@@ -17,10 +17,11 @@ private:
 	void Update()override;
 	//　描画処理
 	void Draw()override;
-	//　解放処理
-	void Delete()override{}
 	//  解放状態かどうか
 	const bool IsDelete()const override;
+	// 複製処理
+	Cloneable* Clone() override;
+
 
 	~ObjectTest1(){}
 
