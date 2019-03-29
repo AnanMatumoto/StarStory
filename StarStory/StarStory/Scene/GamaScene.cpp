@@ -26,7 +26,15 @@ void GameScene::Update() {
 	}
 
 	// ステージオブジェクト更新
-	ObjectManager::GetInstance().Update();
+	ObjectManager& om = ObjectManager::GetInstance();
+
+	if (Lib::KeyPress('A')) {
+		om.Delete(OBJ_TEST1);
+	}
+
+	if (Lib::KeyPress('D')) {
+		om.GetClone(OBJ_TEST1);
+	}
 
 }
 
