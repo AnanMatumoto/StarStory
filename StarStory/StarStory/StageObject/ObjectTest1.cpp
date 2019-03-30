@@ -35,11 +35,3 @@ const bool ObjectTest1::IsDelete() const{
 	return is_delete;
 }
 
-//--------------------------------
-//　複製処理
-ObjectBase* ObjectTest1::Clone() {
-
-	return new ObjectTest1();
-	
-}
-

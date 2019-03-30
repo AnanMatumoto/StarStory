@@ -37,7 +37,6 @@ public:
 	virtual void Draw  ()   = 0;
 	virtual void Delete();
 	virtual const bool IsDelete()const = 0;
-	virtual ObjectBase* Clone();
 	virtual ~ObjectBase  (){}
 
 protected:

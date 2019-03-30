@@ -19,11 +19,6 @@ private:
 	void Draw()override;
 	//  解放状態かどうか
 	const bool IsDelete()const override;
-	// 複製処理
-	ObjectBase* Clone() override;
-
-
-	
 
 };
 

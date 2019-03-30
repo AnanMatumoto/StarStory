@@ -18,8 +18,4 @@ void ObjectBase::Delete() {
 	is_delete = true;
 }
 
-//---------------------------------
-//　複製処理
-ObjectBase* ObjectBase::Clone() {
-	return this;
-}
+
