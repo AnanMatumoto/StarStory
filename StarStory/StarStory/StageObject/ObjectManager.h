@@ -24,7 +24,7 @@ public:
 	void AllDelete();
 
 	//  複製処理
-	ObjectBase* GetClone(StageObjectID id,StageObjectID new_id);
+	void Create(StageObjectID id,StageObjectID new_id);
 
 private:
 

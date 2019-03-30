@@ -78,10 +78,9 @@ void ObjectManager::AllDelete() {
 
 
 //-----------------------------------
-ObjectBase* ObjectManager::GetClone(StageObjectID id, StageObjectID new_id) {
+void ObjectManager::Create(StageObjectID id, StageObjectID new_id) {
 
-	auto itr = m_obj_list[id]->Clone();
-	m_obj_list.emplace(new_id, itr);
+	StageObjectFactory factory;
+	m_obj_list.emplace(new_id, factory.Create(id));
 
-	return itr;
 }
