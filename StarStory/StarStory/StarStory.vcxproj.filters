@@ -63,6 +63,9 @@
     <ClCompile Include="Common\Common.cpp">
       <Filter>ソース ファイル\Config</Filter>
     </ClCompile>
+    <ClCompile Include="Collision\Collision.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene\Scene.h">
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="StageObject\StageObjectBase.h">
       <Filter>ソース ファイル\StageObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\Collision.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

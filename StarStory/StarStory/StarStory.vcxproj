@@ -128,6 +128,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Collision\Collision.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Common\Common.cpp" />
     <ClCompile Include="Scene\CustomScene.cpp">
       <SubType>
@@ -177,6 +181,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Collision\Collision.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Common\Common.h">
       <SubType>
       </SubType>
