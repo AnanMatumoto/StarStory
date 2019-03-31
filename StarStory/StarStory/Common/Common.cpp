@@ -14,57 +14,50 @@ void ErrMsg(const char* _msg) {
 //=========================================
 t_Float2::t_Float2(float x_, float y_) {
 
-	this->m_x = x_;
-	this->m_y = y_;
+	this->x = x_;
+	this->y = y_;
 }
 
 t_Float2  t_Float2:: operator + (const t_Float2& r) {
-	t_Float2 tf;
-	tf.m_x = m_x + r.m_x;
-	tf.m_y = m_y + r.m_y;
-	return tf;
+	return { x + r.x,y + r.y };
 }
 
 t_Float2 t_Float2::operator - (const t_Float2& r) {
-	t_Float2 tf;
-	tf.m_x = r.m_x - m_x;
-	tf.m_y = r.m_y - m_y;
-	return tf;
+	return { x - r.x, y - r.y };
 }
 
 t_Float2 t_Float2::operator * (const t_Float2& r) {
-	t_Float2 tf;
-	tf.m_x = m_x * r.m_x;
-	tf.m_y = m_y * r.m_y;
-	return tf;
+	return { x*r.x, y*r.y };
 }
 
 t_Float2 t_Float2::operator * (float r)const {
-	t_Float2 tf;
-	tf.m_x = m_x * r;
-	tf.m_y = m_y * r;
-	return tf;
+	return { x*r, y*r };
 }
 
 t_Float2 t_Float2::operator / (const t_Float2& r) {
-	t_Float2 tf;
-	tf.m_x = r.m_x / m_x;
-	tf.m_y = r.m_x / m_y;
-	return tf;
+	return { x / r.x, y / r.y };
 }
 
 t_Float2 t_Float2::operator / (float r) const {
-	t_Float2 tf;
-	tf.m_x = r / m_x;
-	tf.m_y = r / m_y;
-	return tf;
+	return { x / r, y / r };
 }
 
+
+//=========================================
+// ベクトルクラス
+//=========================================
 Vec2 Vec2::operator = (const t_Float2& r) {
-	Vec2 vec2;
-	vec2.m_x = r.m_x;
-	vec2.m_y = r.m_y;
-
-	return vec2;
+	x = r.x;
+	y = r.y;
+	return { x, y };
 }
 
+float Vec2::Cross(Vec2 v1, Vec2 v2, Vec2 p) {
+
+	//線分を作る
+	Vec2 vec1 = { (v1.x - v2.x),(v1.y - v2.y) };
+	Vec2 vec2 = { (v1.x - p.x),(v1.y - p.y) };
+
+	float ans = (vec1.x * vec2.y) - (vec2.x * vec1.y);
+	return ans;
+}

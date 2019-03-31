@@ -9,7 +9,7 @@ void ErrMsg(const char* _msg);
 //２次元ヘルパー関数群
 struct t_Float2 {
 
-	float m_x, m_y;
+	float x, y;
 
 	t_Float2() {};
 
@@ -43,32 +43,7 @@ struct Vec2 : public t_Float2 {
 
 	//点（ポイント）を持つベクトルを作りたいとき
 	Vec2 operator = (const t_Float2& r);
-	//垂直判定
-	bool IsVertical(const Vec2& r) const{
-	
-		float t = (m_x * r.m_y) + (m_y*r.m_x);
-		if (t <= 0.0001) {
-			return true;
-		}
-		return false;
-
-	}
-	//ベクトルが平行であるか（線上に点があるか）
-	bool IsHorizontal(const Vec2& r) const{
-		
-		float t = (m_x*r.m_x) - (r.m_x*m_y);
-
-		if (t <= 0.0001) {
-			//ほぼ０に近いとみなす（floatの為）
-			return true;
-		}
-		 return false;
-	}
-	//鈍角判定
-	bool IsObtuseAngle(const Vec2& r)const{
-		
-	
-	}
-
+	// 外積計算
+	float Cross(Vec2 v1, Vec2 v2, Vec2 p);
 };
 
