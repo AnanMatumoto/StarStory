@@ -4,6 +4,18 @@
 namespace Collision {
 
 	/*
+		三角形と点の当たり判定
+
+		第1～3：三角形の各辺
+	　　第4　 ：マウスポイントまたはそれ以外の点
+	*/
+
+	bool IsInTriangle(
+		Vec2 v1, Vec2 v2,
+		Vec2 v3, Vec2 point
+	);
+
+	/*
 		菱形と点の当たり判定
 
 		第1～第4：菱形の各辺
@@ -31,7 +43,19 @@ namespace Collision {
 	bool IsInDiamond(
 		Vec2 v1, Vec2 v2,
 		Vec2 v3, Vec2 v4,
-		Vec2 p
+		Vec2 point
 	);
+
+	/*
+		四角形と点の当たり判定
+		第1：XY座標
+		第2：幅
+		第3：高
+		第4：マウスポイントまたはそれ以外の点
+	*/
+	bool IsInSquare(
+		Vec2 pos,
+		float w, float h,
+		Vec2 point);
 
 };

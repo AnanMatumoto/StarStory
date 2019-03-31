@@ -43,7 +43,15 @@ struct Vec2 : public t_Float2 {
 
 	//点（ポイント）を持つベクトルを作りたいとき
 	Vec2 operator = (const t_Float2& r);
-	// 外積計算
-	float Cross(Vec2 v1, Vec2 v2, Vec2 p);
+	
+	/* 
+	   外積計算（線と点の当たりを数値で返す）
+
+	   戻り値：０以上なら線の進行方向に対して右側
+	   　　　  ０以下なら線の進行方向に対して左側
+
+	*/
+	float Cross(Vec2 v1, Vec2 v2, Vec2 point);
+
 };
 

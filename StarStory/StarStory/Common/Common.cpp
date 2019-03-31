@@ -52,11 +52,11 @@ Vec2 Vec2::operator = (const t_Float2& r) {
 	return { x, y };
 }
 
-float Vec2::Cross(Vec2 v1, Vec2 v2, Vec2 p) {
+float Vec2::Cross(Vec2 v1, Vec2 v2, Vec2 point) {
 
 	//線分を作る
 	Vec2 vec1 = { (v1.x - v2.x),(v1.y - v2.y) };
-	Vec2 vec2 = { (v1.x - p.x),(v1.y - p.y) };
+	Vec2 vec2 = { (v1.x - point.x),(v1.y - point.y) };
 
 	float ans = (vec1.x * vec2.y) - (vec2.x * vec1.y);
 	return ans;
