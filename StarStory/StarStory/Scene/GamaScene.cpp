@@ -74,7 +74,7 @@ SceneID GameScene::Control() {
 void GameScene::Draw() {
 
 	Lib::DrawPx2D(
-		"Resource/test_image/back_sample.jpg",
+		"Resource/test_image/stage1_background_1 .png",
 		0, 0,
 		1920,1080
 	);
