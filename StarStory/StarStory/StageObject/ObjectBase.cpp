@@ -7,8 +7,8 @@
 //----------------------------------
 // コンストラクタ
 ObjectBase::ObjectBase() {
-	pos = { 0,0 };
-	rot = 0;
+	m_pos = { 0,0 };
+	m_rot = 0;
 	is_delete = false;
 }
 

@@ -5,8 +5,8 @@
 //　コンストラクタ
 ObjectTest1::ObjectTest1() {
 
-	pos = { 500,500 };
-	rot = 0;
+	m_pos = { 500,500 };
+	m_rot = 0;
 	is_delete = false;
 }
 
@@ -23,7 +23,7 @@ void ObjectTest1::Draw() {
 
 	Lib::DrawPx2D(
 		"HogeHoge",
-		pos.m_x, pos.m_y,
+		m_pos.m_x, m_pos.m_y,
 		100, 100
 	);
 }

@@ -40,8 +40,10 @@ public:
 	virtual ~ObjectBase  (){}
 
 protected:
-	t_Float2 pos;     // 座標
-	float	 rot;      // 回転角度
-	bool	 is_delete;// 削除状態を示すフラグ
+	Vec2 m_pos;         // 座標
+	float m_width;      // 幅
+	float m_height;     // 高さ
+	float m_rot;        // 回転角度
+	bool  is_delete;    // 削除状態を示すフラグ
 };
 
