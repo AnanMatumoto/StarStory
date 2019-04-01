@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "../Lib/Lib.h"
 #include "../StageObject/ObjectManager.h"
+#include "../StageObject/StarObject.h"
 
 //-------------------------------------------
 //　ゲームシーン初期化
@@ -36,6 +37,7 @@ void GameScene::Update() {
 		om.Create(OBJ_TEST1, OBJ_CLONE1);
 		//※※改良の余地あり（new_id）※※
 	}
+
 
 }
 
@@ -76,6 +78,8 @@ SceneID GameScene::Control() {
 //　ゲームシーン描画
 void GameScene::Draw() {
 
+	StarObject star;
+
 	Lib::DrawPx2D(
 		"Resource/test_image/back_sample.jpg",
 		0, 0,
@@ -84,6 +88,9 @@ void GameScene::Draw() {
 	
 	// ステージオブジェクト描画
 	ObjectManager::GetInstance().Draw();
+
+	star.Update();
+	star.Draw();
 }
 
 //-----------------------------------------
