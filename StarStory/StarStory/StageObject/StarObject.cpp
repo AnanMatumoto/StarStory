@@ -4,21 +4,23 @@
 StarObject::StarObject() {
 
 
-	m_center = {700,300};
+	m_pos = {700,300};
 	m_width =  46;
 	m_height = 64;
+	m_vel = { 3.f, 0 };
+	m_rot = 0;
 
-	m_pos[0] = { m_center.m_x, m_center.m_y-m_height };
-	m_pos[1] = { m_center.m_x + 31, (m_center.m_y-m_height) + 23 };
-	m_pos[2] = { m_center.m_x + 18, (m_center.m_y-m_height) + 59 };
-	m_pos[3] = { m_center.m_x - 20, (m_center.m_y-m_height) + 59 };
-	m_pos[4] = { m_center.m_x - 30, (m_center.m_y-m_height) + 23 };
+	m_side_ps[0] = { m_pos.m_x, m_pos.m_y-m_height };
+	m_side_ps[1] = { m_pos.m_x + 31, (m_pos.m_y-m_height) + 23 };
+	m_side_ps[2] = { m_pos.m_x + 18, (m_pos.m_y-m_height) + 59 };
+	m_side_ps[3] = { m_pos.m_x - 20, (m_pos.m_y-m_height) + 59 };
+	m_side_ps[4] = { m_pos.m_x - 30, (m_pos.m_y-m_height) + 23 };
 
-	m_rot[0] = 0;
-	m_rot[1] = 1.28;
-	m_rot[2] = 2.56;
-	m_rot[3] = -2.56;
-	m_rot[4] = -1.28;
+	m_side_rot[0] = 0;
+	m_side_rot[1] = 1.28;
+	m_side_rot[2] = 2.56;
+	m_side_rot[3] = -2.56;
+	m_side_rot[4] = -1.28;
 
 	col[0] = 0x000000ff;
 	col[1] = 0x0000ff00;
@@ -30,9 +32,44 @@ StarObject::StarObject() {
 
 void StarObject::Update() {
 
-	++m_center.m_x;
+	Move();
+	Rotation();
+	ForEach();
 
 }
+
+void StarObject::Move() {
+
+	++m_vel.m_x;
+	m_vel / 50.f;
+	m_pos.m_x += m_vel.m_x;
+}
+
+void StarObject::Rotation() {
+
+	++m_rot;
+	m_rot / 60.f;
+}
+
+void StarObject::ForEach() {
+
+	int i = 0, j = 0;
+	
+	if (m_vel.m_x > 0) {
+		for (i = 0; i < 5; ++i) {
+			m_side_ps[i].m_x += m_vel.m_x;
+		}
+	}
+	if (m_rot > 0) {
+		for (j = 0; j < 5; ++j) {
+			m_side_rot[j] += m_rot;
+		}
+	}
+
+}
+
+
+
 
 void StarObject::Draw() {
 
@@ -41,9 +78,9 @@ void StarObject::Draw() {
 
 		Lib::DrawDaiamond2D(
 			"hoge",
-			m_pos[i].m_x,m_pos[i].m_y,
+			m_side_ps[i].m_x,m_side_ps[i].m_y,
 			m_height, m_width,
-			m_rot[i],
+			m_side_rot[i],
 			col[i]
 			);
 	}

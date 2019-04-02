@@ -4,10 +4,12 @@
 #include "../StageObject/ObjectManager.h"
 #include "../StageObject/StarObject.h"
 
+
+
 //-------------------------------------------
 //　ゲームシーン初期化
 void GameScene::Init() {
-
+	star = new StarObject();
 	state_id = SS_UPDATE;
 	//stage = new StageBase();
 
@@ -19,8 +21,8 @@ void GameScene::Init() {
 //------------------------------------------
 //　ゲームシーン更新
 void GameScene::Update() {
-
 	
+	star->Update();
 	if (Lib::KeyPress(VK_SPACE))
 	{
 		state_id = SS_END;
@@ -78,8 +80,7 @@ SceneID GameScene::Control() {
 //　ゲームシーン描画
 void GameScene::Draw() {
 
-	StarObject star;
-
+	
 	Lib::DrawPx2D(
 		"Resource/test_image/back_sample.jpg",
 		0, 0,
@@ -89,8 +90,8 @@ void GameScene::Draw() {
 	// ステージオブジェクト描画
 	ObjectManager::GetInstance().Draw();
 
-	star.Update();
-	star.Draw();
+	star->Draw();
+
 }
 
 //-----------------------------------------
