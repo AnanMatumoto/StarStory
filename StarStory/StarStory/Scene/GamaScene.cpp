@@ -23,6 +23,8 @@ void GameScene::Init() {
 void GameScene::Update() {
 	
 	star->Update();
+
+
 	if (Lib::KeyPress(VK_SPACE))
 	{
 		state_id = SS_END;

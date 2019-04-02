@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../Common/Common.h"
-
+#include "../Lib/Lib.h"
 
 class StarObject {
 
@@ -25,6 +25,10 @@ private:
 	float m_side_rot[5]; //各辺の回転角
 	float m_width;       //幅
 	float m_height;      //高
+	float m_speed;
 	unsigned long col[5];
-
+	D3DXMATRIX world_mat;
+	D3DXMATRIX rot_mat;
+	D3DXMATRIX mul_mat;
+	D3DXMATRIX trans_mat;
 };

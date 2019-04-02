@@ -298,7 +298,7 @@ namespace Lib {
 		float angle,
 		DWORD color,
 		float ox, float oy
-	)
+	);
 
 	//αブレンドの設定（外部での使用はできない）
 	void SetAlphaBlend();
