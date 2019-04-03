@@ -63,7 +63,20 @@
     <ClCompile Include="Common\Common.cpp">
       <Filter>ソース ファイル\Config</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Collision\Collision.cpp">
+=======
+    <ClCompile Include="StageObject\ObjectTest1.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="StageObject\StageObjectFactory.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="StageObject\ObjectManager.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="StageObject\ObjectBase.cpp">
+>>>>>>> StageObjectFactryクラスの作成
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -95,10 +108,23 @@
     <ClInclude Include="Scene\ResultScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="StageObject\StageObjectBase.h">
+    <ClInclude Include="StageObject\ObjectBase.h">
       <Filter>ソース ファイル\StageObject</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Collision\Collision.h">
+=======
+    <ClInclude Include="StageObject\ObjectTest1.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject\Factory.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject\StageObjectFactory.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="StageObject\ObjectManager.h">
+>>>>>>> StageObjectFactryクラスの作成
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

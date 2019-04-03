@@ -179,6 +179,22 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="StageObject\ObjectBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="StageObject\ObjectManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="StageObject\ObjectTest1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="StageObject\StageObjectFactory.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h">
@@ -221,7 +237,23 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StageObject\StageObjectBase.h">
+    <ClInclude Include="StageObject\Factory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StageObject\ObjectBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StageObject\ObjectManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StageObject\ObjectTest1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StageObject\StageObjectFactory.h">
       <SubType>
       </SubType>
     </ClInclude>

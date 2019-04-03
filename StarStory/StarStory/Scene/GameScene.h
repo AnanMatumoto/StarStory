@@ -1,5 +1,7 @@
 ﻿#pragma once
+
 #include "Scene.h"
+#include "../StageObject/ObjectManager.h"
 
 //=================================
 //　ゲーム画面クラス
@@ -20,6 +22,7 @@ private:
 	//　描画処理
 	void Draw() override;
 
-	~GameScene() override{}
+	~GameScene() override;
 	//StageBase* stage;
+
 };
