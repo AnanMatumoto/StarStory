@@ -23,7 +23,7 @@ void ObjectTest1::Draw() {
 
 	Lib::DrawPx2D(
 		"HogeHoge",
-		m_pos.m_x, m_pos.m_y,
+		m_pos.x, m_pos.y,
 		100, 100
 	);
 }
