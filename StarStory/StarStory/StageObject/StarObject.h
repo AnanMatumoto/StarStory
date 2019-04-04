@@ -1,34 +1,36 @@
 ﻿#pragma once
 #include "../Common/Common.h"
-#include "../Lib/Lib.h"
+#include "ObjectBase.h"
 
-class StarObject {
+//=================================
+// 星オブジェクト親クラス
+//=================================
+
+class StarObject : public ObjectBase{
 
 public:
-	StarObject();
-	~StarObject(){}
 
-	void Update();
-	void Draw();
+	StarObject(float x, float y);
+	~StarObject()override{}
 
-private:
-
-	void Move();
-	void Rotation();
-	void ForEach();
+	//ToDo : ObjectBaseクラスに追加すべき?
+	const float GetRot() const {
+		return m_rot;
+	}
 
 private:
-	Vec2 m_pos;          //中心座用
-	Vec2 m_side_ps[5];   //各辺の座標
+	void Update()override;
+	void Draw()override;
+	
+	// ToDo:これをLibへ移動する
+	// ローカル座標での描画
+	void LocalTransform(
+		Vertex vtx[4],
+		float width, float height
+	);
+	
+
+private:
 	Vec2 m_vel;		     //速さ
-	float m_rot;		 //回転角
-	float m_side_rot[5]; //各辺の回転角
-	float m_width;       //幅
-	float m_height;      //高
 	float m_speed;
-	unsigned long col[5];
-	D3DXMATRIX world_mat;
-	D3DXMATRIX rot_mat;
-	D3DXMATRIX mul_mat;
-	D3DXMATRIX trans_mat;
 };
