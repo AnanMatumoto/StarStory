@@ -18,4 +18,7 @@ void ObjectBase::Delete() {
 	is_delete = true;
 }
 
+const bool ObjectBase::IsDelete() const {
+	return is_delete;
+}
 
