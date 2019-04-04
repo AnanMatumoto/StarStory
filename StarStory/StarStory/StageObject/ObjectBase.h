@@ -24,20 +24,27 @@ enum StageObjectID {
 	Draw　　：描画処理
 	Delete　：フラグを削除状態にセットする
 	IsDelete：削除状態かどうかを返す
-
+	GetX    ：X座標ゲッター
+	GetY    ：Y座標ゲッター
 */
 
 class ObjectBase {
 	
 public:
 
-	ObjectBase();
 
+	ObjectBase(float x, float y);
 	virtual void Update()   = 0;
 	virtual void Draw  ()   = 0;
-    void Delete();
+	virtual ~ObjectBase() {}
+
+public:
+
+	void Delete();
     const bool IsDelete()const;
-	virtual ~ObjectBase  (){}
+	const float GetX()const;
+	const float GetY()const;
+
 
 protected:
 	Vec2 m_pos;         // 座標

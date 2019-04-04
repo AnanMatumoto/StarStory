@@ -17,8 +17,7 @@ private:
 	void Update()override;
 	//　描画処理
 	void Draw()override;
-	//  解放状態かどうか
-	const bool IsDelete()const override;
+
 
 };
 

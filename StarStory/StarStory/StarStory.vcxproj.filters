@@ -1,137 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="ソース ファイル">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="ヘッダー ファイル">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="リソース ファイル">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="ソース ファイル\Lib">
-      <UniqueIdentifier>{8259516c-0ca2-4135-af65-2c598c6e78e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Config">
-      <UniqueIdentifier>{b3e2d190-35a2-45f4-9c7b-14c73f6acc27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\Scene">
-      <UniqueIdentifier>{95208b06-5755-4eca-ac6a-22c5290aa8fa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\StageObject">
-      <UniqueIdentifier>{1fda91db-b7c4-40cb-92ce-30e78a52b88d}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Collision\Collision.cpp" />
+    <ClCompile Include="Common\Common.cpp" />
+    <ClCompile Include="Scene\CustomScene.cpp" />
+    <ClCompile Include="Lib\Device.cpp" />
+    <ClCompile Include="Lib\Draw2D.cpp" />
+    <ClCompile Include="Scene\GamaScene.cpp" />
+    <ClCompile Include="Lib\KeyBoard.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scene\ResultScene.cpp" />
+    <ClCompile Include="Scene\SceneManager.cpp" />
+    <ClCompile Include="Scene\SelectScene.cpp" />
+    <ClCompile Include="Lib\Texture.cpp" />
+    <ClCompile Include="Scene\TitleScenecpp.cpp" />
+    <ClCompile Include="StageObject\ObjectBase.cpp" />
+    <ClCompile Include="StageObject\ObjectManager.cpp" />
+    <ClCompile Include="StageObject\ObjectTest1.cpp" />
+    <ClCompile Include="StageObject\StageObjectFactory.cpp" />
+    <ClCompile Include="StageObject\StarObject.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\SelectScene.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\SceneManager.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\ResultScene.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\TitleScenecpp.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\GamaScene.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene\CustomScene.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Lib\Device.cpp">
-      <Filter>ソース ファイル\Lib</Filter>
-    </ClCompile>
-    <ClCompile Include="Lib\Draw2D.cpp">
-      <Filter>ソース ファイル\Lib</Filter>
-    </ClCompile>
-    <ClCompile Include="Lib\KeyBoard.cpp">
-      <Filter>ソース ファイル\Lib</Filter>
-    </ClCompile>
-    <ClCompile Include="Lib\Texture.cpp">
-      <Filter>ソース ファイル\Lib</Filter>
-    </ClCompile>
-    <ClCompile Include="Common\Common.cpp">
-      <Filter>ソース ファイル\Config</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="Collision\Collision.cpp">
-=======
-    <ClCompile Include="StageObject\ObjectTest1.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="StageObject\StageObjectFactory.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="StageObject\ObjectManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="StageObject\ObjectBase.cpp">
->>>>>>> StageObjectFactryクラスの作成
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="StageObject\StarObject.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Scene\Scene.h">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\SceneManager.h">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Lib\Lib.h">
-      <Filter>ソース ファイル\Lib</Filter>
-    </ClInclude>
-    <ClInclude Include="Common\Common.h">
-      <Filter>ソース ファイル\Config</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\TitleScene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\CustomScene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\SelectScene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\GameScene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene\ResultScene.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject\ObjectBase.h">
-      <Filter>ソース ファイル\StageObject</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="Collision\Collision.h">
-=======
-    <ClInclude Include="StageObject\ObjectTest1.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject\Factory.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject\StageObjectFactory.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject\ObjectManager.h">
->>>>>>> StageObjectFactryクラスの作成
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="StageObject\StarObject.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
+    <ClInclude Include="Collision\Collision.h" />
+    <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Lib\Lib.h" />
+    <ClInclude Include="Scene\CustomScene.h" />
+    <ClInclude Include="Scene\GameScene.h" />
+    <ClInclude Include="Scene\ResultScene.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\SceneManager.h" />
+    <ClInclude Include="Scene\SelectScene.h" />
+    <ClInclude Include="Scene\TitleScene.h" />
+    <ClInclude Include="StageObject\Factory.h" />
+    <ClInclude Include="StageObject\ObjectBase.h" />
+    <ClInclude Include="StageObject\ObjectManager.h" />
+    <ClInclude Include="StageObject\ObjectTest1.h" />
+    <ClInclude Include="StageObject\StageObjectFactory.h" />
+    <ClInclude Include="StageObject\StarObject.h" />
   </ItemGroup>
 </Project>
