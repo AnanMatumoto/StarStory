@@ -19,6 +19,7 @@
     <ClCompile Include="StageObject\ObjectTest1.cpp" />
     <ClCompile Include="StageObject\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp" />
+    <ClCompile Include="StageObject\StarChild.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -37,5 +38,6 @@
     <ClInclude Include="StageObject\ObjectTest1.h" />
     <ClInclude Include="StageObject\StageObjectFactory.h" />
     <ClInclude Include="StageObject\StarObject.h" />
+    <ClInclude Include="StageObject\StarChild.h" />
   </ItemGroup>
 </Project>

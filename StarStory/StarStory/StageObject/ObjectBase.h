@@ -32,7 +32,7 @@ class ObjectBase {
 	
 public:
 
-
+	ObjectBase(){}
 	ObjectBase(float x, float y);
 	virtual void Update()   = 0;
 	virtual void Draw  ()   = 0;
