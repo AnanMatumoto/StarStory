@@ -195,6 +195,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="StageObject\StarChild.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp">
       <SubType>
       </SubType>
@@ -258,6 +259,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="StageObject\StageObjectFactory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StageObject\StarChild.h">
       <SubType>
       </SubType>
     </ClInclude>
