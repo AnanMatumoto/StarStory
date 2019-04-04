@@ -2,7 +2,7 @@
 
 #include "Scene.h"
 #include "../StageObject/ObjectManager.h"
-#include "../StageObject/StarObject.h"
+
 //=================================
 //　ゲーム画面クラス
 //=================================
@@ -25,5 +25,4 @@ private:
 	~GameScene() override;
 	//StageBase* stage;
 
-	StarObject* star;
 };
