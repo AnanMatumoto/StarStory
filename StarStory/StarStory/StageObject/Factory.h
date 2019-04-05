@@ -17,7 +17,7 @@ class Factory {
 
 public:
 	Factory(){}
-	virtual ObjectBase* Create(int id) = 0;
+	virtual ObjectBase* Create(int id, float x, float y) = 0;
 	~Factory(){}
 
 };

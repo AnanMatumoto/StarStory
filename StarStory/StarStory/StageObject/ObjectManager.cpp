@@ -13,10 +13,13 @@ ObjectManager& ObjectManager::GetInstance() {
 
 //----------------------------------
 //　オブジェクト登録処理
-void ObjectManager::Register(StageObjectID id) {
+void ObjectManager::Register(
+	StageObjectID id,
+	float x, float y	
+) {
 
 	StageObjectFactory factory;
-	m_obj_list.emplace(id, factory.Create(id));
+	m_obj_list.emplace(id, factory.Create(id, x,y));
 }
 
 //-----------------------------------
@@ -78,9 +81,26 @@ void ObjectManager::AllDelete() {
 
 
 //-----------------------------------
-void ObjectManager::Create(StageObjectID id, StageObjectID new_id) {
+void ObjectManager::Create(
+	StageObjectID id,
+	StageObjectID new_id,
+	float x, float y
+) {
 
 	StageObjectFactory factory;
-	m_obj_list.emplace(new_id, factory.Create(id));
+	m_obj_list.emplace(new_id, factory.Create(id, x, y));
 
+}
+
+//------------------------------------
+//　オブジェクトポインターのセッター
+ObjectBase* ObjectManager::GetPtr(StageObjectID id) {
+	
+	auto it = m_obj_list.find(id);
+	if (it != m_obj_list.end()) {
+		ObjectBase* obj = it->second;
+
+		return obj;
+	}
+	return nullptr;
 }
