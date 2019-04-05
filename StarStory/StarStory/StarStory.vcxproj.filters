@@ -20,7 +20,7 @@
     <ClCompile Include="StageObject\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp" />
     <ClCompile Include="StageObject\StarChild.cpp" />
-    <ClCompile Include="Diamond\Diamond.cpp" />
+    <ClCompile Include="Diamond\DiamondBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -40,6 +40,6 @@
     <ClInclude Include="StageObject\StageObjectFactory.h" />
     <ClInclude Include="StageObject\StarObject.h" />
     <ClInclude Include="StageObject\StarChild.h" />
-    <ClInclude Include="Diamond\Diamond.h" />
+    <ClInclude Include="Diamond\DiamondBase.h" />
   </ItemGroup>
 </Project>
