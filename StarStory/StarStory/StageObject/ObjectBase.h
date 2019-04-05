@@ -9,6 +9,8 @@ enum StageObjectID {
 
 	OBJ_TEST1,
 	OBJ_CLONE1,
+	STAR_OBJ,
+	STAR_CHILD1,
 };
 
 
@@ -32,20 +34,35 @@ class ObjectBase {
 	
 public:
 
-	ObjectBase(){}
-	ObjectBase(float x, float y);
+	ObjectBase(float x, float y) : m_pos(x, y) {
+
+		m_width = 0;
+		m_height = 0;
+		is_delete = false;
+
+		memset(vtx, 0, sizeof(vtx));
+
+	}
+
 	virtual void Update()   = 0;
 	virtual void Draw  ()   = 0;
 	virtual ~ObjectBase() {}
+	void Delete();
+    const bool IsDelete()const;
 
 public:
 
-	void Delete();
-    const bool IsDelete()const;
 	const float GetX()const;
 	const float GetY()const;
+	const float GetRot()const;
+	
+protected:
 
-
+	void LocalTransform(
+		Vertex vtx[4],
+		float width,
+		float height
+	);
 protected:
 	Vec2 m_pos;         // 座標
 	Vertex vtx[4];      // 頂点情報

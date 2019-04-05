@@ -22,7 +22,7 @@ private:
 
 private:
 
-	StarObject* m_parent; //親オブジェクト
+	ObjectBase* m_parent; //親オブジェクト
 
 
 };
