@@ -133,6 +133,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Common\Common.cpp" />
+    <ClCompile Include="Diamond\Diamond.cpp" />
     <ClCompile Include="Scene\CustomScene.cpp">
       <SubType>
       </SubType>
@@ -210,6 +211,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Diamond\Diamond.h" />
     <ClInclude Include="Lib\Lib.h">
       <SubType>
       </SubType>
