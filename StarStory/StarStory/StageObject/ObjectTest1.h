@@ -9,7 +9,7 @@
 class ObjectTest1 :public ObjectBase {
 
 public:
-	ObjectTest1();
+	ObjectTest1(float x, float y);
 	~ObjectTest1()override {}
 private:
 

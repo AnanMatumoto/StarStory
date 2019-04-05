@@ -12,7 +12,9 @@ void GameScene::Init() {
 
 
 	//ステージオブジェクトの登録
-	ObjectManager::GetInstance().Register(OBJ_TEST1);
+	ObjectManager::GetInstance().Register(OBJ_TEST1,500,200);
+	ObjectManager::GetInstance().Register(STAR_OBJ,500,500);
+	ObjectManager::GetInstance().Register(STAR_CHILD1,10,10);
 }
 
 //------------------------------------------
@@ -32,9 +34,11 @@ void GameScene::Update() {
 	}
 
 	if (Lib::KeyPress('D')) {
-		om.Create(OBJ_TEST1, OBJ_CLONE1);
+		om.Create(OBJ_TEST1, OBJ_CLONE1, 500,500);
 		//※※改良の余地あり（new_id）※※
 	}
+
+	om.Update();
 
 
 }

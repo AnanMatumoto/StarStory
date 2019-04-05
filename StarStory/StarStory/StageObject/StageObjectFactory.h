@@ -13,6 +13,7 @@ public:
 	~StageObjectFactory(){}
 
 	// オブジェクト生成処理
-	ObjectBase* Create(int id)override;
+	ObjectBase* Create(int id, float x, float y)override;
+
 };
 

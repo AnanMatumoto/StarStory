@@ -3,11 +3,9 @@
 
 //---------------------------------
 //　コンストラクタ
-ObjectTest1::ObjectTest1() {
-
-	m_pos = { 500,500 };
-	m_rot = 0;
-	is_delete = false;
+ObjectTest1::ObjectTest1(float x, float y):ObjectBase(x,y) {
+	m_width = 100;
+	m_height = 100;
 }
 
 //--------------------------------
@@ -24,14 +22,8 @@ void ObjectTest1::Draw() {
 	Lib::DrawPx2D(
 		"HogeHoge",
 		m_pos.x, m_pos.y,
-		100, 100
+		m_width, m_height
 	);
 }
 
-//---------------------------------
-//  解放状態であるかを返す
-const bool ObjectTest1::IsDelete() const{
-	
-	return is_delete;
-}
 
