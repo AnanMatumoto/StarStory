@@ -297,6 +297,24 @@ namespace Lib {
 	}
 
 	//-------------------------------------
+	// 菱形描画関数オーバーロード
+	void DrawDiamond2D(
+		const Texture& tex,
+		int v_num,
+		Vertex vtx[],
+		int prim_num
+	) {
+
+		dev->SetTexture(0, tex);
+		dev->SetFVF(VERTEX_FVF);
+		dev->DrawPrimitiveUP(
+			D3DPT_TRIANGLEFAN,
+			prim_num,
+			vtx,
+			sizeof(Vertex));
+	}
+
+	//-------------------------------------
 	//　αブレンドの設定
 	void SetAlphaBlend() {
 		//ブレンディングモードの設定

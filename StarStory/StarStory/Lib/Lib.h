@@ -279,6 +279,13 @@ namespace Lib {
 		float ox = 0.5f, float oy = 0.5f
 	);
 
+	void DrawDiamond2D(
+		const Texture& tex,
+		int v_num,
+		Vertex[],
+		int prim_num
+	);
+
 	/*
 		回転付菱形描画関数（複数指定可能）
 
@@ -299,6 +306,10 @@ namespace Lib {
 		DWORD color,
 		float ox, float oy
 	);
+
+
+
+
 
 	//αブレンドの設定（外部での使用はできない）
 	void SetAlphaBlend();
