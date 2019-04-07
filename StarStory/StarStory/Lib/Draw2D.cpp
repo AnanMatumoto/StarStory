@@ -300,17 +300,15 @@ namespace Lib {
 	// 菱形描画関数オーバーロード
 	void DrawDiamond2D(
 		const Texture& tex,
-		int v_num,
-		Vertex vtx[],
-		int prim_num
+		Vertex vtx_[4]
 	) {
 
 		dev->SetTexture(0, tex);
 		dev->SetFVF(VERTEX_FVF);
 		dev->DrawPrimitiveUP(
 			D3DPT_TRIANGLEFAN,
-			prim_num,
-			vtx,
+			2,
+			vtx_,
 			sizeof(Vertex));
 	}
 

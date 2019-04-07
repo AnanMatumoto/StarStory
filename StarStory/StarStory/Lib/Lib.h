@@ -281,9 +281,7 @@ namespace Lib {
 
 	void DrawDiamond2D(
 		const Texture& tex,
-		int v_num,
-		Vertex[],
-		int prim_num
+		Vertex[4]
 	);
 
 	/*

@@ -10,7 +10,7 @@
 class StarObject : public ObjectBase{
 
 public:
-	StarObject(float x, float y);
+	StarObject(float x, float y, float rot);
 	~StarObject()override{}
 
 private:

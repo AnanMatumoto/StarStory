@@ -7,14 +7,12 @@
 //　コンストラクタ
 StarChild::StarChild(
 	float x,
-	float y
-):ObjectBase(x,y){
+	float y,
+	float rot
+):ObjectBase(x,y, rot){
 
 	m_width   = 46.f;
 	m_height  = 64.f;
-	m_rot = 3.f;
-	is_delete = false;
-
 }
 
 
@@ -23,29 +21,27 @@ void StarChild::Update() {
 
 void StarChild::Draw() {
 
+	SetVertex();
+	Lib::DrawDiamond2D(
+		"piyo",
+		 vtx
+	);
+}
 
-	Lib::Texture tex("Resource/test_img/Player.jpg");
+//-------------------------------------
+//頂点の設定
+void StarChild::SetVertex(DWORD color) {
 
-	////Todo: この処理をLibに移動する
 	float ox = 0.5f;
 	float oy = 0.5f;
-	DWORD color = D3DCOLOR_ARGB(255, 255, 255, 255);
-	
-	Vertex vtx[4] ={
-		{{-ox,(0.5f - oy),0.f,1.f}, color,{0.f,0.5f}},
-		{{(0.5f - ox), -oy,0.f,1.f},color,{0.5f,1.f}},
-		{{(1.f - ox),(0.5f - oy),0.f, 1.f},color,{1.f,0.5f}},
-		{{(0.5f-ox),(1.f - oy),0.f,1.f},color,{0.5f,0.f}}
-	};
 
-	LocalTransform(vtx, m_width, m_height);
+	vtx[0] = {{(0.5f-ox),oy,0.f,1.f}, color,{0.f,0.5f}};
+	vtx[1] = {{ox,(0.5f+oy), 0.f,1.f},color,{0.5f,1.f}};
+	vtx[2] = {{(0.5f+ox),oy, 0.f, 1.f},color,{1.f,0.5f}};
+	vtx[3] = {{ox,(0.5f-oy), 0.f,1.f},color,{0.5f,0.f}};
+
+	DiamondLocalTransform(vtx, m_width, m_height,m_rot);
 	RefParentVertex(vtx);
-
-
-	Lib::dev->SetTexture(0, tex);
-	Lib::dev->SetFVF(D3DFVF_XYZRHW | D3DFVF_DIFFUSE | D3DFVF_TEX1);
-	Lib::dev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtx, sizeof(Vertex));
-
 }
 
 //-------------------------------------
@@ -73,7 +69,7 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 
 		//回転を合成した新座標を設定
 		float new_x = (vtx_pos_x * cos) + (vtx_pos_y * -sin);
-		float new_y = (vtx_pos_x * cos) + (vtx_pos_y * sin);
+		float new_y = (vtx_pos_x * sin) + (vtx_pos_y * cos);
 	
 		//相対座標を設定する
 		vtx[i].pos.x = new_x + pos_x;
