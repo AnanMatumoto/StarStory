@@ -15,7 +15,8 @@ public:
 	//　ステージオブジェクトの登録処理
 	void Register(
 		StageObjectID id,
-		float x, float y
+		float x, float y,
+		float rot = 0.f
 	);
 	//　更新処理
 	void Update();

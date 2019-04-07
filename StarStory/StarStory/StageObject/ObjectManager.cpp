@@ -15,11 +15,12 @@ ObjectManager& ObjectManager::GetInstance() {
 //　オブジェクト登録処理
 void ObjectManager::Register(
 	StageObjectID id,
-	float x, float y	
+	float x, float y,
+	float rot
 ) {
 
 	StageObjectFactory factory;
-	m_obj_list.emplace(id, factory.Create(id, x,y));
+	m_obj_list.emplace(id, factory.Create(id, x, y, rot));
 }
 
 //-----------------------------------

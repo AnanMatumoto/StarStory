@@ -11,6 +11,9 @@ enum StageObjectID {
 	OBJ_CLONE1,
 	STAR_OBJ,
 	STAR_CHILD1,
+	STAR_CHILD2,
+	STAR_CHILD3,
+
 };
 
 
@@ -34,7 +37,7 @@ class ObjectBase {
 	
 public:
 
-	ObjectBase(float x, float y) : m_pos(x, y) {
+	ObjectBase(float x, float y, float rotate = 0.f) : m_pos(x, y),m_rot(rotate) {
 
 		m_width = 0;
 		m_height = 0;
@@ -58,11 +61,21 @@ public:
 	
 protected:
 
-	void LocalTransform(
+	void BoxLocalTransform(
 		Vertex vtx[4],
 		float width,
 		float height
 	);
+
+	void DiamondLocalTransform(
+		Vertex vtx[4],
+		float width,
+		float height,
+		DWORD col = 0x00ffffff
+	);
+
+	
+
 protected:
 	Vec2 m_pos;         // 座標
 	Vertex vtx[4];      // 頂点情報

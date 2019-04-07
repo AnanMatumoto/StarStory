@@ -30,7 +30,7 @@ const float ObjectBase::GetRot()const {
 	return m_rot;
 }
 
-void ObjectBase::LocalTransform(
+void ObjectBase::BoxLocalTransform(
 	Vertex vtx[4],
 	float width, float height
 ) {
@@ -56,8 +56,41 @@ void ObjectBase::LocalTransform(
 		float new_x = (vtx_pos_x * cos) + (vtx_pos_y*-sin);
 		float new_y = (vtx_pos_x * sin) + (vtx_pos_y*cos);
 
-		//ワールド座標を設定する
+		//ローカル座標を設定する
 		vtx[i].pos.x = new_x + pos_x + w_half;
 		vtx[i].pos.y = new_y + pos_y + h_half;
 	}
+}
+
+void ObjectBase::DiamondLocalTransform(
+	Vertex vtx[4],
+	float width, float height,
+	DWORD col
+) {
+	float w_half = width / 2.f;
+	float h_half = height / 2.f;
+
+	float pos_x = m_pos.x;
+	float pos_y = m_pos.y;
+
+	float sin = sinf(D3DXToRadian(m_rot));
+	float cos = cosf(D3DXToRadian(m_rot));
+
+	Vec2 v[4] = {};
+	memset(v, 0, sizeof(v));
+	
+	v[0].y = h_half;
+	v[1].x = -w_half;
+	v[2].y = -h_half;
+	v[3].x = w_half;
+
+	for (int i = 0; i < 4; ++i) {
+
+		v[i].x = (v[i].x*cos) + (v[i].y*-sin);
+		v[i].y = (v[i].x*sin) + (v[i].y*cos);
+		vtx[i].pos.x = v[i].x + pos_x+w_half;
+		vtx[i].pos.y = v[i].y + pos_y+h_half;
+	}
+
+
 }
