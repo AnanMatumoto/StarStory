@@ -35,3 +35,4 @@ void ObjectTest1::SetVertex(DWORD color) {
 	vtx[2].pos = { m_pos.x+m_width, m_pos.y+m_height, 0.f,1.f };
 	vtx[3].pos = { m_pos.x, m_pos.y+m_height, 0.f,1.f };
 }
+

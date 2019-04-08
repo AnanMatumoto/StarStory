@@ -26,18 +26,6 @@ enum StageObjectID {
 //　ステージオブジェクト基底クラス
 //===================================
 
-/*
-	ステージに置かれるオブジェクトは
-	以下を継承する。
-
-	Update　：更新処理
-	Draw　　：描画処理
-	Delete　：フラグを削除状態にセットする
-	IsDelete：削除状態かどうかを返す
-	GetX    ：X座標ゲッター
-	GetY    ：Y座標ゲッター
-*/
-
 class ObjectBase {
 	
 public:
@@ -48,46 +36,70 @@ public:
 		m_height = 0;
 		is_delete = false;
 
-		memset(vtx, 0, sizeof(vtx));
+		memset(m_vtx, 0, sizeof(m_vtx));
 
 	}
-
-	virtual void Update()   = 0;
-	virtual void Draw  ()   = 0;
-	virtual void SetVertex(DWORD color = 0x00ffffff){}
 	virtual ~ObjectBase() {}
+
+	//　更新処理
+	virtual void Update()   = 0;
+	
+	//　描画処理
+	virtual void Draw  ()   = 0;
+	
+	//　頂点情報をセットする
+	virtual void SetVertex(DWORD color = 0x00ffffff){}
+	
+	//　削除フラグをセットする
 	void Delete();
-    const bool IsDelete()const;
-
-public:
-
+	
+	//　削除状態かどうかを返す
+	const bool IsDelete()const;
+	
+	//　X座標ゲッター
 	const float GetX()const;
+	
+	//　Y座標ゲッター
 	const float GetY()const;
+
+	//  回転角度ゲッター
 	const float GetRot()const;
+
+
 	
 protected:
 
+	//　頂点情報ゲッター
+	const Vertex* GetVertex()const;
+	// 　頂点情報ゲッターオーバーロード（指定した頂点情報を取得）
+	const Vertex GetVertex(int prim_num)const;
+
+
+	//　矩形用ローカル座標変換
 	void BoxLocalTransform(
-		Vertex vtx[4],
+		Vertex m_vtx[4],
 		float width,
 		float height
 	);
 
+	//　菱形用ローカル座標変換
 	void DiamondLocalTransform(
-		Vertex vtx[4],
+		Vertex m_vtx[4],
 		float width,
 		float height,
 		DWORD col = 0x00ffffff
 	);
 
-	
+	//　オブジェクトの上面を返す
+	bool IsHitToSurface(Vec2 point, ObjectBase* obj);
+
 
 protected:
-	Vec2 m_pos;         // 座標
-	Vertex vtx[4];      // 頂点情報
-	float m_width;      // 幅
-	float m_height;     // 高さ
-	float m_rot;        // 回転角度
-	bool  is_delete;    // 削除状態を示すフラグ
+	Vec2   m_pos;        // 座標
+	Vertex m_vtx[4];     // 頂点情報
+	float  m_width;      // 幅
+	float  m_height;     // 高さ
+	float  m_rot;        // 回転角度
+	bool   is_delete;    // 削除状態を示すフラグ
 };
 
