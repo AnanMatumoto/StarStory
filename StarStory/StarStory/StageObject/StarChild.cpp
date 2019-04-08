@@ -15,10 +15,13 @@ StarChild::StarChild(
 	m_height  = 64.f;
 }
 
-
+//------------------------------------
+//　更新処理
 void StarChild::Update() {
 }
 
+//------------------------------------
+//　描画処理
 void StarChild::Draw() {
 
 	SetVertex();

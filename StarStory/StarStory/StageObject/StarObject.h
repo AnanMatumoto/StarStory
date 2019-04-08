@@ -14,10 +14,15 @@ public:
 	~StarObject()override{}
 
 private:
-	void Update()override;
-	void Draw()override;
 
-	
+	// 更新処理
+	void Update()override;
+	//描画処理
+	void Draw()override;
+	//　頂点座標の設定
+	void SetVertex(DWORD color = 0x00ffffff)override;
+	// 自動操作
+	void AutomaticMove();
 
 private:
 	Vec2 m_vel;		     //速さ

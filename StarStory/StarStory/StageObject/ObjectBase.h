@@ -54,6 +54,7 @@ public:
 
 	virtual void Update()   = 0;
 	virtual void Draw  ()   = 0;
+	virtual void SetVertex(DWORD color = 0x00ffffff){}
 	virtual ~ObjectBase() {}
 	void Delete();
     const bool IsDelete()const;

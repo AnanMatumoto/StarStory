@@ -15,11 +15,15 @@ public:
 	~StarChild()override{}
 
 private:
-
+	// 更新処理
 	void Update()override;
+	// 描画処理
 	void Draw()override;
-	void SetVertex(DWORD color= 0x00ffffff);
+	// 頂点座標の設定
+	void SetVertex(DWORD color= 0x00ffffff)override;
+	// 親の座標を反映する
 	void RefParentVertex(Vertex vtx[4]);
+	
 
 private:
 
