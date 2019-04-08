@@ -75,5 +75,5 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 		vtx[i].pos.x = new_x + pos_x;
 		vtx[i].pos.y = new_y + pos_y;
 	}
-
 }
+

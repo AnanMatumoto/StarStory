@@ -30,6 +30,13 @@ ObjectBase* StageObjectFactory::Create(int id,float x, float y, float rot) {
 		return new StarChild(x, y, rot);
 		break;
 
+	case STAR_CHILD4:
+		return new StarChild(x, y, rot);
+		break;
+
+	case STAR_CHILD5:
+		return new StarChild(x, y, rot);
+		break;
 
 	}
 	return nullptr;

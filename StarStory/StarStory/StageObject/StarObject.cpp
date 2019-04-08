@@ -8,8 +8,8 @@ StarObject::StarObject(
 ) : ObjectBase(x,y, rot
 ){
 
-	m_width   = 0;
-	m_height  = 0;
+	m_width   = 1;
+	m_height  = 1;
 	m_vel.x   = 0;
 }
 
@@ -23,10 +23,16 @@ void StarObject::Update() {
 
 void StarObject::Draw() {
 
-	vtx[0].pos = { m_pos.x, m_pos.y,0.f,1.f };
-	vtx[1].pos = { m_pos.x + m_width, m_pos.y, 0.f,1.f };
-	vtx[2].pos = { m_pos.x + m_width, m_pos.y + m_height,0.f, 1.f };
-	vtx[3].pos = { m_pos.x, m_pos.y + m_height, 0.f, 1.f };
+	float ox = 0.f;
+	float oy = 0.f;
+
+
+	vtx[0].pos = { ox, oy,0.f,1.f };
+	vtx[1].pos = { ox+ m_width, oy, 0.f,1.f };
+	vtx[2].pos = { ox+m_width, oy + m_height,0.f, 1.f };
+	vtx[3].pos = { ox, oy + m_height, 0.f, 1.f };
+
+	BoxLocalTransform(vtx, m_width, m_height);
 }
 
 

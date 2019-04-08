@@ -79,18 +79,18 @@ void ObjectBase::DiamondLocalTransform(
 	Vec2 v[4] = {};
 	memset(v, 0, sizeof(v));
 	
-	v[0].y = h_half;
-	v[1].x = -w_half;
-	v[2].y = -h_half;
-	v[3].x = w_half;
+	v[0].x = -w_half;
+	v[1].y = -h_half;
+	v[2].x = w_half;
+	v[3].y = h_half;
 
 	for (int i = 0; i < 4; ++i) {
 
-		v[i].x = (v[i].x*cos) + (v[i].y*-sin);
-		v[i].y = (v[i].x*sin) + (v[i].y*cos);
-		vtx[i].pos.x = v[i].x + pos_x+w_half;
-		vtx[i].pos.y = v[i].y + pos_y+h_half;
+		float new_x = (v[i].x*cos) + (v[i].y*-sin);
+		float new_y = (v[i].x*sin) + (v[i].y*cos);
+		
+		vtx[i].pos.x = new_x + pos_x;
+		vtx[i].pos.y = new_y + pos_y;
 	}
-
 
 }

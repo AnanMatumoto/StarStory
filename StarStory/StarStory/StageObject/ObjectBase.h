@@ -7,12 +7,17 @@
 //================================
 enum StageObjectID {
 
+
 	OBJ_TEST1,
 	OBJ_CLONE1,
+	//星オブジェクト
 	STAR_OBJ,
 	STAR_CHILD1,
 	STAR_CHILD2,
 	STAR_CHILD3,
+	STAR_CHILD4,
+	STAR_CHILD5,
+
 
 };
 
