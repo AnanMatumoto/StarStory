@@ -4,8 +4,8 @@
 //---------------------------------
 //　コンストラクタ
 ObjectTest1::ObjectTest1(float x, float y):ObjectBase(x,y) {
-	m_width = 100;
-	m_height = 100;
+	m_width = 400;
+	m_height = 50;
 }
 
 //--------------------------------
