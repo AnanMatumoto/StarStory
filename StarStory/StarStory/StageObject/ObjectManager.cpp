@@ -2,6 +2,7 @@
 #include "Factory.h"
 #include "StageObjectFactory.h"
 #include "../Lib/Lib.h"
+#include <vector>
 
 //-----------------------------------
 // インスタンス生成
@@ -80,7 +81,6 @@ void ObjectManager::AllDelete() {
 	m_obj_list.clear();
 }
 
-
 //-----------------------------------
 void ObjectManager::Create(
 	StageObjectID id,
@@ -90,18 +90,17 @@ void ObjectManager::Create(
 
 	StageObjectFactory factory;
 	m_obj_list.emplace(new_id, factory.Create(id, x, y));
-
 }
 
 //------------------------------------
-//　オブジェクトポインターのセッター
-ObjectBase* ObjectManager::GetPtr(StageObjectID id) {
-	
+// IDで指定したオブジェクトを返す
+ObjectBase* ObjectManager::FindObject(StageObjectID id) {
+
+	//指定した型にキャストしたリストを作る
 	auto it = m_obj_list.find(id);
 	if (it != m_obj_list.end()) {
 		ObjectBase* obj = it->second;
 
 		return obj;
 	}
-	return nullptr;
 }

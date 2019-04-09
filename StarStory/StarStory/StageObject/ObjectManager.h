@@ -34,7 +34,24 @@ public:
 		float x, float y
 	);
 
-	ObjectBase* GetPtr(StageObjectID id);
+	//　引数でもらったidのオブジェクトを取得する
+	ObjectBase* FindObject(StageObjectID id);
+
+	//  引数でもらったidのオブジェクトをリストで取得
+	template<class T>
+	std::vector<T*> GetGameObjects() {
+
+		std::vector<T*> list;
+		for (auto& it : m_obj_list) {
+			T* ptr = dynamic_cast<T*>(it.second);
+			if (ptr) {
+				list.push_back(ptr);
+			}
+		}
+
+		return list;
+	}
+
 
 private:
 
