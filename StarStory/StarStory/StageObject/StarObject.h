@@ -1,7 +1,9 @@
 ﻿#pragma once
 #include "../Common/Common.h"
 #include "ObjectBase.h"
-#include "StarChild.h"
+#include <vector>
+
+class StarChild;
 
 //=================================
 // 星オブジェクト親クラス
@@ -27,4 +29,5 @@ private:
 private:
 	Vec2 m_vel;		     //速さ
 	float m_speed;
+	std::vector<StarChild*> m_childs;
 };
