@@ -82,8 +82,7 @@ void ObjectBase::BoxLocalTransform(
 //　菱形用ローカル座標変換
 void ObjectBase::DiamondLocalTransform(
 	Vertex vtx[4],
-	float width, float height,
-	DWORD col
+	float width, float height
 ) {
 	float w_half = width / 2.f;
 	float h_half = height / 2.f;

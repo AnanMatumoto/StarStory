@@ -30,9 +30,9 @@ void ObjectTest1::Draw() {
 //　頂点座標をセットする
 void ObjectTest1::SetVertex(DWORD color) {
 
-	vtx[0].pos = { m_pos.x, m_pos.y, 0.f,1.f };
-	vtx[1].pos = { m_pos.x+m_width, m_pos.y, 0.f,1.f };
-	vtx[2].pos = { m_pos.x+m_width, m_pos.y+m_height, 0.f,1.f };
-	vtx[3].pos = { m_pos.x, m_pos.y+m_height, 0.f,1.f };
+	m_vtx[0].pos = { m_pos.x, m_pos.y, 0.f,1.f };
+	m_vtx[1].pos = { m_pos.x+m_width, m_pos.y, 0.f,1.f };
+	m_vtx[2].pos = { m_pos.x+m_width, m_pos.y+m_height, 0.f,1.f };
+	m_vtx[3].pos = { m_pos.x, m_pos.y+m_height, 0.f,1.f };
 }
 

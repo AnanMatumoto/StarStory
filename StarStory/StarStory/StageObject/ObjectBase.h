@@ -86,8 +86,7 @@ protected:
 	void DiamondLocalTransform(
 		Vertex m_vtx[4],
 		float width,
-		float height,
-		DWORD col = 0x00ffffff
+		float height
 	);
 
 	//　オブジェクトの上面を返す

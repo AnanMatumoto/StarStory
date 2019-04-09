@@ -1,6 +1,7 @@
 #include "StarChild.h"
 #include "StarObject.h"
 #include "ObjectManager.h"
+#include "ObjectTest1.h"
 
 
 //------------------------------------
@@ -13,6 +14,7 @@ StarChild::StarChild(
 
 	m_width   = 46.f;
 	m_height  = 64.f;
+	m_parent = ObjectManager::GetInstance().FindObject(STAR_OBJ);
 }
 
 //------------------------------------
@@ -27,7 +29,7 @@ void StarChild::Draw() {
 	SetVertex();
 	Lib::DrawDiamond2D(
 		"piyo",
-		 vtx
+		 m_vtx
 	);
 }
 
@@ -38,20 +40,18 @@ void StarChild::SetVertex(DWORD color) {
 	float ox = 0.5f;
 	float oy = 0.5f;
 
-	vtx[0] = {{(0.5f-ox),oy,0.f,1.f}, color,{0.f,0.5f}};
-	vtx[1] = {{ox,(0.5f+oy), 0.f,1.f},color,{0.5f,1.f}};
-	vtx[2] = {{(0.5f+ox),oy, 0.f, 1.f},color,{1.f,0.5f}};
-	vtx[3] = {{ox,(0.5f-oy), 0.f,1.f},color,{0.5f,0.f}};
+	m_vtx[0] = {{(0.5f-ox),oy,0.f,1.f}, color,{0.f,0.5f}};
+	m_vtx[1] = {{ox,(0.5f+oy), 0.f,1.f},color,{0.5f,1.f}};
+	m_vtx[2] = {{(0.5f+ox),oy, 0.f, 1.f},color,{1.f,0.5f}};
+	m_vtx[3] = {{ox,(0.5f-oy), 0.f,1.f},color,{0.5f,0.f}};
 
-	DiamondLocalTransform(vtx, m_width, m_height,m_rot);
-	RefParentVertex(vtx);
+	DiamondLocalTransform(m_vtx, m_width, m_height);
+	RefParentVertex(m_vtx);
 }
 
 //-------------------------------------
 //親の座標を自身に反映する
 void StarChild::RefParentVertex(Vertex vtx[4]) {
-
-  m_parent = ObjectManager::GetInstance().GetPtr(STAR_OBJ);
 
 	//親の座標を取得
 	float pos_x = m_parent->GetX();
@@ -79,4 +79,21 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 		vtx[i].pos.y = new_y + pos_y;
 	}
 }
+
+//---------------------------------------
+//　当たり判定用フラグゲッター
+ bool StarChild::GetIsHit() {
+	 
+	 auto list = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
+	 Vec2 vec(m_vtx[1].pos.x, m_vtx[1].pos.y);
+	
+	 for (auto it : list) {
+		 if (IsHitToSurface(vec, it)) {
+			 return true;
+		 }
+		return false;
+	 }
+ }
+
+
 
