@@ -126,3 +126,6 @@ bool ObjectBase::IsHitToSurface(Vec2 point, ObjectBase* obj) {
 	}
 	return false;
 }
+const float ObjectBase::GetUpperY()const {
+	return m_pos.y - m_height;
+}

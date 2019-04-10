@@ -65,7 +65,7 @@ public:
 	//  回転角度ゲッター
 	const float GetRot()const;
 
-
+	const float GetUpperY()const;
 	
 protected:
 

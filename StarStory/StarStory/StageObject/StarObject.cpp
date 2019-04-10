@@ -18,8 +18,7 @@ StarObject::StarObject(
 	m_height  = 1;
 	m_vel.x   = 0;
 
-	auto mng = ObjectManager::GetInstance();
-	m_childs = mng.GetGameObjects<StarChild>();
+
 }
 
 //-----------------------------------
@@ -56,6 +55,9 @@ void StarObject::SetVertex(DWORD color) {
 // 自動操作
 void StarObject::AutomaticMove(){
 
+	auto mng = ObjectManager::GetInstance();
+	m_childs = mng.GetGameObjects<StarChild>();
+	
 	++m_rot;
 	m_vel.x = m_speed;
 	m_vel.y = GRAVITY;
@@ -65,13 +67,14 @@ void StarObject::AutomaticMove(){
 	vel.xに移動量を入れるかの判定が必要
 	*/
 	m_pos.x += m_vel.x;
-	
+	float y = 0;
 	for (auto it : m_childs) {
 		StarChild* child = it;
 		if (child->GetIsHit()) {
-			m_vel.y = 0;
+			m_pos.y = child->GetObjectY();
 		}
 		else {
+		
 			m_pos.y += m_vel.y;
 		}
 	}

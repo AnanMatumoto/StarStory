@@ -20,6 +20,5 @@ private:
 	//頂点座標をセットする
 	void SetVertex(DWORD color = 0x00ffffff)override;
 
-
 };
 

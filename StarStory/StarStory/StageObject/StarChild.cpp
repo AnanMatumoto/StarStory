@@ -15,11 +15,15 @@ StarChild::StarChild(
 	m_width   = 46.f;
 	m_height  = 64.f;
 	m_parent = ObjectManager::GetInstance().FindObject(STAR_OBJ);
+	
 }
 
 //------------------------------------
 //　更新処理
 void StarChild::Update() {
+
+	auto list = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
+
 }
 
 //------------------------------------
@@ -31,6 +35,7 @@ void StarChild::Draw() {
 		"piyo",
 		 m_vtx
 	);
+	
 }
 
 //-------------------------------------
@@ -83,17 +88,23 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 //---------------------------------------
 //　当たり判定用フラグゲッター
  bool StarChild::GetIsHit() {
-	 
-	 auto list = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
-	 Vec2 vec(m_vtx[1].pos.x, m_vtx[1].pos.y);
-	
+
+	 auto list = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();	
+	 Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
+
 	 for (auto it : list) {
 		 if (IsHitToSurface(vec, it)) {
+			 hit_y =it->GetUpperY();
 			 return true;
 		 }
-		return false;
+		 else {
+			 return false;
+		 }
 	 }
  }
 
+ float StarChild::GetObjectY() {
+	 return hit_y;
+ }
 
 

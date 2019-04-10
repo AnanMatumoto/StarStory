@@ -6,6 +6,7 @@
 ObjectTest1::ObjectTest1(float x, float y):ObjectBase(x,y) {
 	m_width = 400;
 	m_height = 50;
+	SetVertex();
 }
 
 //--------------------------------

@@ -18,6 +18,7 @@ public:
 		その結果を返す
 	*/
 	bool GetIsHit();
+	float GetObjectY();
 
 private:
 	// 更新処理
@@ -33,4 +34,5 @@ private:
 private:
 
 	ObjectBase* m_parent; //親オブジェクト
+	float hit_y;		  //当たった時のオブジェクトの高さ
 };
