@@ -93,18 +93,19 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 	 Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
 	 for (auto it : list) {
+		 //オブジェクトの上辺と頂点が当たっているか
 		 if (IsHitToSurface(vec, it)) {
-			 hit_y =it->GetUpperY();
+			 m_parent_y = m_parent->GetY();
 			 return true;
 		 }
-		 else {
+		 else{
 			 return false;
 		 }
 	 }
  }
 
  float StarChild::GetObjectY() {
-	 return hit_y;
+	 return m_parent_y;
  }
 
 

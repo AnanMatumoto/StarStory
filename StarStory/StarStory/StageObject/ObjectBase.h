@@ -65,9 +65,12 @@ public:
 	//  回転角度ゲッター
 	const float GetRot()const;
 
-	const float GetUpperY()const;
 	
+
 protected:
+
+	//  オブジェクトの幅ゲッター
+	const float GetWidth()const;
 
 	//　頂点情報ゲッター
 	const Vertex* GetVertex()const;

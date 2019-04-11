@@ -34,5 +34,5 @@ private:
 private:
 
 	ObjectBase* m_parent; //親オブジェクト
-	float hit_y;		  //当たった時のオブジェクトの高さ
+	float m_parent_y;		  //当たった時のオブジェクトの高さ
 };
