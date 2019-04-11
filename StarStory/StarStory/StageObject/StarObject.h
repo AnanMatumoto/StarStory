@@ -27,7 +27,9 @@ private:
 	void AutomaticMove();
 
 private:
-	Vec2 m_vel;		     //速さ
-	float m_speed;
+	
+	bool  has_y;		 //自身のY座標を取得する際のフラグ
+	float m_speed;       //速さ
+	Vec2  m_vel;		 //移動量
 	std::vector<StarChild*> m_childs;
 };

@@ -62,19 +62,19 @@ void StarObject::AutomaticMove(){
 	m_vel.x = m_speed;
 	m_vel.y = GRAVITY;
 
-	/*Todo:
-	ストップスキルによる停止の処理がある場合は
-	vel.xに移動量を入れるかの判定が必要
-	*/
 	m_pos.x += m_vel.x;
 	float y = 0;
 	for (auto it : m_childs) {
 		StarChild* child = it;
+		//オブジェクトと各頂点があたっているか
 		if (child->GetIsHit()) {
-			m_pos.y = child->GetObjectY();
+			if (has_y == true) {
+				//頂点が当たった瞬間のY座標を取得
+				m_pos.y = child->GetObjectY();
+				has_y = false;
+			}
 		}
 		else {
-		
 			m_pos.y += m_vel.y;
 		}
 	}
