@@ -49,7 +49,10 @@ public:
 	
 	//　頂点情報をセットする
 	virtual void SetVertex(DWORD color = 0x00ffffff){}
-	
+
+	//　高さゲッター
+    const float GetHeight()const;
+
 	//　削除フラグをセットする
 	void Delete();
 	
@@ -64,13 +67,10 @@ public:
 
 	//  回転角度ゲッター
 	const float GetRot()const;
-
-	
-
-protected:
-
 	//  オブジェクトの幅ゲッター
 	const float GetWidth()const;
+
+protected:
 
 	//　頂点情報ゲッター
 	const Vertex* GetVertex()const;
