@@ -43,12 +43,11 @@ public:
 		
 		std::vector<T*>list;
 		for (auto& it : m_obj_list) {
-			T*ptr = dynamic_cast<T*>(it.second);
-			if (ptr != nullptr) {
-				list.push_back(ptr);
-			}
-
-			}
+  		  T*ptr = dynamic_cast<T*>(it.second);
+		  if (ptr != nullptr) {
+			list.push_back(ptr);
+		  }
+		}
 
 		return list;
 	}

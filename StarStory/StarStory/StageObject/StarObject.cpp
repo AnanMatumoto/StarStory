@@ -4,7 +4,7 @@
 #include "../Lib/Lib.h"
 
 const float GRAVITY = 1.3f;
-
+float temp_y = 0;
 //-----------------------------------
 //　コンストラクタ
 StarObject::StarObject(
@@ -14,11 +14,10 @@ StarObject::StarObject(
 ) : ObjectBase(x,y, rot
 ){
 	m_speed = 1.f;
-	m_width   = 1;
-	m_height  = 1;
+	m_width   = 128;
+	m_height  = 128;
 	m_vel.x   = 0;
-
-
+	has_y     = true;
 }
 
 //-----------------------------------
@@ -58,25 +57,35 @@ void StarObject::AutomaticMove(){
 	auto mng = ObjectManager::GetInstance();
 	m_childs = mng.GetGameObjects<StarChild>();
 	
-	++m_rot;
+	++m_rot*m_speed;
 	m_vel.x = m_speed;
-	m_vel.y = GRAVITY;
-
 	m_pos.x += m_vel.x;
-	float y = 0;
+
 	for (auto it : m_childs) {
 		StarChild* child = it;
 		//オブジェクトと各頂点があたっているか
 		if (child->GetIsHit()) {
-			if (has_y == true) {
-				//頂点が当たった瞬間のY座標を取得
-				m_pos.y = child->GetObjectY();
-				has_y = false;
-			}
+			//頂点が当たった
+			m_vel.y = 0;
 		}
 		else {
-			m_pos.y += m_vel.y;
+			m_vel.y = GRAVITY;
 		}
 	}
+	m_pos.y += m_vel.y;
 }
+	
+/*
+	親に重力を与えるせいで、
+	沈んでしまう。
+
+	方法
+	１.
+	次の頂点までの条件を考える
+
+	２．
+	子に重力を渡すか。
+	子の座標か頂点か。
+*/
+
 

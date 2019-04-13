@@ -13,7 +13,7 @@ void GameScene::Init() {
 
 	//ステージオブジェクトの登録
 	ObjectManager::GetInstance().Register(OBJ_TEST1,0,700);
-	ObjectManager::GetInstance().Register(STAR_OBJ,130,500);
+	ObjectManager::GetInstance().Register(STAR_OBJ,90,600);
 	ObjectManager::GetInstance().Register(STAR_CHILD1,0,0,0);
 	ObjectManager::GetInstance().Register(STAR_CHILD2,30,23,72);
 	ObjectManager::GetInstance().Register(STAR_CHILD3,19,60,144);
