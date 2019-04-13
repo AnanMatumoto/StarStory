@@ -19,8 +19,8 @@
     <ClCompile Include="StageObject\ObjectTest1.cpp" />
     <ClCompile Include="StageObject\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp" />
-    <ClCompile Include="StageObject\StarChild.cpp" />
     <ClCompile Include="Diamond\DiamondBase.cpp" />
+    <ClCompile Include="StageObject\StarChild.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
