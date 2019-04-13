@@ -3,7 +3,7 @@
 #include "ObjectManager.h"
 #include "ObjectTest1.h"
 
-
+DWORD red = 0;//※後で消す
 //------------------------------------
 //　コンストラクタ
 StarChild::StarChild(
@@ -29,7 +29,7 @@ void StarChild::Update() {
 //　描画処理
 void StarChild::Draw() {
 
-	SetVertex();
+	SetVertex(red);//※
 	Lib::DrawDiamond2D(
 		"piyo",
 		m_vtx
@@ -43,6 +43,7 @@ void StarChild::SetVertex(DWORD color) {
 
 	float ox = 0.5f;
 	float oy = 0.5f;
+
 
 	m_vtx[0] = { {(0.5f - ox),oy,0.f,1.f}, color,{0.f,0.5f} };
 	m_vtx[1] = { {ox,(0.5f + oy), 0.f,1.f},color,{0.5f,1.f} };
@@ -96,13 +97,16 @@ bool StarChild::GetIsHit() {
 			//オブジェクトの幅に頂点があるか
 			if (IsHitToSurface(vec, it)) {
 				//頂点が当たっているか
+				red = 0x00ff0000;
 				return true;
 			}
 			else {
+				red = 0;//※
 				return false;
 			}
 		}
 		else {
+			red = 0;//※
 			return false;
 		}
 	}
