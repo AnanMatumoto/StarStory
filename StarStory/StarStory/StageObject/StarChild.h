@@ -1,7 +1,9 @@
 ﻿#pragma once
 
 #include "ObjectBase.h"
+#include <vector>
 
+class ObjectTest1;
 class StarObject;
 
 //====================================
@@ -18,7 +20,6 @@ public:
 		その結果を返す
 	*/
 	bool GetIsHit();
-	float GetObjectY();
 
 private:
 	// 更新処理
@@ -33,6 +34,7 @@ private:
 
 private:
 
-	ObjectBase* m_parent; //親オブジェクト
-	float m_parent_y;		  //当たった時のオブジェクトの高さ
+	ObjectBase* m_parent;			    //親オブジェクト
+	std::vector<ObjectTest1*> m_hit_obj;//マップオブジェクトのリスト
+	
 };

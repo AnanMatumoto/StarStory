@@ -14,16 +14,15 @@ StarChild::StarChild(
 
 	m_width   = 46.f;
 	m_height  = 64.f;
-	m_parent = ObjectManager::GetInstance().FindObject(STAR_OBJ);
-	
+	m_parent  = ObjectManager::GetInstance().FindObject(STAR_OBJ);
+	m_hit_obj = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
 }
 
 //------------------------------------
 //　更新処理
 void StarChild::Update() {
 
-	auto list = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
-
+	
 }
 
 //------------------------------------
@@ -89,23 +88,26 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 //　当たり判定用フラグゲッター
  bool StarChild::GetIsHit() {
 
-	 auto list = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();	
 	 Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
-
-	 for (auto it : list) {
-		 //オブジェクトの上辺と頂点が当たっているか
-		 if (IsHitToSurface(vec, it)) {
-			 m_parent_y = m_parent->GetY();
-			 return true;
+	 
+	 for (auto it : m_hit_obj) {
+		 
+		 if (vec.x <= it->GetWidth()) {
+		  //オブジェクトの幅に頂点があるか
+			 if (IsHitToSurface(vec, it)) {
+				 //頂点が当たっているか
+				 return true;
+			 }
+			 else {
+				 return false;
+			 }
 		 }
-		 else{
+		 else {
 			 return false;
 		 }
 	 }
  }
 
- float StarChild::GetObjectY() {
-	 return m_parent_y;
- }
+ 
 
 
