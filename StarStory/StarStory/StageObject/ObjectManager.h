@@ -2,6 +2,7 @@
 
 #include"ObjectBase.h"
 #include <unordered_map>
+#include <string>
 
 //==================================
 // ステージオブジェクト管理クラス
@@ -16,6 +17,7 @@ public:
 	void Register(
 		StageObjectID id,
 		float x, float y,
+		std::string tex_name= "none",
 		float rot = 0.f
 	);
 	//　更新処理

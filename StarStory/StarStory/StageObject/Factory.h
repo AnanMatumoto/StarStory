@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "ObjectBase.h"
+#include <string>
 
 //================================
 //　ファクトリ抽象クラス
@@ -21,6 +22,7 @@ public:
 		int id,
 		float x,
 		float y,
+		std::string,
 		float rotate
 	) = 0;
 

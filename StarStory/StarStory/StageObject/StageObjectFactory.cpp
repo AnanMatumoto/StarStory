@@ -5,7 +5,12 @@
 
 //---------------------------------
 //　ステージオブジェクト生成処理
-ObjectBase* StageObjectFactory::Create(int id,float x, float y, float rot) {
+ObjectBase* StageObjectFactory::Create(
+	int id,
+	float x, float y,
+	std::string tex_name,
+	float rot
+	) {
 
 
 	switch (id)
@@ -19,23 +24,23 @@ ObjectBase* StageObjectFactory::Create(int id,float x, float y, float rot) {
 		break;
 	
 	case STAR_CHILD1:
-		return new StarChild(x, y,rot);
+		return new StarChild(x, y, tex_name,rot);
 		break;	
 
 	case STAR_CHILD2:
-		return new StarChild(x, y,rot);
+		return new StarChild(x, y, tex_name,rot);
 		break;
 
 	case STAR_CHILD3:
-		return new StarChild(x, y, rot);
+		return new StarChild(x, y, tex_name, rot);
 		break;
 
 	case STAR_CHILD4:
-		return new StarChild(x, y, rot);
+		return new StarChild(x, y, tex_name, rot);
 		break;
 
 	case STAR_CHILD5:
-		return new StarChild(x, y, rot);
+		return new StarChild(x, y, tex_name, rot);
 		break;
 
 	}

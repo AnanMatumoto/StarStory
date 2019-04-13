@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Factory.h"
-
+#include <string>
 //===================================
 //　ステージオブジェクト生成クラス
 //===================================
@@ -17,6 +17,7 @@ public:
 		int id,
 		float x,
 		float y,
+		std::string tex_name = "none",
 		float rotate = 0.f
 	)override;
 

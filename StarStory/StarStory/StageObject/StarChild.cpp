@@ -9,11 +9,13 @@ DWORD red = 0;//※後で消す
 StarChild::StarChild(
 	float x,
 	float y,
+	std::string tex_name,
 	float rot
 ) :ObjectBase(x, y, rot) {
 
-	m_width = 46.f;
-	m_height = 64.f;
+	m_width    = 46.f;
+	m_height   = 64.f;
+	m_tex_name = tex_name;
 	m_parent = ObjectManager::GetInstance().FindObject(STAR_OBJ);
 	m_hit_obj = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
 }
@@ -31,7 +33,7 @@ void StarChild::Draw() {
 
 	SetVertex(red);//※
 	Lib::DrawDiamond2D(
-		"piyo",
+		m_tex_name.c_str(),
 		m_vtx
 	);
 

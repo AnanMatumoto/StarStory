@@ -2,6 +2,7 @@
 
 #include "ObjectBase.h"
 #include <vector>
+#include <string>
 
 class ObjectTest1;
 class StarObject;
@@ -13,7 +14,12 @@ class StarObject;
 class StarChild :public ObjectBase {
 
 public:
-	StarChild(float x, float y, float rot);
+	StarChild(
+		float x,
+		float y,
+		std::string tex_name,
+		float rot
+		);
 	~StarChild()override{}
 
 	/*　自身の頂点とオブジェクトが当たっているかを判定し
@@ -33,7 +39,7 @@ private:
 
 
 private:
-
+	std::string m_tex_name;				//画像名
 	ObjectBase* m_parent;			    //親オブジェクト
 	std::vector<ObjectTest1*> m_hit_obj;//マップオブジェクトのリスト
 	
