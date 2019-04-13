@@ -38,6 +38,10 @@ const float ObjectBase::GetWidth()const {
 	return m_width;
 }
 
+const float ObjectBase::GetHeight()const {
+	return m_height;
+}
+
 //-----------------------------------
 // 頂点情報ゲッター
 const Vertex* ObjectBase::GetVertex()const {
@@ -124,14 +128,12 @@ bool ObjectBase::IsHitToSurface(Vec2 point, ObjectBase* obj) {
 	//各頂点から線分を作成する
 	Vec2 v1(obj->GetVertex(0).pos.x, obj->GetVertex(0).pos.y);
 	Vec2 v2(obj->GetVertex(1).pos.x, obj->GetVertex(1).pos.y);
-	float width = obj->GetWidth();
 
 	//オブジェクトの頂点と線分との外積判定
 	float ans = point.Cross(v1, v2, point);
+
 	if (ans > 0) {
-		if (point.x <= width) {
-			return true;
-		}
+		return true;
 	}
 	return false;
 }
