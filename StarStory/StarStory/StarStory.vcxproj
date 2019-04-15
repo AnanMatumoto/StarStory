@@ -133,7 +133,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Common\Common.cpp" />
-    <ClCompile Include="Diamond\DiamondBase.cpp" />
     <ClCompile Include="Scene\CustomScene.cpp">
       <SubType>
       </SubType>
