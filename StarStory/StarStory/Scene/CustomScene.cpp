@@ -68,21 +68,27 @@ void CustomScene::Draw() {
 	);
 
 	// 「ひし形」
-	Lib::DrawBox2D(
-		"Resource/Custom/player_1_normal.png",
-		500, 500
-	);
+	// TOP
+	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500.f, 300.f, 320.f, 230.f, 0.f);
+	// TOP_RIGHT
+	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 + 150.f, 300 + 110.f, 320.f, 230.f, 1.26f);
+	// TOP_RIGHT
+	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 - 150.f, 300 + 110.f, 320.f, 230.f, -1.26f);
+	// BOTTOM_RIGHT
+	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 + 90.f, 300 + 285.f, 320.f, 230.f, 2.52f);
+	// BOTTOM_LEFT
+	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 - 90.f, 300 + 285.f, 320.f, 230.f, -2.52f);
 
 	// 「カスタム」
 	Lib::DrawBox2D(
 		"Resource/Custom/カスタム.png",
-		50, 50
+		10, 10
 	);
 
 	// 「総スキル」
 	Lib::DrawBox2D(
 		"Resource/Custom/総スキル.png",
-		1200, 300
+		1200, 200
 	);
 
 	// 「スキル各種」
@@ -106,7 +112,7 @@ void CustomScene::Draw() {
 	//「プレイ画面へ」
 	Lib::DrawBox2D(
 		"Resource/Custom/プレイ画面へ.png",
-		1600, 700
+		1500, 700
 	);
 }
 

@@ -10,16 +10,15 @@ public:
 	DiamondBase() {}				// コンストラクタ
 	virtual void Update() = 0;		// 更新
 	virtual void Draw() = 0;		// 描画
-	virtual~DiamondBase() {}		// デストラクタ
+	virtual~DiamondBase() = 0;		// デストラクタ
 
 protected:
 
 	D3DXVECTOR2 m_pos;		// 座標
-	float m_width;			// 幅
-	float m_height;			// 高さ
+	D3DXVECTOR2 m_uv;		// 幅と高さ
 	float m_angle;			// 角度
 
-	//int or bool strength;			// 強弱スキルの判別
+	bool m_strength;			// 強弱スキルの判別(名前考え中)
 
 private:
 
