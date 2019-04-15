@@ -104,4 +104,5 @@ ObjectBase* ObjectManager::FindObject(StageObjectID id) {
 
 		return obj;
 	}
+	return nullptr;
 }

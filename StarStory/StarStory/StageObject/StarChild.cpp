@@ -18,6 +18,7 @@ StarChild::StarChild(
 	m_tex_name = tex_name;
 	m_parent = ObjectManager::GetInstance().FindObject(STAR_OBJ);
 	m_hit_obj = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
+	is_hit = false;
 }
 
 //------------------------------------
@@ -89,7 +90,7 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 
 //---------------------------------------
 //　当たり判定用フラグゲッター
-bool StarChild::GetIsHit() {
+void StarChild::IsHitToObject() {
 
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
@@ -100,20 +101,29 @@ bool StarChild::GetIsHit() {
 			if (IsHitToSurface(vec, it)) {
 				//頂点が当たっているか
 				red = 0x00ff0000;
-				return true;
+				is_hit = true;
 			}
 			else {
 				red = 0;//※
-				return false;
+				is_hit = false;
 			}
 		}
 		else {
 			red = 0;//※
-			return false;
+			is_hit = false;
 		}
 	}
 }
 
+//-------------------------------
+//　当たり判定用変数ゲッター
+const bool StarChild::GetHit()const {
+	return is_hit;
+}
 
-
+//-------------------------------
+//	当たり判定用変数セッター
+void StarChild::SetHit(bool is_hit_){
+	is_hit = is_hit_;
+}
 

@@ -3,6 +3,8 @@
 #include"ObjectBase.h"
 #include <unordered_map>
 #include <string>
+#include <iostream>
+
 
 //==================================
 // ステージオブジェクト管理クラス

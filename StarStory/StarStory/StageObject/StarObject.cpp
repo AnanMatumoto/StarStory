@@ -60,32 +60,17 @@ void StarObject::AutomaticMove(){
 	++m_rot*m_speed;
 	m_vel.x = m_speed;
 	m_pos.x += m_vel.x;
+	m_vel.y = GRAVITY;
 
 	for (auto it : m_childs) {
+		it->IsHitToObject();
 		StarChild* child = it;
 		//オブジェクトと各頂点があたっているか
-		if (child->GetIsHit()) {
+		if (child->GetHit()) {
 			//頂点が当たった
 			m_vel.y = 0;
-		}
-		else {
-			m_vel.y = GRAVITY;
 		}
 	}
 	m_pos.y += m_vel.y;
 }
 	
-/*
-	親に重力を与えるせいで、
-	沈んでしまう。
-
-	方法
-	１.
-	次の頂点までの条件を考える
-
-	２．
-	子に重力を渡すか。
-	子の座標か頂点か。
-*/
-
-
