@@ -20,9 +20,14 @@ void ObjectManager::Register(
 	std::string tex_name,
 	float rot
 ) {
+	StageObjectFactory factory;
+	m_obj_list.emplace(id, factory.Create(id, x, y, tex_name, rot));
+}
+
+void ObjectManager::Register(StageObjectID id, ObjectBase* obj) {
 
 	StageObjectFactory factory;
-	m_obj_list.emplace(id, factory.Create(id, x, y,tex_name,rot));
+	m_obj_list.emplace(id, obj);
 }
 
 //-----------------------------------
@@ -35,8 +40,6 @@ void ObjectManager::Update() {
 		}
 		it.second->Update();
 	}
-
-
 }
 
 //-----------------------------------

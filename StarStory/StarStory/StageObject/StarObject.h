@@ -25,6 +25,8 @@ private:
 	void SetVertex(DWORD color = 0x00ffffff)override;
 	// 自動操作
 	void AutomaticMove();
+	//　自分の親オブジェクトを取得する
+	//void SetParent();
 
 private:
 	

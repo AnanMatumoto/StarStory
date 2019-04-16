@@ -43,5 +43,6 @@ private:
 	ObjectBase* m_parent;			    //親オブジェクト
 	std::vector<ObjectTest1*> m_hit_obj;//マップオブジェクトのリスト
 	bool is_hit;
+
 	
 };

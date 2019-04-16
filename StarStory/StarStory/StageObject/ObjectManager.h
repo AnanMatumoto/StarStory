@@ -22,6 +22,10 @@ public:
 		std::string tex_name= "none",
 		float rot = 0.f
 	);
+	//　登録処理のオーバーロード
+	void Register(StageObjectID id, ObjectBase* obj
+	);
+
 	//　更新処理
 	void Update();
 	//  描画処理
@@ -44,6 +48,11 @@ public:
 	//  引数でもらったidのオブジェクトをリストで取得
 	template<class T>
 	std::vector<T*> GetGameObjects() {
+		
+		/*
+		死んでるやつはスキップするなり
+		出来るだけ処理を軽くする
+		*/
 		
 		std::vector<T*>list;
 		for (auto& it : m_obj_list) {

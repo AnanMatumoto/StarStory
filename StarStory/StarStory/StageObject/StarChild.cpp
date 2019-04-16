@@ -37,7 +37,6 @@ void StarChild::Draw() {
 		m_tex_name.c_str(),
 		m_vtx
 	);
-
 }
 
 //-------------------------------------

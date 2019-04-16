@@ -2,6 +2,7 @@
 #include "StarChild.h"
 #include "ObjectManager.h"
 #include "../Lib/Lib.h"
+#include "StageObjectFactory.h"
 
 const float GRAVITY = 1.3f;
 float temp_y = 0;
@@ -18,6 +19,19 @@ StarObject::StarObject(
 	m_height  = 128;
 	m_vel.x   = 0;
 	has_y     = true;
+
+	StageObjectFactory factory;
+
+	/*ObjectManager::GetInstance().Register(STAR_CHILD1,  0,  0,"星１",  0);
+	ObjectManager::GetInstance().Register(STAR_CHILD2, 30, 23,"星２", 72);
+	ObjectManager::GetInstance().Register(STAR_CHILD3, 19, 60,"星３",144);
+	ObjectManager::GetInstance().Register(STAR_CHILD4,-19, 60,"星４",216);
+	ObjectManager::GetInstance().Register(STAR_CHILD5, -30,23,"星５",288);*/
+
+	/*auto child_list = mng.GetGameObjects<StarChild>();
+	for (auto obj : child_list) {
+		m_childs.emplace_back(obj);
+	}*/
 }
 
 //-----------------------------------
