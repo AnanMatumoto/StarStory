@@ -14,14 +14,19 @@
     <ClCompile Include="Scene\SelectScene.cpp" />
     <ClCompile Include="Lib\Texture.cpp" />
     <ClCompile Include="Scene\TitleScenecpp.cpp" />
-    <ClCompile Include="StageObject\ObjectBase.cpp" />
-    <ClCompile Include="StageObject\ObjectManager.cpp" />
     <ClCompile Include="StageObject\ObjectTest1.cpp" />
-    <ClCompile Include="StageObject\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="StageObject\StarChild.cpp" />
     <ClCompile Include="UI\ButtonUI.cpp" />
     <ClCompile Include="UI\UIObjectFactory.cpp" />
+=======
+    <ClCompile Include="Diamond\DiamondBase.cpp" />
+    <ClCompile Include="StageObject\StarChild.cpp" />
+    <ClCompile Include="Object\ObjectManager.cpp" />
+    <ClCompile Include="Object\ObjectBase.cpp" />
+    <ClCompile Include="Object\ObjectFactory.cpp" />
+>>>>>>> オブジェクトマネージャー修正
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -34,19 +39,22 @@
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Scene\SelectScene.h" />
     <ClInclude Include="Scene\TitleScene.h" />
-    <ClInclude Include="StageObject\Factory.h" />
-    <ClInclude Include="StageObject\ObjectBase.h" />
-    <ClInclude Include="StageObject\ObjectManager.h" />
     <ClInclude Include="StageObject\ObjectTest1.h" />
-    <ClInclude Include="StageObject\StageObjectFactory.h" />
     <ClInclude Include="StageObject\StarObject.h" />
     <ClInclude Include="StageObject\StarChild.h" />
     <ClInclude Include="Diamond\DiamondBase.h" />
+<<<<<<< HEAD
 <<<<<<< HEAD
     <ClInclude Include="UI\ButtonUI.h" />
     <ClInclude Include="UI\UIObjectFactory.h" />
 =======
     <ClInclude Include="Skill.h" />
 >>>>>>> 1ea1ead483482c3e230894b51fca9b76672c7080
+=======
+    <ClInclude Include="Object\ObjectManager.h" />
+    <ClInclude Include="Object\Factory.h" />
+    <ClInclude Include="Object\ObjectBase.h" />
+    <ClInclude Include="Object\ObjectFactory.h" />
+>>>>>>> オブジェクトマネージャー修正
   </ItemGroup>
 </Project>

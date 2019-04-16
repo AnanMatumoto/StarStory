@@ -2,6 +2,9 @@
 
 #include"ObjectBase.h"
 #include <unordered_map>
+#include <string>
+#include <iostream>
+
 
 //==================================
 // ステージオブジェクト管理クラス
@@ -16,8 +19,13 @@ public:
 	void Register(
 		StageObjectID id,
 		float x, float y,
+		std::string tex_name= "none",
 		float rot = 0.f
 	);
+	//　登録処理のオーバーロード
+	void Register(StageObjectID id, ObjectBase* obj
+	);
+
 	//　更新処理
 	void Update();
 	//  描画処理
@@ -34,7 +42,29 @@ public:
 		float x, float y
 	);
 
-	ObjectBase* GetPtr(StageObjectID id);
+	//　引数でもらったidのオブジェクトを取得する
+	ObjectBase* FindObject(StageObjectID id);
+
+	//  引数でもらったidのオブジェクトをリストで取得
+	template<class T>
+	std::vector<T*> GetGameObjects() {
+		
+		/*
+		死んでるやつはスキップするなり
+		出来るだけ処理を軽くする
+		*/
+		
+		std::vector<T*>list;
+		for (auto& it : m_obj_list) {
+  		  T*ptr = dynamic_cast<T*>(it.second);
+		  if (ptr != nullptr) {
+			list.push_back(ptr);
+		  }
+		}
+
+		return list;
+	}
+
 
 private:
 
