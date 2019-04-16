@@ -16,4 +16,5 @@ ObjectBase* UIObjectFactory::Create(
 		new ButtonUI(x, y);
 		break;
 	}
+	return nullptr;
 }
