@@ -42,7 +42,11 @@
     <ClInclude Include="StageObject\StarObject.h" />
     <ClInclude Include="StageObject\StarChild.h" />
     <ClInclude Include="Diamond\DiamondBase.h" />
+<<<<<<< HEAD
     <ClInclude Include="UI\ButtonUI.h" />
     <ClInclude Include="UI\UIObjectFactory.h" />
+=======
+    <ClInclude Include="Skill.h" />
+>>>>>>> 1ea1ead483482c3e230894b51fca9b76672c7080
   </ItemGroup>
 </Project>
