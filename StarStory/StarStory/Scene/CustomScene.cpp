@@ -54,6 +54,7 @@ void CustomScene::Draw() {
 	
 	// 描画順に書いていく
 	// 橋本君のラフを元に置いてます(全て仮画像)
+	// 仮画像なので後で変更します
 
 	// 「背景」
 	Lib::DrawBox2D(
@@ -88,31 +89,35 @@ void CustomScene::Draw() {
 	// 「総スキル」
 	Lib::DrawBox2D(
 		"Resource/Custom/総スキル.png",
-		1200, 200
+		1200, 100
 	);
 
+	float skill_pos_count = 0;
 	// 「スキル各種」
-	Lib::DrawBox2D(
-		"Resource/Custom/スキル各種.png",
-		1200, 500
-	);
+	for (int i = 0; i < 5; ++i) {
+		skill_pos_count += 100;
+		Lib::DrawBox2D(
+			"Resource/Custom/スキル各種.png",
+			1200, 120 + skill_pos_count
+		);
+	}
 
 	// 「マップ確認」
 	Lib::DrawBox2D(
 		"Resource/Custom/マップ確認.png",
-		1200, 700
+		1200, 800
 	);
 
 	// 「セレクトへ」
 	Lib::DrawBox2D(
 		"Resource/Custom/セレクトへ.png",
-		1200, 800
+		1200, 900
 	);
 
 	//「プレイ画面へ」
 	Lib::DrawBox2D(
 		"Resource/Custom/プレイ画面へ.png",
-		1500, 700
+		1600, 800
 	);
 }
 
