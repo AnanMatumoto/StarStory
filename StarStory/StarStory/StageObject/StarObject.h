@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "../Common/Common.h"
-#include "ObjectBase.h"
+#include "../Object/ObjectBase.h"
 #include <vector>
 
 class StarChild;

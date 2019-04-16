@@ -1,6 +1,6 @@
 ﻿#include "StarChild.h"
 #include "StarObject.h"
-#include "ObjectManager.h"
+#include "../Object/ObjectManager.h"
 #include "ObjectTest1.h"
 
 DWORD red = 0;//※後で消す

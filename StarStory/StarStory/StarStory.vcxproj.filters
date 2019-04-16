@@ -14,13 +14,13 @@
     <ClCompile Include="Scene\SelectScene.cpp" />
     <ClCompile Include="Lib\Texture.cpp" />
     <ClCompile Include="Scene\TitleScenecpp.cpp" />
-    <ClCompile Include="StageObject\ObjectBase.cpp" />
-    <ClCompile Include="StageObject\ObjectManager.cpp" />
     <ClCompile Include="StageObject\ObjectTest1.cpp" />
-    <ClCompile Include="StageObject\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp" />
     <ClCompile Include="Diamond\DiamondBase.cpp" />
     <ClCompile Include="StageObject\StarChild.cpp" />
+    <ClCompile Include="Object\ObjectManager.cpp" />
+    <ClCompile Include="Object\ObjectBase.cpp" />
+    <ClCompile Include="Object\ObjectFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -33,13 +33,13 @@
     <ClInclude Include="Scene\SceneManager.h" />
     <ClInclude Include="Scene\SelectScene.h" />
     <ClInclude Include="Scene\TitleScene.h" />
-    <ClInclude Include="StageObject\Factory.h" />
-    <ClInclude Include="StageObject\ObjectBase.h" />
-    <ClInclude Include="StageObject\ObjectManager.h" />
     <ClInclude Include="StageObject\ObjectTest1.h" />
-    <ClInclude Include="StageObject\StageObjectFactory.h" />
     <ClInclude Include="StageObject\StarObject.h" />
     <ClInclude Include="StageObject\StarChild.h" />
     <ClInclude Include="Diamond\DiamondBase.h" />
+    <ClInclude Include="Object\ObjectManager.h" />
+    <ClInclude Include="Object\Factory.h" />
+    <ClInclude Include="Object\ObjectBase.h" />
+    <ClInclude Include="Object\ObjectFactory.h" />
   </ItemGroup>
 </Project>

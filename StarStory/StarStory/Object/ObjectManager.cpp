@@ -1,6 +1,6 @@
 ﻿#include "ObjectManager.h"
 #include "Factory.h"
-#include "StageObjectFactory.h"
+#include "ObjectFactory.h"
 #include "../Lib/Lib.h"
 #include <vector>
 
@@ -20,13 +20,13 @@ void ObjectManager::Register(
 	std::string tex_name,
 	float rot
 ) {
-	StageObjectFactory factory;
+	ObjectFactory factory;
 	m_obj_list.emplace(id, factory.Create(id, x, y, tex_name, rot));
 }
 
 void ObjectManager::Register(StageObjectID id, ObjectBase* obj) {
 
-	StageObjectFactory factory;
+	ObjectFactory factory;
 	m_obj_list.emplace(id, obj);
 }
 
@@ -92,7 +92,7 @@ void ObjectManager::Create(
 	float x, float y
 ) {
 
-	StageObjectFactory factory;
+	ObjectFactory factory;
 	m_obj_list.emplace(new_id, factory.Create(id, x, y));
 }
 

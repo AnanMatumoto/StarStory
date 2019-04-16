@@ -1,7 +1,7 @@
 ﻿#include "GameScene.h"
 #include "SceneManager.h"
 #include "../Lib/Lib.h"
-#include "../StageObject/ObjectManager.h"
+#include "../Object/ObjectManager.h"
 #include "../StageObject/StarObject.h"
 
 //-------------------------------------------

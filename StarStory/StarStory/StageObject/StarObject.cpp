@@ -1,8 +1,8 @@
 ﻿#include "StarObject.h"
 #include "StarChild.h"
-#include "ObjectManager.h"
+#include "../Object/ObjectManager.h"
 #include "../Lib/Lib.h"
-#include "StageObjectFactory.h"
+#include "../Object/ObjectFactory.h"
 
 const float GRAVITY = 1.3f;
 float temp_y = 0;
@@ -20,7 +20,7 @@ StarObject::StarObject(
 	m_vel.x   = 0;
 	has_y     = true;
 
-	StageObjectFactory factory;
+	ObjectFactory factory;
 
 	/*ObjectManager::GetInstance().Register(STAR_CHILD1,  0,  0,"星１",  0);
 	ObjectManager::GetInstance().Register(STAR_CHILD2, 30, 23,"星２", 72);

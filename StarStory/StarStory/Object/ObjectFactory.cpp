@@ -1,11 +1,11 @@
-﻿#include "StageObjectFactory.h"
-#include "ObjectTest1.h"
-#include "StarObject.h"
-#include "StarChild.h"
+﻿#include "ObjectFactory.h"
+#include "../StageObject/ObjectTest1.h"
+#include "../StageObject/StarObject.h"
+#include "../StageObject/StarChild.h"
 
 //---------------------------------
 //　ステージオブジェクト生成処理
-ObjectBase* StageObjectFactory::Create(
+ObjectBase* ObjectFactory::Create(
 	int id,
 	float x, float y,
 	std::string tex_name,

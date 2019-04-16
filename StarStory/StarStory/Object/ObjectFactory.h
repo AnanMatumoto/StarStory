@@ -6,11 +6,11 @@
 //　ステージオブジェクト生成クラス
 //===================================
 
-class StageObjectFactory:public Factory {
+class ObjectFactory:public Factory {
 
 public:
-	StageObjectFactory(){}
-	~StageObjectFactory(){}
+	ObjectFactory(){}
+	~ObjectFactory(){}
 
 	// オブジェクト生成処理
 	ObjectBase* Create(

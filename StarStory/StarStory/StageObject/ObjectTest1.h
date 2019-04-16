@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "ObjectBase.h"
+#include "../Object/ObjectBase.h"
 
 //================================
 // テスト用オブジェクトクラス	
