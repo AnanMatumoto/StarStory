@@ -20,6 +20,7 @@
     <ClCompile Include="StageObject\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp" />
     <ClCompile Include="StageObject\StarChild.cpp" />
+    <ClCompile Include="Custom\CustomStar\CustomStar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -39,6 +40,7 @@
     <ClInclude Include="StageObject\StageObjectFactory.h" />
     <ClInclude Include="StageObject\StarObject.h" />
     <ClInclude Include="StageObject\StarChild.h" />
-    <ClInclude Include="Diamond\DiamondBase.h" />
+    <ClInclude Include="Custom\DiamondBase\DiamondBase.h" />
+    <ClInclude Include="Custom\CustomStar\CustomStar.h" />
   </ItemGroup>
 </Project>
