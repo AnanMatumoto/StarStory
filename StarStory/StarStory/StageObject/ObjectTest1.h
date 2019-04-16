@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../Object/ObjectBase.h"
+#include "ObjectBase.h"
 
 //================================
 // テスト用オブジェクトクラス	
@@ -17,8 +17,7 @@ private:
 	void Update()override;
 	//　描画処理
 	void Draw()override;
-	//頂点座標をセットする
-	void SetVertex(DWORD color = 0x00ffffff)override;
+
 
 };
 

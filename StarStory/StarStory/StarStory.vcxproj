@@ -179,11 +179,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Object\ObjectBase.cpp">
+    <ClCompile Include="StageObject\ObjectBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Object\ObjectManager.cpp">
+    <ClCompile Include="StageObject\ObjectManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -191,14 +191,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Object\ObjectFactory.cpp">
+    <ClCompile Include="StageObject\StageObjectFactory.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="StageObject\StarChild.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="StageObject\StarChild.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp">
       <SubType>
       </SubType>
@@ -254,23 +251,19 @@
       <SubType>
       </SubType>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Skill.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="StageObject\Factory.h">
-=======
-    <ClInclude Include="Object\Factory.h">
->>>>>>> オブジェクトマネージャー修正
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Object\ObjectBase.h">
+    <ClInclude Include="StageObject\ObjectBase.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Object\ObjectManager.h">
+    <ClInclude Include="StageObject\ObjectManager.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -278,7 +271,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Object\ObjectFactory.h">
+    <ClInclude Include="StageObject\StageObjectFactory.h">
       <SubType>
       </SubType>
     </ClInclude>

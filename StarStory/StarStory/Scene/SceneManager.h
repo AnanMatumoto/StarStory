@@ -13,8 +13,7 @@ public:
 	/*
 	このクラスはシングルトンで構成されています。
 	呼び出し方：
-		1.SceneManager& sm = SceneManager::GetInstance();
-		2.SceneManager::GetInstance().Init();
+		SceneManager& sm = SceneManager::GetInstance();
 	*/
 	static SceneManager& GetInstance();
 	/*

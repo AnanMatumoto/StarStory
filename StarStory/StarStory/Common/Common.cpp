@@ -46,13 +46,11 @@ t_Float2 t_Float2::operator / (float r) const {
 //=========================================
 // ベクトルクラス
 //=========================================
-
 Vec2 Vec2::operator = (const t_Float2& r) {
 	x = r.x;
 	y = r.y;
 	return { x, y };
 }
-
 
 float Vec2::Cross(Vec2 v1, Vec2 v2, Vec2 point) {
 

@@ -1,70 +1,60 @@
-ï»¿#include "StarChild.h"
+#include "StarChild.h"
 #include "StarObject.h"
-#include "../Object/ObjectManager.h"
-#include "ObjectTest1.h"
+#include "ObjectManager.h"
 
-DWORD red = 0;//â€»å¾Œã§æ¶ˆã™
+
 //------------------------------------
-//ã€€ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+//@ƒRƒ“ƒXƒgƒ‰ƒNƒ^
 StarChild::StarChild(
 	float x,
 	float y,
-	std::string tex_name,
 	float rot
-) :ObjectBase(x, y, rot) {
+):ObjectBase(x,y, rot){
 
-	m_width    = 46.f;
-	m_height   = 64.f;
-	m_tex_name = tex_name;
-	m_parent = ObjectManager::GetInstance().FindObject(STAR_OBJ);
-	m_hit_obj = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
-	is_hit = false;
+	m_width   = 46.f;
+	m_height  = 64.f;
 }
 
-//------------------------------------
-//ã€€æ›´æ–°å‡¦ç†
+
 void StarChild::Update() {
-
-
 }
 
-//------------------------------------
-//ã€€æç”»å‡¦ç†
 void StarChild::Draw() {
 
-	SetVertex(red);//â€»
+	SetVertex();
 	Lib::DrawDiamond2D(
-		m_tex_name.c_str(),
-		m_vtx
+		"piyo",
+		 vtx
 	);
 }
 
 //-------------------------------------
-//é ‚ç‚¹ã®è¨­å®š
+//’¸“_‚Ìİ’è
 void StarChild::SetVertex(DWORD color) {
 
 	float ox = 0.5f;
 	float oy = 0.5f;
 
+	vtx[0] = {{(0.5f-ox),oy,0.f,1.f}, color,{0.f,0.5f}};
+	vtx[1] = {{ox,(0.5f+oy), 0.f,1.f},color,{0.5f,1.f}};
+	vtx[2] = {{(0.5f+ox),oy, 0.f, 1.f},color,{1.f,0.5f}};
+	vtx[3] = {{ox,(0.5f-oy), 0.f,1.f},color,{0.5f,0.f}};
 
-	m_vtx[0] = { {(0.5f - ox),oy,0.f,1.f}, color,{0.f,0.5f} };
-	m_vtx[1] = { {ox,(0.5f + oy), 0.f,1.f},color,{0.5f,1.f} };
-	m_vtx[2] = { {(0.5f + ox),oy, 0.f, 1.f},color,{1.f,0.5f} };
-	m_vtx[3] = { {ox,(0.5f - oy), 0.f,1.f},color,{0.5f,0.f} };
-
-	DiamondLocalTransform(m_vtx, m_width, m_height);
-	RefParentVertex(m_vtx);
+	DiamondLocalTransform(vtx, m_width, m_height,m_rot);
+	RefParentVertex(vtx);
 }
 
 //-------------------------------------
-//è¦ªã®åº§æ¨™ã‚’è‡ªèº«ã«åæ˜ ã™ã‚‹
+//e‚ÌÀ•W‚ğ©g‚É”½‰f‚·‚é
 void StarChild::RefParentVertex(Vertex vtx[4]) {
 
-	//è¦ªã®åº§æ¨™ã‚’å–å¾—
+  m_parent = ObjectManager::GetInstance().GetPtr(STAR_OBJ);
+
+	//e‚ÌÀ•W‚ğæ“¾
 	float pos_x = m_parent->GetX();
 	float pos_y = m_parent->GetY();
 
-	//è¦ªã®å›è»¢è§’ã‚’å–å¾—
+	//e‚Ì‰ñ“]Šp‚ğæ“¾
 	float sin = sinf(D3DXToRadian(m_parent->GetRot()));
 	float cos = cosf(D3DXToRadian(m_parent->GetRot()));
 
@@ -73,56 +63,17 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 
 	for (int i = 0; i < 4; ++i) {
 
-		//ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™XYã‚’ä¿å­˜
+		//ƒ[ƒJƒ‹À•WXY‚ğ•Û‘¶
 		vtx_pos_x = vtx[i].pos.x;
 		vtx_pos_y = vtx[i].pos.y;
 
-		//å›è»¢ã‚’åˆæˆã—ãŸæ–°åº§æ¨™ã‚’è¨­å®š
+		//‰ñ“]‚ğ‡¬‚µ‚½VÀ•W‚ğİ’è
 		float new_x = (vtx_pos_x * cos) + (vtx_pos_y * -sin);
 		float new_y = (vtx_pos_x * sin) + (vtx_pos_y * cos);
-
-		//ç›¸å¯¾åº§æ¨™ã‚’è¨­å®šã™ã‚‹
+	
+		//‘Š‘ÎÀ•W‚ğİ’è‚·‚é
 		vtx[i].pos.x = new_x + pos_x;
 		vtx[i].pos.y = new_y + pos_y;
 	}
-}
-
-//---------------------------------------
-//ã€€å½“ãŸã‚Šåˆ¤å®šç”¨ãƒ•ãƒ©ã‚°ã‚²ãƒƒã‚¿ãƒ¼
-void StarChild::IsHitToObject() {
-
-	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
-
-	for (auto it : m_hit_obj) {
-
-		if (vec.x <= it->GetWidth()) {
-			//ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å¹…ã«é ‚ç‚¹ãŒã‚ã‚‹ã‹
-			if (IsHitToSurface(vec, it)) {
-				//é ‚ç‚¹ãŒå½“ãŸã£ã¦ã„ã‚‹ã‹
-				red = 0x00ff0000;
-				is_hit = true;
-			}
-			else {
-				red = 0;//â€»
-				is_hit = false;
-			}
-		}
-		else {
-			red = 0;//â€»
-			is_hit = false;
-		}
-	}
-}
-
-//-------------------------------
-//ã€€å½“ãŸã‚Šåˆ¤å®šç”¨å¤‰æ•°ã‚²ãƒƒã‚¿ãƒ¼
-const bool StarChild::GetHit()const {
-	return is_hit;
-}
-
-//-------------------------------
-//	å½“ãŸã‚Šåˆ¤å®šç”¨å¤‰æ•°ã‚»ãƒƒã‚¿ãƒ¼
-void StarChild::SetHit(bool is_hit_){
-	is_hit = is_hit_;
 }
 

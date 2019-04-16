@@ -1,23 +1,22 @@
 ﻿#pragma once
 
 #include "Factory.h"
-#include <string>
+
 //===================================
 //　ステージオブジェクト生成クラス
 //===================================
 
-class ObjectFactory:public Factory {
+class StageObjectFactory:public Factory {
 
 public:
-	ObjectFactory(){}
-	~ObjectFactory(){}
+	StageObjectFactory(){}
+	~StageObjectFactory(){}
 
 	// オブジェクト生成処理
 	ObjectBase* Create(
 		int id,
 		float x,
 		float y,
-		std::string tex_name = "none",
 		float rotate = 0.f
 	)override;
 

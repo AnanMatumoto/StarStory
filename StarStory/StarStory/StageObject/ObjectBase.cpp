@@ -26,36 +26,10 @@ const float ObjectBase::GetY() const {
 	return m_pos.y;
 }
 
-//-----------------------------------
-// 回転角度ゲッター
 const float ObjectBase::GetRot()const {
 	return m_rot;
 }
 
-//-----------------------------------
-//　幅ゲッター
-const float ObjectBase::GetWidth()const {
-	return m_width;
-}
-
-const float ObjectBase::GetHeight()const {
-	return m_height;
-}
-
-//-----------------------------------
-// 頂点情報ゲッター
-const Vertex* ObjectBase::GetVertex()const {
-	return m_vtx;
-}
-
-//-----------------------------------
-//　頂点情報ゲッター（オーバーロード）
-const Vertex ObjectBase::GetVertex(int prim_num)const {
-	return m_vtx[prim_num];
-}
-
-//-----------------------------------
-//　矩形用ローカル座標変換
 void ObjectBase::BoxLocalTransform(
 	Vertex vtx[4],
 	float width, float height
@@ -88,11 +62,10 @@ void ObjectBase::BoxLocalTransform(
 	}
 }
 
-//---------------------------------
-//　菱形用ローカル座標変換
 void ObjectBase::DiamondLocalTransform(
 	Vertex vtx[4],
-	float width, float height
+	float width, float height,
+	DWORD col
 ) {
 	float w_half = width / 2.f;
 	float h_half = height / 2.f;
@@ -119,21 +92,5 @@ void ObjectBase::DiamondLocalTransform(
 		vtx[i].pos.x = new_x + pos_x;
 		vtx[i].pos.y = new_y + pos_y;
 	}
-}
 
-//--------------------------------------------
-//　オブジェクトと頂点の当たり判定
-bool ObjectBase::IsHitToSurface(Vec2 point, ObjectBase* obj) {
-
-	//各頂点から線分を作成する
-	Vec2 v1(obj->GetVertex(0).pos.x, obj->GetVertex(0).pos.y);
-	Vec2 v2(obj->GetVertex(1).pos.x, obj->GetVertex(1).pos.y);
-
-	//オブジェクトの頂点と線分との外積判定
-	float ans = point.Cross(v1, v2, point);
-
-	if (ans > 0) {
-		return true;
-	}
-	return false;
 }
