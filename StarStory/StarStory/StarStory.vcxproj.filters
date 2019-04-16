@@ -40,5 +40,6 @@
     <ClInclude Include="StageObject\StarObject.h" />
     <ClInclude Include="StageObject\StarChild.h" />
     <ClInclude Include="Diamond\DiamondBase.h" />
+    <ClInclude Include="Skill.h" />
   </ItemGroup>
 </Project>
