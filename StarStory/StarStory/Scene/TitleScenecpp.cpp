@@ -1,12 +1,13 @@
 ﻿#include "TitleScene.h"
 #include "SceneManager.h"
 #include "../Lib/Lib.h"
-
-
+#include"../UI/ButtonUI.h"
+#include "../StageObject/ObjectManager.h"
+#include "../UI/UIObjectFactory.h"
 //-----------------------------
 //　タイトルシーン初期化
 void TitleScene::Init() {
-
+	
 	state_id = SS_UPDATE;
 }
 
@@ -53,9 +54,13 @@ SceneID TitleScene::Control() {
 //　タイトルシーン描画
 void TitleScene::Draw() {
 
-	Lib::DrawBox2D(
-		"Resource/test_image/samp_title.png",
-		0, 0
+	float x = 0, y = 0;
+
+	//タイトル描画（仮）
+	Lib::DrawPx2D(
+		"Resource/title/stage1_background_３_png.jpg",
+		x, y,1920,1080
 	);
+
 }
 

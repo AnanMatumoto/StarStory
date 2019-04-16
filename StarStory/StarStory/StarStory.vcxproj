@@ -200,6 +200,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="UI\ButtonUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UI\UIObjectFactory.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h">
@@ -268,6 +276,11 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="StageObject\StarObject.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UI\ButtonUI.h" />
+    <ClInclude Include="UI\UIObjectFactory.h">
       <SubType>
       </SubType>
     </ClInclude>

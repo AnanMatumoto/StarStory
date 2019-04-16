@@ -24,7 +24,7 @@ public:
 		float rotate
 	) = 0;
 
-	~Factory(){}
+	virtual ~Factory(){}
 
 };
 

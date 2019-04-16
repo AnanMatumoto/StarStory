@@ -5,6 +5,12 @@
 //================================
 // ステージオブジェクトID
 //================================
+
+/*
+ Todo:　松本
+  IDをStageObjectIDから
+  ObjectIDに変更する
+*/
 enum StageObjectID {
 
 
@@ -17,8 +23,9 @@ enum StageObjectID {
 	STAR_CHILD3,
 	STAR_CHILD4,
 	STAR_CHILD5,
-
-
+	//UI
+	BT_START,
+	BT_END,
 };
 
 

@@ -20,6 +20,8 @@
     <ClCompile Include="StageObject\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp" />
     <ClCompile Include="StageObject\StarChild.cpp" />
+    <ClCompile Include="UI\ButtonUI.cpp" />
+    <ClCompile Include="UI\UIObjectFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -40,5 +42,7 @@
     <ClInclude Include="StageObject\StarObject.h" />
     <ClInclude Include="StageObject\StarChild.h" />
     <ClInclude Include="Diamond\DiamondBase.h" />
+    <ClInclude Include="UI\ButtonUI.h" />
+    <ClInclude Include="UI\UIObjectFactory.h" />
   </ItemGroup>
 </Project>
