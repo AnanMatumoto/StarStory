@@ -2,6 +2,7 @@
 #include "Factory.h"
 #include "StageObjectFactory.h"
 #include "../Lib/Lib.h"
+#include <vector>
 
 //-----------------------------------
 // インスタンス生成
@@ -16,11 +17,11 @@ ObjectManager& ObjectManager::GetInstance() {
 void ObjectManager::Register(
 	StageObjectID id,
 	float x, float y,
+	std::string tex_name,
 	float rot
 ) {
-
 	StageObjectFactory factory;
-	m_obj_list.emplace(id, factory.Create(id, x, y, rot));
+	m_obj_list.emplace(id, factory.Create(id, x, y, tex_name, rot));
 }
 
 //-----------------------------------
@@ -33,8 +34,6 @@ void ObjectManager::Update() {
 		}
 		it.second->Update();
 	}
-
-
 }
 
 //-----------------------------------
@@ -80,7 +79,6 @@ void ObjectManager::AllDelete() {
 	m_obj_list.clear();
 }
 
-
 //-----------------------------------
 void ObjectManager::Create(
 	StageObjectID id,
@@ -90,13 +88,13 @@ void ObjectManager::Create(
 
 	StageObjectFactory factory;
 	m_obj_list.emplace(new_id, factory.Create(id, x, y));
-
 }
 
 //------------------------------------
-//　オブジェクトポインターのセッター
-ObjectBase* ObjectManager::GetPtr(StageObjectID id) {
-	
+// IDで指定したオブジェクトを返す
+ObjectBase* ObjectManager::FindObject(StageObjectID id) {
+
+	//指定した型にキャストしたリストを作る
 	auto it = m_obj_list.find(id);
 	if (it != m_obj_list.end()) {
 		ObjectBase* obj = it->second;
@@ -105,3 +103,4 @@ ObjectBase* ObjectManager::GetPtr(StageObjectID id) {
 	}
 	return nullptr;
 }
+
