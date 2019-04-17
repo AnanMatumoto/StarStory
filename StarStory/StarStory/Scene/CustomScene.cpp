@@ -16,6 +16,18 @@ void CustomScene::Update() {
 	if (Lib::KeyPress(VK_SPACE)) {
 		state_id = SS_END;
 	}
+
+	// キー情報更新
+	Lib::KeyUpdate();
+
+	// マウス座標取得
+	Lib::GetMousePoint(&mouse_x, &mouse_y);
+
+	// マウス情報をカスタムシーンからカスタムスターに移す
+	custom_star.SetMousePos(mouse_x, mouse_y);
+
+	// 星型の更新
+	custom_star.Update();
 }
 
 //----------------------------
@@ -54,30 +66,19 @@ void CustomScene::Draw() {
 	
 	// 描画順に書いていく
 	// 橋本君のラフを元に置いてます(全て仮画像)
-
-	// 「背景」
-	Lib::DrawBox2D(
-		"Resource/test_image/samp_custom.png",
-		0, 0
-	);
+	// 仮画像なので後で変更します
 
 	// 「星の後ろの白枠」
-	Lib::DrawBox2D(
+	/*Lib::DrawBox2D(
 		"Resource/Custom/星の後ろの白枠.png",
 		100, 100
-	);
+	);*/
+
+	// 「背景」
 
 	// 「ひし形」
-	// TOP
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500.f, 300.f, 320.f, 230.f, 0.f);
-	// TOP_RIGHT
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 + 150.f, 300 + 110.f, 320.f, 230.f, 1.26f);
-	// TOP_RIGHT
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 - 150.f, 300 + 110.f, 320.f, 230.f, -1.26f);
-	// BOTTOM_RIGHT
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 + 90.f, 300 + 285.f, 320.f, 230.f, 2.52f);
-	// BOTTOM_LEFT
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 - 90.f, 300 + 285.f, 320.f, 230.f, -2.52f);
+	// 星型の描画(今はひし形のみ)
+	custom_star.Draw();
 
 	// 「カスタム」
 	Lib::DrawBox2D(
@@ -88,31 +89,35 @@ void CustomScene::Draw() {
 	// 「総スキル」
 	Lib::DrawBox2D(
 		"Resource/Custom/総スキル.png",
-		1200, 200
+		1200, 100
 	);
 
+	float skill_pos_count = 0;
 	// 「スキル各種」
-	Lib::DrawBox2D(
-		"Resource/Custom/スキル各種.png",
-		1200, 500
-	);
+	for (int i = 0; i < 5; ++i) {
+		skill_pos_count += 100;
+		Lib::DrawBox2D(
+			"Resource/Custom/スキル各種.png",
+			1200, 120 + skill_pos_count
+		);
+	}
 
 	// 「マップ確認」
 	Lib::DrawBox2D(
 		"Resource/Custom/マップ確認.png",
-		1200, 700
+		1200, 800
 	);
 
 	// 「セレクトへ」
 	Lib::DrawBox2D(
 		"Resource/Custom/セレクトへ.png",
-		1200, 800
+		1200, 900
 	);
 
 	//「プレイ画面へ」
 	Lib::DrawBox2D(
 		"Resource/Custom/プレイ画面へ.png",
-		1500, 700
+		1600, 800
 	);
 }
 

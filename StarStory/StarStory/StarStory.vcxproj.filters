@@ -20,8 +20,12 @@
     <ClCompile Include="StageObject\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp" />
     <ClCompile Include="StageObject\StarChild.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="UI\ButtonUI.cpp" />
     <ClCompile Include="UI\UIObjectFactory.cpp" />
+=======
+    <ClCompile Include="Custom\CustomStar\CustomStar.cpp" />
+>>>>>>> カスタムシーン作成(ひし形をクリックしたらリアクションがある)
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -41,6 +45,7 @@
     <ClInclude Include="StageObject\StageObjectFactory.h" />
     <ClInclude Include="StageObject\StarObject.h" />
     <ClInclude Include="StageObject\StarChild.h" />
+<<<<<<< HEAD
     <ClInclude Include="Diamond\DiamondBase.h" />
 <<<<<<< HEAD
     <ClInclude Include="UI\ButtonUI.h" />
@@ -48,5 +53,9 @@
 =======
     <ClInclude Include="Skill.h" />
 >>>>>>> 1ea1ead483482c3e230894b51fca9b76672c7080
+=======
+    <ClInclude Include="Custom\DiamondBase\DiamondBase.h" />
+    <ClInclude Include="Custom\CustomStar\CustomStar.h" />
+>>>>>>> カスタムシーン作成(ひし形をクリックしたらリアクションがある)
   </ItemGroup>
 </Project>
