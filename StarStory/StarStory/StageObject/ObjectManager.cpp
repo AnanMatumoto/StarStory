@@ -97,8 +97,8 @@ ObjectBase* ObjectManager::FindObject(StageObjectID id) {
 	//指定した型にキャストしたリストを作る
 	auto it = m_obj_list.find(id);
 	if (it != m_obj_list.end()) {
-		ObjectBase* obj = it->second;
 
+		ObjectBase* obj = it->second;
 		return obj;
 	}
 	return nullptr;

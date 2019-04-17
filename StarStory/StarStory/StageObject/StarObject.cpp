@@ -11,8 +11,8 @@ StarObject::StarObject(
 	float x,
 	float y,
 	float rot
-) : ObjectBase(x, y, rot
-) {
+) : ObjectBase(x, y, rot)
+{
 	m_speed = 1.f;
 	m_width = 128;
 	m_height = 128;
@@ -24,7 +24,7 @@ StarObject::StarObject(
 //　更新処理
 void StarObject::Update() {
 	AutomaticMove();
-
+	SetVertex();
 }
 
 //------------------------------------
@@ -52,7 +52,7 @@ void StarObject::AutomaticMove() {
 	auto mng = ObjectManager::GetInstance();
 	m_childs = mng.GetGameObjects<StarChild>();
 
-	++m_rot*m_speed;
+	++m_rot;
 	m_vel.x = m_speed;
 	m_pos.x += m_vel.x;
 	m_vel.y = GRAVITY;

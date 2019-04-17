@@ -38,9 +38,8 @@ private:
 	// 親の座標を反映する
 	void RefParentVertex(Vertex vtx[4]);
 
-
-
 private:
+
 	std::string m_tex_name;				//画像名
 	ObjectBase* m_parent;			    //親オブジェクト
 	std::vector<ObjectTest1*> m_hit_obj;//マップオブジェクトのリスト

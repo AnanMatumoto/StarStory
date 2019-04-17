@@ -30,6 +30,7 @@ void StarChild::Update() {
 //------------------------------------
 //　描画処理
 void StarChild::Draw() {
+
 	SetVertex(red);//※
 	Lib::DrawDiamond2D(
 		m_tex_name.c_str(),
@@ -81,7 +82,8 @@ void StarChild::IsHitToObject() {
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
 	for (auto it : m_hit_obj) {
-		if (vec.x <= it->GetWidth()) {
+
+		if (vec.x <= it->GetWidth()){
 			//オブジェクトの幅に頂点があるか
 			if (IsHitToSurface(vec, it)) {
 				//頂点が当たっているか
@@ -89,8 +91,8 @@ void StarChild::IsHitToObject() {
 				is_hit = true;
 			}
 			else {
-				red = 0x00ff0000;
-				is_hit = true;
+				red = 0;
+				is_hit = false;
 			}
 		}
 		else {
@@ -105,7 +107,6 @@ void StarChild::IsHitToObject() {
 const bool StarChild::GetHit()const {
 	return is_hit;
 }
-
 
 //-------------------------------
 //	当たり判定用変数セッター

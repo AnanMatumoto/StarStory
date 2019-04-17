@@ -22,7 +22,7 @@ private:
 	void Draw()override;
 
 	//頂点のセット
-	void SetVertex(DWORD color)override;
+	void SetVertex(DWORD color= 0x000000)override;
 
 };
 
