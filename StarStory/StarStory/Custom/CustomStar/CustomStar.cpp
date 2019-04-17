@@ -49,8 +49,8 @@ void CustomStar::CollisionMouse() {
 
 	// 星のひし形に当たったら指定の位置に画像を描画
 	if (Collision::IsInDiamond(
-		vertex[0], vertex[1], vertex[2], vertex[3],
-		mouse_pos) == true) {
+		m_vertex[0], m_vertex[1], m_vertex[2], m_vertex[3],
+		m_mouse_pos) == true) {
 
 		// 当たり判定確認用
 		Lib::DrawBox2D(
@@ -62,14 +62,14 @@ void CustomStar::CollisionMouse() {
 // ひし形の各座標を設定
 void CustomStar::SettingPos() {
 
-	switch (diamond_pos) {
+	switch (m_diamond_pos) {
 
 	case TOP:
 
 		m_pos_x = TOP_POS_X;
 		m_pos_y = TOP_POS_Y;
 		m_angle = TOP_ANGLE;
-		diamond_pos = TOP_RIGHT;
+		m_diamond_pos = TOP_RIGHT;
 		break;
 
 	case TOP_RIGHT:
@@ -77,7 +77,7 @@ void CustomStar::SettingPos() {
 		m_pos_x = TOP_POS_X + 150.f;
 		m_pos_y = TOP_POS_Y + 110.f;
 		m_angle = TOP_ANGLE + 1.26f;
-		diamond_pos = TOP_LEFT;
+		m_diamond_pos = TOP_LEFT;
 		break;
 
 	case TOP_LEFT:
@@ -85,7 +85,7 @@ void CustomStar::SettingPos() {
 		m_pos_x = TOP_POS_X - 150.f;
 		m_pos_y = TOP_POS_Y + 110.f;
 		m_angle = TOP_ANGLE - 1.26f;
-		diamond_pos = BOTTOM_RIGHT;
+		m_diamond_pos = BOTTOM_RIGHT;
 		break;
 
 	case BOTTOM_RIGHT:
@@ -93,7 +93,7 @@ void CustomStar::SettingPos() {
 		m_pos_x = TOP_POS_X + 90.f;
 		m_pos_y = TOP_POS_Y + 285.f;
 		m_angle = TOP_ANGLE + 2.52f;
-		diamond_pos = BOTTOM_LEFT;
+		m_diamond_pos = BOTTOM_LEFT;
 		break;
 
 	case BOTTOM_LEFT:
@@ -101,7 +101,7 @@ void CustomStar::SettingPos() {
 		m_pos_x = TOP_POS_X - 90.f;
 		m_pos_y = TOP_POS_Y + 285.f;
 		m_angle = TOP_ANGLE - 2.52f;
-		diamond_pos = TOP;
+		m_diamond_pos = TOP;
 		break;
 
 	default:
@@ -109,7 +109,7 @@ void CustomStar::SettingPos() {
 		m_pos_x = 0;
 		m_pos_y = 0;
 		m_angle = 0;
-		diamond_pos = TOP;
+		m_diamond_pos = TOP;
 		break;
 	}
 }
@@ -120,9 +120,9 @@ void CustomStar::SetthigVertex() {
 	// ひし形のそれぞれの座標をセット
 	CustomStar::SettingPos();
 
-	vertex[0] = { m_pos_x - m_size_w / 2,m_pos_y };
-	vertex[1] = { m_pos_x,m_pos_y - m_size_h / 2 };
-	vertex[2] = { m_pos_x + m_size_w / 2,m_pos_y };
-	vertex[3] = { m_pos_x,m_pos_y + m_size_h / 2 };
+	m_vertex[0] = { m_pos_x - m_size_w / 2,m_pos_y };
+	m_vertex[1] = { m_pos_x,m_pos_y - m_size_h / 2 };
+	m_vertex[2] = { m_pos_x + m_size_w / 2,m_pos_y };
+	m_vertex[3] = { m_pos_x,m_pos_y + m_size_h / 2 };
 }
 
