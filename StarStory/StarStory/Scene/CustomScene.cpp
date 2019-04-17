@@ -16,6 +16,8 @@ void CustomScene::Update() {
 	if (Lib::KeyPress(VK_SPACE)) {
 		state_id = SS_END;
 	}
+
+	Lib::GetMousePoint(&mouse_x, &mouse_y);
 }
 
 //----------------------------
@@ -69,16 +71,18 @@ void CustomScene::Draw() {
 	);
 
 	// 「ひし形」
-	// TOP
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500.f, 300.f, 320.f, 230.f, 0.f);
-	// TOP_RIGHT
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 + 150.f, 300 + 110.f, 320.f, 230.f, 1.26f);
-	// TOP_RIGHT
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 - 150.f, 300 + 110.f, 320.f, 230.f, -1.26f);
-	// BOTTOM_RIGHT
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 + 90.f, 300 + 285.f, 320.f, 230.f, 2.52f);
-	// BOTTOM_LEFT
-	Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 - 90.f, 300 + 285.f, 320.f, 230.f, -2.52f);
+	//// TOP
+	//Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500.f, 300.f, 320.f, 230.f, 0.f);
+	//// TOP_RIGHT
+	//Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 + 150.f, 300 + 110.f, 320.f, 230.f, 1.26f);
+	//// TOP_RIGHT
+	//Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 - 150.f, 300 + 110.f, 320.f, 230.f, -1.26f);
+	//// BOTTOM_RIGHT
+	//Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 + 90.f, 300 + 285.f, 320.f, 230.f, 2.52f);
+	//// BOTTOM_LEFT
+	//Lib::DrawDaiamond2D("Resource/Custom/player_1_normal(仮).png", 500 - 90.f, 300 + 285.f, 320.f, 230.f, -2.52f);
+
+	custom_star.Draw();
 
 	// 「カスタム」
 	Lib::DrawBox2D(
