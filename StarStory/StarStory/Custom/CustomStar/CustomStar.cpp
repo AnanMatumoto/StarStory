@@ -4,8 +4,8 @@
 CustomStar::CustomStar() {
 
 	// ひし形の幅の設定
-	m_size_w = 230;
-	m_size_h = 320;
+	m_size_w = DIAMOND_W;
+	m_size_h = DIAMOND_H;
 }
 
 // デストラクタ
@@ -20,22 +20,8 @@ void CustomStar::Update() {
 
 	for (int i = 0; i < MAX_DIANMOND_NUM; ++i) {
 
-		// ひし形のそれぞれの座標をセット
-		CustomStar::SettingPos();
-
-		// ひし形のそれぞれの頂点をセット
-		CustomStar::SetthigVertex();
-
-		// 星のひし形に当たったら指定の位置に画像を描画
-		if (Collision::IsInDiamond(
-			vertex[0], vertex[1], vertex[2], vertex[3],
-			mouse_pos) == true) {
-
-			// 当たり判定確認用
-			Lib::DrawBox2D(
-				"Resource/Custom/player_1_light.png",
-				300, 200);
-		}
+		// ひし形の座標とマウスの座標の当たり判定
+		CustomStar::CollisionMouse();
 	}
 }
 
@@ -55,7 +41,23 @@ void CustomStar::Draw() {
 	}
 }
 
-// ひし形の各頂点を設定
+// ひし形の座標とマウスの座標の当たり判定
+void CustomStar::CollisionMouse() {
+
+	// ひし形のそれぞれの頂点をセット
+	CustomStar::SetthigVertex();
+
+	// 星のひし形に当たったら指定の位置に画像を描画
+	if (Collision::IsInDiamond(
+		vertex[0], vertex[1], vertex[2], vertex[3],
+		mouse_pos) == true) {
+
+		// 当たり判定確認用
+		Lib::DrawBox2D(
+			"Resource/Custom/player_1_light.png",
+			300, 200);
+	}
+}
 
 // ひし形の各座標を設定
 void CustomStar::SettingPos() {
@@ -115,8 +117,12 @@ void CustomStar::SettingPos() {
 // ひし形の各頂点の座標を代入する
 void CustomStar::SetthigVertex() {
 
-	vertex[0] = { m_pos_x - m_size_w,m_pos_y };
-	vertex[1] = { m_pos_x,m_pos_y - m_size_h };
-	vertex[2] = { m_pos_x + m_size_w,m_pos_y };
-	vertex[3] = { m_pos_x,m_pos_y + m_size_h };
+	// ひし形のそれぞれの座標をセット
+	CustomStar::SettingPos();
+
+	vertex[0] = { m_pos_x - m_size_w / 2,m_pos_y };
+	vertex[1] = { m_pos_x,m_pos_y - m_size_h / 2 };
+	vertex[2] = { m_pos_x + m_size_w / 2,m_pos_y };
+	vertex[3] = { m_pos_x,m_pos_y + m_size_h / 2 };
 }
+
