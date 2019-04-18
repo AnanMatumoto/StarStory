@@ -48,7 +48,7 @@ void CustomStar::Draw() {
 void CustomStar::CollisionMouse() {
 
 	// ひし形のそれぞれの頂点をセット
-	SetthigVertex();
+	SettingVertex();
 
 	// 星のひし形に当たったら指定の位置に画像を描画
 	if (Collision::IsInDiamond(
@@ -121,7 +121,7 @@ void CustomStar::SettingPos() {
 
 
 // ひし形の各頂点の座標を代入する
-void CustomStar::SetthigVertex() {
+void CustomStar::SettingVertex() {
 
 	// ひし形のそれぞれの座標をセット
 	SettingPos();

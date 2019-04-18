@@ -32,7 +32,7 @@ public:
 	SetthingPos()を呼ぶ前にのみ使用する
 	*/
 	/*--使うところ--*/
-	void SetthigVertex();
+	void SettingVertex();
 
 	// ひし形とマウスの当たり判定用
 	void CollisionMouse();
