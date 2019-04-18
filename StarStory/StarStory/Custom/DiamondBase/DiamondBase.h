@@ -78,7 +78,7 @@ protected:
 
 	DiamondVertex m_diamond_vertex;						// ひし形の各頂点の情報
 
-	SkillId m_skill_id[MAX_DIAMOND_NUM];			// スキルの情報
+	Skill m_skill[MAX_DIAMOND_NUM];			// スキルの情報
 	/*--enum--*/
 	/*--基本情報--*/
 

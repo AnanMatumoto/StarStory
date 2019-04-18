@@ -35,5 +35,5 @@ private:
 
 struct SkillInfo {
 
-	SkillId skill_id;
+	Skill skill_id;
 };
