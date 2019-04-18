@@ -13,12 +13,12 @@ void CustomScene::Init() {
 //　カスタムシーン更新
 void CustomScene::Update() {
 
+	// キー情報更新
+	Lib::KeyUpdate();
+
 	if (Lib::KeyPress(VK_SPACE)) {
 		state_id = SS_END;
 	}
-
-	// キー情報更新
-	Lib::KeyUpdate();
 
 	// マウス座標取得
 	Lib::GetMousePoint(&mouse_x, &mouse_y);
