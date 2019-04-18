@@ -68,56 +68,103 @@ void CustomScene::Draw() {
 	// 橋本君のラフを元に置いてます(全て仮画像)
 	// 仮画像なので後で変更します
 
-	// 「星の後ろの白枠」
-	/*Lib::DrawBox2D(
-		"Resource/Custom/星の後ろの白枠.png",
-		100, 100
-	);*/
-
 	// 「背景」
+	Lib::DrawBox2D(
+		"Resource/Custom/UI_custom_window.png",
+		0, -20
+	);
 
-	// 「ひし形」
-	// 星型の描画(今はひし形のみ)
+	// 「星型の描画」
 	custom_star.Draw();
 
-	// 「カスタム」
-	Lib::DrawBox2D(
-		"Resource/Custom/カスタム.png",
-		10, 10
-	);
-
-	// 「総スキル」
-	Lib::DrawBox2D(
-		"Resource/Custom/総スキル.png",
-		1200, 100
-	);
-
-	float skill_pos_count = 0;
-	// 「スキル各種」
+	// 「◀」
+	float left = 205;
 	for (int i = 0; i < 5; ++i) {
-		skill_pos_count += 100;
 		Lib::DrawBox2D(
-			"Resource/Custom/スキル各種.png",
-			1200, 120 + skill_pos_count
+			"Resource/Custom/UI_custom_left.png",
+			1220, left
 		);
+		left += 117;
+	}
+
+	/* --「スキル」--*/
+	// 無
+	Lib::DrawBox2D(
+		"Resource/Custom/UI_custom_normal.png",
+		1270, 190
+	);
+
+	// ジャンプ
+	Lib::DrawBox2D(
+		"Resource/Custom/UI_custom_jump.png",
+		1270, 310
+	);
+
+	// 加速
+	Lib::DrawBox2D(
+		"Resource/Custom/UI_custom_accel.png",
+		1270, 430
+	);
+
+	// ライト
+	Lib::DrawBox2D(
+		"Resource/Custom/UI_custom_light.png",
+		1270, 547
+	);
+
+	// 停止
+	Lib::DrawBox2D(
+		"Resource/Custom/UI_custom_stop.png",
+		1270, 665
+	);
+	/* --「スキル」--*/
+
+	// 「▶」
+	float right = 205;
+	for (int i = 0; i < 5; ++i) {
+		Lib::DrawBox2D(
+			"Resource/Custom/UI_custom_right.png",
+			1550, right
+		);
+		right += 117;
+	}
+
+	// 「強弱」(今は弱のみ)
+	float weak = 190;
+	for (int i = 0; i < 5; ++i) {
+		Lib::DrawBox2D(
+			"Resource/Custom/UI_custom_weak.png",
+			1600, weak
+		);
+		weak += 118;
+	}
+
+	// 「コスト」(今は1のみ)
+	float cost = 180;
+	for (int i = 0; i < 5; ++i) {
+		Lib::DrawBox2D(
+			"Resource/Custom/UI_custom_cost1.png",
+			1670, cost
+		);
+		cost += 119;
 	}
 
 	// 「マップ確認」
 	Lib::DrawBox2D(
-		"Resource/Custom/マップ確認.png",
-		1200, 800
+		"Resource/Custom/UI_custom_map.png",
+		1115, 787
 	);
 
 	// 「セレクトへ」
 	Lib::DrawBox2D(
-		"Resource/Custom/セレクトへ.png",
-		1200, 900
+		"Resource/Custom/UI_custom_serect.png",
+		1115, 887
 	);
 
-	//「プレイ画面へ」
+	//「決定」
 	Lib::DrawBox2D(
-		"Resource/Custom/プレイ画面へ.png",
-		1600, 800
+		"Resource/Custom/UI_custom_decision.png",
+		1445, 787
 	);
 }
 
