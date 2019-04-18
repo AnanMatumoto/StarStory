@@ -12,8 +12,8 @@ public:
 		std::string tex_name="none",		
 		float rot=0.f
 	):ObjectBase(x, y, rot) {
-		m_width  = 200.f;
-		m_height = 100.f;
+
+		m_tex_name = tex_name;
 	}
 
 	//更新
@@ -23,7 +23,7 @@ public:
 	void Draw() override;
 
 	//当たったかどうかのフラグ
-	void Hit();
+	void IsHitToMouse();
 
 	bool GetHit() {
 		this->is_hit;
@@ -33,6 +33,7 @@ public:
 private:
 
 	bool is_hit;
+	std::string m_tex_name;
 
 	/*マウスオブジェクトの当たり判定を取って
 	  自分のis_hitをtrueにする

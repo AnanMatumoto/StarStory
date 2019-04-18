@@ -1,12 +1,13 @@
 ﻿#include"../Lib/Lib.h"
 #include"ButtonUI.h"
 
+
 //描画
 void ButtonUI::Draw() {
 	//ボタンの描画
-	Lib::DrawPx2D(
-		"Resource/title/test_title_start.png",
-		450, 800, 200, 100
+	Lib::DrawBox2D(
+	m_tex_name.c_str(),
+	m_pos.x, m_pos.y
 	);
 
 }
@@ -19,13 +20,7 @@ void ButtonUI::Update() {
 
 
 //当たったかどうかの判定
-void ButtonUI::Hit() {
+void ButtonUI::IsHitToMouse() {
 
-	if (true)
-	{
-		is_hit = true;
-	}
-	else {
-		is_hit = false;
-	}
+
 }

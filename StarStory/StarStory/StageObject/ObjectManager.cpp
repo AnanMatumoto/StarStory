@@ -1,8 +1,11 @@
 ﻿#include "ObjectManager.h"
 #include "Factory.h"
 #include "StageObjectFactory.h"
+#include "../UI/UIObjectFactory.h"
 #include "../Lib/Lib.h"
 #include <vector>
+
+
 
 //-----------------------------------
 // インスタンス生成
@@ -13,7 +16,19 @@ ObjectManager& ObjectManager::GetInstance() {
 }
 
 //----------------------------------
-//　オブジェクト登録処理
+//　オブジェクトの登録
+void ObjectManager::Register(
+	StageObjectID id,
+	float x, float y,
+	std::string tex_name
+) {
+
+	UIObjectFactory UI_factory;
+	m_UI_list.emplace(id, UI_factory.Create(id, x, y, tex_name));
+}
+
+//----------------------------------
+//　オブジェクト登録処理(オーバーロード)
 void ObjectManager::Register(
 	StageObjectID id,
 	float x, float y,
@@ -21,10 +36,15 @@ void ObjectManager::Register(
 	std::string tex_name,
 	float rot
 ) {
-	StageObjectFactory factory;
-	m_obj_list.emplace(id, factory.Create(id, x, y, skill, tex_name, rot));
+	StageObjectFactory obj_factory;
+	m_obj_list.emplace(id, obj_factory.Create(id, x, y, skill, tex_name, rot));
 }
 
+/*
+Todo:
+	テンプレートでアップデート描画等を
+	行えるように今後修正する
+*/
 //-----------------------------------
 //　オブジェクトの更新
 void ObjectManager::Update() {
@@ -38,6 +58,16 @@ void ObjectManager::Update() {
 }
 
 //-----------------------------------
+//　UIの更新
+void ObjectManager::UpdateUI() {
+	
+	for (auto it : m_UI_list) {
+		it.second->Update();
+	}
+
+}
+
+//-----------------------------------
 // オブジェクトの描画
 void ObjectManager::Draw() {
 
@@ -46,6 +76,14 @@ void ObjectManager::Draw() {
 		if (it.second->IsDelete()) {
 			continue;
 		}
+		it.second->Draw();
+	}
+}
+
+//-------------------------------------
+// UIの描画
+void ObjectManager::DrawUI() {
+	for (auto it : m_UI_list) {
 		it.second->Draw();
 	}
 }
@@ -65,6 +103,19 @@ void ObjectManager::Delete(StageObjectID id) {
 }
 
 //------------------------------------
+//　指定したUIを削除
+void ObjectManager::DeleteUI(StageObjectID id) {
+
+	auto itr = m_UI_list.find(id);
+
+	if (itr != m_UI_list.end()) {
+		ObjectBase* obj = itr->second;
+		delete obj;
+	}
+	m_UI_list.erase(itr);
+}
+
+//------------------------------------
 //　オブジェクトの全削除
 void ObjectManager::AllDelete() {
 
@@ -76,10 +127,23 @@ void ObjectManager::AllDelete() {
 			delete obj;
 		}
 	}
+
 	//　要素をすべて削除
 	m_obj_list.clear();
 }
 
+//-----------------------------------
+//　UIの削除
+void ObjectManager::AllDeleteUI() {
+
+	for (auto it : m_UI_list) {
+		ObjectBase* UI = it.second;
+		if (UI != nullptr) {
+			delete UI;
+		}
+	}
+	m_UI_list.clear();
+}
 //-----------------------------------
 void ObjectManager::Create(
 	StageObjectID id,

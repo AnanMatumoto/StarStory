@@ -1,5 +1,9 @@
 ﻿#pragma once
+
 #include "Scene.h"
+#include <vector>
+
+class ObjectBase;
 
 //==================================
 // タイトル画面クラス
@@ -20,9 +24,11 @@ private:
 	//　描画処理
 	void Draw()override;
 
-	~TitleScene()override {}
+	~TitleScene()override;
 
 private:
 	//次のシーンへ行く為のフラグ
 	bool is_next;
+
+	
 };

@@ -10,8 +10,12 @@
 #define TEX_NOMAL  "Resource/Player/player_1_normal.png"
 #define TEX_STOP   "Resource/Player/player_1_stop.png"
 
-#define GAME_BACK "Resource/Game/UI_stage.png"
-#define GAME_STAGE "Resource/Game/stage1_background.png"
+#define GAME_BACK   "Resource/Game/UI_stage.png"
+#define GAME_STAGE  "Resource/Game/stage1_background.png"
+#define GAME_UI_WND "Resource/Game/UI_stage_window.png"
+#define GAME_CUSTOM "Resource/Game/UI_stage_custom.png"
+#define GAME_STOP   "Resource/Game/UI_stage_sign.png"
+#define GAME_ONOFF  "Resource/Game/UI_stage_skill.png"
 
 //-------------------------------------------
 //　ゲームシーン初期化
@@ -21,15 +25,23 @@ void GameScene::Init() {
 
 	// ToDo:スキル読み込み
 
+	ObjectManager& mng = ObjectManager::GetInstance();
 
     //ステージオブジェクトの登録
-	ObjectManager::GetInstance().Register(OBJ_TEST1, 0, 700);
-	ObjectManager::GetInstance().Register(STAR_OBJ, 90, 600);
-	ObjectManager::GetInstance().Register(STAR_CHILD1,   0,  0, SPEED,  TEX_SPEED,   0);
-	ObjectManager::GetInstance().Register(STAR_CHILD2,  30, 23,   JUMP, TEX_JUMP,   72);
-	ObjectManager::GetInstance().Register(STAR_CHILD3,  19, 60, NORMAL, TEX_NOMAL, 144);
-	ObjectManager::GetInstance().Register(STAR_CHILD4, -19, 60, NORMAL, TEX_NOMAL, 216);
-	ObjectManager::GetInstance().Register(STAR_CHILD5, -30, 23, NORMAL, TEX_NOMAL, 288);
+	mng.Register(OBJ_TEST1, 0, 700);
+	mng.Register(STAR_OBJ, 90, 600);
+	mng.Register(STAR_CHILD1,   0,  0, SPEED,  TEX_SPEED,   0);
+	mng.Register(STAR_CHILD2,  30, 23,   JUMP, TEX_JUMP,   72);
+	mng.Register(STAR_CHILD3,  19, 60, NORMAL, TEX_NOMAL, 144);
+	mng.Register(STAR_CHILD4, -19, 60, NORMAL, TEX_NOMAL, 216);
+	mng.Register(STAR_CHILD5, -30, 23, NORMAL, TEX_NOMAL, 288);
+
+	//UIの登録
+	mng.Register(BT_GM_WIND, 20, 50, GAME_UI_WND);
+	mng.Register(BT_GM_TOCUSTOM, 60,66,GAME_CUSTOM);
+	mng.Register(BT_GM_STOP, 250, 66, GAME_STOP );
+	mng.Register(BT_GM_ONOFF, 350, 66,GAME_ONOFF );
+
 }
 
 //------------------------------------------
@@ -42,11 +54,8 @@ void GameScene::Update() {
 	}
 
 	// ステージオブジェクト更新
-	ObjectManager& om = ObjectManager::GetInstance();
-
-	
-	om.Update();
-
+	ObjectManager::GetInstance().Update();
+	ObjectManager::GetInstance().UpdateUI();
 }
 
 //------------------------------------------
@@ -57,6 +66,14 @@ SceneID GameScene::End() {
 		is_clear = true;
 	}*/
 	state_id = SS_INIT;
+
+	//UIをリストから削除
+	ObjectManager::GetInstance().DeleteUI(BT_GM_WIND);
+	ObjectManager::GetInstance().DeleteUI(BT_GM_TOCUSTOM);
+	ObjectManager::GetInstance().DeleteUI(BT_GM_STOP);
+	ObjectManager::GetInstance().DeleteUI(BT_GM_ONOFF);
+	
+
 	return SC_RESULT;
 }
 
@@ -99,6 +116,7 @@ void GameScene::Draw() {
 	
 	// ステージオブジェクト描画
 	ObjectManager::GetInstance().Draw();
+	ObjectManager::GetInstance().DrawUI();
 
 }
 
@@ -108,5 +126,4 @@ GameScene::~GameScene() {
 
 	// オブジェクトの削除
 	ObjectManager::GetInstance().AllDelete();
-	
 }

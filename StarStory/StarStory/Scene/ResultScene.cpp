@@ -1,13 +1,23 @@
 ﻿#include "ResultScene.h"
 #include "SceneManager.h"
 #include "../Lib/Lib.h"
+#include "../StageObject/ObjectManager.h"
+#include "../UI/UIObjectFactory.h"
 
 #define RESULT_BACK "Resource/Result/UI_result.png"
+#define RESULT_CUSTOM "Resource/Result/UI_result_custom.png"
+#define RESULT_SELECT "Resource/Result/UI_result_serect.png"
 
 //----------------------------
 // リザルトシーン初期化
 void ResultScene::Init() {
 	state_id = SS_UPDATE;
+
+	//UIの登録
+	ObjectManager& mng = ObjectManager::GetInstance();
+	mng.Register(BT_RS_CUSUTOM, 935, 780, RESULT_CUSTOM);
+	mng.Register(BT_RS_SELECT, 1195, 780, RESULT_SELECT);
+	
 }
 
 //----------------------------
@@ -23,12 +33,19 @@ void ResultScene::Update() {
 	if (Lib::KeyPress(VK_SPACE)) {
 		state_id = SS_END;
 	}
+
+	ObjectManager::GetInstance().UpdateUI();
 }
 
 //----------------------------
 // リザルトシーン終了
 SceneID ResultScene::End() {
 	state_id = SS_INIT;
+
+	//UIをリストから削除
+	ObjectManager::GetInstance().DeleteUI(BT_RS_CUSUTOM);
+	ObjectManager::GetInstance().DeleteUI(BT_RS_SELECT);
+
 	return SC_TITLE;
 }
 
@@ -62,4 +79,6 @@ void ResultScene::Draw() {
 		RESULT_BACK,
 		0, 0
 	);
+
+	ObjectManager::GetInstance().DrawUI();
 }
