@@ -2,6 +2,8 @@
 #include "SceneManager.h"
 #include "../Lib/Lib.h"
 
+#define RESULT_BACK "Resource/Result/UI_result.png"
+
 //----------------------------
 // リザルトシーン初期化
 void ResultScene::Init() {
@@ -57,7 +59,7 @@ SceneID ResultScene::Control() {
 void ResultScene::Draw() {
 
 	Lib::DrawBox2D(
-		"Resource/test_image/result_samp.png",
+		RESULT_BACK,
 		0, 0
 	);
 }

@@ -10,6 +10,9 @@
 #define TEX_NOMAL  "Resource/Player/player_1_normal.png"
 #define TEX_STOP   "Resource/Player/player_1_stop.png"
 
+#define GAME_BACK "Resource/Game/UI_stage.png"
+#define GAME_STAGE "Resource/Game/stage1_background.png"
+
 //-------------------------------------------
 //　ゲームシーン初期化
 void GameScene::Init() {
@@ -84,10 +87,14 @@ SceneID GameScene::Control() {
 void GameScene::Draw() {
 
 	
-	Lib::DrawPx2D(
-		"Resource/test_image/stage1_background_1 .png",
-		0, 0,
-		1920, 1080
+	Lib::DrawBox2D(
+		GAME_BACK,
+		0, 0
+	);
+
+	Lib::DrawBox2D(
+		GAME_STAGE,
+		0, 30
 	);
 	
 	// ステージオブジェクト描画
