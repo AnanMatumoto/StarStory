@@ -3,9 +3,16 @@
 // コンストラクタ
 CustomStar::CustomStar() {
 
-	// ひし形の幅の設定
+	// ひし形の幅の設定(描画用)
 	m_size_w = DIAMOND_W;
 	m_size_h = DIAMOND_H;
+
+	// ひし形の幅の設定(当たり判定用)
+	m_half_size_w = HALF_DIAMOND_W;
+	m_half_size_h = HALF_DIAMOND_H;
+
+	// ひし形の位置を設定
+	SettingPart();
 
 	// ひし形のそれぞれの座標をセット
 	SettingPos();
@@ -27,11 +34,8 @@ CustomStar::~CustomStar() {
 // 更新
 void CustomStar::Update() {
 
-	for (int i = 0; i < MAX_DIANMOND_NUM; ++i) {
-
 		// ひし形とマウスの当たり判定
 		CollisionMouse();
-	}
 }
 
 // 描画
@@ -44,69 +48,77 @@ void CustomStar::Draw() {
 // ひし形の座標とマウスの座標の当たり判定
 void CustomStar::CollisionMouse() {
 
-	// 星のひし形に当たったら指定の位置に画像を描画
-	if (Collision::IsInDiamond(
-		m_vertex_positions[0], m_vertex_positions[1], m_vertex_positions[2], m_vertex_positions[3],
-		m_mouse_pos) == true) {
+	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
 
-		// 当たり判定確認用
-		Lib::DrawBox2D("Resource/Custom/player_1_light.png", 300, 200);
+		// 星のひし形に当たったら指定の位置に画像を描画
+		if (Collision::IsInDiamond(
+			m_vertex_positions[i][TOP_VERTEX], m_vertex_positions[i][RIGHT_VERTEX], 
+			m_vertex_positions[i][BOTTOM_VERTEX], m_vertex_positions[i][LEFT_VERTEX],
+			m_mouse_pos) == true) {
+
+			// 当たり判定確認用
+			Lib::DrawBox2D("Resource/Custom/player_1_light.png", 300, 200);
+		}
 	}
+}
+
+// ひし形の位置を設定
+void CustomStar::SettingPart() {
+		
+		m_diamond_part[TOP] = TOP;
+		m_diamond_part[TOP_RIGHT] = TOP_RIGHT;
+		m_diamond_part[TOP_LEFT] = TOP_LEFT;
+		m_diamond_part[BOTTOM_RIGHT] = BOTTOM_RIGHT;
+		m_diamond_part[BOTTOM_LEFT] = BOTTOM_LEFT;
 }
 
 // ひし形の各座標を設定
 void CustomStar::SettingPos() {
 
-	for (int i = 0; i < MAX_DIANMOND_NUM; ++i) {
+	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
 
-		switch (m_diamond_pos) {
+		switch (m_diamond_part[i]) {
 
 		case TOP:
 
-			m_diamond_info[i].pos_x = TOP_POS_X;
-			m_diamond_info[i].pos_y = TOP_POS_Y;
-			m_diamond_info[i].angle = TOP_ANGLE;
-			m_diamond_pos = TOP_RIGHT;
+			m_pos_x[i] = TOP_POS_X;
+			m_pos_y[i] = TOP_POS_Y;
+			m_angle[i] = TOP_ANGLE;
 			break;
 
 		case TOP_RIGHT:
 
-			m_diamond_info[i].pos_x = TOP_RIGHT_POS_X;
-			m_diamond_info[i].pos_y = TOP_RIGHT_POS_Y;
-			m_diamond_info[i].angle = TOP_RIGHT_ANGLE;
-			m_diamond_pos = TOP_LEFT;
+			m_pos_x[i] = TOP_RIGHT_POS_X;
+			m_pos_y[i] = TOP_RIGHT_POS_Y;
+			m_angle[i] = TOP_RIGHT_ANGLE;
 			break;
 
 		case TOP_LEFT:
 
-			m_diamond_info[i].pos_x = TOP_LEFT_POS_X;
-			m_diamond_info[i].pos_y = TOP_LEFT_POS_Y;
-			m_diamond_info[i].angle = TOP_LEFT_ANGLE;
-			m_diamond_pos = BOTTOM_RIGHT;
+			m_pos_x[i] = TOP_LEFT_POS_X;
+			m_pos_y[i] = TOP_LEFT_POS_Y;
+			m_angle[i] = TOP_LEFT_ANGLE;
 			break;
 
 		case BOTTOM_RIGHT:
 
-			m_diamond_info[i].pos_x = BOTTOM_RIGHT_POS_X;
-			m_diamond_info[i].pos_y = BOTTOM_RIGHT_POS_Y;
-			m_diamond_info[i].angle = BOTTOM_RIGHT_ANGLE;
-			m_diamond_pos = BOTTOM_LEFT;
+			m_pos_x[i] = BOTTOM_RIGHT_POS_X;
+			m_pos_y[i] = BOTTOM_RIGHT_POS_Y;
+			m_angle[i] = BOTTOM_RIGHT_ANGLE;
 			break;
 
 		case BOTTOM_LEFT:
 
-			m_diamond_info[i].pos_x = BOTTOM_LEFT_POS_X;
-			m_diamond_info[i].pos_y = BOTTOM_LEFT_POS_Y;
-			m_diamond_info[i].angle = BOTTOM_LEFT_ANGLE;
-			m_diamond_pos = TOP;
+			m_pos_x[i] = BOTTOM_LEFT_POS_X;
+			m_pos_y[i] = BOTTOM_LEFT_POS_Y;
+			m_angle[i] = BOTTOM_LEFT_ANGLE;
 			break;
 
 		default:
 
-			m_diamond_info[i].pos_x = 0;
-			m_diamond_info[i].pos_y = 0;
-			m_diamond_info[i].angle = 0;
-			m_diamond_pos = TOP;
+			m_pos_x[i] = 0;
+			m_pos_y[i] = 0;
+			m_angle[i] = 0;
 			break;
 		}
 	}
@@ -115,11 +127,11 @@ void CustomStar::SettingPos() {
 // ひし形の各頂点の座標を代入する
 void CustomStar::SettingVertex() {
 
-	for (int i = 0; i < MAX_DIANMOND_NUM; ++i) {
-		m_diamond_info[i].vertex_positions[0] = { m_pos_x - m_half_size_w ,m_pos_y };
-		m_vertex_positions[1] = { m_pos_x,m_pos_y - m_half_size_h };
-		m_vertex_positions[2] = { m_pos_x + m_half_size_w ,m_pos_y };
-		m_vertex_positions[3] = { m_pos_x,m_pos_y + m_half_size_h };
+	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
+		m_vertex_positions[i][TOP_VERTEX] = { m_pos_x[i] ,m_pos_y[i] - m_half_size_h };
+		m_vertex_positions[i][RIGHT_VERTEX] = { m_pos_x[i] + m_half_size_w ,m_pos_y[i] };
+		m_vertex_positions[i][BOTTOM_VERTEX] = { m_pos_x[i] ,m_pos_y[i] + m_half_size_h };
+		m_vertex_positions[i][LEFT_VERTEX] = { m_pos_x[i] - m_half_size_w ,m_pos_y[i] };
 	}
 }
 
@@ -127,14 +139,14 @@ void CustomStar::SettingVertex() {
 void CustomStar::DrawStar() {
 
 	// ひし形を星型に並べて描画
-	for (int i = 0; i < MAX_DIANMOND_NUM; ++i) {
+	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
 
 		// ひし形を描画
 		Lib::DrawDaiamond2D(
 			"Resource/Custom/player_1_normal(仮).png",
-			m_diamond_info[i].pos_x, m_diamond_info[i].pos_y,
+			m_pos_x[i], m_pos_y[i],
 			m_size_h, m_size_w,
-			m_angle);
+			m_angle[i]);
 	}
 }
 
