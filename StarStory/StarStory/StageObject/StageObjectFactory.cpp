@@ -2,17 +2,17 @@
 #include "ObjectTest1.h"
 #include "StarObject.h"
 #include "StarChild.h"
+#include "../Skill.h"
 
 //---------------------------------
 //　ステージオブジェクト生成処理
 ObjectBase* StageObjectFactory::Create(
 	int id,
 	float x, float y,
+	Skill skill,
 	std::string tex_name,
 	float rot
 ) {
-
-
 	switch (id)
 	{
 	case OBJ_TEST1:
@@ -24,23 +24,23 @@ ObjectBase* StageObjectFactory::Create(
 		break;
 
 	case STAR_CHILD1:
-		return new StarChild(x, y, tex_name, rot);
+		return new StarChild(x, y, skill, tex_name, rot);
 		break;
 
 	case STAR_CHILD2:
-		return new StarChild(x, y, tex_name, rot);
+		return new StarChild(x, y, skill, tex_name, rot);
 		break;
 
 	case STAR_CHILD3:
-		return new StarChild(x, y, tex_name, rot);
+		return new StarChild(x, y, skill, tex_name, rot);
 		break;
 
 	case STAR_CHILD4:
-		return new StarChild(x, y, tex_name, rot);
+		return new StarChild(x, y, skill, tex_name, rot);
 		break;
 
 	case STAR_CHILD5:
-		return new StarChild(x, y, tex_name, rot);
+		return new StarChild(x, y, skill, tex_name, rot);
 		break;
 
 	}
