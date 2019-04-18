@@ -49,7 +49,7 @@ void CustomStar::CollisionMouse() {
 
 	// 星のひし形に当たったら指定の位置に画像を描画
 	if (Collision::IsInDiamond(
-		m_vertex[0], m_vertex[1], m_vertex[2], m_vertex[3],
+		m_vertex_positions[0], m_vertex_positions[1], m_vertex_positions[2], m_vertex_positions[3],
 		m_mouse_pos) == true) {
 
 		// 当たり判定確認用
@@ -120,9 +120,9 @@ void CustomStar::SetthigVertex() {
 	// ひし形のそれぞれの座標をセット
 	CustomStar::SettingPos();
 
-	m_vertex[0] = { m_pos_x - m_size_w / 2,m_pos_y };
-	m_vertex[1] = { m_pos_x,m_pos_y - m_size_h / 2 };
-	m_vertex[2] = { m_pos_x + m_size_w / 2,m_pos_y };
-	m_vertex[3] = { m_pos_x,m_pos_y + m_size_h / 2 };
+	m_vertex_positions[0] = { m_pos_x - m_size_w / 2,m_pos_y };
+	m_vertex_positions[1] = { m_pos_x,m_pos_y - m_size_h / 2 };
+	m_vertex_positions[2] = { m_pos_x + m_size_w / 2,m_pos_y };
+	m_vertex_positions[3] = { m_pos_x,m_pos_y + m_size_h / 2 };
 }
 

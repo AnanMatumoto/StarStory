@@ -73,7 +73,7 @@ private:
 	DiamondPos m_diamond_pos;
 
 	// ひし形の各頂点座標保管場所
-	Vec2 m_vertex[MAX_VERTEX_NUM];
+	Vec2 m_vertex_positions[MAX_VERTEX_NUM];
 
 	// マウス座標取得用
 	// カスタムシーンのfloatのマウス座標を取得
