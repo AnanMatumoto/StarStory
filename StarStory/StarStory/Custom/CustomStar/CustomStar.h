@@ -58,10 +58,10 @@ public:
 private:
 
 	/*--定数--*/
-	#define MAX_DIANMOND_NUM (5)	// ひし形の最大個
-	#define MAX_VERTEX_NUM (4)		// ひし形の頂点の数
-	#define DIAMOND_W (230)			// ひし形の幅
-	#define DIAMOND_H (320)			// ひし形の高さ
+	const int MAX_DIANMOND_NUM = 5;				// ひし形の最大個
+	static const int MAX_VERTEX_NUM = 4;		// ひし形の頂点の数
+	const int DIAMOND_W = 230;					// ひし形の幅
+	const int DIAMOND_H = 320;					// ひし形の高さ
 
 	// TOPの初期位置、角度
 	const float TOP_POS_X = 500.f;
