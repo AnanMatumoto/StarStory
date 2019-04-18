@@ -10,7 +10,7 @@ public:
 	DiamondBase() {};				// コンストラクタ
 	virtual void Update() = 0;		// 更新
 	virtual void Draw() = 0;		// 描画
-	//virtual~DiamondBase() = 0;	// デストラクタ
+	virtual~DiamondBase() = 0;	// デストラクタ
 
 protected:
 

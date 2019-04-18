@@ -53,15 +53,15 @@ public:
 	void Draw()override;
 
 	// デストラクタ
-	//~CustomStar()override;
+	~CustomStar()override;
 
 private:
 
 	/*--定数--*/
-	const int MAX_DIANMOND_NUM = 5;				// ひし形の最大個
+	static const int MAX_DIANMOND_NUM = 5;				// ひし形の最大個
 	static const int MAX_VERTEX_NUM = 4;		// ひし形の頂点の数
-	const int DIAMOND_W = 230;					// ひし形の幅
-	const int DIAMOND_H = 320;					// ひし形の高さ
+	const float DIAMOND_W = 230;					// ひし形の幅
+	const float DIAMOND_H = 320;					// ひし形の高さ
 
 	// TOPの初期位置、角度
 	const float TOP_POS_X = 500.f;

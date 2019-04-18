@@ -8,12 +8,15 @@ CustomStar::CustomStar() {
 	m_size_h = DIAMOND_H;
 }
 
+// 基底クラスのデストラクタ
+DiamondBase::~DiamondBase() {
+
+}
+
 // デストラクタ
-/*--メモ--*/
-/*
-動的生成をする機会がないからいまいちわからない
-*/
-/*--メモ--*/
+CustomStar::~CustomStar() {
+
+}
 
 // 更新
 void CustomStar::Update() {
@@ -32,7 +35,7 @@ void CustomStar::Draw() {
 	for (int i = 0; i < MAX_DIANMOND_NUM; ++i) {
 
 		// ひし形のそれぞれの座標をセット
-		CustomStar::SettingPos();
+		SettingPos();
 
 		// ひし形をダブルクリックしたら
 		Lib::DrawDaiamond2D(
@@ -45,7 +48,7 @@ void CustomStar::Draw() {
 void CustomStar::CollisionMouse() {
 
 	// ひし形のそれぞれの頂点をセット
-	CustomStar::SetthigVertex();
+	SetthigVertex();
 
 	// 星のひし形に当たったら指定の位置に画像を描画
 	if (Collision::IsInDiamond(
@@ -114,11 +117,14 @@ void CustomStar::SettingPos() {
 	}
 }
 
+// ダブルクリックしたところを識別して情報の受け渡しをする
+
+
 // ひし形の各頂点の座標を代入する
 void CustomStar::SetthigVertex() {
 
 	// ひし形のそれぞれの座標をセット
-	CustomStar::SettingPos();
+	SettingPos();
 
 	m_vertex_positions[0] = { m_pos_x - m_size_w / 2,m_pos_y };
 	m_vertex_positions[1] = { m_pos_x,m_pos_y - m_size_h / 2 };
