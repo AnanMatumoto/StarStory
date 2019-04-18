@@ -4,6 +4,11 @@
 #include"../UI/ButtonUI.h"
 #include "../StageObject/ObjectManager.h"
 #include "../UI/UIObjectFactory.h"
+
+#define TITLE_BACK "Resource/Title/UI_title_bg.png"
+#define TITLE_START
+#define TITLE_END
+
 //-----------------------------
 //　タイトルシーン初期化
 void TitleScene::Init() {
@@ -58,7 +63,7 @@ void TitleScene::Draw() {
 
 	//タイトル描画（仮）
 	Lib::DrawPx2D(
-		"Resource/title/stage1_background_３_png.jpg",
+		TITLE_BACK,
 		x, y,1920,1080
 	);
 
