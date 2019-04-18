@@ -3,7 +3,7 @@
 #include"../../Lib/Lib.h"
 
 // ひし形の各場所
-enum DiamondPos {
+enum DiamondPart {
 
 	TOP,				// 上
 	TOP_RIGHT,			// 右上
@@ -38,7 +38,7 @@ protected:
 
 	float m_angle;			// 角度
 
-	DiamondPos m_diamond_pos;	// ひし形の各場所
+	DiamondPart m_diamond_pos;	// ひし形の各場所
 	/*--基本情報--*/
 
 	bool m_strength;	// 強弱スキルの判別(名前考え中)
