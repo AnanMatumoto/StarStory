@@ -3,6 +3,7 @@
 #include"../Custom/CustomStar/CustomStar.h"
 #include"../Custom/DiamondBase/DiamondBase.h"
 #include"../Lib/Lib.h"
+#include"../Skill.h"
 
 //=================================
 //  カスタム画面クラス
@@ -32,3 +33,7 @@ private:
 	float mouse_y;
 };
 
+struct SkillInfo {
+
+	SkillId skill_id;
+};

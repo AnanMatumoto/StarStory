@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 // 各スキルの識別群
-enum Skill {
+enum SkillId {
 
 	NORMAL,
 	SPEED,
