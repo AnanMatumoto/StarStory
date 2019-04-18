@@ -3,22 +3,22 @@
 #include "ObjectManager.h"
 #include "ObjectTest1.h"
 
-DWORD red = 0;//※後で消す
-
 //------------------------------------
 //　コンストラクタ
 StarChild::StarChild(
 	float x,
 	float y,
+	Skill skill,
 	std::string tex_name,
 	float rot
-) :ObjectBase(x, y, rot) {
-	m_width = 46.f;
-	m_height = 64.f;
+) :ObjectBase(x, y, rot){
+	m_width    = 46.f;
+	m_height   = 64.f;
 	m_tex_name = tex_name;
-	m_parent = ObjectManager::GetInstance().FindObject(STAR_OBJ);
-	m_hit_obj = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
-	is_hit = false;
+	m_parent   = ObjectManager::GetInstance().FindObject(STAR_OBJ);
+	m_hit_obj  = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
+	is_hit     = false;
+	m_skill    = skill;
 }
 
 //------------------------------------
@@ -31,7 +31,7 @@ void StarChild::Update() {
 //　描画処理
 void StarChild::Draw() {
 
-	SetVertex(red);//※
+	SetVertex();
 	Lib::DrawDiamond2D(
 		m_tex_name.c_str(),
 		m_vtx
@@ -41,12 +41,14 @@ void StarChild::Draw() {
 //-------------------------------------
 //頂点の設定
 void StarChild::SetVertex(DWORD color) {
+	
 	float ox = 0.5f;
 	float oy = 0.5f;
-	m_vtx[0] = { {(0.5f - ox),oy,0.f,1.f}, color,{0.f,0.5f} };
-	m_vtx[1] = { {ox,(0.5f + oy), 0.f,1.f},color,{0.5f,1.f} };
-	m_vtx[2] = { {(0.5f + ox),oy, 0.f, 1.f},color,{1.f,0.5f} };
-	m_vtx[3] = { {ox,(0.5f - oy), 0.f,1.f},color,{0.5f,0.f} };
+	m_vtx[0] = { {(0.5f - ox),oy,0.f,1.f}, color,{0.31f,0.5f} };
+	m_vtx[1] = { {ox,(0.5f + oy), 0.f,1.f},color,{0.5f,0.78f} };
+	m_vtx[2] = { {(0.5f + ox),oy, 0.f, 1.f},color,{0.69f,0.5f} };
+	m_vtx[3] = { {ox,(0.5f - oy), 0.f,1.f},color,{0.5f,0.228f} };
+
 	DiamondLocalTransform(m_vtx, m_width, m_height);
 	RefParentVertex(m_vtx);
 }
@@ -54,14 +56,17 @@ void StarChild::SetVertex(DWORD color) {
 //-------------------------------------
 //親の座標を自身に反映する
 void StarChild::RefParentVertex(Vertex vtx[4]) {
+	
 	//親の座標を取得
 	float pos_x = m_parent->GetX();
 	float pos_y = m_parent->GetY();
+	
 	//親の回転角を取得
 	float sin = sinf(D3DXToRadian(m_parent->GetRot()));
 	float cos = cosf(D3DXToRadian(m_parent->GetRot()));
 	float vtx_pos_x = 0.f;
 	float vtx_pos_y = 0.f;
+	
 	for (int i = 0; i < 4; ++i) {
 		//ローカル座標XYを保存
 		vtx_pos_x = vtx[i].pos.x;
@@ -82,21 +87,17 @@ void StarChild::IsHitToObject() {
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
 	for (auto it : m_hit_obj) {
-
 		if (vec.x <= it->GetWidth()){
 			//オブジェクトの幅に頂点があるか
 			if (IsHitToSurface(vec, it)) {
 				//頂点が当たっているか
-				red = 0x00ff0000;
 				is_hit = true;
 			}
 			else {
-				red = 0;
 				is_hit = false;
 			}
 		}
 		else {
-			red = 0;//※
 			is_hit = false;
 		}
 	}
@@ -109,8 +110,7 @@ const bool StarChild::GetHit()const {
 }
 
 //-------------------------------
-//	当たり判定用変数セッター
-void StarChild::SetHit(bool is_hit_) {
-	is_hit = is_hit_;
+//　スキル名ゲッター
+const Skill StarChild::GetSkill()const {
+	return m_skill;
 }
-

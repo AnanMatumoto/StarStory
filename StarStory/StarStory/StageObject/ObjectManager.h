@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include"ObjectBase.h"
+#include "../Skill.h"
 #include <unordered_map>
 #include <string>
 
@@ -13,10 +14,20 @@ class ObjectManager {
 public:
 	//　インスタンス生成処理
 	static ObjectManager& GetInstance();
-	//　ステージオブジェクトの登録処理
+	/*　
+	   ステージオブジェクトの登録処理
+	
+		第1：オブジェクトID
+		第2：X座標
+		第3：Y座標
+		第4：スキル名
+		第5：画像名
+		第6：回転角度
+	*/
 	void Register(
 		StageObjectID id,
 		float x, float y,
+		Skill skill = NORMAL,
 		std::string tex_name = "none",
 		float rot = 0.f
 	);

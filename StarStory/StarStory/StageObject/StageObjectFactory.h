@@ -13,6 +13,7 @@ public:
 	StageObjectFactory() {}
 	~StageObjectFactory() {}
 
+
 	/*
 	   オブジェクトの生成を行う
 
@@ -26,6 +27,7 @@ public:
 		int id,
 		float x,
 		float y,
+		Skill skill = NORMAL,
 		std::string tex_name = "none",
 		float rotate = 0.f
 	)override;

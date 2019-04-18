@@ -95,7 +95,7 @@ void ObjectBase::DiamondLocalTransform(
 	float width, float height
 ) {
 	float w_half = width / 2.f;
-	float h_half = height / 2.f;
+	float h_half = height/ 2.f;
 
 	float pos_x = m_pos.x;
 	float pos_y = m_pos.y;

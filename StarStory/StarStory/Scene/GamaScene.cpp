@@ -4,21 +4,29 @@
 #include "../StageObject/ObjectManager.h"
 #include "../StageObject/StarObject.h"
 
+#define TEX_SPEED  "Resource/Player/player_1_accel.png"
+#define TEX_JUMP   "Resource/Player/player_1_jump.png"
+#define TEX_LIGNHT "Resource/Player/player_1_light.png"
+#define TEX_NOMAL  "Resource/Player/player_1_normal.png"
+#define TEX_STOP   "Resource/Player/player_1_stop.png"
+
 //-------------------------------------------
 //　ゲームシーン初期化
 void GameScene::Init() {
 	state_id = SS_UPDATE;
 	//stage = new StageBase();
 
+	// ToDo:スキル読み込み
 
-//ステージオブジェクトの登録
+
+    //ステージオブジェクトの登録
 	ObjectManager::GetInstance().Register(OBJ_TEST1, 0, 700);
 	ObjectManager::GetInstance().Register(STAR_OBJ, 90, 600);
-	ObjectManager::GetInstance().Register(STAR_CHILD1, 0, 0,   "hoge0", 0);
-	ObjectManager::GetInstance().Register(STAR_CHILD2, 30, 23, "hoge1", 72);
-	ObjectManager::GetInstance().Register(STAR_CHILD3, 19, 60, "hoge2", 144);
-	ObjectManager::GetInstance().Register(STAR_CHILD4, -19, 60, "hoge3", 216);
-	ObjectManager::GetInstance().Register(STAR_CHILD5, -30, 23, "hoge4", 288);
+	ObjectManager::GetInstance().Register(STAR_CHILD1,   0,  0, SPEED,  TEX_SPEED,   0);
+	ObjectManager::GetInstance().Register(STAR_CHILD2,  30, 23,   JUMP, TEX_JUMP,   72);
+	ObjectManager::GetInstance().Register(STAR_CHILD3,  19, 60, NORMAL, TEX_NOMAL, 144);
+	ObjectManager::GetInstance().Register(STAR_CHILD4, -19, 60, NORMAL, TEX_NOMAL, 216);
+	ObjectManager::GetInstance().Register(STAR_CHILD5, -30, 23, NORMAL, TEX_NOMAL, 288);
 }
 
 //------------------------------------------
@@ -33,17 +41,8 @@ void GameScene::Update() {
 	// ステージオブジェクト更新
 	ObjectManager& om = ObjectManager::GetInstance();
 
-	if (Lib::KeyPress('A')) {
-		om.Delete(OBJ_TEST1);
-	}
-
-	if (Lib::KeyPress('D')) {
-		om.Create(OBJ_TEST1, OBJ_CLONE1, 500,500);
-		//※※改良の余地あり（new_id）※※
-	}
-
+	
 	om.Update();
-
 
 }
 
