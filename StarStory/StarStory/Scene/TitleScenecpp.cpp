@@ -1,19 +1,24 @@
 ﻿#include "TitleScene.h"
 #include "SceneManager.h"
 #include "../Lib/Lib.h"
-#include"../UI/ButtonUI.h"
+
 #include "../StageObject/ObjectManager.h"
 #include "../UI/UIObjectFactory.h"
 
-#define TITLE_BACK "Resource/Title/UI_title_bg.png"
-#define TITLE_START
-#define TITLE_END
 
+#define TITLE_BACK "Resource/Title/UI_title_bg.png"
+#define TITLE_START "Resource/Title/UI_title_start.png"
+#define TITLE_END	"Resource/Title/UI_title_end.png"
 //-----------------------------
 //　タイトルシーン初期化
 void TitleScene::Init() {
 	
 	state_id = SS_UPDATE;
+
+	//UIの登録
+	ObjectManager& mng = ObjectManager::GetInstance();
+	mng.Register(BT_TT_START, 1000, 800, TITLE_START);
+	mng.Register(BT_TT_END,    300, 800, TITLE_END);
 }
 
 //-----------------------------
@@ -23,6 +28,8 @@ void TitleScene::Update() {
 	if (Lib::KeyPress(VK_SPACE)) {
 		state_id = SS_END;
 	}
+
+	ObjectManager::GetInstance().UpdateUI();
 }
 
 //-----------------------------
@@ -30,7 +37,13 @@ void TitleScene::Update() {
 SceneID TitleScene::End() {
 
 	state_id = SS_INIT;
+
+	//UIをリストから削除する
+	ObjectManager::GetInstance().DeleteUI(BT_TT_START);
+	ObjectManager::GetInstance().DeleteUI(BT_TT_END);
+
 	return SC_CUSTOM;
+
 }
 
 //-----------------------------
@@ -66,6 +79,11 @@ void TitleScene::Draw() {
 		TITLE_BACK,
 		x, y,1920,1080
 	);
-
+	ObjectManager::GetInstance().DrawUI();
 }
 
+//-------------------------------
+//　デストラクタ
+TitleScene::~TitleScene() {
+
+}

@@ -17,7 +17,7 @@ public:
 
 	/*
 	   オブジェクトの生成を行う
-
+	
 	   第1:　オブジェクトID
 	   第2:  X座標
 	   第3:  Y座標
@@ -29,13 +29,14 @@ public:
 		float x,
 		float y,
 		std::string tex_name,
-		float rotate
+		float rotate =0.f
 	) {
 		return nullptr;
 	}
 
 	/*
 		オブジェクト生成（オーバーロード）
+		＜星オブジェクト用＞
 
 		第1：オブジェクトID
 		第2：X座標
@@ -51,9 +52,11 @@ public:
 		Skill skill,
 		std::string tex_name,
 		float rotate
-	) = 0;
+	) {
+		return nullptr;
+	}
 
-	~Factory() {}
+	virtual~Factory() {}
 
 };
 
