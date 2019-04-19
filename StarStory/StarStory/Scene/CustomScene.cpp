@@ -13,9 +13,6 @@ void CustomScene::Init() {
 //　カスタムシーン更新
 void CustomScene::Update() {
 
-	// キー情報更新
-	Lib::KeyUpdate();
-
 	if (Lib::KeyPress(VK_SPACE)) {
 		state_id = SS_END;
 	}
