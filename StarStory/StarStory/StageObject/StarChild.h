@@ -5,7 +5,7 @@
 #include <vector>
 #include <string>
 
-class ObjectTest1;
+class MapObject;
 class StarObject;
 
 //====================================
@@ -51,7 +51,7 @@ private:
 	ObjectBase* m_parent;			    //親オブジェクト
 	Skill       m_skill;			            //スキル
 	std::string m_tex_name;				//画像名
-	std::vector<ObjectTest1*> m_hit_obj;//マップオブジェクトのリスト
+	std::vector<MapObject*> m_hit_obj;//マップオブジェクトのリスト
 	bool        is_hit;
 
 };

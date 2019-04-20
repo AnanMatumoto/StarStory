@@ -1,9 +1,9 @@
-﻿#include "ObjectTest1.h"
+﻿#include "MapObject.h"
 #include "../Lib/Lib.h"
 
 //---------------------------------
 //　コンストラクタ
-ObjectTest1::ObjectTest1(float x, float y):ObjectBase(x,y) {
+MapObject::MapObject(float x, float y):ObjectBase(x,y) {
 	m_width = 400;
 	m_height = 50;
 
@@ -12,14 +12,14 @@ ObjectTest1::ObjectTest1(float x, float y):ObjectBase(x,y) {
 
 //--------------------------------
 //　更新処理
-void ObjectTest1::Update() {
+void MapObject::Update() {
 
 	SetVertex();
 }
 
 //---------------------------------
 //　描画処理
-void ObjectTest1::Draw() {
+void MapObject::Draw() {
 
 	Lib::DrawPx2D(
 		"HogeHoge",
@@ -29,7 +29,7 @@ void ObjectTest1::Draw() {
 }
 
 //　頂点座標をセットする
-void ObjectTest1::SetVertex(DWORD color) {
+void MapObject::SetVertex(DWORD color) {
 
 	m_vtx[0].pos = { m_pos.x,  m_pos.y, 0.f,1.f };
 	m_vtx[1].pos = { m_pos.x + m_width, m_pos.y, 0.f,1.f };

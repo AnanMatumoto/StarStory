@@ -1,7 +1,7 @@
 #include "StarChild.h"
 #include "StarObject.h"
 #include "ObjectManager.h"
-#include "ObjectTest1.h"
+#include "MapObject.h"
 
 //------------------------------------
 //　コンストラクタ
@@ -16,7 +16,7 @@ StarChild::StarChild(
 	m_height   = 64.f;
 	m_tex_name = tex_name;
 	m_parent   = ObjectManager::GetInstance().FindObject(STAR_OBJ);
-	m_hit_obj  = ObjectManager::GetInstance().GetGameObjects<ObjectTest1>();
+	m_hit_obj  = ObjectManager::GetInstance().GetGameObjects<MapObject>();
 	is_hit     = false;
 	m_skill    = skill;
 }

@@ -1,5 +1,5 @@
 ﻿#include "StageObjectFactory.h"
-#include "ObjectTest1.h"
+#include "MapObject.h"
 #include "StarObject.h"
 #include "StarChild.h"
 #include "../Skill.h"
@@ -16,7 +16,7 @@ ObjectBase* StageObjectFactory::Create(
 	switch (id)
 	{
 	case OBJ_TEST1:
-		return new ObjectTest1(x, y);
+		return new MapObject(x, y);
 		break;
 
 	case STAR_OBJ:

@@ -191,7 +191,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="StageObject\ObjectTest1.cpp">
+    <ClCompile Include="StageObject\MapObject.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -275,7 +275,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StageObject\ObjectTest1.h">
+    <ClInclude Include="StageObject\MapObject.h">
       <SubType>
       </SubType>
     </ClInclude>

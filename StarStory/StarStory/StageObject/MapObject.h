@@ -6,12 +6,12 @@
 // テスト用オブジェクトクラス	
 //================================
 
-class ObjectTest1 :public ObjectBase {
+class MapObject :public ObjectBase {
 
 public:
 
-	ObjectTest1(float x, float y);
-	~ObjectTest1()override {}
+	MapObject(float x, float y);
+	~MapObject()override {}
 
 private:
 
