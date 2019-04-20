@@ -5,8 +5,6 @@
 #include "../Lib/Lib.h"
 #include <vector>
 
-
-
 //-----------------------------------
 // インスタンス生成
 ObjectManager& ObjectManager::GetInstance() {
@@ -16,19 +14,7 @@ ObjectManager& ObjectManager::GetInstance() {
 }
 
 //----------------------------------
-//　オブジェクトの登録
-void ObjectManager::Register(
-	StageObjectID id,
-	float x, float y,
-	std::string tex_name
-) {
-
-	UIObjectFactory UI_factory;
-	m_UI_list.emplace(id, UI_factory.Create(id, x, y, tex_name));
-}
-
-//----------------------------------
-//　オブジェクト登録処理(オーバーロード)
+//　オブジェクト登録処理
 void ObjectManager::Register(
 	StageObjectID id,
 	float x, float y,
@@ -40,11 +26,6 @@ void ObjectManager::Register(
 	m_obj_list.emplace(id, obj_factory.Create(id, x, y, skill, tex_name, rot));
 }
 
-/*
-Todo:
-	テンプレートでアップデート描画等を
-	行えるように今後修正する
-*/
 //-----------------------------------
 //　オブジェクトの更新
 void ObjectManager::Update() {
@@ -58,16 +39,6 @@ void ObjectManager::Update() {
 }
 
 //-----------------------------------
-//　UIの更新
-void ObjectManager::UpdateUI() {
-	
-	for (auto it : m_UI_list) {
-		it.second->Update();
-	}
-
-}
-
-//-----------------------------------
 // オブジェクトの描画
 void ObjectManager::Draw() {
 
@@ -76,14 +47,6 @@ void ObjectManager::Draw() {
 		if (it.second->IsDelete()) {
 			continue;
 		}
-		it.second->Draw();
-	}
-}
-
-//-------------------------------------
-// UIの描画
-void ObjectManager::DrawUI() {
-	for (auto it : m_UI_list) {
 		it.second->Draw();
 	}
 }
@@ -100,19 +63,6 @@ void ObjectManager::Delete(StageObjectID id) {
 		// フラグを削除状態にセットする
 		obj->Delete();
 	}
-}
-
-//------------------------------------
-//　指定したUIを削除
-void ObjectManager::DeleteUI(StageObjectID id) {
-
-	auto itr = m_UI_list.find(id);
-
-	if (itr != m_UI_list.end()) {
-		ObjectBase* obj = itr->second;
-		delete obj;
-	}
-	m_UI_list.erase(itr);
 }
 
 //------------------------------------
@@ -133,18 +83,7 @@ void ObjectManager::AllDelete() {
 }
 
 //-----------------------------------
-//　UIの削除
-void ObjectManager::AllDeleteUI() {
-
-	for (auto it : m_UI_list) {
-		ObjectBase* UI = it.second;
-		if (UI != nullptr) {
-			delete UI;
-		}
-	}
-	m_UI_list.clear();
-}
-//-----------------------------------
+// オブジェクトの複製処理
 void ObjectManager::Create(
 	StageObjectID id,
 	StageObjectID new_id,

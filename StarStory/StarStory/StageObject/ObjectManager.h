@@ -15,32 +15,15 @@ public:
 	//　インスタンス生成処理
 	static ObjectManager& GetInstance();
 	
-	
-	/*
-		オブジェクトの登録
-
-		第1：オブジェクトのID
-		第2：X座標
-		第3：Y座標
-		第4：画像名
-
-	*/
-	void Register(
-		StageObjectID id,
-		float x, float y,
-		std::string tex_name
-	);
-
 	/*　
 	   ステージオブジェクトの登録処理
-		（オーバーロード）
 
 		第1：オブジェクトID
 		第2：X座標
 		第3：Y座標
 		第4：スキル名
 		第5：画像名
-		第6：回転角度
+		第6：回転角度(デフォルトは０度)
 	*/
 	void Register(
 		StageObjectID id,
@@ -50,31 +33,26 @@ public:
 		float rot = 0.f
 	);
 
-	
-
 	//　更新処理
 	void Update();
-
-	void UpdateUI();
 
 	//  描画処理
 	void Draw();
 
-	void DrawUI();
-
 	//  IDで指定したオブジェクトを削除する
 	void Delete(StageObjectID id);
-
-	//　IDで指定したオブジェクトを削除する
-	void DeleteUI(StageObjectID id);
 
 	//　リスト内にあるオブジェクトを全て削除する
 	void AllDelete();
 
+	/* 
+	　　複製処理
 
-	void AllDeleteUI();
-
-	//  複製処理
+		第1：オブジェクトのID
+		第2：オブジェクトの新しいID
+		第3：X座標
+		第4：Y座標
+	*/
 	void Create(
 		StageObjectID id,
 		StageObjectID new_id,

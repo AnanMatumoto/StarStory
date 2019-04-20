@@ -14,6 +14,7 @@ public:
 	):ObjectBase(x, y, rot) {
 
 		m_tex_name = tex_name;
+
 	}
 
 	//XV

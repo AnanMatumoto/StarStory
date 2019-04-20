@@ -13,7 +13,7 @@
 */
 enum StageObjectID {
 
-
+	//ステージオブジェクト
 	OBJ_TEST1,
 	OBJ_CLONE1,
 	//---星オブジェクト---
@@ -23,26 +23,6 @@ enum StageObjectID {
 	STAR_CHILD3,
 	STAR_CHILD4,
 	STAR_CHILD5,
-	//------UI---------
-	//タイトルボタン
-	BT_TT_START,		//タイトル画面スタート
-	BT_TT_END,		//  　〃　　　終了
-	
-	//カスタム
-	BT_CT_DEC,
-	BT_CT_MAP,
-	BT_CT_TOSELECT,
-
-	//ゲームボタン
-	BT_GM_WIND,
-	BT_GM_TOCUSTOM,
-	BT_GM_STOP,
-	BT_GM_ONOFF,
-	
-	//リザルト
-	BT_RS_SELECT,		//ステージセレクトへ
-	BT_RS_CUSUTOM,		//カスタムへ
-	
 };
 
 

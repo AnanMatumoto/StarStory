@@ -1,7 +1,6 @@
 ﻿#pragma once
 
 #include "Scene.h"
-#include "../StageObject/ObjectManager.h"
 
 //=================================
 //　ゲーム画面クラス
