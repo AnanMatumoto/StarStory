@@ -36,14 +36,18 @@ namespace Lib {
 			PostQuitMessage(0);
 			break;
 
+		/*
+		ダブルクリックが必要になったら
 		case WM_LBUTTONDBLCLK:
 
 			if (!is_click) {
 				is_click = 1;
 			}
-
+		*/
 			// マウスボタンクリック開始時
 		case WM_LBUTTONDOWN:  // 左
+
+			is_click = true;
 
 			if (is_click) {
 				pt.start.x = LOWORD(lp);
@@ -51,7 +55,7 @@ namespace Lib {
 
 				if (!is_drag) {
 					pt.end = pt.start;
-					is_drag = 1;
+					is_drag = true;
 				}
 			}
 
@@ -278,6 +282,15 @@ namespace Lib {
 		*y = (float)pt.end.y;
 
 		return pt.end;
+	}
+
+	//------------------------------------
+	//　マウスの左クリックの判定を返す
+	const bool HasOneClickOnMouse() {
+		if (is_click) {
+			return true;
+		}
+		return false;
 	}
 }
 

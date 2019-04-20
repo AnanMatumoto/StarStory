@@ -137,12 +137,33 @@ namespace Lib {
 		   KeyOff('VK_SPACE');// スペースキーを離した瞬間
 		}
 	*/
-
 	void KeyUpdate();
 	bool KeyOn(int nVirtKey);
 	bool KeyPress(int nVirtKey);
 	bool KeyOff(int nVirtKey);
+	
+
+	/*
+		マウス座標を取得して引数にセットする
+
+		第1：X座標
+		第2：Y座標
+
+	使用例：
+		float x =0, y =0;
+		x = Lib::GetMousePoint().x;
+		y = Lib::GetMousePoint().y;
+	*/
 	POINT GetMousePoint(float* x, float* y);
+	
+	/*
+		マウスの左ボタンのクリックの判定を返す
+	
+	使用例：
+		bool was_click = Lib::HasOneClickOnMouse();
+	*/
+	const bool  HasOneClickOnMouse();
+
 	//============================================
 	// 2D描画処理
 	//============================================
@@ -180,8 +201,12 @@ namespace Lib {
 	/*
 		セルサイズ指定描画関数（基本は左上原点）
 	
-		内容はDrawPx2Dと同じ
-		第4,5引数には【倍率】を直接渡す
+
+		第1　：指定するテクスチャ
+		第2,3：描画したい座標
+		第4,5：【倍率】を直接渡す
+		第6　：色相
+		第7,8：オフセット値(0.5で中心座標)
 	*/
 	void DrawBox2D(
 		const Texture& tex,
@@ -217,6 +242,14 @@ namespace Lib {
 
 	/*
 		三角形描画関数（ピクセルサイズ）
+
+		第1：画像名
+		第2：頂点情報
+		第3：X座標
+		第4：Y座標
+		第5：幅（デフォルトは128ピクセル）
+		第6：高（デフォルトは128ピクセル）
+		第7：色相
 
 		◆注意
 		第2：引数に頂点を渡すことで描画可能
@@ -305,11 +338,7 @@ namespace Lib {
 		float ox, float oy
 	);
 
-
-
-
-
-	//αブレンドの設定（外部での使用はできない）
+	//αブレンドの設定（※外部での使用はできない）
 	void SetAlphaBlend();
 };
 
