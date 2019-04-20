@@ -2,6 +2,7 @@
 #include "../StageObject/Factory.h"
 #include "UIObjectFactory.h"
 #include "../Lib/Lib.h"
+#include "Button.h"
 
 #include <vector>
 
@@ -67,3 +68,17 @@ void UIManager::AllDelete() {
 	m_UI_list.clear();
 }
 
+//------------------------------------
+// クリックされたUIのIDを返す
+UIObjectID UIManager::FindClickedUI() {
+
+	UIObjectID id = BT_NONE;
+	// リストからクリックされたオブジェクトを取得する
+	for (auto ui : m_UI_list) {
+		ButtonUI* buttom = (ButtonUI*)ui.second;
+		if (buttom->GetClick()) {
+			id = ui.first;
+		}
+	}
+	return id;
+}

@@ -6,6 +6,8 @@
 
 enum UIObjectID {
 
+	BT_NONE,
+
 	//------UI---------
 	//タイトルボタン
 	BT_TT_START,		//タイトル画面スタート
@@ -67,8 +69,8 @@ public:
 	//　リスト内にあるオブジェクトを全て削除する
 	void AllDelete();
 
-	//　引数でもらったidのオブジェクトを取得する
-	ObjectBase* FindObject(UIObjectID id);
+	//クリックされたUIのIDを返す
+	UIObjectID FindClickedUI();
 
 private:
 
