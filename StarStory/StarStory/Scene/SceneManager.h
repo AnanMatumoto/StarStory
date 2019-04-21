@@ -35,6 +35,13 @@ public:
 		シーンの切り替えを行う。
 	*/
 	void ChangeScene(SceneID scene_id);
+
+	void SetQuit(bool has_quit);
+
+	bool IsQuitWindow();
+
+	
+
 	~SceneManager();
 
 private:
@@ -42,5 +49,5 @@ private:
 	std::unordered_map<SceneID, SceneBase*> scene_list; //  シーンリスト
 	SceneBase* m_scene;		// 現行シーン格納用
 	SceneID    m_now_id;	// 更新されるシーンID格納用
-
+	bool is_quit;			//終了処理
 };

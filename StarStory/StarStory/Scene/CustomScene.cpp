@@ -20,6 +20,7 @@ void CustomScene::Update() {
 	UIManager& ui_mng = UIManager::GetInstance();
 	ui_mng.Update();
 
+	//決定ボタンが押されたら
 	if (ui_mng.FindClickedUI()==BT_CT_DEC) {
 		state_id = SS_END;
 	}

@@ -7,9 +7,8 @@
 // メイン
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	//int* hoge = new int;
 
 	Lib::Init(1920, 1080, "StarStory");
 	SceneManager::GetInstance().Init();
@@ -23,13 +22,16 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		
 	
 		SceneManager::GetInstance().Update();
-		
+		if (SceneManager::GetInstance().IsQuitWindow()) {
+			return 0;
+		}
+
+
 		//　描画終了
 		Lib::DrawEnd();
 
 	}
 	Lib::AppEnd();
-	
 
 	return 0;
 }

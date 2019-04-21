@@ -3,10 +3,10 @@
 #include "../Lib/Lib.h"
 #include "../UI/UIManager.h"
 
-#define RESULT_BACK "Resource/Result/UI_result.png"
+#define RESULT_BACKIMG "Resource/Result/UI_result.png"
 #define RESULT_CUSTOM "Resource/Result/UI_result_custom.png"
 #define RESULT_SELECT "Resource/Result/UI_result_serect.png"
-
+#define RESULT_TITLEBACK "Resource/Result/title_back_sample.png"
 //----------------------------
 // リザルトシーン初期化
 void ResultScene::Init() {
@@ -16,24 +16,20 @@ void ResultScene::Init() {
 	UIManager& mng = UIManager::GetInstance();
 	mng.Register(BT_RS_CUSUTOM, 935, 780, RESULT_CUSTOM);
 	mng.Register(BT_RS_SELECT, 1195, 780, RESULT_SELECT);
-	
+	mng.Register(BT_RS_TITLEBACK, 435, 780, RESULT_TITLEBACK);
 }
 
 //----------------------------
 //　リザルトシーン更新
 void ResultScene::Update() {
-	//if (is_clear) {
-		/* ゲームクリア処理 */
-		//is_clear = false;
-	//}
-	//else {
-		/* ゲームオーバー処理 */
-	//}
-	if (Lib::KeyPress(VK_SPACE)) {
+
+	UIManager& ui_mng = UIManager::GetInstance();
+	ui_mng.Update();
+
+	//タイトルボタンがクリックされたら
+	if (ui_mng.FindClickedUI()==BT_RS_TITLEBACK) {
 		state_id = SS_END;
 	}
-
-	UIManager::GetInstance().Update();
 }
 
 //----------------------------
@@ -44,6 +40,7 @@ SceneID ResultScene::End() {
 	//UIをリストから削除
 	UIManager::GetInstance().Delete(BT_RS_CUSUTOM);
 	UIManager::GetInstance().Delete(BT_RS_SELECT);
+	UIManager::GetInstance().Delete(BT_RS_TITLEBACK);
 
 	return SC_TITLE;
 }
@@ -75,7 +72,7 @@ SceneID ResultScene::Control() {
 void ResultScene::Draw() {
 
 	Lib::DrawBox2D(
-		RESULT_BACK,
+		RESULT_BACKIMG,
 		0, 0
 	);
 

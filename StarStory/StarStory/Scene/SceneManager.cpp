@@ -52,6 +52,23 @@ void SceneManager::ChangeScene(SceneID scene_id) {
 }
 
 //--------------------------------------
+//　ウィンドウ終了フラグゲッター
+void SceneManager::SetQuit(bool has_quit) {
+	is_quit = has_quit;
+}
+
+//--------------------------------------
+//シーン終了処理
+bool SceneManager::IsQuitWindow() {
+	if (is_quit) {
+		return true;
+	}
+	return false;
+}
+
+
+
+//--------------------------------------
 //　デストラクタ
 SceneManager::~SceneManager() {
 

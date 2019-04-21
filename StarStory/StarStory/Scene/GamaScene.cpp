@@ -49,15 +49,17 @@ void GameScene::Init() {
 //------------------------------------------
 //　ゲームシーン更新
 void GameScene::Update() {
-	
+
+	// ステージオブジェクト更新
+	ObjectManager::GetInstance().Update();
+	UIManager& ui_mng = UIManager::GetInstance();
+	ui_mng.Update();
+
 	if (Lib::KeyPress(VK_SPACE))
 	{
 		state_id = SS_END;
 	}
 
-	// ステージオブジェクト更新
-	ObjectManager::GetInstance().Update();
-	UIManager::GetInstance().Update();
 }
 
 //------------------------------------------

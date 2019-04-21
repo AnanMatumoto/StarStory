@@ -24,12 +24,16 @@ void TitleScene::Init() {
 //　タイトルシーン更新
 void TitleScene::Update() {
 
-	UIManager& UImng = UIManager::GetInstance();
-	UImng.Update();
+	UIManager& mng = UIManager::GetInstance();
+	mng.Update();
 
-	if (UImng.FindClickedUI() == BT_TT_START) {
+	//スタートボタンが押されたら
+	if (mng.FindClickedUI() == BT_TT_START) {
 		state_id = SS_END;
 	}
+	/*else if (mng.FindClickedUI() == BT_TT_END) {
+		SceneManager::GetInstance().SetQuit(true);
+	}*/
 }
 
 //-----------------------------

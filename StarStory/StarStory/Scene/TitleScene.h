@@ -27,8 +27,7 @@ private:
 	~TitleScene()override;
 
 private:
-	//次のシーンへ行く為のフラグ
-	bool is_next;
+	
 
 	
 };
