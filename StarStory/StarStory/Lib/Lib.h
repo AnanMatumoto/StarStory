@@ -144,18 +144,25 @@ namespace Lib {
 	
 
 	/*
-		マウス座標を取得して引数にセットする
+		クリック時のマウス座標を取得し、
+		引数にセットする
 
 		第1：X座標
 		第2：Y座標
+	*/
+	void GetMousePoint(float* x, float* y);
+
+	/*
+		マウスの移動中の座標を取得する
+		戻り値　POINT&型
 
 	使用例：
-		float x =0, y =0;
-		x = Lib::GetMousePoint().x;
-		y = Lib::GetMousePoint().y;
+		float x =0. y =0;
+		x = Lib::GetPointOnDrag(),xl
+		y = Lib::GetPointOnDrag().y;
 	*/
-	POINT GetMousePoint(float* x, float* y);
-	
+	POINT& GetPointOnDrag();
+
 	/*
 		マウスの左ボタンのクリックの判定を返す
 	
