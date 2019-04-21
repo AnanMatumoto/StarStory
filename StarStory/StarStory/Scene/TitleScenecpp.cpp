@@ -12,7 +12,7 @@
 //　タイトルシーン初期化
 void TitleScene::Init() {
 	
-	state_id = SS_UPDATE;
+	m_state_id = SS_UPDATE;
 
 	//UIの登録
 	UIManager& mng = UIManager::GetInstance();
@@ -27,9 +27,14 @@ void TitleScene::Update() {
 	UIManager& mng = UIManager::GetInstance();
 	mng.Update();
 
+<<<<<<< HEAD
 	//スタートボタンが押されたら
 	if (mng.FindClickedUI() == BT_TT_START) {
 		state_id = SS_END;
+=======
+	if (UImng.FindClickedUI() == BT_TT_START) {
+		m_state_id = SS_END;
+>>>>>>> ボタンのマウス入力処理を実装
 	}
 	/*else if (mng.FindClickedUI() == BT_TT_END) {
 		SceneManager::GetInstance().SetQuit(true);
@@ -40,7 +45,7 @@ void TitleScene::Update() {
 //  タイトルシーン終了
 SceneID TitleScene::End() {
 
-	state_id = SS_INIT;
+	m_state_id = SS_INIT;
 
 	//UIをリストから削除する
 	UIManager::GetInstance().Delete(BT_TT_START);
@@ -53,7 +58,7 @@ SceneID TitleScene::End() {
 //　状態管理
 SceneID TitleScene::Control() {
 
-	switch (state_id)
+	switch (m_state_id)
 	{
 	case SS_INIT:
 		Init();

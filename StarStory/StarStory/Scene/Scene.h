@@ -16,13 +16,13 @@ enum SceneState {
 //=============================
 enum SceneID {
 
+	NO_SCENE,
 	SC_TITLE,
 	SC_CUSTOM,
 	SC_SELECT,
 	SC_GAME,
 	SC_RESULT,
 	SC_END,
-	NO_SCENE
 };
 
 //=============================
@@ -57,7 +57,7 @@ public:
 protected:
 
 	//bool is_clear;	
-	int state_id;	//　自身の状態ID
+	int m_state_id;	//　自身の状態ID
 };
 
 

@@ -6,7 +6,7 @@
 //　セレクトシーン初期化
 void SelectScene::Init() {
 
-	state_id = SS_UPDATE;
+	m_state_id = SS_UPDATE;
 }
 
 //---------------------------
@@ -14,7 +14,7 @@ void SelectScene::Init() {
 void SelectScene::Update() {
 
 	if (Lib::KeyPress(VK_SPACE)) {
-		state_id = SS_END;
+		m_state_id = SS_END;
 	}
 }
 
@@ -22,7 +22,7 @@ void SelectScene::Update() {
 //　セレクトシーン終了
 SceneID SelectScene::End() {
 
-	state_id = SS_INIT;
+	m_state_id = SS_INIT;
 	return SC_GAME;
 }
 
@@ -30,7 +30,7 @@ SceneID SelectScene::End() {
 //　セレクトシーン状態管理
 SceneID SelectScene::Control() {
 
-	switch (state_id)
+	switch (m_state_id)
 	{
 	case SS_INIT:
 		Init();
