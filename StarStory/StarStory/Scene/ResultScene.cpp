@@ -7,10 +7,7 @@
 #define RESULT_CUSTOM "Resource/Result/UI_result_custom.png"
 #define RESULT_SELECT "Resource/Result/UI_result_serect.png"
 #define RESULT_TITLEBACK "Resource/Result/title_back_sample.png"
-<<<<<<< HEAD
-=======
 
->>>>>>> ボタンのマウス入力処理を実装
 //----------------------------
 // リザルトシーン初期化
 void ResultScene::Init() {
@@ -22,10 +19,7 @@ void ResultScene::Init() {
 	mng.Register(BT_RS_CUSUTOM, 935, 780, RESULT_CUSTOM);
 	mng.Register(BT_RS_SELECT, 1195, 780, RESULT_SELECT);
 	mng.Register(BT_RS_TITLEBACK, 435, 780, RESULT_TITLEBACK);
-<<<<<<< HEAD
-=======
 
->>>>>>> ボタンのマウス入力処理を実装
 }
 
 //----------------------------
@@ -36,14 +30,13 @@ void ResultScene::Update() {
 	ui_mng.Update();
 
 	//タイトルボタンがクリックされたら
-<<<<<<< HEAD
-	if (ui_mng.FindClickedUI()==BT_RS_TITLEBACK) {
-		state_id = SS_END;
-=======
+
 	if (ui_mng.FindClickedUI() == BT_RS_TITLEBACK) {
 		m_state_id = SS_END;
-		
->>>>>>> ボタンのマウス入力処理を実装
+	}
+	if (ui_mng.FindClickedUI() == BT_RS_TITLEBACK) {
+		m_state_id = SS_END;
+
 	}
 }
 

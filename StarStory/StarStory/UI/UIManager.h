@@ -27,11 +27,7 @@ enum UIObjectID {
 	//リザルト
 	BT_RS_SELECT,		//ステージセレクトへ
 	BT_RS_CUSUTOM,		//カスタムへ
-<<<<<<< HEAD
 	BT_RS_TITLEBACK	    //タイトル画面へ
-=======
-	BT_RS_TITLEBACK
->>>>>>> ボタンのマウス入力処理を実装
 };
 
 

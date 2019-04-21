@@ -26,15 +26,9 @@ void TitleScene::Update() {
 
 	UIManager& mng = UIManager::GetInstance();
 	mng.Update();
-
-<<<<<<< HEAD
 	//スタートボタンが押されたら
 	if (mng.FindClickedUI() == BT_TT_START) {
-		state_id = SS_END;
-=======
-	if (UImng.FindClickedUI() == BT_TT_START) {
 		m_state_id = SS_END;
->>>>>>> ボタンのマウス入力処理を実装
 	}
 	/*else if (mng.FindClickedUI() == BT_TT_END) {
 		SceneManager::GetInstance().SetQuit(true);
