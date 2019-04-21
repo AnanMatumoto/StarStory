@@ -11,8 +11,8 @@ namespace {
 		POINT end = { 0,0 };  //クリック時の座標を取得
 	}pt;
 
-	int is_drag = 0; //ドラッグ判定変数
-	int is_click = 0;//ダブルクリック判定変数
+	int is_drag = false; //ドラッグ判定変数
+	int is_click = false;//ダブルクリック判定変数
 };
 
 namespace Lib {
@@ -49,16 +49,15 @@ namespace Lib {
 
 			is_click = true;
 
-			if (is_click) {
-				pt.start.x = LOWORD(lp);
-				pt.start.y = HIWORD(lp);
+			pt.start.x = LOWORD(lp);
+			pt.start.y = HIWORD(lp);
 
-				if (!is_drag) {
-					pt.end = pt.start;
-					is_drag = true;
-				}
+			//　ドラッグ状態がfalseである
+			if (!is_drag) {
+				//クリック時の座標を終了後の座標にセット
+				pt.end = pt.start;
+				is_drag = true;
 			}
-
 			break;
 
 		case WM_RBUTTONDOWN:  // 右
@@ -68,8 +67,8 @@ namespace Lib {
 
 			// マウスボタンクリック終了時
 		case WM_LBUTTONUP:
-			is_drag = 0;
-			is_click = 0;
+			is_drag = false;
+			is_click = false;
 			break;
 
 		case WM_RBUTTONUP:
@@ -276,14 +275,17 @@ namespace Lib {
 
 	//-----------------------------------------
 	// マウス入力処理
-	POINT GetMousePoint(float* x, float *y) {
+	void GetMousePoint(float* x, float *y) {
 
 		*x = (float)pt.end.x;
 		*y = (float)pt.end.y;
-
-		return pt.end;
 	}
 
+	//----------------------------------------
+	//　マウスの位置を取得する
+	POINT& GetPointOnDrag() {
+		return pt.start;
+	}
 	//------------------------------------
 	//　マウスの左クリックの判定を返す
 	const bool HasOneClickOnMouse() {
