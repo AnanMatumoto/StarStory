@@ -54,12 +54,14 @@ namespace Collision {
 		float top = pos.y;
 		float bottom = pos.y + h;
 
-		if (left > point.x && right < point.x) {
-			if (top > point.y&& bottom < point.y) {
+		if (point.x > left && point.x < right) {
+			if (point.y> top && point.y < bottom) {
 				return true;
 			}
 		}
-		return false;
+		else {
+			return false;
+		}
 	}
 
 };

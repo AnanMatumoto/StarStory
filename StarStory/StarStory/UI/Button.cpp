@@ -1,5 +1,6 @@
-﻿#include"../Lib/Lib.h"
-#include"Button.h"
+﻿#include"Button.h"
+#include"../Lib/Lib.h"
+#include "../Collision/Collision.h"
 
 //------------------------------
 // 描画処理
@@ -16,19 +17,28 @@ void ButtonUI::Draw() {
 // 更新処理
 void ButtonUI::Update() {
 
-
-
-
+	IsHitToMouse();
 }
 
 //-------------------------------
 //　クリック状態フラグを返す
 const bool ButtonUI::GetClick()const {
-	return was_click;
+	if (was_click == true) {
+		return true;
+	}
+	return false;
 }
 
 //当たったかどうかの判定
 void ButtonUI::IsHitToMouse() {
+
+	Lib::GetMousePoint(&m_mouse.x, &m_mouse.y);
+
+	was_click = Collision::IsInSquare(
+		m_pos,
+		m_width, m_height,
+		m_mouse
+	);
 
 
 }

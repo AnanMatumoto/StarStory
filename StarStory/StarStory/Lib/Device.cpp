@@ -47,17 +47,14 @@ namespace Lib {
 			// マウスボタンクリック開始時
 		case WM_LBUTTONDOWN:  // 左
 
-			is_click = true;
+			if (is_click == false) {
+				is_click = true;
 
-			pt.start.x = LOWORD(lp);
-			pt.start.y = HIWORD(lp);
-
-			//　ドラッグ状態がfalseである
-			if (!is_drag) {
-				//クリック時の座標を終了後の座標にセット
-				pt.end = pt.start;
-				is_drag = true;
+				pt.end.x = pt.start.x;
+				pt.end.y = pt.start.y;
 			}
+
+			
 			break;
 
 		case WM_RBUTTONDOWN:  // 右
@@ -67,7 +64,6 @@ namespace Lib {
 
 			// マウスボタンクリック終了時
 		case WM_LBUTTONUP:
-			is_drag = false;
 			is_click = false;
 			break;
 
@@ -77,16 +73,12 @@ namespace Lib {
 			break;
 
 		case WM_MOUSEMOVE:
-			// フラグが１である
-			if (is_drag) {
-				pt.end.x = LOWORD(lp);
-				pt.end.y = HIWORD(lp);
-				return 0;
-			}
+
 			// 更新する座標を取得
 			pt.start.x = LOWORD(lp);
 			pt.start.y = HIWORD(lp);
 			break;
+
 		case WM_SYSKEYDOWN: // システムキー押下開始時
 		case WM_SYSKEYUP:   // システムキー終了時
 			return 0;

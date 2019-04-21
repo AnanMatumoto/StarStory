@@ -24,11 +24,12 @@ void TitleScene::Init() {
 //　タイトルシーン更新
 void TitleScene::Update() {
 
-	if (Lib::KeyPress(VK_SPACE)) {
+	UIManager& UImng = UIManager::GetInstance();
+	UImng.Update();
+
+	if (UImng.FindClickedUI() == BT_TT_START) {
 		state_id = SS_END;
 	}
-
-	UIManager::GetInstance().Update();
 }
 
 //-----------------------------
