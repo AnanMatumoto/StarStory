@@ -2,18 +2,25 @@
 #include "SceneManager.h"
 #include "../Lib/Lib.h"
 
+#include "../UI/UIManager.h"
+#define CUSTOM_DEC "Resource/Custom/UI_custom_decision.png"
+
 //-----------------------------
 //　カスタムシーン初期化
 void CustomScene::Init() {
 
 	state_id = SS_UPDATE;
+	UIManager::GetInstance().Register(BT_CT_DEC, 1445, 787, CUSTOM_DEC);
 }
 
 //----------------------------
 //　カスタムシーン更新
 void CustomScene::Update() {
 
-	if (Lib::KeyPress(VK_SPACE)) {
+	UIManager& ui_mng = UIManager::GetInstance();
+	ui_mng.Update();
+
+	if (ui_mng.FindClickedUI()==BT_CT_DEC) {
 		state_id = SS_END;
 	}
 
@@ -25,6 +32,8 @@ void CustomScene::Update() {
 
 	// 星型の更新
 	custom_star.Update();
+
+	
 }
 
 //----------------------------
@@ -32,7 +41,9 @@ void CustomScene::Update() {
 SceneID CustomScene::End() {
 
 	state_id = SS_INIT;
-	return SC_SELECT;
+	UIManager::GetInstance().Delete(BT_CT_DEC);
+
+	return SC_GAME;
 }
 
 //----------------------------
@@ -158,10 +169,12 @@ void CustomScene::Draw() {
 		1115, 887
 	);
 
-	//「決定」
+	UIManager::GetInstance().Draw();
+
+	/*「決定」
 	Lib::DrawBox2D(
 		"Resource/Custom/UI_custom_decision.png",
 		1445, 787
-	);
+	);*/
 }
 
