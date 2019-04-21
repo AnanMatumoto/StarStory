@@ -9,7 +9,7 @@
 //　カスタムシーン初期化
 void CustomScene::Init() {
 
-	state_id = SS_UPDATE;
+	m_state_id = SS_UPDATE;
 	UIManager::GetInstance().Register(BT_CT_DEC, 1445, 787, CUSTOM_DEC);
 }
 
@@ -22,7 +22,7 @@ void CustomScene::Update() {
 
 	//決定ボタンが押されたら
 	if (ui_mng.FindClickedUI()==BT_CT_DEC) {
-		state_id = SS_END;
+		m_state_id = SS_END;
 	}
 
 	// マウス座標取得
@@ -41,7 +41,7 @@ void CustomScene::Update() {
 // 　カスタムシーン更新
 SceneID CustomScene::End() {
 
-	state_id = SS_INIT;
+	m_state_id = SS_INIT;
 	UIManager::GetInstance().Delete(BT_CT_DEC);
 
 	return SC_GAME;
@@ -51,7 +51,7 @@ SceneID CustomScene::End() {
 //	カスタムシーン状態管理
 SceneID CustomScene::Control() {
 
-	switch (state_id)
+	switch (m_state_id)
 	{
 	case SS_INIT:
 		Init();
