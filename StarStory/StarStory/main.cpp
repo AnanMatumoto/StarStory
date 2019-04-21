@@ -21,7 +21,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		//　描画開始
 		Lib::DrawBegin(0xe0e0ff);
 		
-	
+		
 		SceneManager::GetInstance().Update();
 		
 		//　描画終了

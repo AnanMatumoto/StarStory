@@ -44,6 +44,9 @@ ObjectBase* UIObjectFactory::Create(
 	case BT_RS_CUSUTOM:
 		return new ButtonUI(x, y, tex_name);
 		break;
+	case BT_RS_TITLEBACK:
+		return new ButtonUI(x, y, tex_name);
+		break;
 	}
 	return nullptr;
 }

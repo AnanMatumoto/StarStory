@@ -21,7 +21,7 @@
 //-------------------------------------------
 //　ゲームシーン初期化
 void GameScene::Init() {
-	state_id = SS_UPDATE;
+	m_state_id = SS_UPDATE;
 	//stage = new StageBase();
 
 	// ToDo:スキル読み込み
@@ -52,7 +52,7 @@ void GameScene::Update() {
 	
 	if (Lib::KeyPress(VK_SPACE))
 	{
-		state_id = SS_END;
+		m_state_id = SS_END;
 	}
 
 	// ステージオブジェクト更新
@@ -67,7 +67,7 @@ SceneID GameScene::End() {
 	/*if (stage->IsClear()) {
 		is_clear = true;
 	}*/
-	state_id = SS_INIT;
+	m_state_id = SS_INIT;
 
 	//UIをリストから削除
 	UIManager::GetInstance().Delete(BT_GM_WIND);
@@ -83,7 +83,7 @@ SceneID GameScene::End() {
 //　ゲームシーン状態更新
 SceneID GameScene::Control() {
 
-	switch (state_id)
+	switch (m_state_id)
 	{
 	case SS_INIT:
 		Init(); 
