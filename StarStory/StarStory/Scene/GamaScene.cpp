@@ -3,6 +3,7 @@
 #include "../Lib/Lib.h"
 #include "../StageObject/ObjectManager.h"
 #include "../StageObject/StarObject.h"
+#include "../UI/UIManager.h"
 
 #define TEX_SPEED  "Resource/Player/player_1_accel.png"
 #define TEX_JUMP   "Resource/Player/player_1_jump.png"
@@ -26,6 +27,7 @@ void GameScene::Init() {
 	// ToDo:スキル読み込み
 
 	ObjectManager& mng = ObjectManager::GetInstance();
+	UIManager & UImng = UIManager::GetInstance();
 
     //ステージオブジェクトの登録
 	mng.Register(OBJ_TEST1, 0, 700);
@@ -37,10 +39,10 @@ void GameScene::Init() {
 	mng.Register(STAR_CHILD5, -30, 23, NORMAL, TEX_NOMAL, 288);
 
 	//UIの登録
-	mng.Register(BT_GM_WIND, 20, 50, GAME_UI_WND);
-	mng.Register(BT_GM_TOCUSTOM, 60,66,GAME_CUSTOM);
-	mng.Register(BT_GM_STOP, 250, 66, GAME_STOP );
-	mng.Register(BT_GM_ONOFF, 350, 66,GAME_ONOFF );
+	UImng.Register(BT_GM_WIND, 20, 50, GAME_UI_WND);
+	UImng.Register(BT_GM_TOCUSTOM, 60,66,GAME_CUSTOM);
+	UImng.Register(BT_GM_STOP, 250, 66, GAME_STOP );
+	UImng.Register(BT_GM_ONOFF, 350, 66,GAME_ONOFF );
 
 }
 
@@ -55,7 +57,7 @@ void GameScene::Update() {
 
 	// ステージオブジェクト更新
 	ObjectManager::GetInstance().Update();
-	ObjectManager::GetInstance().UpdateUI();
+	UIManager::GetInstance().Update();
 }
 
 //------------------------------------------
@@ -68,10 +70,10 @@ SceneID GameScene::End() {
 	state_id = SS_INIT;
 
 	//UIをリストから削除
-	ObjectManager::GetInstance().DeleteUI(BT_GM_WIND);
-	ObjectManager::GetInstance().DeleteUI(BT_GM_TOCUSTOM);
-	ObjectManager::GetInstance().DeleteUI(BT_GM_STOP);
-	ObjectManager::GetInstance().DeleteUI(BT_GM_ONOFF);
+	UIManager::GetInstance().Delete(BT_GM_WIND);
+	UIManager::GetInstance().Delete(BT_GM_TOCUSTOM);
+	UIManager::GetInstance().Delete(BT_GM_STOP);
+	UIManager::GetInstance().Delete(BT_GM_ONOFF);
 	
 
 	return SC_RESULT;
@@ -116,7 +118,7 @@ void GameScene::Draw() {
 	
 	// ステージオブジェクト描画
 	ObjectManager::GetInstance().Draw();
-	ObjectManager::GetInstance().DrawUI();
+	UIManager::GetInstance().Draw();
 
 }
 

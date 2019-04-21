@@ -1,6 +1,6 @@
 ﻿#include "UIObjectFactory.h"
-#include "ButtonUI.h"
-
+#include "Button.h"
+#include "UIManager.h"
 
 ObjectBase* UIObjectFactory::Create(
 	int id,

@@ -204,11 +204,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="UI\ButtonUI.cpp">
+    <ClCompile Include="UI\Button.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="UI\UIObjectFactory.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UI\UIManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -291,7 +295,14 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="UI\ButtonUI.h" />
+    <ClInclude Include="UI\Button.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UI\UIManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="UI\UIObjectFactory.h">
       <SubType>
       </SubType>
