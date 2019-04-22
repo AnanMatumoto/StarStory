@@ -27,11 +27,11 @@ void CustomScene::Init() {
 	UIManager & UImng = UIManager::GetInstance();
 
 	/*--UI描画--*/
-	UImng.Register(CT_NORMAL, 1270, 190, CUSTOM_NORMAL);	// スキルなし
-	UImng.Register(CT_JUMP, 1270, 310, CUSTOM_JUMP);		// ジャンプスキル
-	UImng.Register(CT_ACCEL, 1270, 430, CUSTOM_ACCEL);		// 加速スキル
-	UImng.Register(CT_LIGHT, 1270, 547, CUSTOM_LIGHT);		// 光るスキル
-	UImng.Register(CT_STOP, 1270, 665, CUSTOM_STOP);		// 停止スキル
+	//UImng.Register(CT_NORMAL, 1270, 190, CUSTOM_NORMAL);	// スキルなし
+	//UImng.Register(CT_JUMP, 1270, 310, CUSTOM_JUMP);		// ジャンプスキル
+	//UImng.Register(CT_ACCEL, 1270, 430, CUSTOM_ACCEL);		// 加速スキル
+	//UImng.Register(CT_LIGHT, 1270, 547, CUSTOM_LIGHT);		// 光るスキル
+	//UImng.Register(CT_STOP, 1270, 665, CUSTOM_STOP);		// 停止スキル
 
 	//// 強弱スキル
 	//float weak = 190;
@@ -86,13 +86,13 @@ SceneID CustomScene::End() {
 	m_state_id = SS_INIT;
 
 	// UIをリストから削除
-	UIManager::GetInstance().Delete(CT_NORMAL);
+	/*UIManager::GetInstance().Delete(CT_NORMAL);
 	UIManager::GetInstance().Delete(CT_JUMP);
 	UIManager::GetInstance().Delete(CT_ACCEL);
 	UIManager::GetInstance().Delete(CT_LIGHT);
 	UIManager::GetInstance().Delete(CT_STOP);
-	//UIManager::GetInstance().Delete(CT_WEAK);
-	//UIManager::GetInstance().Delete(CT_COST1);
+	UIManager::GetInstance().Delete(CT_WEAK);
+	UIManager::GetInstance().Delete(CT_COST1);*/
 	UIManager::GetInstance().Delete(BT_CT_DECISION);
 	UIManager::GetInstance().Delete(BT_CT_MAP);
 	UIManager::GetInstance().Delete(BT_CT_TOSELECT);
