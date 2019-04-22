@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include "Scene.h"
 #include"../Custom/CustomStar/CustomStar.h"
-#include"../Custom/DiamondBase/DiamondBase.h"
 #include"../Lib/Lib.h"
 #include"../Skill.h"
 

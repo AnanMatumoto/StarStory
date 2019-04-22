@@ -14,7 +14,17 @@ enum UIObjectID {
 	BT_TT_END,		//  　〃　　　終了
 
 	//カスタム
-	BT_CT_DEC,
+	CT_NORMAL,
+	CT_JUMP,
+	CT_ACCEL,
+	CT_LIGHT,
+	CT_STOP,
+	//CT_WEAK,
+	//CT_STRONG
+	//CT_COST1,
+	//CT_COST2,
+	//CT_COST3,
+	BT_CT_DECISION,
 	BT_CT_MAP,
 	BT_CT_TOSELECT,
 

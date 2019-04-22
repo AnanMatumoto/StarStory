@@ -17,7 +17,7 @@ ObjectBase* UIObjectFactory::Create(
 	case BT_TT_END:
 		return new ButtonUI(x, y, tex_name);
 		break;
-	case BT_CT_DEC:
+	case BT_CT_DECISION:
 		return new ButtonUI(x, y, tex_name);
 			break;
 	case BT_CT_MAP:

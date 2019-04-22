@@ -143,7 +143,7 @@ void CustomStar::DrawStar() {
 
 		// ひし形を描画
 		Lib::DrawDaiamond2D(
-			"Resource/Custom/player_1_normal(仮).png",
+			"Resource/Player/player_1_normal.png",
 			m_pos_x_list[i], m_pos_y_list[i],
 			m_size_h, m_size_w,
 			m_angle_list[i]);
