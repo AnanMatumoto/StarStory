@@ -16,10 +16,10 @@ enum DiamondPart {
 // ひし形の各頂点
 enum DiamondVertex {
 
-	TOP_VERTEX,
-	RIGHT_VERTEX,
-	BOTTOM_VERTEX,
-	LEFT_VERTEX
+	TOP_VERTEX,			// 上
+	RIGHT_VERTEX,		// 右
+	BOTTOM_VERTEX,		// 下
+	LEFT_VERTEX			// 左
 };
 
 // ひし形の基底クラス
@@ -71,6 +71,8 @@ protected:
 	bool m_is_strength_list[MAX_DIAMOND_NUM];	// 強弱スキルの判別(名前考え中)
 
 	Vec2 m_vertex_pos_list[MAX_DIAMOND_NUM][MAX_VERTEX_NUM];	// ひし形の各頂点座標保管場所
+
+	Vertex m_vertex_info[MAX_DIAMOND_NUM];		// ひし形の頂点情報(D3DXVECTOR4,COLOR,UV)
 	/*--変数--*/
 
 	/*--enum--*/
