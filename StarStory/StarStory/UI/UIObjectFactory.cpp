@@ -11,12 +11,16 @@ ObjectBase* UIObjectFactory::Create(
 
 	switch (id)
 	{
+	/*--TitleScene--*/
 	case BT_TT_START:
 		return new ButtonUI(x, y, tex_name);
 		break;
 	case BT_TT_END:
 		return new ButtonUI(x, y, tex_name);
 		break;
+	/*--TitleScene--*/
+
+	/*--CustomScene--*/
 	case BT_CT_DECISION:
 		return new ButtonUI(x, y, tex_name);
 			break;
@@ -26,6 +30,9 @@ ObjectBase* UIObjectFactory::Create(
 	case BT_CT_TOSELECT:
 		return new ButtonUI(x, y, tex_name);
 		break;
+	/*--CustomScene--*/
+
+	/*--GameScene--*/
 	case BT_GM_WIND:
 		return new ButtonUI(x, y, tex_name);
 		break;
@@ -38,6 +45,9 @@ ObjectBase* UIObjectFactory::Create(
 	case BT_GM_ONOFF:
 		return new ButtonUI(x, y, tex_name);
 		break;
+	/*--GameScene--*/
+
+	/*--ResultScene--*/
 	case BT_RS_SELECT:
 		return new ButtonUI(x, y, tex_name);
 		break;
@@ -47,6 +57,7 @@ ObjectBase* UIObjectFactory::Create(
 	case BT_RS_TITLEBACK:
 		return new ButtonUI(x, y, tex_name);
 		break;
+	/*--ResultScene--*/
 	}
 	return nullptr;
 }
