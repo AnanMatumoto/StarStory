@@ -219,10 +219,10 @@ namespace Lib {
 		float ox, float oy
 	) {
 		Vertex vtx[4] = {
-			{{-ox, (0.5f - oy), 0.f,1.f},color,{0.f,0.5f}},
-			{{(0.5f - ox),-oy,0.f,1.f},color,{0.5f,1.f}},
-			{{(1.f - ox),(0.5f - oy),0.f,1.f},color,{1.f,0.5f}},
-			{{(0.5f - ox),(1.f - oy),0.f,1.f},color,{0.5f, 0.f}}
+			{{-ox, (0.5f - oy), 0.f,1.f},color,{0.31f,0.5f}},
+			{{(0.5f - ox),-oy,0.f,1.f},color,{0.5f,0.78f}},
+			{{(1.f - ox),(0.5f - oy),0.f,1.f},color,{0.69f,0.5f}},
+			{{(0.5f - ox),(1.f - oy),0.f,1.f},color,{0.5f, 0.228f}}
 		};
 
 		D3DXMATRIX mtx;

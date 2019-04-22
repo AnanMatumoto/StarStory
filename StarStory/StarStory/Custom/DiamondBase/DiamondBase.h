@@ -55,8 +55,10 @@ protected:
 
 	/*--基本情報--*/
 	/*--変数--*/
-	float m_pos_x_list[MAX_DIAMOND_NUM];			// x座標
-	float m_pos_y_list[MAX_DIAMOND_NUM];			// y座標
+	float m_pos_x_list[MAX_DIAMOND_NUM];		// x座標
+	float m_pos_y_list[MAX_DIAMOND_NUM];		// y座標
+
+	float m_angle_list[MAX_DIAMOND_NUM];		// 角度
 
 	// ひし形の描画に使う用
 	float m_size_w;			// 幅
@@ -66,13 +68,9 @@ protected:
 	float m_half_size_w;	// 幅
 	float m_half_size_h;	// 高さ
 
-	float m_angle_list[MAX_DIAMOND_NUM];		// 角度
-
 	bool m_is_strength_list[MAX_DIAMOND_NUM];	// 強弱スキルの判別(名前考え中)
 
 	Vec2 m_vertex_pos_list[MAX_DIAMOND_NUM][MAX_VERTEX_NUM];	// ひし形の各頂点座標保管場所
-
-	Vertex m_vertex_info[MAX_DIAMOND_NUM];		// ひし形の頂点情報(D3DXVECTOR4,COLOR,UV)
 	/*--変数--*/
 
 	/*--enum--*/
