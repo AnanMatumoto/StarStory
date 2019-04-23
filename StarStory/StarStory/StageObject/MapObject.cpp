@@ -4,7 +4,7 @@
 //---------------------------------
 //　コンストラクタ
 MapObject::MapObject(float x, float y):ObjectBase(x,y) {
-	m_width = 400;
+	m_width = 800;
 	m_height = 50;
 
 

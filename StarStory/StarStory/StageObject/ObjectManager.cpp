@@ -77,7 +77,6 @@ void ObjectManager::AllDelete() {
 			delete obj;
 		}
 	}
-
 	//　要素をすべて削除
 	m_obj_list.clear();
 }
