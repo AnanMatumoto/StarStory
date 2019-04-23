@@ -183,6 +183,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Custom\SkillTable\SkillTable.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="StageObject\ObjectBase.cpp">
       <SubType>
       </SubType>
@@ -267,7 +271,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SkillTable.h">
+    <ClInclude Include="Custom\SkillTable\SkillTable.h">
       <SubType>
       </SubType>
     </ClInclude>

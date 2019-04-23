@@ -24,6 +24,7 @@
     <ClCompile Include="UI\Button.cpp" />
     <ClCompile Include="UI\UIObjectFactory.cpp" />
     <ClCompile Include="UI\UIManager.cpp" />
+    <ClCompile Include="Custom\SkillTable\SkillTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -49,6 +50,6 @@
     <ClInclude Include="UI\Button.h" />
     <ClInclude Include="UI\UIManager.h" />
     <ClInclude Include="UI\UIObjectFactory.h" />
-    <ClInclude Include="SkillTable.h" />
+    <ClInclude Include="Custom\SkillTable\SkillTable.h" />
   </ItemGroup>
 </Project>
