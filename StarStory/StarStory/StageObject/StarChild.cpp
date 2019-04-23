@@ -25,6 +25,7 @@ StarChild::StarChild(
 //　更新処理
 void StarChild::Update() {
 
+	IsHitToObject();
 }
 
 //------------------------------------
@@ -105,7 +106,8 @@ void StarChild::IsHitToObject() {
 
 //-------------------------------
 //　当たり判定用変数ゲッター
-const bool StarChild::GetHit()const {
+const bool StarChild::GetHit()const
+{
 	return is_hit;
 }
 
