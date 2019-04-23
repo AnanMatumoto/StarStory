@@ -26,13 +26,15 @@ private:
 	void AutomaticMove();
 	//  スキル発動
 	void SkillActive(int skill_id);
+	
 
 private:
 
-	Vec2  m_vel;		    //移動量
-	float m_speed;			//速さ
-	float m_jump_power;		//ジャンプ力
-	float m_jump_interval;  //ジャンプ時間
+	Vec2  m_vel;						//移動量
+	Vec2  m_temp_vel;					//保存用移動量
+	float m_speed;						//速さ
+	float m_jump_power;					//ジャンプ力
+	float m_jump_interval;				//ジャンプ時間
 	std::vector<StarChild*> m_childs;
 };
 

@@ -32,11 +32,11 @@ void GameScene::Init() {
     //ステージオブジェクトの登録
 	mng.Register(OBJ_TEST1, 0, 700);
 	mng.Register(STAR_OBJ, 90, 600);
-	mng.Register(STAR_CHILD1,   0,  0, SPEED,  TEX_SPEED,   0);
-	mng.Register(STAR_CHILD2,  30, 23,   JUMP, TEX_JUMP,   72);
-	mng.Register(STAR_CHILD3,  19, 60, NORMAL, TEX_NOMAL, 144);
-	mng.Register(STAR_CHILD4, -19, 60, NORMAL, TEX_NOMAL, 216);
-	mng.Register(STAR_CHILD5, -30, 23, NORMAL, TEX_NOMAL, 288);
+	mng.Register(STAR_CHILD1,  0,  -32, SPEED,  TEX_SPEED,   0);
+	mng.Register(STAR_CHILD2,  30, -10,   JUMP, TEX_JUMP,   72);
+	mng.Register(STAR_CHILD3,  19, 26, NORMAL, TEX_NOMAL, 144);
+	mng.Register(STAR_CHILD4, -19, 26, NORMAL, TEX_NOMAL, 216);
+	mng.Register(STAR_CHILD5, -30, -10, NORMAL, TEX_NOMAL, 288);
 
 	//UIの登録
 	UImng.Register(BT_GM_WIND, 20, 50, GAME_UI_WND);
