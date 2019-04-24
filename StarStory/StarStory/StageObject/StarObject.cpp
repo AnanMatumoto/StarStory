@@ -1,5 +1,6 @@
 ﻿#include "StarObject.h"
 #include "StarChild.h"
+#include "MapObject.h"
 #include "ObjectManager.h"
 #include "../Lib/Lib.h"
 #include "../Skill.h"
@@ -11,7 +12,8 @@ namespace {
 		ObjectBaseへ移動する
 	*/
 	const float GRAVITY  = 1.6f;
-	const int   TWICE_UP = 2;
+	const int   BOOST = 3;
+	const int MAX_CHILDS = 5;
 }
 //-----------------------------------
 //　コンストラクタ
@@ -27,12 +29,30 @@ StarObject::StarObject(
 	m_vel.x  = 0;
 	m_jump_power    = -3.f;
 	m_jump_interval = 60.f;
+	m_is_active = false;
+	m_cur_child = nullptr;
+	m_cur_obj   = nullptr;
 }
 
 //-----------------------------------
 //　更新処理
 void StarObject::Update() {
+	
+	auto mng = ObjectManager::GetInstance();
+	//子オブジェクトを一度だけ取得する
+	if (m_childs.size() < MAX_CHILDS) {
+		m_childs = mng.GetGameObjects<StarChild>();
+	}
+
+	if (m_map_obj.size() < MAX_OBJ_NUM) {
+		m_map_obj = mng.GetGameObjects<MapObject>();
+	}
+
+
 	AutomaticMove();
+	if (m_cur_child != nullptr) {
+		SkillActive(m_cur_child->GetSkill());
+	}
 	
 }
 
@@ -61,23 +81,28 @@ void StarObject::SetVertex(DWORD color) {
 // 自動操作
 void StarObject::AutomaticMove() {
 
-	auto mng = ObjectManager::GetInstance();
-	m_childs = mng.GetGameObjects<StarChild>();
 	
-	m_vel.x = m_speed;
-	m_pos.x += m_vel.x;
-	m_vel.y = GRAVITY;
-	++m_rot;
+	if (!m_is_active) {
 
-	for (auto it : m_childs) {
-		StarChild* child = it;
+		m_vel.x = m_speed;
+		m_pos.x += m_vel.x;
+		m_vel.y = GRAVITY;
+		++m_rot;
+		m_pos.y += m_vel.y;
+	}
+	
+	for (auto child : m_childs) {
+		
 		//オブジェクトと各頂点があたっているか
 		if (child->GetHit()) {
+			m_cur_child = child;
 			//頂点が当たった
-			SkillActive(child->GetSkill());
+			m_is_active = true;
+			
 		}
 	}
-	m_pos.y += m_vel.y;
+
+
 }
 
 //------------------------------------
@@ -88,16 +113,26 @@ void StarObject::SkillActive(int skill_id) {
 	{
 	case NORMAL:
 		//何も発動しない
+		m_vel.x = m_speed;
 		m_vel.y = 0.f;
+		++m_rot;
+
+		m_pos.x += m_vel.x;
+		m_pos.y += m_vel.y;
+
 		break;
 	case SPEED:
 		//X移動量を倍にする
 		m_vel.y = 0.f;
-		m_vel.x = m_speed * TWICE_UP;
+		m_vel.x = m_speed * BOOST;
+
+		m_pos.x += m_vel.x;
+		m_pos.y += m_vel.y;;
+		++m_rot;
 		break;
 	case JUMP:
 		//Y移動量を追加する
-		m_vel.y = m_jump_power;
+		Jump();
 		break;
 	case STOP:
 
@@ -107,4 +142,25 @@ void StarObject::SkillActive(int skill_id) {
 		m_vel.y = 0.f;
 		break;
 	}
+}
+
+void StarObject::Jump(){
+
+
+	if (--m_jump_interval > 0) {
+		m_vel.y = m_jump_power;
+		m_vel.x = m_speed;
+		m_pos.y += m_vel.y;
+		m_pos.x += m_vel.x;
+	}
+	else {
+		m_vel.x = m_speed;
+		m_vel.y = GRAVITY;
+		++m_rot;
+		m_pos.x += m_vel.x;
+		m_pos.y += m_vel.y;
+	}
+
+	
+
 }

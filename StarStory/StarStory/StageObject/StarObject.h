@@ -4,6 +4,7 @@
 #include <vector>
 
 class StarChild;
+class MapObject;
 
 //=================================
 // 星オブジェクト親クラス
@@ -26,7 +27,11 @@ private:
 	void AutomaticMove();
 	//  スキル発動
 	void SkillActive(int skill_id);
+
+	void Landing();
 	
+
+	void Jump();
 
 private:
 
@@ -35,6 +40,11 @@ private:
 	float m_speed;						//速さ
 	float m_jump_power;					//ジャンプ力
 	float m_jump_interval;				//ジャンプ時間
+	bool  m_is_active;					//スキル発動中
+	StarChild* m_cur_child;
+	MapObject* m_cur_obj;
 	std::vector<StarChild*> m_childs;
+	std::vector<MapObject*> m_map_obj;  
+	
 };
 
