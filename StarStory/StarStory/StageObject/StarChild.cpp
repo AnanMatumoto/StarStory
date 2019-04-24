@@ -17,6 +17,7 @@ StarChild::StarChild(
 	m_tex_name = tex_name;
 	m_parent   = ObjectManager::GetInstance().FindObject(STAR_OBJ);
 	m_hit_obj  = ObjectManager::GetInstance().GetGameObjects<MapObject>();
+	m_obj_width = 0.f;
 	is_hit     = false;
 	m_skill    = skill;
 }
@@ -52,6 +53,7 @@ void StarChild::SetVertex(DWORD color) {
 
 	DiamondLocalTransform(m_vtx, m_width, m_height);
 	RefParentVertex(m_vtx);
+
 }
 
 //-------------------------------------
@@ -87,12 +89,13 @@ void StarChild::IsHitToObject() {
 
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
-	for (auto it : m_hit_obj) {
-		if (vec.x <= it->GetWidth()){
+	for (auto obj : m_hit_obj) {
+		if (vec.x <= obj->GetWidth()){
 			//オブジェクトの幅に頂点があるか
-			if (IsHitToSurface(vec, it)) {
+			if (IsHitToSurface(vec, obj)) {
 				//頂点が当たっているか
 				is_hit = true;
+				m_obj_width = obj->GetWidth();
 			}
 			else {
 				is_hit = false;
@@ -115,4 +118,10 @@ const bool StarChild::GetHit()const
 //　スキル名ゲッター
 const Skill StarChild::GetSkill()const {
 	return m_skill;
+}
+
+//--------------------------------
+// マップオブジェクトゲッター
+float StarChild::GetHitObjWidth() {
+	return m_obj_width;
 }

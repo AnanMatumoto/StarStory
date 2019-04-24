@@ -48,7 +48,6 @@ void StarObject::Update() {
 		m_map_obj = mng.GetGameObjects<MapObject>();
 	}
 
-
 	AutomaticMove();
 	if (m_cur_child != nullptr) {
 		SkillActive(m_cur_child->GetSkill());
@@ -82,6 +81,7 @@ void StarObject::SetVertex(DWORD color) {
 void StarObject::AutomaticMove() {
 
 	
+
 	if (!m_is_active) {
 
 		m_vel.x = m_speed;
@@ -91,18 +91,22 @@ void StarObject::AutomaticMove() {
 		m_pos.y += m_vel.y;
 	}
 	
+	float hit_obj_w = 0;
+	
 	for (auto child : m_childs) {
 		
 		//オブジェクトと各頂点があたっているか
 		if (child->GetHit()) {
 			m_cur_child = child;
+			hit_obj_w = child->GetHitObjWidth();
 			//頂点が当たった
 			m_is_active = true;
-			
 		}
 	}
 
-
+	if (m_pos.x >= hit_obj_w) {
+		m_is_active = false;
+	}
 }
 
 //------------------------------------

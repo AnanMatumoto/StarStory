@@ -28,9 +28,6 @@ private:
 	//  スキル発動
 	void SkillActive(int skill_id);
 
-	void Landing();
-	
-
 	void Jump();
 
 private:

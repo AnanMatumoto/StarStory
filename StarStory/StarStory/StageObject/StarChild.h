@@ -29,6 +29,8 @@ public:
 	// スキル名ゲッター
 	const Skill GetSkill()const;
 	
+	float GetHitObjWidth();
+
 	// 当たり判定判定処理
 	void IsHitToObject();
 
@@ -51,7 +53,8 @@ private:
 	ObjectBase* m_parent;			    //親オブジェクト
 	Skill       m_skill;			            //スキル
 	std::string m_tex_name;				//画像名
-	std::vector<MapObject*> m_hit_obj;//マップオブジェクトのリスト
+	std::vector<MapObject*> m_hit_obj; //マップオブジェクトのリスト
+	float       m_obj_width;		   // 現在もっているマップオブジェクト
 	bool        is_hit;
 
 };
