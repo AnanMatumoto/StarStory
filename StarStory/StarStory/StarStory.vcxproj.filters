@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="Collision\Collision.cpp" />
     <ClCompile Include="Common\Common.cpp" />
-    <ClCompile Include="Custom\CustomStar\CustomStar.cpp" />
     <ClCompile Include="Scene\CustomScene.cpp" />
     <ClCompile Include="Lib\Device.cpp" />
     <ClCompile Include="Lib\Draw2D.cpp" />
@@ -25,12 +24,12 @@
     <ClCompile Include="UI\UIObjectFactory.cpp" />
     <ClCompile Include="UI\UIManager.cpp" />
     <ClCompile Include="Custom\SkillTable\SkillTable.cpp" />
+    <ClCompile Include="Custom\CustomStar\CustomStar.cpp" />
+    <ClCompile Include="Custom\Diamond\Diamond.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
     <ClInclude Include="Common\Common.h" />
-    <ClInclude Include="Custom\CustomStar\CustomStar.h" />
-    <ClInclude Include="Custom\DiamondBase\DiamondBase.h" />
     <ClInclude Include="Lib\Lib.h" />
     <ClInclude Include="Scene\CustomScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
@@ -51,5 +50,8 @@
     <ClInclude Include="UI\UIManager.h" />
     <ClInclude Include="UI\UIObjectFactory.h" />
     <ClInclude Include="Custom\SkillTable\SkillTable.h" />
+    <ClInclude Include="Custom\CustomStar\CustomStar.h" />
+    <ClInclude Include="Custom\Diamond\Diamond.h" />
+    <ClInclude Include="Custom\DiamondBase\DiamondBase.h" />
   </ItemGroup>
 </Project>
