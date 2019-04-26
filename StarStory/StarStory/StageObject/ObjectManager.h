@@ -28,8 +28,8 @@ public:
 	void Register(
 		StageObjectID id,
 		float x, float y,
-		Skill skill = NORMAL,
 		std::string tex_name = "none",
+		Skill skill = NORMAL,
 		float rot = 0.f
 	);
 

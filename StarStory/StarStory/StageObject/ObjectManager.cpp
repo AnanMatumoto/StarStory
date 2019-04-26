@@ -18,12 +18,12 @@ ObjectManager& ObjectManager::GetInstance() {
 void ObjectManager::Register(
 	StageObjectID id,
 	float x, float y,
-	Skill skill,
 	std::string tex_name,
+	Skill skill,
 	float rot
 ) {
 	StageObjectFactory obj_factory;
-	m_obj_list.emplace(id, obj_factory.Create(id, x, y, skill, tex_name, rot));
+	m_obj_list.emplace(id, obj_factory.Create(id, x, y, tex_name, skill, rot));
 }
 
 //-----------------------------------

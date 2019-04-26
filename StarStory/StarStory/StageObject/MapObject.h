@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "ObjectBase.h"
+#include <string>
 
 //================================
 // テスト用オブジェクトクラス	
@@ -10,7 +11,7 @@ class MapObject :public ObjectBase {
 
 public:
 
-	MapObject(float x, float y);
+	MapObject(float x, float y,std::string tex_name);
 	~MapObject()override {}
 
 private:

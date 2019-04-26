@@ -27,8 +27,8 @@ public:
 		int id,
 		float x,
 		float y,
-		Skill skill = NORMAL,
 		std::string tex_name = "none",
+		Skill skill = NORMAL,
 		float rotate = 0.f
 	)override;
 

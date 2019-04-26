@@ -3,10 +3,15 @@
 
 //---------------------------------
 //　コンストラクタ
-MapObject::MapObject(float x, float y):ObjectBase(x,y) {
-	m_width = 800;
-	m_height = 50;
+MapObject::MapObject(
+	float x, float y,
+	std::string tex_name
+): ObjectBase(x,y) {
 
+	Lib::Texture tex(tex_name.c_str());
+	m_tex_name = tex_name;
+	m_width  = tex.GetSize().x;
+	m_height = tex.GetSize().y;
 
 }
 
@@ -14,15 +19,17 @@ MapObject::MapObject(float x, float y):ObjectBase(x,y) {
 //　更新処理
 void MapObject::Update() {
 
-	SetVertex();
+	
+
 }
 
 //---------------------------------
 //　描画処理
 void MapObject::Draw() {
 
+	SetVertex();
 	Lib::DrawPx2D(
-		"HogeHoge",
+		m_tex_name.c_str(),
 		m_pos.x, m_pos.y,
 		m_width, m_height
 	);
@@ -35,5 +42,7 @@ void MapObject::SetVertex(DWORD color) {
 	m_vtx[1].pos = { m_pos.x + m_width, m_pos.y, 0.f,1.f };
 	m_vtx[2].pos = { m_pos.x + m_width, m_pos.y + m_height, 0.f,1.f };
 	m_vtx[3].pos = { m_pos.x,  m_pos.y + m_height, 0.f,1.f };
+
+	BoxLocalTransform(m_vtx, m_width, m_height);
 }
 
