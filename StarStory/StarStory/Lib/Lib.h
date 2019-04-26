@@ -206,7 +206,7 @@ namespace Lib {
 	);
 
 	/*
-		セルサイズ指定描画関数（基本は左上原点）
+		画像サイズ描画関数（基本は左上原点）
 	
 
 		第1　：指定するテクスチャ
@@ -224,6 +224,17 @@ namespace Lib {
 		DWORD color = 0x00ffffff,
 		float ox = 0.f,
 		float oy = 0.f
+	);
+
+	/*
+		頂点座標四角形描画関数
+
+		第1：指定するテクスチャ
+		第2：描画する頂点情報
+	*/
+	void DrawBox2D(
+		const Texture& tex,
+		Vertex[4]
 	);
 
 	/*
@@ -321,7 +332,7 @@ namespace Lib {
 
 	void DrawDiamond2D(
 		const Texture& tex,
-		Vertex[4]
+		Vertex vtx_[4]
 	);
 
 	/*
