@@ -5,6 +5,7 @@
 #include "../Lib/Lib.h"
 #include "../Skill.h"
 
+#include <cmath>
 namespace {
 
 	/* Todo:　Gravity
@@ -14,6 +15,7 @@ namespace {
 	const float GRAVITY  = 1.6f;
 	const int   BOOST = 3;
 	const int MAX_CHILDS = 5;
+	const float JUMP_POINT= 50.f;//ジャンプ基準値
 }
 //-----------------------------------
 //　コンストラクタ
@@ -28,7 +30,7 @@ StarObject::StarObject(
 	m_height = 128;
 	m_vel.x  = 0;
 	m_jump_power    = -3.f;
-	m_jump_interval = 60.f;
+	m_interval = 60.f;
 	m_is_active = false;
 	m_cur_child = nullptr;
 	m_cur_obj   = nullptr;
@@ -44,15 +46,19 @@ void StarObject::Update() {
 		m_childs = mng.GetGameObjects<StarChild>();
 	}
 
+	//ステージオブジェクトを一度だけ取得する
 	if (m_map_obj.size() < MAX_OBJ_NUM) {
 		m_map_obj = mng.GetGameObjects<MapObject>();
 	}
 
+	//自動操縦
 	AutomaticMove();
+
 	if (m_cur_child != nullptr) {
+		//子供からもらったスキルを発動する
 		SkillActive(m_cur_child->GetSkill());
 	}
-	
+
 }
 
 //------------------------------------
@@ -80,33 +86,30 @@ void StarObject::SetVertex(DWORD color) {
 // 自動操作
 void StarObject::AutomaticMove() {
 
-	
-
 	if (!m_is_active) {
-
-		m_vel.x = m_speed;
-		m_pos.x += m_vel.x;
-		m_vel.y = GRAVITY;
-		++m_rot;
-		m_pos.y += m_vel.y;
+		//スキルが発動していない場合
+		AddMoveAmount(m_speed, GRAVITY);
+		RefPosition();
 	}
-	
+
 	float hit_obj_w = 0;
 	
 	for (auto child : m_childs) {
-		
-		//オブジェクトと各頂点があたっているか
+
+		//オブジェクトと各頂点があたっている
 		if (child->GetHit()) {
 			m_cur_child = child;
+			//オブジェクトの幅を取得
 			hit_obj_w = child->GetHitObjWidth();
-			//頂点が当たった
 			m_is_active = true;
 		}
 	}
 
+	//オブジェクトの幅を超えたらスキルを非アクティブにする
 	if (m_pos.x >= hit_obj_w) {
 		m_is_active = false;
 	}
+	
 }
 
 //------------------------------------
@@ -115,56 +118,63 @@ void StarObject::SkillActive(int skill_id) {
 
 	switch (skill_id)
 	{
-	case NORMAL:
-		//何も発動しない
-		m_vel.x = m_speed;
-		m_vel.y = 0.f;
-		++m_rot;
-
-		m_pos.x += m_vel.x;
-		m_pos.y += m_vel.y;
-
+	case NORMAL://スキルセットなし
+		AddMoveAmount(m_speed);
+		RefPosition();
+		m_interval = 60.f;
 		break;
-	case SPEED:
-		//X移動量を倍にする
-		m_vel.y = 0.f;
-		m_vel.x = m_speed * BOOST;
 
-		m_pos.x += m_vel.x;
-		m_pos.y += m_vel.y;;
-		++m_rot;
+	case SPEED://加速スキル
+		AddMoveAmount(m_speed* BOOST);
+		RefPosition();
 		break;
-	case JUMP:
-		//Y移動量を追加する
-		Jump();
+
+	case JUMP://ジャンプスキル
+		JumpMotion();
 		break;
-	case STOP:
+	case STOP://停止スキル
 
 		m_vel.y = 0.f;
 		break;
-	case LIGHT:
+	case LIGHT://光るスキル
 		m_vel.y = 0.f;
 		break;
 	}
+
 }
 
-void StarObject::Jump(){
+//--------------------------------
+// 移動量を追加する
+void StarObject::AddMoveAmount(
+	float x, float y,
+	float rot
+) {
+	m_vel.x = x;
+	m_vel.y = y;
+	m_rot += rot;
+}
+
+//--------------------------------
+// 移動量を座標に反映する
+void StarObject::RefPosition() {
+
+	m_pos.x += m_vel.x;
+	m_pos.y += m_vel.y;
+}
+
+//--------------------------------
+// ジャンプモーション
+void StarObject::JumpMotion(){
 
 
-	if (--m_jump_interval > 0) {
-		m_vel.y = m_jump_power;
-		m_vel.x = m_speed;
-		m_pos.y += m_vel.y;
-		m_pos.x += m_vel.x;
+	if (--m_interval > 0) {
+		//ジャンプ時間内である
+		AddMoveAmount(m_speed, m_jump_power,0.f);
+		RefPosition();
 	}
 	else {
-		m_vel.x = m_speed;
-		m_vel.y = GRAVITY;
-		++m_rot;
-		m_pos.x += m_vel.x;
-		m_pos.y += m_vel.y;
+		AddMoveAmount(0.f, GRAVITY, 0.f);
+		RefPosition();
 	}
-
-	
 
 }

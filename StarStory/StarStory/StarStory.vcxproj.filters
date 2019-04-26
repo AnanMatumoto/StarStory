@@ -17,18 +17,13 @@
     <ClCompile Include="Scene\TitleScenecpp.cpp" />
     <ClCompile Include="StageObject\ObjectBase.cpp" />
     <ClCompile Include="StageObject\ObjectManager.cpp" />
+    <ClCompile Include="StageObject\MapObject.cpp" />
     <ClCompile Include="StageObject\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\StarChild.cpp" />
     <ClCompile Include="StageObject\StarObject.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="UI\ButtonUI.cpp" />
-    <ClCompile Include="UI\UIObjectFactory.cpp" />
-    <ClCompile Include="StageObject\MapObject.cpp" />
-=======
+    <ClCompile Include="UI\Button.cpp" />
     <ClCompile Include="UI\UIObjectFactory.cpp" />
     <ClCompile Include="UI\UIManager.cpp" />
-    <ClCompile Include="UI\Button.cpp" />
->>>>>>> ボタンクラスの挙動実装
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -47,17 +42,12 @@
     <ClInclude Include="StageObject\Factory.h" />
     <ClInclude Include="StageObject\ObjectBase.h" />
     <ClInclude Include="StageObject\ObjectManager.h" />
+    <ClInclude Include="StageObject\MapObject.h" />
     <ClInclude Include="StageObject\StageObjectFactory.h" />
     <ClInclude Include="StageObject\StarChild.h" />
     <ClInclude Include="StageObject\StarObject.h" />
-<<<<<<< HEAD
-    <ClInclude Include="UI\ButtonUI.h" />
-    <ClInclude Include="UI\UIObjectFactory.h" />
-    <ClInclude Include="StageObject\MapObject.h" />
-=======
-    <ClInclude Include="UI\UIObjectFactory.h" />
-    <ClInclude Include="UI\UIManager.h" />
     <ClInclude Include="UI\Button.h" />
->>>>>>> ボタンクラスの挙動実装
+    <ClInclude Include="UI\UIManager.h" />
+    <ClInclude Include="UI\UIObjectFactory.h" />
   </ItemGroup>
 </Project>

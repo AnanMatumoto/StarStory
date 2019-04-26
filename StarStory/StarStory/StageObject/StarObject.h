@@ -28,15 +28,25 @@ private:
 	//  スキル発動
 	void SkillActive(int skill_id);
 
-	void Jump();
+	// 移動量を追加する
+	void AddMoveAmount(
+		float x=0.f, float y=0.f,
+		float rot=1.f
+	);
+
+
+	// 移動量を座標に反映する
+	void RefPosition();
+	// ジャンプモーション
+	void JumpMotion();
 
 private:
 
 	Vec2  m_vel;						//移動量
-	Vec2  m_temp_vel;					//保存用移動量
+	Vec2  m_temp_pos;					//保存用移動量
 	float m_speed;						//速さ
 	float m_jump_power;					//ジャンプ力
-	float m_jump_interval;				//ジャンプ時間
+	float m_interval;				//ジャンプ時間
 	bool  m_is_active;					//スキル発動中
 	StarChild* m_cur_child;
 	MapObject* m_cur_obj;

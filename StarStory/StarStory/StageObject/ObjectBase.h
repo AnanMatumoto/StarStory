@@ -15,7 +15,8 @@ enum StageObjectID {
 
 	//ステージオブジェクト
 	OBJ_TEST1,
-	OBJ_CLONE1,
+	OBJ_TEST2,
+	OBJ_TEST3,
 	MAX_OBJ_NUM,
 	//---星オブジェクト---
 	STAR_OBJ,
@@ -96,11 +97,12 @@ protected:
 	bool IsHitToSurface(Vec2 point, ObjectBase* obj);
 
 protected:
-	Vec2 m_pos;         // 座標
-	Vertex m_vtx[4];    // 頂点情報
-	float m_width;      // 幅
-	float m_height;     // 高さ
-	float m_rot;        // 回転角度
-	bool  is_delete;    // 削除状態を示すフラグ
+	Vec2 m_pos;				 // 座標
+	Vertex m_vtx[4];		 // 頂点情報
+	float m_width;			 // 幅
+	float m_height;			 // 高さ
+	std::string m_tex_name;  // 画像名
+	float m_rot;			 // 回転角度
+	bool  is_delete;		 // 削除状態を示すフラグ
 };
 

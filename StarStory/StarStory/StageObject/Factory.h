@@ -49,8 +49,8 @@ public:
 		int id,
 		float x,
 		float y,
-		Skill skill,
 		std::string tex_name,
+		Skill skill,
 		float rotate
 	) {
 		return nullptr;

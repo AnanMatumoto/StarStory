@@ -8,8 +8,8 @@
 StarChild::StarChild(
 	float x,
 	float y,
-	Skill skill,
 	std::string tex_name,
+	Skill skill,
 	float rot
 ) :ObjectBase(x, y, rot){
 	m_width    = 46.f;
@@ -90,20 +90,16 @@ void StarChild::IsHitToObject() {
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
 	for (auto obj : m_hit_obj) {
-		if (vec.x <= obj->GetWidth()){
-			//オブジェクトの幅に頂点があるか
-			if (IsHitToSurface(vec, obj)) {
-				//頂点が当たっているか
-				is_hit = true;
-				m_obj_width = obj->GetWidth();
-			}
-			else {
-				is_hit = false;
-			}
+		
+		if (IsHitToSurface(vec, obj)) {
+			//頂点が当たっているか
+			is_hit = true;
+			//当たっているオブジェクトの幅を取得する
+			m_obj_width = obj->GetWidth();
 		}
 		else {
 			is_hit = false;
-		}
+		}	
 	}
 }
 

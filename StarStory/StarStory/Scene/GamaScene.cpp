@@ -5,11 +5,15 @@
 #include "../StageObject/StarObject.h"
 #include "../UI/UIManager.h"
 
+#define TEX_OBJ_192  "Resource/Game/object_192x192.png"
+#define TEX_OBJ_128 "Resource/Game/object_128x128.png"
+
 #define TEX_SPEED  "Resource/Player/player_1_accel.png"
 #define TEX_JUMP   "Resource/Player/player_1_jump.png"
 #define TEX_LIGNHT "Resource/Player/player_1_light.png"
 #define TEX_NOMAL  "Resource/Player/player_1_normal.png"
 #define TEX_STOP   "Resource/Player/player_1_stop.png"
+
 
 #define GAME_BACK   "Resource/Game/UI_stage.png"
 #define GAME_STAGE  "Resource/Game/stage1_background.png"
@@ -30,13 +34,15 @@ void GameScene::Init() {
 	UIManager & UImng = UIManager::GetInstance();
 
     //ステージオブジェクトの登録
-	mng.Register(OBJ_TEST1, 0, 700);
+	mng.Register(OBJ_TEST1, 100, 700,TEX_OBJ_192);
+	mng.Register(OBJ_TEST2, 500, 600,TEX_OBJ_128);
+
 	mng.Register(STAR_OBJ, 90, 600);
-	mng.Register(STAR_CHILD1,  0,  -32, SPEED,  TEX_SPEED,   0);
-	mng.Register(STAR_CHILD2,  30, -10,   JUMP, TEX_JUMP,   72);
-	mng.Register(STAR_CHILD3,  19, 26, NORMAL, TEX_NOMAL, 144);
-	mng.Register(STAR_CHILD4, -19, 26, NORMAL, TEX_NOMAL, 216);
-	mng.Register(STAR_CHILD5, -30, -10, NORMAL, TEX_NOMAL, 288);
+	mng.Register(STAR_CHILD1,  0,  -32, TEX_SPEED, SPEED, 0);
+	mng.Register(STAR_CHILD2,  30, -10, TEX_JUMP, JUMP, 72);
+	mng.Register(STAR_CHILD3,  19, 26,  TEX_NOMAL, NORMAL, 144);
+	mng.Register(STAR_CHILD4, -19, 26, TEX_NOMAL, NORMAL, 216);
+	mng.Register(STAR_CHILD5, -30, -10, TEX_NOMAL, NORMAL, 288);
 
 	//UIの登録
 	UImng.Register(BT_GM_WIND, 20, 50, GAME_UI_WND);
