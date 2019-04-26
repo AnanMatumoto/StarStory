@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Scene.h"
-#include"../Custom/CustomStar/CustomStar.h"
+//#include"../Custom/CustomStar/CustomStar.h"
 #include"../Lib/Lib.h"
 #include"../Skill.h"
 
@@ -25,7 +25,7 @@ private:
 	~CustomScene()override {}
 
 	// カスタムスターの実体化
-	CustomStar custom_star;
+	//CustomStar custom_star;
 
 	// マウスの座標取得用
 	float mouse_x;

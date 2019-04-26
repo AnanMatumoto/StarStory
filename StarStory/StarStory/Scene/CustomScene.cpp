@@ -36,14 +36,14 @@ void CustomScene::Update() {
 		m_state_id = SS_END;
 	}
 
-	// マウス座標取得
-	Lib::GetMousePoint(&mouse_x, &mouse_y);
+	//// マウス座標取得
+	//Lib::GetMousePoint(&mouse_x, &mouse_y);
 
-	// マウス情報をカスタムシーンからカスタムスターに移す
-  	custom_star.SetMousePos(mouse_x, mouse_y);
+	//// マウス情報をカスタムシーンからカスタムスターに移す
+ // 	custom_star.SetMousePos(mouse_x, mouse_y);
 
-	// 星型の更新
-	custom_star.Update();	
+	//// 星型の更新
+	//custom_star.Update();	
 }
 
 //----------------------------
@@ -92,7 +92,7 @@ void CustomScene::Draw() {
 	// UI描画
 	UIManager::GetInstance().Draw();
 
-	// 「星型の描画」
-	custom_star.Draw();
+	//// 「星型の描画」
+	//custom_star.Draw();
 }
 
