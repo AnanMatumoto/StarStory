@@ -60,6 +60,20 @@ namespace Lib {
 	}
 
 	//-----------------------------------------------
+	// 四角形描画関数
+	void DrawBox2D(
+		const Texture& tex,
+		Vertex v[4]
+	) {
+		dev->SetTexture(0, tex);
+		dev->SetFVF(VERTEX_FVF);
+		dev->DrawPrimitiveUP(
+			D3DPT_TRIANGLEFAN,
+			2,
+			v,
+			sizeof(Vertex));
+	}
+	//-----------------------------------------------
 	// α指定付板ポリゴン
 	void DrawBoxAlpha(
 		const Texture& tex,
@@ -119,43 +133,6 @@ namespace Lib {
 		dev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 1, v, sizeof(Vertex));
 
 	}
-	//--------------------------------------------------
-	//*********改良中**********************
-	/*void RotTriangle2D(
-		Vertex v[],
-		float angle,
-		float &px, float &py
-		) {
-*/
-//D3DXMATRIX mtx, rot_mtx;
-//int i = 0;
-
-//行列の初期化
-//D3DXMatrixIdentity(&mtx);
-//D3DXMatrixIdentity(&rot_mtx);
-
-//回転行列に角度を設定する
-//D3DXMatrixRotationZ(&rot_mtx, angle);
-//
-
-//各頂点に回転を加える
-//for (i = 0; i < 3; ++i) {
-//	D3DXMatrixTranslation(
-//		&mtx,
-//		v[i].pos.x,
-//		v[i].pos.y,
-//		v[i].pos.z
-//	);
-//	mtx *= rot_mtx;
-
-//	v[i].pos.x = mtx._41;
-//	v[i].pos.y = mtx._42;
-//	v[i].pos.z = mtx._43;
-
-//}
-//}
-
-
 
 	//---------------------------------------
 	//回転を行う三角形ポリゴン
