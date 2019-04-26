@@ -26,6 +26,7 @@
     <ClCompile Include="Custom\SkillTable\SkillTable.cpp" />
     <ClCompile Include="Custom\CustomStar\CustomStar.cpp" />
     <ClCompile Include="Custom\Diamond\Diamond.cpp" />
+    <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
