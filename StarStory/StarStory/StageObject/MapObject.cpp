@@ -12,7 +12,6 @@ MapObject::MapObject(
 	m_tex_name = tex_name;
 	m_width  = tex.GetSize().x;
 	m_height = tex.GetSize().y;
-
 }
 
 //--------------------------------
@@ -32,6 +31,7 @@ void MapObject::Draw() {
 		m_tex_name.c_str(),
 		m_vtx
 	);
+
 }
 
 //　頂点座標をセットする

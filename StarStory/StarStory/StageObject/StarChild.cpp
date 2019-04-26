@@ -87,6 +87,7 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 //　当たり判定用フラグゲッター
 void StarChild::IsHitToObject() {
 
+	SetVertex();
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
 	for (auto obj : m_hit_obj) {
