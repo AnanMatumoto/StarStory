@@ -31,8 +31,6 @@ public:
 	
 	float GetHitObjWidth();
 
-	// 当たり判定判定処理
-	void IsHitToObject();
 
 private:
 	
@@ -48,11 +46,16 @@ private:
 	// 親の座標を反映する
 	void RefParentVertex(Vertex vtx[4]);
 
+	void HitToObject();
+
+	void IsHit();
+
 private:
 
 	ObjectBase* m_parent;			    //親オブジェクト
 	Skill       m_skill;			            //スキル
-	std::vector<MapObject*> m_hit_obj; //マップオブジェクトのリスト
+	ObjectBase* m_obj;
+	std::vector<MapObject*> m_map_obj; //マップオブジェクトのリスト
 	float       m_obj_width;		   // 現在もっているマップオブジェクト
 	bool        is_hit;
 
