@@ -70,14 +70,15 @@ public:
 	//　高さゲッター
 	const float GetHeight()const;
 
+	// 　頂点情報ゲッターオーバーロード（指定した頂点情報を取得）
+	const Vertex GetVertex(int prim_num)const;
 
 protected:
 
 	//　頂点情報ゲッター
 	const Vertex* GetVertex()const;
 	
-	// 　頂点情報ゲッターオーバーロード（指定した頂点情報を取得）
-	const Vertex GetVertex(int prim_num)const;
+
 
 	//　矩形用ローカル座標変換
 	void BoxLocalTransform(
@@ -94,7 +95,7 @@ protected:
 	);
 
 	//　オブジェクトの上面を返す
-	bool IsHitToSurface(Vec2 point, ObjectBase* obj);
+	bool IsHitToUpper(Vec2 point, ObjectBase* obj);
 
 protected:
 	Vec2 m_pos;				 // 座標

@@ -124,7 +124,7 @@ void ObjectBase::DiamondLocalTransform(
 
 //--------------------------------------------
 //　オブジェクトと頂点の当たり判定
-bool ObjectBase::IsHitToSurface(Vec2 point, ObjectBase* obj) {
+bool ObjectBase::IsHitToUpper(Vec2 point, ObjectBase* obj) {
 	
 	//各頂点から線分を作成する
 	Vec2 v1(obj->GetVertex(0).pos.x, obj->GetVertex(0).pos.y);
