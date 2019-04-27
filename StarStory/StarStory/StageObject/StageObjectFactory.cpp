@@ -22,6 +22,11 @@ ObjectBase* StageObjectFactory::Create(
 	case OBJ_TEST2:
 		return new MapObject(x, y, tex_name);
 		break;
+
+	case OBJ_TEST3:
+		return new MapObject(x, y, tex_name);
+		break;
+
 	case STAR_OBJ:
 		return new StarObject(x, y, rot);
 		break;

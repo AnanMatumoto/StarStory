@@ -35,7 +35,8 @@ void GameScene::Init() {
 
     //ステージオブジェクトの登録
 	mng.Register(OBJ_TEST1, 100, 700,TEX_OBJ_192);
-	//mng.Register(OBJ_TEST2, 500, 600,TEX_OBJ_128);
+	mng.Register(OBJ_TEST2, 500, 600,TEX_OBJ_128);
+	mng.Register(OBJ_TEST3, 750, 700, TEX_OBJ_192);
 
 	mng.Register(STAR_OBJ, 90, 600);
 	mng.Register(STAR_CHILD1,  0,  -32, TEX_SPEED, SPEED, 0);
