@@ -32,7 +32,8 @@ const bool ButtonUI::GetClick()const {
 //当たったかどうかの判定
 void ButtonUI::IsHitToMouse() {
 
-	Lib::GetMousePoint(&m_mouse.x, &m_mouse.y);
+	m_mouse.x = Lib::GetMousePoint().x;
+	m_mouse.y = Lib::GetMousePoint().y;
 
 	was_click = Collision::IsInSquare(
 		m_pos,
