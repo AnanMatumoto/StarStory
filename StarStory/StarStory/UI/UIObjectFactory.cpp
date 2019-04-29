@@ -20,6 +20,15 @@ ObjectBase* UIObjectFactory::Create(
 		break;
 	/*--TitleScene--*/
 
+	/*--SelectScene--*/
+	case BT_SL_STAGE:
+		return new ButtonUI(x, y, tex_name);
+		break;
+
+	case BT_SL_BACK:
+		return new ButtonUI(x, y, tex_name);
+		break;
+
 	/*--CustomScene--*/
 	case BT_CT_DECISION:
 		return new ButtonUI(x, y, tex_name);

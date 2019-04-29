@@ -13,6 +13,10 @@ enum UIObjectID {
 	BT_TT_START,		//タイトル画面スタート
 	BT_TT_END,		//  　〃　　　終了
 
+	//ステージセレクトボタン
+	BT_SL_STAGE,
+	BT_SL_BACK,
+
 	//カスタム
 	CT_NORMAL,
 	CT_JUMP,
