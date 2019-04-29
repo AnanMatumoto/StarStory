@@ -150,7 +150,7 @@ namespace Lib {
 		第1：X座標
 		第2：Y座標
 	*/
-	void GetMousePoint(float* x, float* y);
+	Vec2 GetMousePoint();
 
 	/*
 		マウスの移動中の座標を取得する
@@ -161,7 +161,7 @@ namespace Lib {
 		x = Lib::GetPointOnDrag(),xl
 		y = Lib::GetPointOnDrag().y;
 	*/
-	POINT& GetPointOnDrag();
+	Vec2 GetPointOnDrag();
 
 	/*
 		マウスの左ボタンのクリックの判定を返す

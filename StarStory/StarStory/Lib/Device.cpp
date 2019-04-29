@@ -49,12 +49,7 @@ namespace Lib {
 
 			if (is_click == false) {
 				is_click = true;
-
-				pt.end.x = pt.start.x;
-				pt.end.y = pt.start.y;
 			}
-
-			
 			break;
 
 		case WM_RBUTTONDOWN:  // 右
@@ -82,6 +77,17 @@ namespace Lib {
 		case WM_SYSKEYDOWN: // システムキー押下開始時
 		case WM_SYSKEYUP:   // システムキー終了時
 			return 0;
+		}
+
+		//マウスクリック処理
+		if (is_click==true) {
+			//クリック状態の場合
+			pt.end.x = pt.start.x;
+			pt.end.y = pt.start.y;
+		}
+		else {
+			pt.end.x = 0;
+			pt.end.y = 0;
 		}
 
 		return DefWindowProc(hwnd, msg, wp, lp);
@@ -267,16 +273,17 @@ namespace Lib {
 
 	//-----------------------------------------
 	// マウス入力処理
-	void GetMousePoint(float* x, float *y) {
+	Vec2 GetMousePoint() {
 
-		*x = (float)pt.end.x;
-		*y = (float)pt.end.y;
+		Vec2 vec(pt.end.x, pt.end.y);
+		return vec;
 	}
 
 	//----------------------------------------
 	//　マウスの位置を取得する
-	POINT& GetPointOnDrag() {
-		return pt.start;
+	Vec2 GetPointOnDrag() {
+		Vec2 vec(pt.start.x, pt.start.y);
+		return vec;
 	}
 	//------------------------------------
 	//　マウスの左クリックの判定を返す
