@@ -40,7 +40,7 @@ void CustomScene::Update() {
 	//Lib::GetMousePoint(&mouse_x, &mouse_y);
 
 	//// マウス情報をカスタムシーンからカスタムスターに移す
- // 	custom_star.SetMousePos(mouse_x, mouse_y);
+	// 	custom_star.SetMousePos(mouse_x, mouse_y);
 
 	//// 星型の更新
 	//custom_star.Update();	
