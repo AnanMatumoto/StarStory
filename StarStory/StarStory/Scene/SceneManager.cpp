@@ -24,9 +24,8 @@ void SceneManager::Init() {
 	scene_list.emplace(SC_RESULT, new ResultScene());
 
 	//初期設定でタイトルをセットする
-	auto it = scene_list.find(SC_TITLE);
-	m_scene = it->second;
 	m_now_id = SC_TITLE;
+	m_scene = scene_list[m_now_id];
 }
 
 //---------------------------------

@@ -34,10 +34,7 @@ void ResultScene::Update() {
 	if (ui_mng.FindClickedUI() == BT_RS_TITLEBACK) {
 		m_state_id = SS_END;
 	}
-	if (ui_mng.FindClickedUI() == BT_RS_TITLEBACK) {
-		m_state_id = SS_END;
 
-	}
 }
 
 //----------------------------
