@@ -28,11 +28,7 @@ DiamondBase::DiamondBase(
 void DiamondBase::IsHitMouse() {
 
 	// マウスの座標取得
-	float mouse_x, mouse_y;
-	GetMousePoint(&mouse_x, &mouse_y);
-	Vec2 mouse_pos;
-	mouse_pos.x = mouse_x;
-	mouse_pos.y = mouse_y;
+	Vec2 mouse_pos = GetMousePoint();
 
 	// マウスとの当たり判定
 	if (IsInDiamond(
