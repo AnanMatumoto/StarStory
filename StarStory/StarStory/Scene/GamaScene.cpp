@@ -84,6 +84,8 @@ SceneID GameScene::End() {
 	UIManager::GetInstance().Delete(BT_GM_STOP);
 	UIManager::GetInstance().Delete(BT_GM_ONOFF);
 	
+	// オブジェクトの削除
+	ObjectManager::GetInstance().AllDelete();
 
 	return SC_RESULT;
 }
@@ -135,6 +137,5 @@ void GameScene::Draw() {
 // デストラクタ
 GameScene::~GameScene() {
 
-	// オブジェクトの削除
-	ObjectManager::GetInstance().AllDelete();
+
 }
