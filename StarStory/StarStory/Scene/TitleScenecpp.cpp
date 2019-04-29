@@ -30,9 +30,9 @@ void TitleScene::Update() {
 	if (mng.FindClickedUI() == BT_TT_START) {
 		m_state_id = SS_END;
 	}
-	/*else if (mng.FindClickedUI() == BT_TT_END) {
+	else if (mng.FindClickedUI() == BT_TT_END) {
 		SceneManager::GetInstance().SetQuit(true);
-	}*/
+	}
 }
 
 //-----------------------------
@@ -45,7 +45,7 @@ SceneID TitleScene::End() {
 	UIManager::GetInstance().Delete(BT_TT_START);
 	UIManager::GetInstance().Delete(BT_TT_END);
 
-	return SC_CUSTOM;
+	return SC_SELECT;
 }
 
 //-----------------------------

@@ -2,6 +2,7 @@
 #include "StarObject.h"
 #include "ObjectManager.h"
 #include "MapObject.h"
+#include "../Collision/Collision.h"
 
 //------------------------------------
 //　コンストラクタ
@@ -16,17 +17,19 @@ StarChild::StarChild(
 	m_height   = 64.f;
 	m_tex_name = tex_name;
 	m_parent   = ObjectManager::GetInstance().FindObject(STAR_OBJ);
-	m_hit_obj  = ObjectManager::GetInstance().GetGameObjects<MapObject>();
+	m_map_obj  = ObjectManager::GetInstance().GetGameObjects<MapObject>();
 	m_obj_width = 0.f;
 	is_hit     = false;
 	m_skill    = skill;
+	m_obj      = nullptr;
 }
 
 //------------------------------------
 //　更新処理
 void StarChild::Update() {
 
-	IsHitToObject();
+	HitToObject();
+	IsHit();
 }
 
 //------------------------------------
@@ -83,24 +86,42 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 	}
 }
 
-//---------------------------------------
-//　当たり判定用フラグゲッター
-void StarChild::IsHitToObject() {
+//--------------------------------------
+//　オブジェクトとの当たり判定を処理する
+void StarChild::HitToObject() {
 
+	SetVertex();
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
-	for (auto obj : m_hit_obj) {
-		
-		if (IsHitToSurface(vec, obj)) {
-			//頂点が当たっているか
+	for (auto obj : m_map_obj) {
+		float width = obj->GetVertex(1).pos.x;
+		//頂点がオブジェクトの幅の中なら保存
+		if (vec.x >= obj->GetX() && vec.x <= width) {
+			m_obj= obj;
+		}
+		continue;
+	}
+}
+
+void StarChild::IsHit() {
+
+	SetVertex();
+	
+	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
+	if (m_obj != nullptr) {
+	
+		if (IsHitToUpper(vec, m_obj)) {
 			is_hit = true;
-			//当たっているオブジェクトの幅を取得する
-			m_obj_width = obj->GetWidth();
+			m_obj_width = m_obj->GetVertex(1).pos.x;
 		}
 		else {
 			is_hit = false;
-		}	
+		}
 	}
+	else {
+		return;
+	}
+
 }
 
 //-------------------------------

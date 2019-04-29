@@ -29,8 +29,8 @@ StarObject::StarObject(
 	m_width  = 128;
 	m_height = 128;
 	m_vel.x  = 0;
-	m_jump_power    = -3.f;
-	m_interval = 60.f;
+	m_jump_power    = -4.f;
+	m_interval = 120.f;
 	m_is_active = false;
 	m_cur_child = nullptr;
 	m_cur_obj   = nullptr;
@@ -121,7 +121,7 @@ void StarObject::SkillActive(int skill_id) {
 	case NORMAL://スキルセットなし
 		AddMoveAmount(m_speed);
 		RefPosition();
-		m_interval = 60.f;
+		m_interval = 120.f;
 		break;
 
 	case SPEED://加速スキル

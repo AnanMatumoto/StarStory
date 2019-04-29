@@ -23,7 +23,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		
 		SceneManager::GetInstance().Update();
 		if (SceneManager::GetInstance().IsQuitWindow()) {
-			return 0;
+			return WM_QUIT;
 		}
 
 
