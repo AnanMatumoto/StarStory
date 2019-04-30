@@ -46,16 +46,11 @@ namespace Lib {
 		*/
 			// マウスボタンクリック開始時
 		case WM_LBUTTONDOWN:  // 左
-
-			if (is_click == false) {
-				is_click = true;
-			}
+			is_click = true;
 			break;
 
 		case WM_RBUTTONDOWN:  // 右
 		case WM_MBUTTONDOWN:  // 中
-			SetCapture(hwnd);
-			break;
 
 			// マウスボタンクリック終了時
 		case WM_LBUTTONUP:
@@ -64,9 +59,6 @@ namespace Lib {
 
 		case WM_RBUTTONUP:
 		case WM_MBUTTONUP:
-			ReleaseCapture();
-			break;
-
 		case WM_MOUSEMOVE:
 
 			// 更新する座標を取得
