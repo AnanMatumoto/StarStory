@@ -42,8 +42,7 @@ SceneID TitleScene::End() {
 	m_state_id = SS_INIT;
 
 	//UIをリストから削除する
-	UIManager::GetInstance().Delete(BT_TT_START);
-	UIManager::GetInstance().Delete(BT_TT_END);
+	UIManager::GetInstance().AllDelete();
 
 	return SC_SELECT;
 }

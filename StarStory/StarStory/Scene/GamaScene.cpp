@@ -79,10 +79,7 @@ SceneID GameScene::End() {
 	m_state_id = SS_INIT;
 
 	//UIをリストから削除
-	UIManager::GetInstance().Delete(BT_GM_WIND);
-	UIManager::GetInstance().Delete(BT_GM_TOCUSTOM);
-	UIManager::GetInstance().Delete(BT_GM_STOP);
-	UIManager::GetInstance().Delete(BT_GM_ONOFF);
+	UIManager::GetInstance().AllDelete();
 	
 	// オブジェクトの削除
 	ObjectManager::GetInstance().AllDelete();

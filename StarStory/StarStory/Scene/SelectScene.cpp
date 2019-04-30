@@ -37,8 +37,7 @@ void SelectScene::Update() {
 SceneID SelectScene::End() {
 
 	m_state_id = SS_INIT;
-	UIManager::GetInstance().Delete(BT_SL_STAGE);
-	UIManager::GetInstance().Delete(BT_SL_BACK);
+	UIManager::GetInstance().AllDelete();
 
 	return SC_CUSTOM;
 }

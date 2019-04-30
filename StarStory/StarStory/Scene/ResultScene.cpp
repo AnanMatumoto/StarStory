@@ -44,9 +44,7 @@ SceneID ResultScene::End() {
 	m_state_id = SS_INIT;
 
 	//UIをリストから削除
-	UIManager::GetInstance().Delete(BT_RS_CUSUTOM);
-	UIManager::GetInstance().Delete(BT_RS_SELECT);
-	UIManager::GetInstance().Delete(BT_RS_TITLEBACK);
+	UIManager::GetInstance().AllDelete();
 
 	return SC_TITLE;
 }
