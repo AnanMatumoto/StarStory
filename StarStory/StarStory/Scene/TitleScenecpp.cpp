@@ -13,6 +13,7 @@
 void TitleScene::Init() {
 	
 	m_state_id = SS_UPDATE;
+	has_end = false;
 
 	//UIの登録
 	UIManager& mng = UIManager::GetInstance();
@@ -31,7 +32,7 @@ void TitleScene::Update() {
 		m_state_id = SS_END;
 	}
 	else if (mng.FindClickedUI() == BT_TT_END) {
-		SceneManager::GetInstance().SetQuit(true);
+		has_end = true;
 	}
 }
 
@@ -44,6 +45,10 @@ SceneID TitleScene::End() {
 	//UIをリストから削除する
 	UIManager::GetInstance().AllDelete();
 
+	if (has_end) {
+		SceneManager::GetInstance().SetQuit(true);
+	}
+	
 	return SC_SELECT;
 }
 
@@ -66,6 +71,7 @@ SceneID TitleScene::Control() {
 		return End();
 		break;
 	}
+
 	return SC_TITLE;
 }
 

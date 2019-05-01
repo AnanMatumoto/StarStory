@@ -21,5 +21,10 @@ private:
 	void Draw() override;
 	
 	~SelectScene()override{}
+
+private:
+	SceneID m_scene_id;
+
 };
+
 

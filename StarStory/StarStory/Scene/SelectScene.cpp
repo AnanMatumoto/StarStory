@@ -21,11 +21,14 @@ void SelectScene::Init() {
 void SelectScene::Update() {
 	
 	UIManager& ui_mng =UIManager::GetInstance();
+	
 	if (ui_mng.FindClickedUI() == BT_SL_STAGE) {
 		m_state_id = SS_END;
+		m_scene_id = SC_CUSTOM;
 	}
 	else if(ui_mng.FindClickedUI()==BT_SL_BACK) {
 		m_state_id = SS_END;
+		m_scene_id = SC_TITLE;
 	}
 
 	ui_mng.Update();
@@ -39,7 +42,7 @@ SceneID SelectScene::End() {
 	m_state_id = SS_INIT;
 	UIManager::GetInstance().AllDelete();
 
-	return SC_CUSTOM;
+	return m_scene_id;
 }
 
 //----------------------------

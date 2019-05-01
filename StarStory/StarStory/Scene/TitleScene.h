@@ -28,6 +28,6 @@ private:
 
 private:
 	
-
+	bool has_end;	//終了状態フラグ
 	
 };

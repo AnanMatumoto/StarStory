@@ -23,6 +23,6 @@ private:
 	~ResultScene() override{}
 
 private:
-	SceneID m_sc_id;//シーン遷移保存用変数
+	SceneID m_scene_id;//シーン遷移保存用変数
 };
 

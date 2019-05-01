@@ -33,8 +33,13 @@ void ResultScene::Update() {
 
 	if (ui_mng.FindClickedUI() == BT_RS_TITLEBACK) {
 		m_state_id = SS_END;
+		m_scene_id = SC_TITLE;
 	}
 
+	if (ui_mng.FindClickedUI() == BT_RS_CUSUTOM) {
+		m_state_id = SS_END;
+		m_scene_id = SC_CUSTOM;
+	}
 }
 
 //----------------------------
@@ -46,7 +51,7 @@ SceneID ResultScene::End() {
 	//UIをリストから削除
 	UIManager::GetInstance().AllDelete();
 
-	return SC_TITLE;
+	return m_scene_id;
 }
 
 //----------------------------
