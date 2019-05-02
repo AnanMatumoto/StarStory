@@ -56,7 +56,7 @@ private:
 	Skill       m_skill;			            //スキル
 	ObjectBase* m_obj;
 	std::vector<MapObject*> m_map_obj; //マップオブジェクトのリスト
-	float       m_obj_width;		   // 現在もっているマップオブジェクト
+	float       m_obj_width;		   // マップオブジェクトの幅
 	bool        is_hit;
 
 };
