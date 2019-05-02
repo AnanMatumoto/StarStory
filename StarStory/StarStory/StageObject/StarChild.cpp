@@ -94,12 +94,11 @@ void StarChild::HitToObject() {
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
 	for (auto obj : m_map_obj) {
-		float width = obj->GetVertex(1).pos.x;
+		float right = obj->GetVertex(1).pos.x;
 		//頂点がオブジェクトの幅の中なら保存
-		if (vec.x >= obj->GetX() && vec.x <= width) {
+		if (vec.x >= obj->GetX() && vec.x <= right) {
 			m_obj= obj;
 		}
-		continue;
 	}
 }
 
@@ -117,9 +116,6 @@ void StarChild::IsHit() {
 		else {
 			is_hit = false;
 		}
-	}
-	else {
-		return;
 	}
 
 }
