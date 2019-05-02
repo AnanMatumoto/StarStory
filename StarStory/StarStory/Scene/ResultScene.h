@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Scene.h"
+#include <string>
 
 //=================================
 // リザルト画面クラス
@@ -23,6 +24,7 @@ private:
 	~ResultScene() override{}
 
 private:
-	SceneID m_scene_id;//シーン遷移保存用変数
+	SceneID     m_scene_id;  //シーン遷移保存用変数
+	std::string m_tex_name;    //ロゴ画像保存要変数
 };
 

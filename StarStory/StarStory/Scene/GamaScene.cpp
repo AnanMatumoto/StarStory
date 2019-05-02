@@ -57,14 +57,24 @@ void GameScene::Init() {
 //　ゲームシーン更新
 void GameScene::Update() {
 
-	// ステージオブジェクト更新
-	ObjectManager::GetInstance().Update();
 	UIManager& ui_mng = UIManager::GetInstance();
 	ui_mng.Update();
 
-	if (Lib::KeyPress(VK_SPACE))
-	{
+	// プレーヤーがクリアまたはゲームオーバーである
+	if (m_result > 0) {
 		m_state_id = SS_END;
+		m_scene_id = SC_RESULT;
+	}
+
+	//　カスタムボタンが押された
+	if (ui_mng.FindClickedUI() == BT_GM_TOCUSTOM) {
+		m_state_id = SS_END;
+		m_scene_id = SC_CUSTOM;
+	}
+
+	if (ui_mng.FindClickedUI() != BT_GM_STOP) {
+		// ステージオブジェクト更新
+		ObjectManager::GetInstance().Update();
 	}
 
 }
@@ -73,9 +83,6 @@ void GameScene::Update() {
 //　ゲームシーン終了
 SceneID GameScene::End() {
 
-	/*if (stage->IsClear()) {
-		is_clear = true;
-	}*/
 	m_state_id = SS_INIT;
 
 	//UIをリストから削除
@@ -84,7 +91,7 @@ SceneID GameScene::End() {
 	// オブジェクトの削除
 	ObjectManager::GetInstance().AllDelete();
 
-	return SC_RESULT;
+	return m_scene_id;
 }
 
 //-----------------------------------------
@@ -113,12 +120,13 @@ SceneID GameScene::Control() {
 //　ゲームシーン描画
 void GameScene::Draw() {
 
-	
+	//ゲーム背景	
 	Lib::DrawBox2D(
 		GAME_BACK,
 		0, 0
 	);
 
+	//ステージ背景
 	Lib::DrawBox2D(
 		GAME_STAGE,
 		0, 30

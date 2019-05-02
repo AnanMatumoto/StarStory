@@ -7,6 +7,8 @@
 #define RESULT_CUSTOM "Resource/Result/UI_result_custom.png"
 #define RESULT_SELECT "Resource/Result/UI_result_serect.png"
 #define RESULT_TITLEBACK "Resource/Result/title_back_sample.png"
+#define RESULT_CLEAR "Resource/Result/GameClear .png"
+#define RESULT_FAILD "Resource/Result/GameOver.png"
 
 //----------------------------
 // リザルトシーン初期化
@@ -16,8 +18,8 @@ void ResultScene::Init() {
 
 	//UIの登録
 	UIManager& mng = UIManager::GetInstance();
-	mng.Register(BT_RS_CUSUTOM, 935, 780, RESULT_CUSTOM);
-	mng.Register(BT_RS_SELECT, 1195, 780, RESULT_SELECT);
+	mng.Register(BT_RS_CUSUTOM, 935, 780,   RESULT_CUSTOM);
+	mng.Register(BT_RS_SELECT, 1195, 780,   RESULT_SELECT);
 	mng.Register(BT_RS_TITLEBACK, 435, 780, RESULT_TITLEBACK);
 
 }
@@ -85,5 +87,15 @@ void ResultScene::Draw() {
 		0, 0
 	);
 
+	if (GetResult() == CLEAR) {
+		m_tex_name = RESULT_CLEAR;
+	}
+	else {
+		m_tex_name = RESULT_FAILD;
+	}
+	Lib::DrawBox2D(
+		m_tex_name.c_str(),
+		500, 400
+	);
 	UIManager::GetInstance().Draw();
 }

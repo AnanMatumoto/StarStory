@@ -3,6 +3,7 @@
 #include "../Lib/Lib.h"
 #include "../UI/UIManager.h"
 
+#define BACK_IMG "Resource/StageSelect/stage_select_sample.png"
 #define BT_STAGE1 "Resource/StageSelect/Stage1_sample.png"
 #define BT_BACK "Resource/StageSelect/title_back_sample.png"
 
@@ -12,8 +13,8 @@ void SelectScene::Init() {
 
 	m_state_id = SS_UPDATE;
 	UIManager& ui_mng = UIManager::GetInstance();
-	ui_mng.Register(BT_SL_STAGE, 500, 500, BT_STAGE1);
-	ui_mng.Register(BT_SL_BACK, 200, 700, BT_BACK);
+	ui_mng.Register(BT_SL_STAGE, 346, 514, BT_STAGE1);
+	ui_mng.Register(BT_SL_BACK, 1400, 800, BT_BACK);
 }
 
 //---------------------------
@@ -72,7 +73,7 @@ SceneID SelectScene::Control() {
 void SelectScene::Draw() {
 
 	Lib::DrawBox2D(
-		"Resource/test_image/select_samp.png",
+		BACK_IMG,
 		0, 0
 	);
 	UIManager::GetInstance().Draw();

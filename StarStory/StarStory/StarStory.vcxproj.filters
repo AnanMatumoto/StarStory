@@ -3,6 +3,9 @@
   <ItemGroup>
     <ClCompile Include="Collision\Collision.cpp" />
     <ClCompile Include="Common\Common.cpp" />
+    <ClCompile Include="Custom\CustomStar\CustomStar.cpp" />
+    <ClCompile Include="Custom\Diamond\Diamond.cpp" />
+    <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp" />
     <ClCompile Include="Scene\CustomScene.cpp" />
     <ClCompile Include="Lib\Device.cpp" />
     <ClCompile Include="Lib\Draw2D.cpp" />
@@ -14,6 +17,7 @@
     <ClCompile Include="Scene\SelectScene.cpp" />
     <ClCompile Include="Lib\Texture.cpp" />
     <ClCompile Include="Scene\TitleScenecpp.cpp" />
+    <ClCompile Include="Custom\SkillTable\SkillTable.cpp" />
     <ClCompile Include="StageObject\ObjectBase.cpp" />
     <ClCompile Include="StageObject\ObjectManager.cpp" />
     <ClCompile Include="StageObject\MapObject.cpp" />
@@ -23,20 +27,13 @@
     <ClCompile Include="UI\Button.cpp" />
     <ClCompile Include="UI\UIObjectFactory.cpp" />
     <ClCompile Include="UI\UIManager.cpp" />
-<<<<<<< HEAD
-=======
-    <ClCompile Include="Custom\SkillTable\SkillTable.cpp" />
-<<<<<<< HEAD
->>>>>>> 5ae9cdb7b9da1d4a296f22e1cac7c0b9036cd681
-=======
-    <ClCompile Include="Custom\CustomStar\CustomStar.cpp" />
-    <ClCompile Include="Custom\Diamond\Diamond.cpp" />
-    <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp" />
->>>>>>> DiamondBaseに必要な変数、継承する関数を書く
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
     <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Custom\CustomStar\CustomStar.h" />
+    <ClInclude Include="Custom\Diamond\Diamond.h" />
+    <ClInclude Include="Custom\DiamondBase\DiamondBase.h" />
     <ClInclude Include="Lib\Lib.h" />
     <ClInclude Include="Scene\CustomScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
@@ -46,6 +43,7 @@
     <ClInclude Include="Scene\SelectScene.h" />
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="Skill.h" />
+    <ClInclude Include="Custom\SkillTable\SkillTable.h" />
     <ClInclude Include="StageObject\Factory.h" />
     <ClInclude Include="StageObject\ObjectBase.h" />
     <ClInclude Include="StageObject\ObjectManager.h" />
@@ -56,15 +54,6 @@
     <ClInclude Include="UI\Button.h" />
     <ClInclude Include="UI\UIManager.h" />
     <ClInclude Include="UI\UIObjectFactory.h" />
-<<<<<<< HEAD
-=======
-    <ClInclude Include="Custom\SkillTable\SkillTable.h" />
-<<<<<<< HEAD
->>>>>>> 5ae9cdb7b9da1d4a296f22e1cac7c0b9036cd681
-=======
-    <ClInclude Include="Custom\CustomStar\CustomStar.h" />
-    <ClInclude Include="Custom\Diamond\Diamond.h" />
-    <ClInclude Include="Custom\DiamondBase\DiamondBase.h" />
->>>>>>> DiamondBaseに必要な変数、継承する関数を書く
+    <ClInclude Include="Scene\ResultID.h" />
   </ItemGroup>
 </Project>
