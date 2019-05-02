@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "ResultID.h"
 
 //==============================
 //　状態ID
@@ -30,34 +31,71 @@ enum SceneID {
 //=============================
 class SceneBase {
 
-/*
-	＜各シーンが継承する基底クラス＞
-
-		Init    : 初期化処理
-		Update  : 更新処理
-		End     : 終了処理
-		Control	: 一連の流れを管理する
-	　　Draw	: 描画処理
-*/
+//＜各シーンが継承する基底クラス＞
 
 public:
 
 	SceneBase() {}
+
+	/*
+	Init:
+		シーン初期化処理
+	*/
 	virtual void Init()   = 0;
+	
+	/*
+	Update:
+		シーンの更新処理
+	*/
 	virtual void Update() = 0;
+	
+	/*
+	End:
+		シーンの終了処理
+	*/
 	virtual SceneID End() {
 		return NO_SCENE;
 	}
+
+	/*
+	Control:
+		初期化から終了までの処理を
+		m_state_id により遷移する
+	*/
 	virtual SceneID Control() {
 		return NO_SCENE;
 	}
+
+	/*
+	Draw:
+		シーンの描画処理
+	*/
 	virtual void Draw()  = 0;
+
+	/*
+	SetResult:
+		リザルト結果をセットする
+	*/
+	void SetResult(ResultID result) {
+		m_result = result;
+	}
+
+	/*
+	GetResult:
+		リザルト結果を取得する
+	*/
+	const ResultID GetResult()const {
+		return m_result;
+	}
+
+	//デストラクタ
 	virtual ~SceneBase() {};
+
 
 protected:
 
-	//bool is_clear;	
-	int m_state_id;	//　自身の状態ID
+	int m_state_id;		//　自身の状態ID
+	ResultID m_result;  //  リザルト結果保存変数
 };
 
 
