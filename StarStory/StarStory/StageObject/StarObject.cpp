@@ -4,6 +4,7 @@
 #include "ObjectManager.h"
 #include "../Lib/Lib.h"
 #include "../Skill.h"
+#include "../Scene/SceneManager.h"
 
 #include <cmath>
 namespace {
@@ -59,6 +60,10 @@ void StarObject::Update() {
 		SkillActive(m_cur_child->GetSkill());
 	}
 
+	SceneBase* gc = SceneManager::GetInstance().GetScene();
+	if (m_pos.y + m_height > WINDOW_H) {
+		gc->SetResult(FAILD);
+	}
 }
 
 //------------------------------------
