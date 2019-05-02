@@ -36,6 +36,12 @@ public:
 	*/
 	void ChangeScene(SceneID scene_id);
 
+	/*
+	GetScene:
+		現行シーンを取得する
+	*/
+	SceneBase* GetScene();
+
 	void SetQuit(bool has_quit);
 
 	bool IsQuitWindow();

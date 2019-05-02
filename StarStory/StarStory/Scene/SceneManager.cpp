@@ -24,7 +24,7 @@ void SceneManager::Init() {
 	scene_list.emplace(SC_RESULT, new ResultScene());
 
 	//初期設定でタイトルをセットする
-	m_now_id = SC_TITLE;
+	m_now_id = SC_SELECT;
 	m_scene = scene_list[m_now_id];
 }
 
@@ -48,6 +48,12 @@ void SceneManager::ChangeScene(SceneID scene_id) {
 	}
 	auto it = scene_list.find(m_now_id);
 	m_scene = it->second;
+}
+
+//---------------------------------------
+//　現行シーンを取得する
+SceneBase* SceneManager::GetScene() {
+	return m_scene;
 }
 
 //--------------------------------------
