@@ -10,6 +10,7 @@ ObjectBase* StageObjectFactory::Create(
 	int id,
 	float x, float y,
 	std::string tex_name,
+	std::string se_name,
 	Skill skill,
 	float rot
 ) {
@@ -27,28 +28,32 @@ ObjectBase* StageObjectFactory::Create(
 		return new MapObject(x, y, tex_name);
 		break;
 
+	case OBJ_TEST4:
+		return new MapObject(x, y, tex_name);
+		break;
+
 	case STAR_OBJ:
 		return new StarObject(x, y, rot);
 		break;
 
 	case STAR_CHILD1:
-		return new StarChild(x, y, tex_name, skill, rot);
+		return new StarChild(x, y, tex_name, se_name, skill, rot);
 		break;
 
 	case STAR_CHILD2:
-		return new StarChild(x, y, tex_name, skill, rot);
+		return new StarChild(x, y, tex_name, se_name, skill, rot);
 		break;
 
 	case STAR_CHILD3:
-		return new StarChild(x, y, tex_name, skill, rot);
+		return new StarChild(x, y, tex_name, se_name, skill, rot);
 		break;
 
 	case STAR_CHILD4:
-		return new StarChild(x, y, tex_name, skill, rot);
+		return new StarChild(x, y, tex_name, se_name, skill, rot);
 		break;
 
 	case STAR_CHILD5:
-		return new StarChild(x, y, tex_name, skill, rot);
+		return new StarChild(x, y, tex_name, se_name, skill, rot);
 		break;
 
 	}

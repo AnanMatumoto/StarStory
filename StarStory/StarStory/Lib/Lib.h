@@ -1,11 +1,16 @@
 ﻿#include "../Common/Common.h"
 #include <d3d9.h>
 #include<d3dx9.h>
+#include <dsound.h>
+#include <initializer_list>
 #include <string>
+#include <unordered_map>
+#include <mmsystem.h>
 
 #pragma once
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")
+
 
 #define NOMINMAX
 
@@ -358,5 +363,84 @@ namespace Lib {
 
 	//αブレンドの設定（※外部での使用はできない）
 	void SetAlphaBlend();
+
+
+	//====================================
+	// サウンド関連
+	//====================================
+
+	/*
+	AudioClip
+		waveファイルを管理する
+	*/
+	class AudioClip{
+
+	public:
+
+		static AudioClip& GetInterface(HWND hwnd = nullptr);
+		/*
+		コンストラクタ
+		　
+		 wavファイルの書き出しを行い、リストに登録する。
+
+		使用方法：
+			AudioClip("hoge.wave");
+		*/
+		IDirectSoundBuffer8* LoadWaveFile(std::string file_name);
+
+		/*
+		GetResource:
+			リソースを取得する
+		
+		使用方法：
+			GetResource("hoge.wave");
+		*/
+		IDirectSoundBuffer8* GetResourcre(std::string name);
+
+	private:
+
+		AudioClip(HWND hwnd);
+		AudioClip(const AudioClip&) = delete;
+
+		//デストラクタ
+		~AudioClip();
+		
+	private:
+		
+		IDirectSound8* m_ds8;
+		IDirectSoundBuffer* m_prim_buf;
+		std::unordered_map<std::string, IDirectSoundBuffer8*> m_list;
+
+	};
+
+	class AudioPlayer {
+
+	public:
+		AudioPlayer(){}
+
+		// 再生（再生終了後、頭出し設定をして終了する）
+		void Play(std::string sound_naem);
+		
+		// ループ再生
+		void LoopOnPlay(std::string sound_name);
+		
+		// 停止
+		void Stop();
+
+		// ボリューム設定
+		void SetVolume(int volume);
+
+		~AudioPlayer();
+	
+
+
+	private:
+		IDirectSoundBuffer8* m_sec_buf; //セカンダリバッファ
+		WAVEFORMATEX m_format;
+		DWORD m_size;
+
+
+	};
+
 };
 

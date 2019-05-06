@@ -28,8 +28,23 @@ public:
 	void Register(
 		StageObjectID id,
 		float x, float y,
-		std::string tex_name = "none",
-		Skill skill = NORMAL,
+		std::string tex_name = "none"
+	);
+
+	/*
+		ステージオブジェクトの登録処理
+		（星生成用のオーバーロード）
+
+		第1：オブジェクトID
+		第2：バイナリデータファイル名
+		第3：X座標
+		第4：Y座標
+		第5：回転角度（デフォルトは0度）
+	*/
+	void Register(
+		StageObjectID id,
+		std::string data_file,
+		float x, float y,
 		float rot = 0.f
 	);
 

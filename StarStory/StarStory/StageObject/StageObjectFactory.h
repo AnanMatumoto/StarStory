@@ -28,6 +28,7 @@ public:
 		float x,
 		float y,
 		std::string tex_name = "none",
+		std::string se_name = "none",
 		Skill skill = NORMAL,
 		float rotate = 0.f
 	)override;

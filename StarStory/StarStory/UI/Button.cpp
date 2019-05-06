@@ -2,7 +2,23 @@
 #include"../Lib/Lib.h"
 #include "../Collision/Collision.h"
 
-//------------------------------
+//---------------------------------
+//コンストラクタ
+ButtonUI::ButtonUI(
+	float x, float y,
+	std::string tex_name,
+	float rot
+) :ObjectBase(x, y, rot) {
+
+	m_tex_name = tex_name;
+	Lib::Texture tex(m_tex_name.c_str());
+	m_width = tex.GetSize().x;
+	m_height = tex.GetSize().y;
+	m_was_click = false;
+	m_click_count = 0;
+}
+
+//----------------------------------
 // 描画処理
 void ButtonUI::Draw() {
 	//ボタンの描画
@@ -10,7 +26,6 @@ void ButtonUI::Draw() {
 		m_tex_name.c_str(),
 		m_pos.x, m_pos.y
 	);
-
 }
 
 //-------------------------------
@@ -22,19 +37,31 @@ void ButtonUI::Update() {
 
 //-------------------------------
 //　クリック状態フラグを返す
-const bool ButtonUI::GetClick()const {
-	if (was_click == true) {
+ bool ButtonUI::GetClick() {
+
+	if (m_was_click == true) {
+		++m_click_count;
+
+		if (m_click_count >= 2) {
+			m_click_count = 0;
+		}
 		return true;
 	}
 	return false;
 }
+
+ //------------------------------
+ //　クリック回数を返す
+ const int ButtonUI::GetClickCount()const {
+	 return m_click_count;
+ }
 
 //当たったかどうかの判定
 void ButtonUI::IsHitToMouse() {
 
 	m_mouse = Lib::GetMousePoint();
 	
-	was_click = Collision::IsInSquare(
+	m_was_click = Collision::IsInSquare(
 		m_pos,
 		m_width, m_height,
 		m_mouse

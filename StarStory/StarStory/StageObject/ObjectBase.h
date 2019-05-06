@@ -17,6 +17,7 @@ enum StageObjectID {
 	OBJ_TEST1,
 	OBJ_TEST2,
 	OBJ_TEST3,
+	OBJ_TEST4,
 	MAX_OBJ_NUM,
 	//---星オブジェクト---
 	STAR_OBJ,

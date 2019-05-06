@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "Scene.h"
-
+#include "../Lib/Lib.h"
 //=================================
 //　ゲーム画面クラス
 //=================================
@@ -26,4 +26,5 @@ private:
 
 private:
 	SceneID m_scene_id; //遷移先保存用変数
+	Lib::AudioPlayer* m_sound;
 };

@@ -1,9 +1,7 @@
 ﻿#include "UIManager.h"
-#include "../StageObject/Factory.h"
 #include "UIObjectFactory.h"
 #include "../Lib/Lib.h"
 #include "Button.h"
-
 #include <vector>
 
 //-------------------------------
@@ -68,7 +66,7 @@ void UIManager::AllDelete() {
 	m_UI_list.clear();
 }
 
-//------------------------------------
+//---------------------------------------------
 // クリックされたUIのIDを返す
 UIObjectID UIManager::FindClickedUI() {
 
@@ -81,4 +79,21 @@ UIObjectID UIManager::FindClickedUI() {
 		}
 	}
 	return id;
+}
+
+//--------------------------------------------
+//  スイッチ式のUIに対するONとOFF状態を判定する
+bool UIManager::SwithOnUI(UIObjectID id) {
+
+	auto ui = m_UI_list.find(id);
+	if(ui!= m_UI_list.end()){
+		ButtonUI* button = (ButtonUI*)ui->second;
+		if (button->GetClickCount() == 1) {
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
 }

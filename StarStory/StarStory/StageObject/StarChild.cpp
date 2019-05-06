@@ -10,9 +10,11 @@ StarChild::StarChild(
 	float x,
 	float y,
 	std::string tex_name,
+	std::string se_name,
 	Skill skill,
 	float rot
 ) :ObjectBase(x, y, rot){
+
 	m_width    = 46.f;
 	m_height   = 64.f;
 	m_tex_name = tex_name;
@@ -22,6 +24,9 @@ StarChild::StarChild(
 	is_hit     = false;
 	m_skill    = skill;
 	m_obj      = nullptr;
+	m_se_name  = se_name;
+	m_sound    = new Lib::AudioPlayer();
+	m_one_flame = 0;
 }
 
 //------------------------------------
@@ -30,6 +35,7 @@ void StarChild::Update() {
 
 	HitToObject();
 	IsHit();
+	PlaySE();
 }
 
 //------------------------------------
@@ -91,13 +97,14 @@ void StarChild::RefParentVertex(Vertex vtx[4]) {
 void StarChild::HitToObject() {
 
 	SetVertex();
+	//自身の頂点ベクトル
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
 	for (auto obj : m_map_obj) {
 		float right = obj->GetVertex(1).pos.x;
 		//頂点がオブジェクトの幅の中なら保存
 		if (vec.x >= obj->GetX() && vec.x <= right) {
-			m_obj= obj;
+				m_obj = obj;
 		}
 	}
 }
@@ -105,19 +112,17 @@ void StarChild::HitToObject() {
 void StarChild::IsHit() {
 
 	SetVertex();
-	
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 	if (m_obj != nullptr) {
-	
+		//マップと頂点が当たっているか
 		if (IsHitToUpper(vec, m_obj)) {
+			++m_one_flame;
 			is_hit = true;
-			m_obj_width = m_obj->GetVertex(1).pos.x;
 		}
 		else {
 			is_hit = false;
 		}
 	}
-
 }
 
 //-------------------------------
@@ -133,8 +138,24 @@ const Skill StarChild::GetSkill()const {
 	return m_skill;
 }
 
-//--------------------------------
-// マップオブジェクトゲッター
-float StarChild::GetHitObjWidth() {
-	return m_obj_width;
+//-------------------------------
+// 当たったマップオブジェクトを返す
+ObjectBase* StarChild::GetMapObj()const {
+	if (m_obj != nullptr) {
+		return m_obj;
+	}
+}
+
+//---------------------------------
+// SE処理
+void StarChild::PlaySE() {
+
+	Lib::AudioClip& clip = Lib::AudioClip::GetInterface();
+	clip.LoadWaveFile(m_se_name);
+
+	if (m_one_flame == 1) {
+		m_sound->Play(m_se_name);
+		m_sound->SetVolume(-300);
+	}
+
 }

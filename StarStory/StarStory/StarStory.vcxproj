@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -142,6 +142,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Lib\Sound.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -294,6 +298,11 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SkillData\SkillData.h" />
+    <ClInclude Include="SkillData\Skill_Data.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="StageObject\Factory.h">
       <SubType>
       </SubType>
@@ -331,6 +340,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="UI\UIObjectFactory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UI\UIObjectID.h">
       <SubType>
       </SubType>
     </ClInclude>

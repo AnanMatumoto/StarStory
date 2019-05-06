@@ -2,7 +2,6 @@
 #include "StarChild.h"
 #include "MapObject.h"
 #include "ObjectManager.h"
-#include "../Lib/Lib.h"
 #include "../Skill.h"
 #include "../Scene/SceneManager.h"
 
@@ -47,11 +46,6 @@ void StarObject::Update() {
 		m_childs = mng.GetGameObjects<StarChild>();
 	}
 
-	//ステージオブジェクトを一度だけ取得する
-	if (m_map_obj.size() < MAX_OBJ_NUM) {
-		m_map_obj = mng.GetGameObjects<MapObject>();
-	}
-
 	//自動操縦
 	AutomaticMove();
 
@@ -61,7 +55,11 @@ void StarObject::Update() {
 	}
 
 	SceneBase* gc = SceneManager::GetInstance().GetScene();
-	if (m_pos.y + m_height > WINDOW_H) {
+
+	float out_w = m_pos.x + m_width;
+	float out_h = m_pos.y + m_height;
+
+	if (out_h > WINDOW_H || out_w> WINDOW_W) {
 		gc->SetResult(FAILD);
 	}
 }
@@ -98,20 +96,25 @@ void StarObject::AutomaticMove() {
 	}
 
 	float hit_obj_w = 0;
-	
+	float hit_obj_h = 0;
+	ObjectBase* obj = nullptr;
+
 	for (auto child : m_childs) {
 
 		//オブジェクトと各頂点があたっている
 		if (child->GetHit()) {
 			m_cur_child = child;
-			//オブジェクトの幅を取得
-			hit_obj_w = child->GetHitObjWidth();
+			//オブジェクト取得
+			obj = m_cur_child->GetMapObj();
+			hit_obj_w = obj->GetVertex(1).pos.x;
+			hit_obj_h = obj->GetVertex(0).pos.y;
+
 			m_is_active = true;
 		}
 	}
 
-	//オブジェクトの幅を超えたらスキルを非アクティブにする
-	if (m_pos.x >= hit_obj_w) {
+	//オブジェクトの幅を超えた、またはオブジェクトより下にいる場合
+	if (m_pos.x >= hit_obj_w||m_pos.y >= hit_obj_h) {
 		m_is_active = false;
 	}
 	
@@ -138,8 +141,7 @@ void StarObject::SkillActive(int skill_id) {
 		JumpMotion();
 		break;
 	case STOP://停止スキル
-
-		m_vel.y = 0.f;
+		StopMotion();
 		break;
 	case LIGHT://光るスキル
 		m_vel.y = 0.f;
@@ -181,5 +183,16 @@ void StarObject::JumpMotion(){
 		AddMoveAmount(0.f, GRAVITY, 0.f);
 		RefPosition();
 	}
+}
 
+void StarObject::StopMotion() {
+
+	if (--m_interval > 0) {
+		AddMoveAmount(0.f, 0.f, 0.f);
+		RefPosition();
+	}
+	else {
+		AddMoveAmount(m_speed);
+		RefPosition();
+	}
 }

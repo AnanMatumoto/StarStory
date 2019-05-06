@@ -2,6 +2,7 @@
 
 #include "Scene.h"
 #include <vector>
+#include "../Lib/Lib.h"
 
 class ObjectBase;
 
@@ -29,5 +30,7 @@ private:
 private:
 	
 	bool has_end;	//終了状態フラグ
+	Lib::AudioPlayer* sound;
+
 	
 };

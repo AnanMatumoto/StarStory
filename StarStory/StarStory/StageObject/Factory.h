@@ -50,6 +50,7 @@ public:
 		float x,
 		float y,
 		std::string tex_name,
+		std::string se_name,
 		Skill skill,
 		float rotate
 	) {

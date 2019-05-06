@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "../Skill.h"
+#include "../Lib/Lib.h"
 #include "ObjectBase.h"
 #include <vector>
 #include <string>
@@ -18,6 +19,7 @@ public:
 		float x,
 		float y,
 		std::string tex_name,
+		std::string se_name,
 		Skill skill,
 		float rot
 	);
@@ -29,8 +31,7 @@ public:
 	// スキル名ゲッター
 	const Skill GetSkill()const;
 	
-	float GetHitObjWidth();
-
+	ObjectBase* GetMapObj() const;
 
 private:
 	
@@ -50,14 +51,20 @@ private:
 
 	void IsHit();
 
+
+	//■■■仮■■■
+	void PlaySE();
+
 private:
 
 	ObjectBase* m_parent;			    //親オブジェクト
-	Skill       m_skill;			            //スキル
+	Skill       m_skill;			    //スキル
 	ObjectBase* m_obj;
-	std::vector<MapObject*> m_map_obj; //マップオブジェクトのリスト
 	float       m_obj_width;		   // マップオブジェクトの幅
 	bool        is_hit;
-
+	int			m_one_flame;
+	std::vector<MapObject*> m_map_obj; //マップオブジェクトのリスト
+	std::string m_se_name;			   //効果音名
+	Lib::AudioPlayer* m_sound;
 };
 

@@ -34,11 +34,12 @@ private:
 		float rot=1.f
 	);
 
-
 	// 移動量を座標に反映する
 	void RefPosition();
 	// ジャンプモーション
 	void JumpMotion();
+	// 停止モーション
+	void StopMotion();
 
 private:
 
@@ -51,7 +52,6 @@ private:
 	StarChild* m_cur_child;
 	MapObject* m_cur_obj;
 	std::vector<StarChild*> m_childs;
-	std::vector<MapObject*> m_map_obj;  
 	
 };
 

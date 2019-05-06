@@ -1,9 +1,12 @@
 ﻿#include "ObjectManager.h"
 #include "Factory.h"
+#include "../SkillData/Skill_Data.h"
 #include "StageObjectFactory.h"
 #include "../UI/UIObjectFactory.h"
 #include "../Lib/Lib.h"
 #include <vector>
+#include <fstream>
+#include <iostream>
 
 //-----------------------------------
 // インスタンス生成
@@ -18,12 +21,46 @@ ObjectManager& ObjectManager::GetInstance() {
 void ObjectManager::Register(
 	StageObjectID id,
 	float x, float y,
-	std::string tex_name,
-	Skill skill,
-	float rot
+	std::string tex_name
 ) {
 	StageObjectFactory obj_factory;
-	m_obj_list.emplace(id, obj_factory.Create(id, x, y, tex_name, skill, rot));
+	m_obj_list.emplace(
+		id,
+		obj_factory.Create(id, x, y, tex_name)
+	);
+}
+
+//-----------------------------------
+//　オブジェクトの登録処理（星生成用）
+void ObjectManager::Register(
+	StageObjectID id,
+	std::string data_file,
+	float x, float y,
+	float rot
+) {
+	//取り出し用変数
+	Skill_Data data;
+	Skill skill;
+	std::string tex_name;
+	std::string se_name;
+
+	//ファイルの読み取り
+	std::fstream file;
+	file.open(data_file,std::ios::binary|std::ios::in);
+	file.read((char*)&data, sizeof(Skill_Data));
+
+	//情報を移す
+	skill    = data.m_skill;
+	tex_name = data.tex_name;
+	se_name  = data.se_name;
+
+	file.close();
+
+	StageObjectFactory obj_factory;
+	m_obj_list.emplace(
+		id, 
+		obj_factory.Create(id,x, y, tex_name, se_name, skill, rot)
+	);
 }
 
 //-----------------------------------

@@ -1,22 +1,18 @@
 ﻿#include "GameScene.h"
 #include "SceneManager.h"
-#include "../Lib/Lib.h"
 #include "../StageObject/ObjectManager.h"
 #include "../StageObject/StarObject.h"
 #include "../UI/UIManager.h"
 
+#include "../SkillData/Skill_Data.h"
+#include <iostream>
+#include <fstream>
+
 #define TEX_OBJ_192  "Resource/Game/object_192x192.png"
 #define TEX_OBJ_128 "Resource/Game/object_128x128.png"
 
-#define TEX_SPEED  "Resource/Player/player_1_accel.png"
-#define TEX_JUMP   "Resource/Player/player_1_jump.png"
-#define TEX_LIGNHT "Resource/Player/player_1_light.png"
-#define TEX_NOMAL  "Resource/Player/player_1_normal.png"
-#define TEX_STOP   "Resource/Player/player_1_stop.png"
-
-
 #define GAME_BACK   "Resource/Game/UI_stage.png"
-#define GAME_STAGE  "Resource/Game/stage1_background.png"
+#define GAME_STAGE  "Resource/Game/stage1_background_1-1.png"
 #define GAME_UI_WND "Resource/Game/UI_stage_window.png"
 #define GAME_CUSTOM "Resource/Game/UI_stage_custom.png"
 #define GAME_STOP   "Resource/Game/UI_stage_sign.png"
@@ -27,29 +23,68 @@
 void GameScene::Init() {
 	m_state_id = SS_UPDATE;
 	//stage = new StageBase();
+	
+	Lib::AudioClip& clip = Lib::AudioClip::GetInterface();
+	clip.LoadWaveFile("Resource/Audio/BGM/game_main_bgm.wav");
+	m_sound = new Lib::AudioPlayer();
+	m_sound->Play("Resource/Audio/BGM/game_main_bgm.wav");
+	m_sound->SetVolume(-1000);
 
-	// ToDo:スキル読み込み
+	//-----------------------------------------------------
+	//■■■■　実装され次第消す■■■■
+	Skill_Data data[5];
+	data[0] = { SPEED, "Resource/Player/player_1_accel.png","Resource/Audio/SE/star_accel.wav" };
+	data[1] = { JUMP,   "Resource/Player/player_1_jump.png","Resource/Audio/SE/star_jump.wav"};
+	data[2] = { NORMAL, "Resource/Player/player_1_normal.png","Resource/Audio/SE/star_normal.wav"};
+	data[3] = { NORMAL, "Resource/Player/player_1_normal.png","Resource/Audio/SE/star_normal.wav"};
+	data[4] = { NORMAL, "Resource/Player/player_1_normal.png","Resource/Audio/SE/star_normal.wav"};
+
+	std::fstream file[5];
+	file[0].open("./Resource/skill_data_01.dat", std::ios::binary | std::ios::out);
+	file[0].write((char*)&data[0], sizeof(Skill_Data));
+	file[0].close();
+
+	file[1].open("./Resource/skill_data.02.dat", std::ios::binary | std::ios::out);
+	file[1].write((char*)&data[1], sizeof(Skill_Data));
+	file[1].close();
+
+
+	file[2].open("./Resource/skill_data.03.dat", std::ios::binary | std::ios::out);
+	file[2].write((char*)&data[2], sizeof(Skill_Data));
+	file[2].close();
+
+	file[3].open("./Resource/skill_data.04.dat", std::ios::binary | std::ios::out);
+	file[3].write((char*)&data[3], sizeof(Skill_Data));
+	file[3].close();
+
+	file[4].open("./Resource/skill_data.05.dat", std::ios::binary | std::ios::out);
+	file[4].write((char*)&data[4], sizeof(Skill_Data));
+	file[4].close();
+	//------------------------------------------------------------
 
 	ObjectManager& mng = ObjectManager::GetInstance();
 	UIManager & UImng = UIManager::GetInstance();
 
     //ステージオブジェクトの登録
-	mng.Register(OBJ_TEST1, 100, 700,TEX_OBJ_192);
-	mng.Register(OBJ_TEST2, 700, 600,TEX_OBJ_128);
+	mng.Register(OBJ_TEST1, 100, 600,TEX_OBJ_192);
+	mng.Register(OBJ_TEST2, 560, 650,TEX_OBJ_128);
 	mng.Register(OBJ_TEST3, 750, 700, TEX_OBJ_192);
+	mng.Register(OBJ_TEST4, 1200, 600, TEX_OBJ_128);
 
-	mng.Register(STAR_OBJ, 90, 600);
-	mng.Register(STAR_CHILD1,  0,  -32, TEX_SPEED, SPEED, 0);
-	mng.Register(STAR_CHILD2,  30, -10, TEX_JUMP, JUMP, 72);
-	mng.Register(STAR_CHILD3,  19, 26,  TEX_NOMAL, NORMAL, 144);
-	mng.Register(STAR_CHILD4, -19, 26, TEX_NOMAL, NORMAL, 216);
-	mng.Register(STAR_CHILD5, -30, -10, TEX_NOMAL, NORMAL, 288);
+	mng.Register(STAR_OBJ, 90, 500);
+	mng.Register(STAR_CHILD1, "./Resource/skill_data_01.dat",  0, -32, 0);
+	mng.Register(STAR_CHILD2, "./Resource/skill_data.02.dat", 30, -10, 72);
+	mng.Register(STAR_CHILD3, "./Resource/skill_data.03.dat", 19, 26, 144);
+	mng.Register(STAR_CHILD4, "./Resource/skill_data.04.dat",-19, 26, 216);
+	mng.Register(STAR_CHILD5, "./Resource/skill_data.05.dat",-30, -10, 288);
 
 	//UIの登録
 	UImng.Register(BT_GM_WIND, 20, 50, GAME_UI_WND);
 	UImng.Register(BT_GM_TOCUSTOM, 60,66,GAME_CUSTOM);
 	UImng.Register(BT_GM_STOP, 250, 66, GAME_STOP );
 	UImng.Register(BT_GM_ONOFF, 350, 66,GAME_ONOFF );
+
+	m_result = NO_RESULT;
 
 }
 
@@ -72,7 +107,7 @@ void GameScene::Update() {
 		m_scene_id = SC_CUSTOM;
 	}
 
-	if (ui_mng.FindClickedUI() != BT_GM_STOP) {
+	if (ui_mng.SwithOnUI(BT_GM_STOP)==false) {
 		// ステージオブジェクト更新
 		ObjectManager::GetInstance().Update();
 	}
@@ -91,6 +126,8 @@ SceneID GameScene::End() {
 	// オブジェクトの削除
 	ObjectManager::GetInstance().AllDelete();
 
+	//BGMの終了
+	m_sound->Stop();
 	return m_scene_id;
 }
 
@@ -142,5 +179,5 @@ void GameScene::Draw() {
 // デストラクタ
 GameScene::~GameScene() {
 
-
+	delete m_sound;
 }

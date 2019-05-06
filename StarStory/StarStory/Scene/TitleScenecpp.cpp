@@ -1,12 +1,12 @@
 ﻿#include "TitleScene.h"
 #include "SceneManager.h"
-#include "../Lib/Lib.h"
 #include "../StageObject/ObjectManager.h"
 #include "../UI/UIManager.h"
 
 #define TITLE_BACK "Resource/Title/UI_title_bg.png"
 #define TITLE_START "Resource/Title/UI_title_start.png"
 #define TITLE_END	"Resource/Title/UI_title_end.png"
+
 
 //-----------------------------
 //　タイトルシーン初期化
@@ -19,6 +19,15 @@ void TitleScene::Init() {
 	UIManager& mng = UIManager::GetInstance();
 	mng.Register(BT_TT_START, 1000, 800, TITLE_START);
 	mng.Register(BT_TT_END,    300, 800, TITLE_END);
+
+	HWND hwnd = Lib::hWnd;
+
+
+	//サウンド再生サンプル（直書き）
+	Lib::AudioClip& audio = Lib::AudioClip::GetInterface(Lib::hWnd);
+	audio.LoadWaveFile("Resource/Audio/BGM/title_bgm.wav");
+	sound = new Lib::AudioPlayer();
+	sound->Play("Resource/Audio/BGM/title_bgm.wav");
 }
 
 //-----------------------------
@@ -29,9 +38,11 @@ void TitleScene::Update() {
 	mng.Update();
 	//スタートボタンが押されたら
 	if (mng.FindClickedUI() == BT_TT_START) {
+		sound->Stop();
 		m_state_id = SS_END;
 	}
 	else if (mng.FindClickedUI() == BT_TT_END) {
+		m_state_id = SS_END;
 		has_end = true;
 	}
 }
@@ -41,6 +52,7 @@ void TitleScene::Update() {
 SceneID TitleScene::End() {
 
 	m_state_id = SS_INIT;
+
 
 	//UIをリストから削除する
 	UIManager::GetInstance().AllDelete();
