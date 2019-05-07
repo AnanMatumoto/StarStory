@@ -3,13 +3,17 @@
 #include"../../Lib/Lib.h"
 #include"../../Skill.h"
 
-/*
-おめぇーらぜってぇゲームデータみたいなところに
-入れてやっかんな覚えとけよ
-*/
-
 /*----定数----*/
-const int MAX_VERTEX_NUM = 4;
+const int MAX_VERTEX_NUM = 4;		// ひし形の頂点の数
+const int MAX_DIAMOND_NUM = 5;		// ひし形の種類の数
+
+// 描画の時に使用する
+const float DIAMOND_W = 320;		// ひし形の幅
+const float DIAMOND_H = 230;		// ひし形の高さ
+
+// 当たり判定の時に使用する
+const float HALF_DIAMOND_W = DIAMOND_W / 2;		// ひし形の幅の半分
+const float HALF_DIAMOND_H = DIAMOND_H / 2;		// ひし形の高さの半分
 /*----定数----*/
 
 /*----enum----*/
@@ -37,22 +41,37 @@ enum DiamondVertex {
 class DiamondBase {
 
 public:
+	// コンストラクタ
+	DiamondBase() {
 
-	DiamondBase() {};				// デフォルトコンストラクタ
-	DiamondBase(					// コンストラクタ
-		float x, float y,
-		float angle,
-		float w, float h,
-		Vec2 vertex_pos,
-		Skill id);
+		// サイズ初期化
+		m_size_w = DIAMOND_W;
+		m_size_h = DIAMOND_H;
+		m_half_size_w = HALF_DIAMOND_W;
+		m_half_size_h = HALF_DIAMOND_H;
 
-	virtual ~DiamondBase() {};		// デストラクタ
+		// スキルの種類初期化(最初はすべて、NORMALで描画)
+		m_skill_id = NORMAL;
+	}
 
+	// デストラクタ
+	virtual ~DiamondBase() {
+
+
+	};
+
+	/*----関数----*/
 	virtual void Update() = 0;		// 更新
 	virtual void Draw() = 0;		// 描画
 
-protected:
+	// クリックされた時の当たり判定
+	virtual void IsHitMouse() = 0;
 
+	// ひし形の描画
+	virtual void DrawDiamond() = 0;
+	/*----関数----*/
+
+protected:
 	/*----変数----*/
 	float m_pos_x;				// x座標(ひし形の中心座標)
 	float m_pos_y;				// y座標(ひし形の中心座標)
@@ -62,22 +81,13 @@ protected:
 	float m_half_size_w;		// 当たり判定の時に使う幅
 	float m_half_size_h;		// 当たり判定の時に使う高さ
 
-	// ひし形の頂点情報
-	Vec2 m_vertex_pos[MAX_VERTEX_NUM];
+	Vec2 m_vertex_pos[MAX_VERTEX_NUM];		// ひし形の頂点情報
 	/*----変数----*/
 
-	/*----関数----*/
-	// クリックされた時の当たり判定
-	void IsHitMouse();
-
-	// ひし形の描画
-	void DrawDiamond();
-	/*----関数----*/
-
 	/*----enum----*/
-	DiamondPart m_diamond_part;			// ひし形を置く場所
 	DiamondVertex m_diamond_vertex;		// ひし形の頂点の場所
-	Skill skill_id;						// スキルの情報
+	Skill m_skill_id;					// スキルの情報
+	DiamondPart m_diamond_part;			// ひし形を置く場所
 	/*----enum----*/
 };
 

@@ -31,19 +31,12 @@ void CustomScene::Update() {
 	ui_mng.Update();
 
 	//決定ボタンが押されたら
-	if (ui_mng.FindClickedUI()==BT_CT_DECISION) {
+	if (ui_mng.FindClickedUI() == BT_CT_DECISION) {
 
 		m_state_id = SS_END;
 	}
 
-	//// マウス座標取得
-	//Lib::GetMousePoint(&mouse_x, &mouse_y);
-
-	//// マウス情報をカスタムシーンからカスタムスターに移す
-	// 	custom_star.SetMousePos(mouse_x, mouse_y);
-
-	//// 星型の更新
-	//custom_star.Update();	
+	custom_star.Update();
 }
 
 //----------------------------
@@ -87,12 +80,11 @@ SceneID CustomScene::Control() {
 void CustomScene::Draw() {
 
 	// 「背景」
-	Lib::DrawBox2D(CUSTOM_WINDOW,0, -20);
+	Lib::DrawBox2D(CUSTOM_WINDOW, 0, -20);
 
 	// UI描画
 	UIManager::GetInstance().Draw();
 
-	//// 「星型の描画」
-	//custom_star.Draw();
+	custom_star.Draw();
 }
 

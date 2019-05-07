@@ -141,10 +141,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="Lib\Sound.cpp">
       <SubType>
       </SubType>

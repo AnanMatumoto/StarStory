@@ -5,7 +5,6 @@
     <ClCompile Include="Common\Common.cpp" />
     <ClCompile Include="Custom\CustomStar\CustomStar.cpp" />
     <ClCompile Include="Custom\Diamond\Diamond.cpp" />
-    <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp" />
     <ClCompile Include="Scene\CustomScene.cpp" />
     <ClCompile Include="Lib\Device.cpp" />
     <ClCompile Include="Lib\Draw2D.cpp" />
