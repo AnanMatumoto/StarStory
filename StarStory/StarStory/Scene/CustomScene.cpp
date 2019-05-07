@@ -3,7 +3,7 @@
 #include "../Lib/Lib.h"
 #include "../UI/UIManager.h"
 
-#define CUSTOM_BASE	"Resource/Custom/UI_custom_window.png"			// 背景
+#define CUSTOM_BASE	"Resource/Custom/UI_custom_base.png"			// 背景
 #define CUSTOM_DECISION "Resource/Custom/UI_custom_decision.png"	// 決定ボタン
 #define CUSTOM_SERECT	"Resource/Custom/UI_custom_serect.png"		// セレクトへ戻るボタン
 
