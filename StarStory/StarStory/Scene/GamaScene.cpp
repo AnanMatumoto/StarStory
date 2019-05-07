@@ -11,12 +11,14 @@
 #define TEX_OBJ_192  "Resource/Game/object_192x192.png"
 #define TEX_OBJ_128 "Resource/Game/object_128x128.png"
 
-#define GAME_BACK   "Resource/Game/UI_stage.png"
 #define GAME_STAGE  "Resource/Game/stage1_background_1-1.png"
-#define GAME_UI_WND "Resource/Game/UI_stage_window.png"
-#define GAME_CUSTOM "Resource/Game/UI_stage_custom.png"
-#define GAME_STOP   "Resource/Game/UI_stage_sign.png"
-#define GAME_ONOFF  "Resource/Game/UI_stage_skill.png"
+#define GAME_UI_WND "Resource/Game/ui_stage_base.png"
+#define GAME_CUSTOM "Resource/Game/ui_stage_custom.png"
+#define GAME_STOP   "Resource/Game/ui_stage_stop.png"
+#define GAME_PLAY   "Resource/Game/ui_stage_x1.png"
+#define GAME_DUBLE  "Resource/Game/ui_stage_x2.png"
+#define GAME_OFF    "Resource/Game/ui_stage_skilloff.png"
+#define GAME_ON     "Resource/Game/ui_stage_skillon.png"
 
 //-------------------------------------------
 //　ゲームシーン初期化
@@ -79,10 +81,10 @@ void GameScene::Init() {
 	mng.Register(STAR_CHILD5, "./Resource/skill_data.05.dat",-30, -10, 288);
 
 	//UIの登録
-	UImng.Register(BT_GM_WIND, 20, 50, GAME_UI_WND);
-	UImng.Register(BT_GM_TOCUSTOM, 60,66,GAME_CUSTOM);
-	UImng.Register(BT_GM_STOP, 250, 66, GAME_STOP );
-	UImng.Register(BT_GM_ONOFF, 350, 66,GAME_ONOFF );
+	UImng.Register(BT_GM_WIND, 65, 35, GAME_UI_WND);
+	UImng.Register(BT_GM_TOCUSTOM, 89,52,GAME_CUSTOM);
+	UImng.Register(BT_GM_STOP, 525, 49, GAME_STOP );
+	UImng.Register(BT_GM_ONOFF, 292, 52,GAME_OFF );
 
 	m_result = NO_RESULT;
 
@@ -157,16 +159,11 @@ SceneID GameScene::Control() {
 //　ゲームシーン描画
 void GameScene::Draw() {
 
-	//ゲーム背景	
-	Lib::DrawBox2D(
-		GAME_BACK,
-		0, 0
-	);
-
 	//ステージ背景
-	Lib::DrawBox2D(
+	Lib::DrawPx2D(
 		GAME_STAGE,
-		0, 30
+		0, 0,
+		1920,1080
 	);
 	
 	// ステージオブジェクト描画

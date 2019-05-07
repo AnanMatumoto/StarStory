@@ -3,10 +3,9 @@
 #include "../Lib/Lib.h"
 #include "../UI/UIManager.h"
 
-#define RESULT_BACKIMG "Resource/Result/UI_result.png"
-#define RESULT_CUSTOM "Resource/Result/UI_result_custom.png"
-#define RESULT_SELECT "Resource/Result/UI_result_serect.png"
-#define RESULT_TITLEBACK "Resource/Result/title_back_sample.png"
+#define RESULT_BACKIMG "Resource/Result/ui_result_base.png"
+#define RESULT_CUSTOM "Resource/Result/ui_result_custom.png"
+#define RESULT_SELECT "Resource/Result/ui_result_select.png"
 #define RESULT_CLEAR "Resource/Result/GameClear .png"
 #define RESULT_FAILD "Resource/Result/GameOver.png"
 
@@ -18,9 +17,8 @@ void ResultScene::Init() {
 
 	//UIの登録
 	UIManager& mng = UIManager::GetInstance();
-	mng.Register(BT_RS_CUSUTOM, 935, 780,   RESULT_CUSTOM);
-	mng.Register(BT_RS_SELECT, 1195, 780,   RESULT_SELECT);
-	mng.Register(BT_RS_TITLEBACK, 435, 780, RESULT_TITLEBACK);
+	mng.Register(BT_RS_CUSUTOM, 888, 809,   RESULT_CUSTOM);
+	mng.Register(BT_RS_SELECT, 1176, 809,   RESULT_SELECT);
 
 }
 
@@ -30,13 +28,6 @@ void ResultScene::Update() {
 
 	UIManager& ui_mng = UIManager::GetInstance();
 	ui_mng.Update();
-
-	//タイトルボタンがクリックされたら
-
-	if (ui_mng.FindClickedUI() == BT_RS_TITLEBACK) {
-		m_state_id = SS_END;
-		m_scene_id = SC_TITLE;
-	}
 
 	if (ui_mng.FindClickedUI() == BT_RS_CUSUTOM) {
 		m_state_id = SS_END;
@@ -87,9 +78,16 @@ SceneID ResultScene::Control() {
 //　リザルトシーン描画
 void ResultScene::Draw() {
 
+	Lib::DrawPx2D(
+		"hoge",
+		0,0,
+		1920,1080,
+		0x00ffffff
+	);
+
 	Lib::DrawBox2D(
 		RESULT_BACKIMG,
-		0, 0
+		463, 193
 	);
 
 	if (GetResult() == CLEAR) {

@@ -3,9 +3,9 @@
 #include "../StageObject/ObjectManager.h"
 #include "../UI/UIManager.h"
 
-#define TITLE_BACK "Resource/Title/UI_title_bg.png"
-#define TITLE_START "Resource/Title/UI_title_start.png"
-#define TITLE_END	"Resource/Title/UI_title_end.png"
+#define TITLE_BACK "Resource/Title/ui_title_base.png"
+#define TITLE_START "Resource/Title/ui_title_start.png"
+#define TITLE_END	"Resource/Title/ui_title_end.png"
 
 
 //-----------------------------
