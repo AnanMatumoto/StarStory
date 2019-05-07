@@ -23,10 +23,4 @@ private:
 	/*----enum----*/
 	DiamondPart m_diamond_part;
 	/*----enum----*/
-
-	/*----変数----*/
-	float m_pos_x;
-	float m_pos_y;
-	float m_angle;
-	/*----変数----*/
 };
