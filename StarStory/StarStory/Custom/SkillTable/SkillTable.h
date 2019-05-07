@@ -6,6 +6,9 @@ class SkillTable {
 
 public:
 
+
+
 private:
+
 
 };

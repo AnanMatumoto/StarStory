@@ -55,6 +55,7 @@ public:
 	void Draw()override;		// 描画
 	/*----関数----*/
 
+	// スキルの受け渡しに使う予定
 	/*----セッター----*/
 	Skill SetSkill(Skill skill) {
 
