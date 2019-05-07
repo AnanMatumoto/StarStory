@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include"../Lib/Lib.h"
 #include"../Custom/CustomStar/CustomStar.h"
+#include"../Custom/SkillTable/SkillTable.h"
 #include"../Skill.h"
 
 // スキルデータ
@@ -50,6 +51,6 @@ private:
 	SceneID m_scene_id;
 
 	// スキルデータ保管用
-	SkillData skill_data[MAX_DIAMOND_NUM];
+	SkillData m_skill_data[MAX_DIAMOND_NUM];
 };
 
