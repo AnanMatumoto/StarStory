@@ -3,7 +3,7 @@
 #include "../Lib/Lib.h"
 #include "../UI/UIManager.h"
 
-#define CUSTOM_WINDOW	"Resource/Custom/UI_custom_window.png"		// 背景
+#define CUSTOM_BASE	"Resource/Custom/UI_custom_window.png"			// 背景
 #define CUSTOM_DECISION "Resource/Custom/UI_custom_decision.png"	// 決定ボタン
 #define CUSTOM_SERECT	"Resource/Custom/UI_custom_serect.png"		// セレクトへ戻るボタン
 
@@ -15,7 +15,14 @@ void CustomScene::Init() {
 
 	UIManager & UImng = UIManager::GetInstance();
 
+	// スキル情報の初期化(最初はすべてNORMAL)
+	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
+
+		m_skill_data[i] = { NORMAL,"hoge","skill_data_01.dat" };
+	}
+
 	// UI生成
+	UImng.Register(CT_BASE, 0, 0, CUSTOM_BASE);						// 背景
 	UImng.Register(BT_CT_DECISION, 1445, 787, CUSTOM_DECISION);		// 決定ボタン
 	UImng.Register(BT_CT_TOSELECT, 1115, 887, CUSTOM_SERECT);		// セレクト画面へ戻るボタン
 }
@@ -59,6 +66,7 @@ SceneID CustomScene::End() {
 	m_state_id = SS_INIT;
 
 	// UIをリストから削除
+	UIManager::GetInstance().Delete(CT_BASE);
 	UIManager::GetInstance().Delete(BT_CT_DECISION);
 	UIManager::GetInstance().Delete(BT_CT_TOSELECT);
 
@@ -90,9 +98,6 @@ SceneID CustomScene::Control() {
 //----------------------------
 //　カスタムシーン描画
 void CustomScene::Draw() {
-
-	// 「背景」
-	Lib::DrawBox2D(CUSTOM_WINDOW, 0, -20);
 
 	// UI描画
 	UIManager::GetInstance().Draw();
