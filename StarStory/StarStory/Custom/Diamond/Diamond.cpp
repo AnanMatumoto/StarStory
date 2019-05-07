@@ -52,36 +52,42 @@ void Diamond::InitDiamondInfo() {
 
 	switch (m_diamond_part) {
 
+		// 上
 	case TOP:
 		m_pos_x = TOP_POS_X;
 		m_pos_y = TOP_POS_Y;
 		m_angle = TOP_ANGLE;
 		break;
 
+		// 右上
 	case TOP_RIGHT:
 		m_pos_x = TOP_RIGHT_POS_X;
 		m_pos_y = TOP_RIGHT_POS_Y;
 		m_angle = TOP_RIGHT_ANGLE;
 		break;
 
+		// 左上
 	case TOP_LEFT:
 		m_pos_x = TOP_LEFT_POS_X;
 		m_pos_y = TOP_LEFT_POS_Y;
 		m_angle = TOP_LEFT_ANGLE;
 		break;
 
+		// 右下
 	case BOTTOM_RIGHT:
 		m_pos_x = BOTTOM_RIGHT_POS_X;
 		m_pos_y = BOTTOM_RIGHT_POS_Y;
 		m_angle = BOTTOM_RIGHT_ANGLE;
 		break;
 
+		// 左下
 	case BOTTOM_LEFT:
 		m_pos_x = BOTTOM_LEFT_POS_X;
 		m_pos_y = BOTTOM_LEFT_POS_Y;
 		m_angle = BOTTOM_LEFT_ANGLE;
 		break;
 
+		// それ以外の値が入った場合
 	default:
 		m_pos_x = 0;
 		m_pos_y = 0;
