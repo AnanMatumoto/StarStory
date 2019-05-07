@@ -25,10 +25,25 @@ private:
 	~CustomScene()override {}
 
 	// カスタムスターの実体化
-	CustomStar custom_star;
+	CustomStar *m_custom_star;
+
+	// シーンID管理用
+	SceneID m_scene_id;
+
+	// スキルデータ保管用
+	SkillData skill_data[MAX_DIAMOND_NUM];
 };
 
-struct SkillInfo {
+// スキルデータ
+struct SkillData {
 
+	// スキルID
 	Skill skill_id;
+
+	// スキルのリソース(char型)
+	char  tex_name[50];
+
+	// SEのリソース(char型)
+	char  se_name[50];
 };
+

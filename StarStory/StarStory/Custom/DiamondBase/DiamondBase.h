@@ -22,9 +22,9 @@ enum DiamondPart {
 
 	TOP,			// 上(基準点)
 	TOP_RIGHT,		// 右上
-	TOP_LEFT,		// 左上
 	BOTTOM_RIGHT,	// 右下
-	BOTTOM_LEFT		// 左下
+	BOTTOM_LEFT,	// 左下
+	TOP_LEFT		// 左上
 };
 
 // ひし形の頂点の場所

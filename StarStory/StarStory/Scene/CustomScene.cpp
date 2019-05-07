@@ -5,7 +5,6 @@
 
 #define CUSTOM_WINDOW	"Resource/Custom/UI_custom_window.png"		// 背景
 #define CUSTOM_DECISION "Resource/Custom/UI_custom_decision.png"	// 決定ボタン
-#define CUSTOM_MAP		"Resource/Custom/UI_custom_map.png"			// マップ確認ボタン
 #define CUSTOM_SERECT	"Resource/Custom/UI_custom_serect.png"		// セレクトへ戻るボタン
 
 //-----------------------------
@@ -18,7 +17,6 @@ void CustomScene::Init() {
 
 	// UI生成
 	UImng.Register(BT_CT_DECISION, 1445, 787, CUSTOM_DECISION);		// 決定ボタン
-	UImng.Register(BT_CT_MAP, 1115, 787, CUSTOM_MAP);				// マップ確認ボタン
 	UImng.Register(BT_CT_TOSELECT, 1115, 887, CUSTOM_SERECT);		// セレクト画面へ戻るボタン
 }
 
@@ -30,13 +28,28 @@ void CustomScene::Update() {
 	UIManager& ui_mng = UIManager::GetInstance();
 	ui_mng.Update();
 
-	//決定ボタンが押されたら
+	// 決定ボタンが押されたら
 	if (ui_mng.FindClickedUI() == BT_CT_DECISION) {
 
+		// ゲーム画面へ進むに変更
+		m_scene_id = SC_GAME;
+
+		// カスタムシーン終了に行く
 		m_state_id = SS_END;
 	}
 
-	custom_star.Update();
+	// セレクト確認ボタンが押されたら
+	if (ui_mng.FindClickedUI() == BT_CT_TOSELECT) {
+
+		// セレクト画面へ戻るに変更
+		m_scene_id = SC_SELECT;
+
+		// カスタムシーン終了に行く
+		m_state_id = SS_END;
+	}
+
+	// 星の更新
+	m_custom_star.Update();
 }
 
 //----------------------------
@@ -47,10 +60,9 @@ SceneID CustomScene::End() {
 
 	// UIをリストから削除
 	UIManager::GetInstance().Delete(BT_CT_DECISION);
-	UIManager::GetInstance().Delete(BT_CT_MAP);
 	UIManager::GetInstance().Delete(BT_CT_TOSELECT);
 
-	return SC_GAME;
+	return m_scene_id;
 }
 
 //----------------------------
@@ -85,6 +97,7 @@ void CustomScene::Draw() {
 	// UI描画
 	UIManager::GetInstance().Draw();
 
-	custom_star.Draw();
+	// 星の描画
+	m_custom_star.Draw();
 }
 
