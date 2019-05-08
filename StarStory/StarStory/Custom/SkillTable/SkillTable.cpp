@@ -1,5 +1,5 @@
 ﻿#include"SkillTable.h"
-#include"../../UI/UIManager.h";
+#include"../../UI/UIManager.h"
 
 // コンストラクタ
 SkillTable::SkillTable() {

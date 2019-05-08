@@ -13,18 +13,18 @@
 /*--定数--*/
 /*--ひし形の各座標、角度--*/
 // TOPの初期座標(x,y)と角度
-const float TOP_POS_X = 540.f;
-const float TOP_POS_Y = 400.f;
+const float TOP_POS_X = 632.f;
+const float TOP_POS_Y = 282.f;
 const float TOP_ANGLE = 0.f;
 
 // TOP_RIGHTの初期座標(x,y)と角度
-const float TOP_RIGHT_POS_X = TOP_POS_X + 152.f;
-const float TOP_RIGHT_POS_Y = TOP_POS_Y + 110.f;
+const float TOP_RIGHT_POS_X = TOP_POS_X + 100.f;
+const float TOP_RIGHT_POS_Y = TOP_POS_Y + 72.f;
 const float TOP_RIGHT_ANGLE = TOP_ANGLE + 1.25f;
 
 // TOP_LEFTの初期座標(x,y)と角度
-const float TOP_LEFT_POS_X = TOP_POS_X - 152.f;
-const float TOP_LEFT_POS_Y = TOP_POS_Y + 110.f;
+const float TOP_LEFT_POS_X = TOP_POS_X - 100.f;
+const float TOP_LEFT_POS_Y = TOP_POS_Y + 72.f;
 const float TOP_LEFT_ANGLE = TOP_ANGLE - 1.25f;
 
 // BOTTOM_RIGHTの初期座標(x,y)と角度

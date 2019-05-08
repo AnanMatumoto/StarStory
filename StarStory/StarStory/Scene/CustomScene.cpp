@@ -23,8 +23,8 @@ void CustomScene::Init() {
 
 	// UI生成
 	UImng.Register(CT_BASE, 0, 0, CUSTOM_BASE);						// 背景
-	UImng.Register(BT_CT_DECISION, 1445, 787, CUSTOM_DECISION);		// 決定ボタン
-	UImng.Register(BT_CT_TOSELECT, 1115, 887, CUSTOM_SERECT);		// セレクト画面へ戻るボタン
+	UImng.Register(BT_CT_TOSELECT, 1015, 792, CUSTOM_SERECT);		// 決定ボタン
+	UImng.Register(BT_CT_DECISION, 1309, 876, CUSTOM_DECISION);		// セレクト画面へ戻るボタン
 }
 
 //----------------------------
