@@ -3,9 +3,10 @@
 #include "../Lib/Lib.h"
 #include "../UI/UIManager.h"
 
-#define CUSTOM_BASE	"Resource/Custom/UI_custom_base.png"			// 背景
-#define CUSTOM_DECISION "Resource/Custom/UI_custom_decision.png"	// 決定ボタン
-#define CUSTOM_SERECT	"Resource/Custom/UI_custom_serect.png"		// セレクトへ戻るボタン
+const char CUSTOM_BASE[256]			= "Resource/Custom/UI_custom_base.png";			// 背景
+const char CUSTOM_DECISION[256]		= "Resource/Custom/UI_custom_decision.png";		// 決定ボタン
+const char CUSTOM_SERECT[256]		= "Resource/Custom/UI_custom_serect.png";		// セレクトへ戻るボタン
+const char CUSTOM_STAGE1_MAP[256]	= "Resource/Custom/stage1_map.png";				// ステージ1のマップ
 
 //-----------------------------
 //　カスタムシーン初期化
@@ -25,6 +26,7 @@ void CustomScene::Init() {
 	UImng.Register(CT_BASE, 0, 0, CUSTOM_BASE);						// 背景
 	UImng.Register(BT_CT_TOSELECT, 1015, 792, CUSTOM_SERECT);		// 決定ボタン
 	UImng.Register(BT_CT_DECISION, 1309, 876, CUSTOM_DECISION);		// セレクト画面へ戻るボタン
+	//UImng.Register(CT_STAGE1_MAP, 320, 580, CUSTOM_STAGE1_MAP);		// ステージ1のマップ
 }
 
 //----------------------------
@@ -69,6 +71,7 @@ SceneID CustomScene::End() {
 	UIManager::GetInstance().Delete(CT_BASE);
 	UIManager::GetInstance().Delete(BT_CT_DECISION);
 	UIManager::GetInstance().Delete(BT_CT_TOSELECT);
+	//UIManager::GetInstance().Delete(CT_STAGE1_MAP);
 
 	return m_scene_id;
 }
@@ -101,6 +104,8 @@ void CustomScene::Draw() {
 
 	// UI描画
 	UIManager::GetInstance().Draw();
+
+	Lib::DrawBox2D(CUSTOM_STAGE1_MAP, 320, 580, 0.337f, 0.37f);
 
 	// 星の描画
 	m_custom_star.Draw();

@@ -3,38 +3,38 @@
 #include"../DiamondBase/DiamondBase.h"
 
 /*----画像----*/
-#define NORMAL_TEX "Resource/Player/player_1_normal.png"	// NORMAL
-#define SPEED_TEX  "Resource/Player/player_1_accel.png"		// SPEED
-#define JUMP_TEX   "Resource/Player/player_1_jump.png"		// JUMP
-#define LIGHT_TEX  "Resource/Player/player_1_light.png"		// LIGHT
-#define STOP_TEX   "Resource/Player/player_1_stop.png"		// STOP
+const char NORMAL_TEX[256] = "Resource/Player/player_1_normal.png";		// NORMAL
+const char SPEED_TEX[256]  = "Resource/Player/player_1_accel.png";		// SPEED
+const char JUMP_TEX[256]   = "Resource/Player/player_1_jump.png";		// JUMP
+const char LIGHT_TEX[256]  = "Resource/Player/player_1_light.png";		// LIGHT
+const char STOP_TEX[256]   = "Resource/Player/player_1_stop.png";		// STOP
 /*----画像----*/
 
 /*--定数--*/
 /*--ひし形の各座標、角度--*/
 // TOPの初期座標(x,y)と角度
 const float TOP_POS_X = 632.f;
-const float TOP_POS_Y = 282.f;
+const float TOP_POS_Y = 280.f;
 const float TOP_ANGLE = 0.f;
 
 // TOP_RIGHTの初期座標(x,y)と角度
-const float TOP_RIGHT_POS_X = TOP_POS_X + 100.f;
+const float TOP_RIGHT_POS_X = TOP_POS_X + 99.f;
 const float TOP_RIGHT_POS_Y = TOP_POS_Y + 72.f;
-const float TOP_RIGHT_ANGLE = TOP_ANGLE + 1.25f;
+const float TOP_RIGHT_ANGLE = TOP_ANGLE + 1.26f;
 
 // TOP_LEFTの初期座標(x,y)と角度
-const float TOP_LEFT_POS_X = TOP_POS_X - 100.f;
+const float TOP_LEFT_POS_X = TOP_POS_X - 99.f;
 const float TOP_LEFT_POS_Y = TOP_POS_Y + 72.f;
-const float TOP_LEFT_ANGLE = TOP_ANGLE - 1.25f;
+const float TOP_LEFT_ANGLE = TOP_ANGLE - 1.26f;
 
 // BOTTOM_RIGHTの初期座標(x,y)と角度
-const float BOTTOM_RIGHT_POS_X = TOP_POS_X + 92.f;
-const float BOTTOM_RIGHT_POS_Y = TOP_POS_Y + 287.f;
+const float BOTTOM_RIGHT_POS_X = TOP_POS_X + 61.f;
+const float BOTTOM_RIGHT_POS_Y = TOP_POS_Y + 189.f;
 const float BOTTOM_RIGHT_ANGLE = TOP_ANGLE + 2.51f;
 
 // BOTTOM_LEFTの初期座標(x,y)と角度
-const float BOTTOM_LEFT_POS_X = TOP_POS_X - 92.f;
-const float BOTTOM_LEFT_POS_Y = TOP_POS_Y + 287.f;
+const float BOTTOM_LEFT_POS_X = TOP_POS_X - 61.f;
+const float BOTTOM_LEFT_POS_Y = TOP_POS_Y + 189.f;
 const float BOTTOM_LEFT_ANGLE = TOP_ANGLE - 2.51f;
 /*--ひし形の各座標、角度--*/
 /*--定数--*/
