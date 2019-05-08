@@ -12,10 +12,10 @@ struct SkillData {
 	Skill skill_id;
 
 	// スキルのリソース(char型)
-	char  tex_name[50];
+	char  tex_name[256];
 
 	// SEのリソース(char型)
-	char  se_name[50];
+	char  se_name[256];
 };
 
 //=================================

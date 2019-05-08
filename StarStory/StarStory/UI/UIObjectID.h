@@ -19,6 +19,7 @@ enum UIObjectID {
 
 	//カスタム
 	CT_BASE,
+	CT_STAGE1_MAP,
 	CT_NUM_1,
 	CT_NUM_2,
 	CT_NUM_3,

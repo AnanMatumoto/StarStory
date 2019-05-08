@@ -8,8 +8,8 @@ const int MAX_VERTEX_NUM = 4;		// ひし形の頂点の数
 const int MAX_DIAMOND_NUM = 5;		// ひし形の種類の数
 
 // 描画の時に使用する(元画像w 32, h 23) 6.5倍
-const float DIAMOND_W = 208;		// ひし形の幅
-const float DIAMOND_H = 149.5;		// ひし形の高さ
+const float DIAMOND_W = 150;		// ひし形の幅
+const float DIAMOND_H = 208; 		// ひし形の高さ
 
 // 当たり判定の時に使用する
 const float HALF_DIAMOND_W = DIAMOND_W / 2;		// ひし形の幅の半分
@@ -51,7 +51,7 @@ public:
 		m_half_size_h = HALF_DIAMOND_H;
 
 		// スキルの種類初期化(最初はすべて、NORMALで描画)
-		m_skill_id = NORMAL;
+		m_skill_id = JUMP;
 	}
 
 	// デストラクタ

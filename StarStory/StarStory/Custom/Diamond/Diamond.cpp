@@ -161,7 +161,7 @@ void Diamond::DrawDiamond() {
 	DrawDaiamond2D(
 		m_tex,
 		m_pos_x, m_pos_y,
-		m_size_w, m_size_h,
+		m_size_h, m_size_w,
 		m_angle);
 }
 /*----描画用関数----*/
