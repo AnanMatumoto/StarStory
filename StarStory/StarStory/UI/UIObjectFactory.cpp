@@ -34,9 +34,9 @@ ObjectBase* UIObjectFactory::Create(
 	case CT_BASE:
 		return new ButtonUI(x, y, tex_name);
 			break;
-	case CT_STAGE1_MAP:
+	/*case CT_STAGE1_MAP:
 		return new ButtonUI(x, y, tex_name);
-		break;
+		break;*/
 	case BT_CT_DECISION:
 		return new ButtonUI(x, y, tex_name);
 		break;
