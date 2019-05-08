@@ -15,6 +15,7 @@ namespace Lib {
 		const Texture& tex,
 		float x, float y,
 		float w, float h,
+		float depth,
 		DWORD col,
 		float ox, float oy
 	) {
@@ -25,10 +26,10 @@ namespace Lib {
 		float y2 = y + h * (1.f - oy);//右下ｙ座標
 
 		Vertex vtx[4] = {
-			{{x1, y1, 0.f,1.f}, col, {0.f,0.f}},
-			{{x2, y1, 0.f,1.f}, col, {1.f,0.f}},
-			{{x2, y2, 0.f,1.f}, col, {1.f,1.f}},
-			{{x1, y2, 0.f,1.f} ,col,  {0.f,1.f}}
+			{{x1, y1, depth,1.f}, col, {0.f,0.f}},
+			{{x2, y1, depth,1.f}, col, {1.f,0.f}},
+			{{x2, y2, depth,1.f}, col, {1.f,1.f}},
+			{{x1, y2, depth,1.f} ,col,  {0.f,1.f}}
 		};
 
 
@@ -45,6 +46,7 @@ namespace Lib {
 		float pos_y,
 		float width,
 		float height,
+		float depth,
 		DWORD color,
 		float ox,
 		float oy
@@ -55,6 +57,7 @@ namespace Lib {
 			pos_x, pos_y,
 			tex.GetSize().x * width,
 			tex.GetSize().y * height,
+			depth,
 			color, ox, oy
 		);
 	}

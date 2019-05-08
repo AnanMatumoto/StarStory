@@ -205,6 +205,7 @@ namespace Lib {
 		float pos_y,
 		float width = 1.f,
 		float height = 1.f,
+		float depth = 0.f,
 		DWORD color = 0x00ffffff,
 		float ox = 0.f,
 		float oy = 0.f
@@ -226,9 +227,11 @@ namespace Lib {
 		float pos_y,
 		float width = 1.f,
 		float height = 1.f,
+		float depth = 0.f,
 		DWORD color = 0x00ffffff,
 		float ox = 0.f,
 		float oy = 0.f
+		
 	);
 
 	/*
