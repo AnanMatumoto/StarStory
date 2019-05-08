@@ -163,7 +163,8 @@ void GameScene::Draw() {
 	Lib::DrawPx2D(
 		GAME_STAGE,
 		0, 0,
-		1920,1080
+		1920,1080,
+		1.f
 	);
 	
 	// ステージオブジェクト描画

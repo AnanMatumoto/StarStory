@@ -37,10 +37,10 @@ void MapObject::Draw() {
 //　頂点座標をセットする
 void MapObject::SetVertex(DWORD color) {
 
-	m_vtx[0] = {{m_pos.x,  m_pos.y, 0.f,1.f},color,{0.f,0.f}};
-	m_vtx[1] = {{m_pos.x + m_width, m_pos.y, 0.f,1.f},color,{1.f,0.f}};
-	m_vtx[2] = { {m_pos.x + m_width, m_pos.y + m_height, 0.f,1.f},color, {1.f,1.f}};
-	m_vtx[3] = { {m_pos.x,  m_pos.y + m_height, 0.f,1.f},color,{0.f,1.f}};
+	m_vtx[0] = {{m_pos.x,  m_pos.y, 0.5f,1.f},color,{0.f,0.f}};
+	m_vtx[1] = {{m_pos.x + m_width, m_pos.y, 0.5f,1.f},color,{1.f,0.f}};
+	m_vtx[2] = { {m_pos.x + m_width, m_pos.y + m_height, 0.5f,1.f},color, {1.f,1.f}};
+	m_vtx[3] = { {m_pos.x,  m_pos.y + m_height, 0.5f,1.f},color,{0.f,1.f}};
 
 	BoxLocalTransform(m_vtx, m_width, m_height);
 }
