@@ -146,6 +146,14 @@ ObjectBase* StarChild::GetMapObj()const {
 	}
 }
 
+float StarChild::DistanceToCeiling() {
+
+	if (m_obj != nullptr) {
+		float obj_y = m_obj->GetVertex(0).pos.y;
+		return obj_y - m_vtx[1].pos.y;
+	}
+}
+
 //---------------------------------
 // SEˆ—
 void StarChild::PlaySE() {
