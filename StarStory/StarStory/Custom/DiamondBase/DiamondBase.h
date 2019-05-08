@@ -51,7 +51,7 @@ public:
 		m_half_size_h = HALF_DIAMOND_H;
 
 		// スキルの種類初期化(最初はすべて、NORMALで描画)
-		m_skill_id = JUMP;
+		m_skill_id = NORMAL;
 	}
 
 	// デストラクタ
@@ -63,12 +63,10 @@ public:
 	/*----関数----*/
 	virtual void Update() = 0;		// 更新
 	virtual void Draw() = 0;		// 描画
+	virtual void Reset() = 0;		// リセット
 
 	// クリックされた時の当たり判定
 	virtual void IsHitMouse() = 0;
-
-	// ひし形の描画
-	virtual void DrawDiamond() = 0;
 	/*----関数----*/
 
 protected:

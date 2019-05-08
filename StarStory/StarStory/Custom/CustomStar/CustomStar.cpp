@@ -24,6 +24,15 @@ CustomStar::~CustomStar() {
 	}
 }
 
+// リセット
+void CustomStar::Reset() {
+
+	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
+
+		m_diamond_base[i]->Reset();
+	}
+}
+
 // 更新
 void CustomStar::Update() {
 

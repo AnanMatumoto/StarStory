@@ -26,6 +26,6 @@ private:
 	/*----定数----*/
 
 	/*----enum----*/
-	Skill m_skill_id[MAX_DIAMOND_NUM];	// スキルID保管用
+	Skill m_skill_id;	// スキルID保管用
 	/*----enum----*/
 };

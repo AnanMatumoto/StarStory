@@ -12,6 +12,8 @@ public:
 
 	~CustomStar();		// デストラクタ
 
+	void Reset();		// リセット
+
 	void Update();		// 更新
 
 	void Draw();		// 描画

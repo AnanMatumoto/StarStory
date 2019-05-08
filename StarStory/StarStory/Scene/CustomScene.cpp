@@ -3,10 +3,12 @@
 #include "../Lib/Lib.h"
 #include "../UI/UIManager.h"
 
-const char CUSTOM_BASE[256]			= "Resource/Custom/UI_custom_base.png";			// 背景
-const char CUSTOM_DECISION[256]		= "Resource/Custom/UI_custom_decision.png";		// 決定ボタン
-const char CUSTOM_SERECT[256]		= "Resource/Custom/UI_custom_serect.png";		// セレクトへ戻るボタン
-const char CUSTOM_STAGE1_MAP[256]	= "Resource/Custom/stage1_map.png";				// ステージ1のマップ
+/*----画像----*/
+const char CUSTOM_BASE_TEX[256]			= "Resource/Custom/UI_custom_base.png";			// 背景
+const char CUSTOM_DECISION_TEX[256]		= "Resource/Custom/UI_custom_decision.png";		// 決定ボタン
+const char CUSTOM_SERECT_TEX[256]		= "Resource/Custom/UI_custom_serect.png";		// セレクトへ戻るボタン
+const char CUSTOM_STAGE1_MAP_TEX[256]	= "Resource/Custom/stage1_map.png";				// ステージ1のマップ
+/*----画像----*/
 
 //-----------------------------
 //　カスタムシーン初期化
@@ -23,10 +25,13 @@ void CustomScene::Init() {
 	}
 
 	// UI生成
-	UImng.Register(CT_BASE, 0, 0, CUSTOM_BASE);						// 背景
-	UImng.Register(BT_CT_TOSELECT, 1015, 792, CUSTOM_SERECT);		// 決定ボタン
-	UImng.Register(BT_CT_DECISION, 1309, 876, CUSTOM_DECISION);		// セレクト画面へ戻るボタン
+	UImng.Register(CT_BASE, 0, 0, CUSTOM_BASE_TEX);						// 背景
+	UImng.Register(BT_CT_TOSELECT, 1015, 792, CUSTOM_SERECT_TEX);		// 決定ボタン
+	UImng.Register(BT_CT_DECISION, 1309, 876, CUSTOM_DECISION_TEX);		// セレクト画面へ戻るボタン
 	//UImng.Register(CT_STAGE1_MAP, 320, 580, CUSTOM_STAGE1_MAP);		// ステージ1のマップ
+
+	// スキルテーブルを生成
+	//m_skill_table = new SkillTable();
 }
 
 //----------------------------
@@ -59,6 +64,10 @@ void CustomScene::Update() {
 
 	// 星の更新
 	m_custom_star.Update();
+
+	// スキルテーブルの更新
+	//m_skill_table->Update();
+
 }
 
 //----------------------------
@@ -68,10 +77,16 @@ SceneID CustomScene::End() {
 	m_state_id = SS_INIT;
 
 	// UIをリストから削除
-	UIManager::GetInstance().Delete(CT_BASE);
-	UIManager::GetInstance().Delete(BT_CT_DECISION);
-	UIManager::GetInstance().Delete(BT_CT_TOSELECT);
-	//UIManager::GetInstance().Delete(CT_STAGE1_MAP);
+	UIManager::GetInstance().Delete(BT_CT_TOSELECT);	// セレクト画面へ戻るボタン
+	UIManager::GetInstance().Delete(BT_CT_DECISION);	// 決定ボタン
+	UIManager::GetInstance().Delete(CT_BASE);			// 背景
+	//UIManager::GetInstance().Delete(CT_STAGE1_MAP);	// ステージ1のマップ
+
+	// 星のスキルをリセット
+	m_custom_star.Reset();
+
+	// スキルテーブルを削除
+	//delete m_skill_table;
 
 	return m_scene_id;
 }
@@ -105,9 +120,13 @@ void CustomScene::Draw() {
 	// UI描画
 	UIManager::GetInstance().Draw();
 
-	Lib::DrawBox2D(CUSTOM_STAGE1_MAP, 320, 580, 0.337f, 0.37f);
+	// スキル表描画
+	//m_skill_table->Draw();
 
 	// 星の描画
 	m_custom_star.Draw();
+
+	// ステージ1のマップ描画
+	Lib::DrawBox2D(CUSTOM_STAGE1_MAP_TEX, 320, 580, 0.337f, 0.37f);
 }
 

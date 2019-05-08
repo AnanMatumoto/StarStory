@@ -86,7 +86,7 @@ UIObjectID UIManager::FindClickedUI() {
 bool UIManager::SwithOnUI(UIObjectID id) {
 
 	auto ui = m_UI_list.find(id);
-	if(ui!= m_UI_list.end()){
+	if (ui != m_UI_list.end()) {
 		ButtonUI* button = (ButtonUI*)ui->second;
 		if (button->GetClickCount() == 1) {
 			return true;
@@ -94,6 +94,6 @@ bool UIManager::SwithOnUI(UIObjectID id) {
 		else {
 			return false;
 		}
-		
+
 	}
 }

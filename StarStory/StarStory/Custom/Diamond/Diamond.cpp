@@ -33,8 +33,22 @@ void Diamond::Update() {
 // 描画
 void Diamond::Draw() {
 
+	// スキルによって画像変更
+	ChangeTex();
+
 	// ひし形描画
-	DrawDiamond();
+	DrawDaiamond2D(
+		m_tex,
+		m_pos_x, m_pos_y,
+		m_size_h, m_size_w,
+		m_angle);
+}
+
+// リセット
+void Diamond::Reset() {
+
+	// スキルIDをノーマルに戻す
+	m_skill_id = NORMAL;
 }
 
 /*----初期化関数----*/
@@ -95,6 +109,7 @@ void Diamond::InitDiamondInfo() {
 		break;
 	}
 }
+
 /*----更新用関数----*/
 // マウスにクリックされたときの当たり判定
 void Diamond::IsHitMouse() {
@@ -146,23 +161,4 @@ void Diamond::ChangeTex() {
 	}
 }
 /*----更新用関数----*/
-
-/*----描画用関数----*/
-// ひし形を描画
-/*
-	引数で描画に必要な値をとってくる
-*/
-void Diamond::DrawDiamond() {
-
-	// スキルによって画像変更
-	ChangeTex();
-
-	// ひし形描画
-	DrawDaiamond2D(
-		m_tex,
-		m_pos_x, m_pos_y,
-		m_size_h, m_size_w,
-		m_angle);
-}
-/*----描画用関数----*/
 

@@ -53,6 +53,8 @@ public:
 	void Update()override;		// 更新
 
 	void Draw()override;		// 描画
+
+	void Reset()override;		// リセット
 	/*----関数----*/
 
 	// スキルの受け渡しに使う予定
@@ -79,11 +81,6 @@ private:
 	// ひし形のスキルを判定して描画画像を変える
 	void ChangeTex();
 	/*----更新用関数----*/
-
-	/*----描画用関数----*/
-	// ひし形の描画
-	void DrawDiamond()override;
-	/*----描画用関数----*/
 
 	/*----変数----*/
 	Lib::Texture m_tex;		// ひし形の描画場が画像を入れるところ

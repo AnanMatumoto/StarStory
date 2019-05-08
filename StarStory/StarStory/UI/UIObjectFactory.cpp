@@ -25,22 +25,18 @@ ObjectBase* UIObjectFactory::Create(
 	case BT_SL_STAGE:
 		return new ButtonUI(x, y, tex_name);
 		break;
-
 	case BT_SL_BACK:
 		return new ButtonUI(x, y, tex_name);
 		break;
 
 	/*--CustomScene--*/
-	case CT_BASE:
+	case CT_BASE:								// 背景
 		return new ButtonUI(x, y, tex_name);
 			break;
-	/*case CT_STAGE1_MAP:
-		return new ButtonUI(x, y, tex_name);
-		break;*/
-	case BT_CT_DECISION:
+	case BT_CT_DECISION:						// 決定ボタン
 		return new ButtonUI(x, y, tex_name);
 		break;
-	case BT_CT_TOSELECT:
+	case BT_CT_TOSELECT:						// セレクトへ戻るボタン
 		return new ButtonUI(x, y, tex_name);
 		break;
 	/*--CustomScene--*/

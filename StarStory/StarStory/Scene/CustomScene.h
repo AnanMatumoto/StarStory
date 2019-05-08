@@ -11,10 +11,10 @@ struct SkillData {
 	// スキルID
 	Skill skill_id;
 
-	// スキルのリソース(char型)
+	// スキルのリソース
 	char  tex_name[256];
 
-	// SEのリソース(char型)
+	// SEのリソース
 	char  se_name[256];
 };
 
@@ -47,10 +47,13 @@ private:
 	// カスタムスターの実体化
 	CustomStar m_custom_star;
 
-	// シーンID管理用
-	SceneID m_scene_id;
+	// スキル表の実体化
+	SkillTable *m_skill_table;
 
 	// スキルデータ保管用
 	SkillData m_skill_data[MAX_DIAMOND_NUM];
+
+	// シーンID管理用
+	SceneID m_scene_id;
 };
 
