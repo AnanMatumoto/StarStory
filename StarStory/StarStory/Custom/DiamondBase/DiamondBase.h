@@ -4,9 +4,6 @@
 #include"../../Skill.h"
 
 /*----定数----*/
-const int MAX_VERTEX_NUM = 4;		// ひし形の頂点の数
-const int MAX_DIAMOND_NUM = 5;		// ひし形の種類の数
-
 // 描画の時に使用する(元画像w 32, h 23) 6.5倍
 const float DIAMOND_W = 150;		// ひし形の幅
 const float DIAMOND_H = 208; 		// ひし形の高さ
@@ -24,7 +21,9 @@ enum DiamondPart {
 	TOP_RIGHT,		// 右上
 	BOTTOM_RIGHT,	// 右下
 	BOTTOM_LEFT,	// 左下
-	TOP_LEFT		// 左上
+	TOP_LEFT,		// 左上
+
+	MAX_DIAMOND_NUM
 };
 
 // ひし形の頂点の場所
@@ -33,7 +32,9 @@ enum DiamondVertex {
 	TOP_VERTEX,		// 上
 	RIGHT_VERTEX,	// 右
 	BOTTOM_VERTEX,	// 下
-	LEFT_VERTEX		// 左
+	LEFT_VERTEX,	// 左
+
+	MAX_VERTEX_NUM
 };
 /*----enum----*/
 

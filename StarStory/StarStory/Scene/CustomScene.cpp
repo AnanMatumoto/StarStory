@@ -31,7 +31,7 @@ void CustomScene::Init() {
 	//UImng.Register(CT_STAGE1_MAP, 320, 580, CUSTOM_STAGE1_MAP);		// ステージ1のマップ
 
 	// スキルテーブルを生成
-	//m_skill_table = new SkillTable();
+	m_skill_table = new SkillTable();
 }
 
 //----------------------------
@@ -66,7 +66,7 @@ void CustomScene::Update() {
 	m_custom_star.Update();
 
 	// スキルテーブルの更新
-	//m_skill_table->Update();
+	m_skill_table->Update();
 
 }
 
@@ -86,7 +86,7 @@ SceneID CustomScene::End() {
 	m_custom_star.Reset();
 
 	// スキルテーブルを削除
-	//delete m_skill_table;
+	delete m_skill_table;
 
 	return m_scene_id;
 }
@@ -121,7 +121,7 @@ void CustomScene::Draw() {
 	UIManager::GetInstance().Draw();
 
 	// スキル表描画
-	//m_skill_table->Draw();
+	m_skill_table->Draw();
 
 	// 星の描画
 	m_custom_star.Draw();
