@@ -53,15 +53,13 @@ public:
 	void Update()override;		// 更新
 
 	void Draw()override;		// 描画
-
-	void Reset()override;		// リセット
 	/*----関数----*/
 
 	// スキルの受け渡しに使う予定
 	/*----セッター----*/
-	Skill SetSkill(Skill skill) {
+	void SetSkill(Skill skill) {
 
-		m_skill_id = skill;
+		m_skill = skill;
 	}
 	/*----セッター----*/
 
@@ -75,8 +73,8 @@ private:
 	/*----初期化関数----*/
 
 	/*----更新用関数----*/
-	// クリックされた時の当たり判定
-	void IsHitMouse()override;
+	// スキルIDを変更する関数
+	void ChangeSkillID();
 
 	// ひし形のスキルを判定して描画画像を変える
 	void ChangeTex();

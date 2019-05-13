@@ -1,8 +1,4 @@
 ﻿#include"Diamond.h"
-#include"../../Collision/Collision.h"
-
-using namespace Lib;
-using namespace Collision;
 
 // コンストラクタ
 Diamond::Diamond(DiamondPart part) {
@@ -27,7 +23,7 @@ Diamond::~Diamond() {
 void Diamond::Update() {
 
 	// マウスとの辺り判定
-	IsHitMouse();
+	ChangeSkillID();
 }
 
 // 描画
@@ -42,13 +38,6 @@ void Diamond::Draw() {
 		m_pos_x, m_pos_y,
 		m_size_h, m_size_w,
 		m_angle);
-}
-
-// リセット
-void Diamond::Reset() {
-
-	// スキルIDをノーマルに戻す
-	m_skill_id = NORMAL;
 }
 
 /*----初期化関数----*/
@@ -112,24 +101,13 @@ void Diamond::InitDiamondInfo() {
 
 /*----更新用関数----*/
 // マウスにクリックされたときの当たり判定
-void Diamond::IsHitMouse() {
+void Diamond::ChangeSkillID() {
 
-	// マウスの座標取得
-	Vec2 mouse_pos = GetMousePoint();
+	if (IsHitMouse() == true) {
 
-	// マウスとの当たり判定
-	if (IsInDiamond(
-		m_vertex_pos[TOP_VERTEX],
-		m_vertex_pos[RIGHT_VERTEX],
-		m_vertex_pos[BOTTOM_VERTEX],
-		m_vertex_pos[LEFT_VERTEX],
-		mouse_pos
-	) == true) {
-
-		// カスタムシーンに保存されている、スキルIDを取得する
-		/*----test----*/
-		m_skill_id = JUMP;
-		/*----test----*/
+		// スキルIDを取得する
+		Skill_ID &skill_id = Skill_ID::GetInstance();
+		m_skill = skill_id.GetSkillID();
 	}
 }
 
@@ -137,7 +115,7 @@ void Diamond::IsHitMouse() {
 void Diamond::ChangeTex() {
 
 	// スキルによって画像変更
-	switch (m_skill_id) {
+	switch (m_skill) {
 
 	case JUMP:
 		m_tex = JUMP_TEX;

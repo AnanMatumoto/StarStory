@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include"../../Lib/Lib.h"
+#include"../../Collision/Collision.h"
 #include"../../Skill.h"
 
 /*----定数----*/
@@ -43,17 +44,15 @@ class DiamondBase {
 
 public:
 	// コンストラクタ
-	DiamondBase() {
-
+	DiamondBase() :
 		// サイズ初期化
-		m_size_w = DIAMOND_W;
-		m_size_h = DIAMOND_H;
-		m_half_size_w = HALF_DIAMOND_W;
-		m_half_size_h = HALF_DIAMOND_H;
+		m_size_w(DIAMOND_W),
+		m_size_h(DIAMOND_H),
+		m_half_size_w(HALF_DIAMOND_W),
+		m_half_size_h(HALF_DIAMOND_H),
 
 		// スキルの種類初期化(最初はすべて、NORMALで描画)
-		m_skill_id = NORMAL;
-	}
+		m_skill(JUMP) {};
 
 	// デストラクタ
 	virtual ~DiamondBase() {
@@ -64,10 +63,6 @@ public:
 	/*----関数----*/
 	virtual void Update() = 0;		// 更新
 	virtual void Draw() = 0;		// 描画
-	virtual void Reset() = 0;		// リセット
-
-	// クリックされた時の当たり判定
-	virtual void IsHitMouse() = 0;
 	/*----関数----*/
 
 protected:
@@ -83,9 +78,33 @@ protected:
 	Vec2 m_vertex_pos[MAX_VERTEX_NUM];		// ひし形の頂点情報
 	/*----変数----*/
 
+	/*----関数----*/
+	// マウスにクリックされた時の当たり判定
+	bool IsHitMouse() {
+
+		// マウスの座標取得
+		Vec2 mouse_pos = Lib::GetMousePoint();
+
+		// マウスとの当たり判定
+		if (Collision::IsInDiamond(
+			m_vertex_pos[TOP_VERTEX],
+			m_vertex_pos[RIGHT_VERTEX],
+			m_vertex_pos[BOTTOM_VERTEX],
+			m_vertex_pos[LEFT_VERTEX],
+			mouse_pos) == true) {
+
+			return true;
+		}
+		else {
+
+			return false;
+		}
+	}
+	/*----関数----*/
+
 	/*----enum----*/
 	DiamondVertex m_diamond_vertex;		// ひし形の頂点の場所
-	Skill m_skill_id;					// スキルの情報
+	Skill m_skill;					// スキルの情報
 	DiamondPart m_diamond_part;			// ひし形を置く場所
 	/*----enum----*/
 };
