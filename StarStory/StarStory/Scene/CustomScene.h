@@ -45,12 +45,13 @@ private:
 	~CustomScene()override {}
 
 	// カスタムスターの実体化
-	CustomStar m_custom_star;
+	CustomStar *m_custom_star;
 
 	// スキル表の実体化
 	SkillTable *m_skill_table;
 
-	// スキルデータ保管用
+	// スキルデータ保管用(ゲームシーンにデータを送る用)
+	// シーン終了時にバイナリデータで保存
 	SkillData m_skill_data[MAX_DIAMOND_NUM];
 
 	// シーンID管理用

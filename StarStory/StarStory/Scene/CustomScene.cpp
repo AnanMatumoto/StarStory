@@ -30,8 +30,11 @@ void CustomScene::Init() {
 	UImng.Register(BT_CT_DECISION, 1309, 876, CUSTOM_DECISION_TEX);		// セレクト画面へ戻るボタン
 	//UImng.Register(CT_STAGE1_MAP, 320, 580, CUSTOM_STAGE1_MAP);		// ステージ1のマップ
 
-	// スキルテーブルを生成
-	m_skill_table = new SkillTable();
+	// カスタムスター生成
+	m_custom_star = new CustomStar();
+
+	// スキルテーブル生成
+	m_skill_table = new SkillTable(SKILL_TABLE_BASE);
 }
 
 //----------------------------
@@ -62,12 +65,11 @@ void CustomScene::Update() {
 		m_state_id = SS_END;
 	}
 
-	// 星の更新
-	m_custom_star.Update();
+	// カスタムスター更新
+	m_custom_star->Update();
 
-	// スキルテーブルの更新
+	// スキルテーブル更新
 	m_skill_table->Update();
-
 }
 
 //----------------------------
@@ -82,12 +84,13 @@ SceneID CustomScene::End() {
 	UIManager::GetInstance().Delete(CT_BASE);			// 背景
 	//UIManager::GetInstance().Delete(CT_STAGE1_MAP);	// ステージ1のマップ
 
-	// 星のスキルをリセット
-	m_custom_star.Reset();
+	// カスタムスター削除
+	delete m_custom_star;
 
 	// スキルテーブルを削除
 	delete m_skill_table;
 
+	// シーンIDを返す
 	return m_scene_id;
 }
 
@@ -120,11 +123,11 @@ void CustomScene::Draw() {
 	// UI描画
 	UIManager::GetInstance().Draw();
 
+	// カスタムスター描画
+	m_custom_star->Draw();
+
 	// スキル表描画
 	m_skill_table->Draw();
-
-	// 星の描画
-	m_custom_star.Draw();
 
 	// ステージ1のマップ描画
 	Lib::DrawBox2D(CUSTOM_STAGE1_MAP_TEX, 320, 580, 0.337f, 0.37f);
