@@ -1,55 +1,52 @@
 ﻿#include"SkillTable.h"
+#include"../../Collision/Collision.h"
+#include"../../Skill.h"
 
-/*----画像----*/
-
-/*----スキル横の数字----*/
-const char CUSTOM_NUM1_TEX[256] = "Resource/Custom/ui_custom_num1.png";
-const char CUSTOM_NUM2_TEX[256] = "Resource/Custom/ui_custom_num2.png";
-const char CUSTOM_NUM3_TEX[256] = "Resource/Custom/ui_custom_num3.png";
-const char CUSTOM_NUM4_TEX[256] = "Resource/Custom/ui_custom_num4.png";
-const char CUSTOM_NUM5_TEX[256] = "Resource/Custom/ui_custom_num5.png";
-/*----スキル横の数字----*/
-
-const char SKILL_TABLE_BASE_TEX[256]	= "Resource/Custom/ui_custom_skillbase.png";	// スキル表の基礎
-const char SKILL_TABLE_NORAML_TEX[256]	= "Resource/Custom/UI_custom_normal.png";		// スキル表のノーマルスキル
-const char SKILL_TABLE_ACCEL_TEX[256]	= "Resource/Custom/UI_custom_accel.png";		// スキル表の加速スキル
-const char SKILL_TABLE_JUMP_TEX[256]	= "Resource/Custom/UI_custom_jump.png";			// スキル表のジャンプスキル
-const char SKILL_TABLE_STOP_TEX[256]	= "Resource/Custom/UI_custom_stop.png";			// スキル表の停止スキル
-const char SKILL_WEAK_TEX[256]			= "Resource/Custom/UI_custom_weak.png";			// スキルの弱
-/*----画像----*/
-
-/*----定数----*/
-const Vec2 SKILL_TABLE_BASE_POS = {};
-/*----定数----*/
-
-/*----enum----*/
-// スキル表に使う素材
-enum SkillTableTex {
-
-	SKILL_TABLE_BASE,		// スキル表の基礎
+// スキル表に必要なもの
+namespace SKILL_TABLE {
+	/*----画像----*/
 
 	/*----スキル横の数字----*/
-	CUSTOM_NUM1,
-	CUSTOM_NUM2,
-	CUSTOM_NUM3,
-	CUSTOM_NUM4,
-	CUSTOM_NUM5,
+	const char NUM1_TEX[256] = "Resource/Custom/ui_custom_num1.png";
+	const char NUM2_TEX[256] = "Resource/Custom/ui_custom_num2.png";
+	const char NUM3_TEX[256] = "Resource/Custom/ui_custom_num3.png";
+	const char NUM4_TEX[256] = "Resource/Custom/ui_custom_num4.png";
+	const char NUM5_TEX[256] = "Resource/Custom/ui_custom_num5.png";
 	/*----スキル横の数字----*/
 
-	SKILL_TABLE_NORAML,		// ノーマルスキル
-	SKILL_TABLE_ACCEL,		// 加速スキル
-	SKILL_TABLE_JUMP,		// ジャンプスキル
-	SKILL_TABLE_STOP,		// 停止スキル
-	SKILL_WEAK,				// 弱
+	const char BASE_TEX[256] = "Resource/Custom/ui_custom_skillbase.png";			// スキル表の基礎
+	const char NORAML_SKILL_TEX[256] = "Resource/Custom/UI_custom_normal.png";		// スキル表のノーマルスキル
+	const char ACCEL_SKILL_TEX[256] = "Resource/Custom/UI_custom_accel.png";		// スキル表の加速スキル
+	const char JUMP_SKILL_TEX[256] = "Resource/Custom/UI_custom_jump.png";			// スキル表のジャンプスキル
+	const char STOP_SKILL_TEX[256] = "Resource/Custom/UI_custom_stop.png";			// スキル表の停止スキル
+	const char WEAK_TEX[256] = "Resource/Custom/UI_custom_weak.png";				// スキルの弱
+	/*----画像----*/
 
-	MAX_TEX_NUM
-};
-/*----enum----*/
+	/*----定数----*/
+	// スキル表の基礎の数
+	const int BASE_NUM = 5;
+
+	// スキル表の画像をずらす値
+	const float SHIFT_VALUE = 104;
+
+	// スキル表の基礎
+	const Vec2 BASE_POS = { 1075.f,218.f };
+	const Vec2 SKILL_POS = { 1183.f,233.f };
+	const Vec2 NUM_POS = { 1106.f,244.f };
+	const Vec2 STRENGTH_POS = { 1569.f,237.f };
+	/*----定数----*/
+}
+
+using namespace SKILL_TABLE;
 
 // コンストラクタ
-SkillTable::SkillTable() {
+SkillTable::SkillTable(SkillTableTexID skill_table_tex_id) {
 	
+	// IDを代入
+	m_skill_table_tex_id = skill_table_tex_id;
 
+	// スキルID識別
+	InitSkillTableID();
 }
 
 // デストラクタ
@@ -61,24 +58,131 @@ SkillTable::~SkillTable() {
 // 更新
 void SkillTable::Update() {
 
+	Vec2 mouse_pos = Lib::GetMousePoint();
 
+	// マウスが表にあるスキルのどれかをクリックしたら
+	if (Collision::IsInSquare(m_pos, m_tex.GetSize().x, m_tex.GetSize().y, mouse_pos) == true) {
+
+		// スキルをセット
+		Skill_ID &skill_id = Skill_ID::GetInstance();
+		skill_id.SetSkillID(m_skill);
+	}
 }
 
 // 描画
 void SkillTable::Draw() {
 
-	m_pos = SKILL_TABLE_BASE_POS;
-
-	*m_tex = *SKILL_TABLE_BASE_TEX;
-
-	Lib::DrawBox2D(SKILL_TABLE_BASE_TEX, m_pos.x, m_pos.y);
+	Lib::DrawBox2D(m_tex, m_pos.x, m_pos.y);
 }
 
 /*----初期化関数----*/
-// スキル表の画像代入
+// スキル表の画像ID
+void SkillTable::InitSkillTableID() {
 
+	switch (m_skill_table_tex_id) {
 
-// スキル表の画像代入
+	case SKILL_TABLE_BASE:
 
+		m_pos = BASE_POS;
+
+		m_tex = BASE_TEX;
+
+		/*test*/
+		m_skill = SPEED;
+		/*test*/
+
+		break;
+
+	case CUSTOM_NUM1:
+
+		m_pos = NUM_POS;
+
+		m_tex = NUM1_TEX;
+
+		break;
+
+	case CUSTOM_NUM2:
+
+		m_pos = NUM_POS;
+
+		m_tex = NUM2_TEX;
+
+		break;
+
+	case CUSTOM_NUM3:
+
+		m_pos = NUM_POS;
+
+		m_tex = NUM3_TEX;
+
+		break;
+
+	case CUSTOM_NUM4:
+
+		m_pos = NUM_POS;
+
+		m_tex = NUM4_TEX;
+
+		break;
+
+	case CUSTOM_NUM5:
+
+		m_pos = NUM_POS;
+
+		m_tex = NUM5_TEX;
+
+		break;
+
+	case SKILL_TABLE_NORAML:
+
+		m_pos = SKILL_POS;
+
+		m_tex = NORAML_SKILL_TEX;
+
+		break;
+
+	case SKILL_TABLE_ACCEL:
+
+		m_pos = SKILL_POS;
+
+		m_tex = ACCEL_SKILL_TEX;
+
+		break;
+
+	case SKILL_TABLE_JUMP:
+
+		m_pos = SKILL_POS;
+
+		m_tex = JUMP_SKILL_TEX;
+
+		break;
+
+	case SKILL_TABLE_STOP:
+
+		m_pos = SKILL_POS;
+
+		m_tex = STOP_SKILL_TEX;
+
+		break;
+
+	case SKILL_WEAK:
+
+		m_pos = STRENGTH_POS;
+
+		m_tex = WEAK_TEX;
+
+		break;
+
+	default :
+
+		m_pos = { 0,0 };
+
+		m_tex = "hohe";
+
+		break;
+	}
+}
 /*----初期化関数----*/
+
+// 
 
