@@ -1,14 +1,13 @@
 ﻿#include"CustomStar.h"
 
 // コンストラクタ
-CustomStar::CustomStar() {
+CustomStar::CustomStar()
+	: m_diamond_part (TOP) {
 
 	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
 
-		// 生成
-		m_diamond_base[i] = new Diamond(m_diamond_part);
+		m_diamond_base.push_back(new Diamond(m_diamond_part));
 
-		// enum値を加算
 		m_diamond_part = static_cast<DiamondPart>(m_diamond_part + 1);
 	}
 }
@@ -16,38 +15,28 @@ CustomStar::CustomStar() {
 // デストラクタ
 CustomStar::~CustomStar() {
 
-	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
+	for (auto x : m_diamond_base) {
 
-		// 削除
-		delete m_diamond_base[i];
-		m_diamond_base[i] = nullptr;
-	}
-}
-
-// リセット
-void CustomStar::Reset() {
-
-	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
-
-		m_diamond_base[i]->Reset();
+		delete x;
+		x = nullptr;
 	}
 }
 
 // 更新
 void CustomStar::Update() {
 
-	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
+	for (auto x : m_diamond_base) {
 
-		m_diamond_base[i]->Update();
+		x->Update();
 	}
 }
 
 // 描画
 void CustomStar::Draw() {
 
-	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
+	for (auto x : m_diamond_base) {
 
-		m_diamond_base[i]->Draw();
+		x->Draw();
 	}
 }
 
