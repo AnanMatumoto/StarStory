@@ -1,6 +1,5 @@
 ﻿#include "CustomScene.h"
 #include "SceneManager.h"
-#include "../Lib/Lib.h"
 #include "../UI/UIManager.h"
 
 /*----画像----*/
@@ -18,23 +17,14 @@ void CustomScene::Init() {
 
 	UIManager & UImng = UIManager::GetInstance();
 
-	// スキル情報の初期化(最初はすべてNORMAL)
-	for (int i = 0; i < MAX_DIAMOND_NUM; ++i) {
-
-		m_skill_data[i] = { NORMAL,"hoge","skill_data_01.dat" };
-	}
-
 	// UI生成
 	UImng.Register(CT_BASE, 0, 0, CUSTOM_BASE_TEX);						// 背景
 	UImng.Register(BT_CT_TOSELECT, 1015, 792, CUSTOM_SERECT_TEX);		// 決定ボタン
 	UImng.Register(BT_CT_DECISION, 1309, 876, CUSTOM_DECISION_TEX);		// セレクト画面へ戻るボタン
 	//UImng.Register(CT_STAGE1_MAP, 320, 580, CUSTOM_STAGE1_MAP);		// ステージ1のマップ
 
-	// カスタムスター生成
-	m_custom_star = new CustomStar();
-
-	// スキルテーブル生成
-	m_skill_table = new SkillTable(SKILL_TABLE_BASE);
+	// カスタムオブジェクト生成
+	m_custom_object_manager = new CustomObjectManager();
 }
 
 //----------------------------
@@ -65,11 +55,8 @@ void CustomScene::Update() {
 		m_state_id = SS_END;
 	}
 
-	// カスタムスター更新
-	m_custom_star->Update();
-
-	// スキルテーブル更新
-	m_skill_table->Update();
+	// カスタムオブジェクト更新
+	m_custom_object_manager->Update();
 }
 
 //----------------------------
@@ -84,11 +71,8 @@ SceneID CustomScene::End() {
 	UIManager::GetInstance().Delete(CT_BASE);			// 背景
 	//UIManager::GetInstance().Delete(CT_STAGE1_MAP);	// ステージ1のマップ
 
-	// カスタムスター削除
-	delete m_custom_star;
-
-	// スキルテーブルを削除
-	delete m_skill_table;
+	// カスタムオブジェクト削除
+	delete m_custom_object_manager;
 
 	// シーンIDを返す
 	return m_scene_id;
@@ -123,11 +107,8 @@ void CustomScene::Draw() {
 	// UI描画
 	UIManager::GetInstance().Draw();
 
-	// カスタムスター描画
-	m_custom_star->Draw();
-
-	// スキル表描画
-	m_skill_table->Draw();
+	// カスタムオブジェクト描画
+	m_custom_object_manager->Draw();
 
 	// ステージ1のマップ描画
 	Lib::DrawBox2D(CUSTOM_STAGE1_MAP_TEX, 320, 580, 0.337f, 0.37f);

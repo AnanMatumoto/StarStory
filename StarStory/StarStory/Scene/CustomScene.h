@@ -1,22 +1,7 @@
 ﻿#pragma once
 #include "Scene.h"
-#include"../Lib/Lib.h"
-#include"../Custom/CustomStar/CustomStar.h"
-#include"../Custom/SkillTable/SkillTable.h"
+#include"../Custom/CustomObjectManager/CustomObjectManager.h"
 #include"../Skill.h"
-
-// スキルデータ
-struct SkillData {
-
-	// スキルID
-	Skill skill_id;
-
-	// スキルのリソース
-	char  tex_name[256];
-
-	// SEのリソース
-	char  se_name[256];
-};
 
 //=================================
 //  カスタム画面クラス
@@ -45,16 +30,11 @@ private:
 	~CustomScene()override {}
 
 	// カスタムスターの実体化
-	CustomStar *m_custom_star;
+	CustomObjectManager *m_custom_object_manager;
 
-	// スキル表の実体化
-	SkillTable *m_skill_table;
-
-	// スキルデータ保管用(ゲームシーンにデータを送る用)
-	// シーン終了時にバイナリデータで保存
-	SkillData m_skill_data[MAX_DIAMOND_NUM];
-
+	/*----enum----*/
 	// シーンID管理用
 	SceneID m_scene_id;
+	/*----enum----*/
 };
 

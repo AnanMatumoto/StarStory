@@ -41,7 +41,7 @@ void GameScene::Init() {
 	data[3] = { NORMAL, "Resource/Player/player_1_normal.png","Resource/Audio/SE/star_normal.wav"};
 	data[4] = { NORMAL, "Resource/Player/player_1_normal.png","Resource/Audio/SE/star_normal.wav"};
 
-	std::fstream file[5];
+	/*std::fstream file[5];
 	file[0].open("./Resource/skill_data_01.dat", std::ios::binary | std::ios::out);
 	file[0].write((char*)&data[0], sizeof(Skill_Data));
 	file[0].close();
@@ -61,7 +61,7 @@ void GameScene::Init() {
 
 	file[4].open("./Resource/skill_data.05.dat", std::ios::binary | std::ios::out);
 	file[4].write((char*)&data[4], sizeof(Skill_Data));
-	file[4].close();
+	file[4].close();*/
 	//------------------------------------------------------------
 
 	ObjectManager& mng = ObjectManager::GetInstance();

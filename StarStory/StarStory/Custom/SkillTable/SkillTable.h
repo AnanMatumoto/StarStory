@@ -2,40 +2,52 @@
 
 #include"../../Lib/Lib.h"
 #include"../../Skill.h"
-#include"../CustomStar/CustomStar.h"
-
 #include<vector>
-
-/*----enum----*/
-// スキル表に使う画像のID
-enum SkillTableTexID {
-
-	SKILL_TABLE_BASE,		// スキル表の基礎
-
-	/*----スキル横の数字----*/
-	CUSTOM_NUM1,
-	CUSTOM_NUM2,
-	CUSTOM_NUM3,
-	CUSTOM_NUM4,
-	CUSTOM_NUM5,
-	/*----スキル横の数字----*/
-
-	SKILL_TABLE_NORAML,		// ノーマルスキル
-	SKILL_TABLE_ACCEL,		// 加速スキル
-	SKILL_TABLE_JUMP,		// ジャンプスキル
-	SKILL_TABLE_STOP,		// 停止スキル
-	SKILL_WEAK,				// 弱
-
-	MAX_TEX_NUM
-};
-/*----enum----*/
 
 // スキル表クラス
 class SkillTable {
 
 public:
+	/*----enum----*/
+	// スキル表に使う画像のID
+	enum TexID {
+
+		/*----スキル表の基礎----*/
+		BASE1,
+		BASE2,
+		BASE3,
+		BASE4,
+		BASE5,
+		/*----スキル表の基礎----*/
+
+		/*----スキル横の数字----*/
+		CUSTOM_NUM1,
+		CUSTOM_NUM2,
+		CUSTOM_NUM3,
+		CUSTOM_NUM4,
+		CUSTOM_NUM5,
+		/*----スキル横の数字----*/
+
+		NORMAL_SKILL,	// ノーマルスキル
+		ACCEL_SKIL,		// 加速スキル
+		JUMP_SKILL,		// ジャンプスキル
+		STOP_SKILL,		// 停止スキル
+
+		/*----強弱----*/
+		STRENGTH1,
+		STRENGTH2,
+		STRENGTH3,
+		STRENGTH4,
+		STRENGTH5,
+		/*----強弱----*/
+
+		MAX_TEX_NUM
+	};
+	/*----enum----*/
+
+public:
 	// コンストラクタ
-	SkillTable(SkillTableTexID m_skill_table_tex_id);
+	SkillTable(TexID skill_table_tex_id);
 
 	// デストラクタ
 	~SkillTable();
@@ -50,12 +62,12 @@ private:
 	/*----変数----*/
 
 	/*----関数----*/
-	void InitSkillTableID();
+	void InitTexID(TexID tex_id);
 	/*----関数----*/
 
 	/*----enum----*/
 	Skill m_skill;						// スキルID保管用
-	SkillTableTexID m_skill_table_tex_id;	// スキル表の画像ID保管用
+	TexID m_tex_id;	// スキル表の画像ID保管用
 	/*----enum----*/
 };
 

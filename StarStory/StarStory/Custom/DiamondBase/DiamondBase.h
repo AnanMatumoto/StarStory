@@ -3,6 +3,7 @@
 #include"../../Lib/Lib.h"
 #include"../../Collision/Collision.h"
 #include"../../Skill.h"
+#include "../../SkillData/Skill_Data.h"
 
 /*----定数----*/
 // 描画の時に使用する(元画像w 32, h 23) 6.5倍
@@ -14,33 +15,34 @@ const float HALF_DIAMOND_W = DIAMOND_W / 2;		// ひし形の幅の半分
 const float HALF_DIAMOND_H = DIAMOND_H / 2;		// ひし形の高さの半分
 /*----定数----*/
 
-/*----enum----*/
-// ひし形の設置場所
-enum DiamondPart {
-
-	TOP,			// 上(基準点)
-	TOP_RIGHT,		// 右上
-	BOTTOM_RIGHT,	// 右下
-	BOTTOM_LEFT,	// 左下
-	TOP_LEFT,		// 左上
-
-	MAX_DIAMOND_NUM
-};
-
-// ひし形の頂点の場所
-enum DiamondVertex {
-
-	TOP_VERTEX,		// 上
-	RIGHT_VERTEX,	// 右
-	BOTTOM_VERTEX,	// 下
-	LEFT_VERTEX,	// 左
-
-	MAX_VERTEX_NUM
-};
-/*----enum----*/
-
 // ひし形基底クラス
 class DiamondBase {
+
+public:
+	/*----enum----*/
+	// ひし形の設置場所
+	enum DiamondPart {
+
+		TOP,			// 上(基準点)
+		TOP_RIGHT,		// 右上
+		BOTTOM_RIGHT,	// 右下
+		BOTTOM_LEFT,	// 左下
+		TOP_LEFT,		// 左上
+
+		MAX_DIAMOND_NUM
+	};
+
+	// ひし形の頂点の場所
+	enum DiamondVertex {
+
+		TOP_VERTEX,		// 上
+		RIGHT_VERTEX,	// 右
+		BOTTOM_VERTEX,	// 下
+		LEFT_VERTEX,	// 左
+
+		MAX_VERTEX_NUM
+	};
+	/*----enum----*/
 
 public:
 	// コンストラクタ
@@ -52,7 +54,7 @@ public:
 		m_half_size_h(HALF_DIAMOND_H),
 
 		// スキルの種類初期化(最初はすべて、NORMALで描画)
-		m_skill(JUMP) {};
+		m_skill(NORMAL){};
 
 	// デストラクタ
 	virtual ~DiamondBase() {
@@ -63,6 +65,9 @@ public:
 	/*----関数----*/
 	virtual void Update() = 0;		// 更新
 	virtual void Draw() = 0;		// 描画
+
+	// ゲッター
+	virtual Skill_Data GetSkillDara() = 0;		// スキルデータを外部ファイルに保存する用
 	/*----関数----*/
 
 protected:
@@ -76,7 +81,17 @@ protected:
 	float m_half_size_h;		// 当たり判定の時に使う高さ
 
 	Vec2 m_vertex_pos[MAX_VERTEX_NUM];		// ひし形の頂点情報
+
+	char* m_tex;						// ひし形の描画用変数
 	/*----変数----*/
+
+	/*----画像----*/
+	const char NORMAL_TEX[50] = "Resource/Player/player_1_normal.png";		// NORMAL
+	const char SPEED_TEX[50] = "Resource/Player/player_1_accel.png";		// SPEED
+	const char JUMP_TEX[50] = "Resource/Player/player_1_jump.png";			// JUMP
+	const char LIGHT_TEX[50] = "Resource/Player/player_1_light.png";		// LIGHT
+	const char STOP_TEX[50] = "Resource/Player/player_1_stop.png";			// STOP
+	/*----画像----*/
 
 	/*----関数----*/
 	// マウスにクリックされた時の当たり判定
@@ -104,7 +119,7 @@ protected:
 
 	/*----enum----*/
 	DiamondVertex m_diamond_vertex;		// ひし形の頂点の場所
-	Skill m_skill;					// スキルの情報
+	Skill m_skill;						// スキルの情報
 	DiamondPart m_diamond_part;			// ひし形を置く場所
 	/*----enum----*/
 };

@@ -1,13 +1,11 @@
 ﻿#include"Diamond.h"
+#include"../../Lib/Lib.h"
 
 // コンストラクタ
 Diamond::Diamond(DiamondPart part) {
 
-	// ひし形の場所を決める
-	m_diamond_part = part;
-
 	// ひし形の座標、角度を入れる
-	InitDiamondInfo();
+	InitDiamondInfo(part);
 
 	// ひし形の頂点座標を入れる
 	InitVertexPos();
@@ -16,11 +14,13 @@ Diamond::Diamond(DiamondPart part) {
 // デストラクタ
 Diamond::~Diamond() {
 
-
 }
 
 // 更新
 void Diamond::Update() {
+
+	// スキルIDによって、画像を変更
+	ChangeTex();
 
 	// マウスとの辺り判定
 	ChangeSkillID();
@@ -29,11 +29,8 @@ void Diamond::Update() {
 // 描画
 void Diamond::Draw() {
 
-	// スキルによって画像変更
-	ChangeTex();
-
 	// ひし形描画
-	DrawDaiamond2D(
+	Lib::DrawDaiamond2D(
 		m_tex,
 		m_pos_x, m_pos_y,
 		m_size_h, m_size_w,
@@ -41,19 +38,10 @@ void Diamond::Draw() {
 }
 
 /*----初期化関数----*/
-// 各ひし形の頂点の座標
-void Diamond::InitVertexPos() {
-
-	m_vertex_pos[TOP_VERTEX] = { m_pos_x,m_pos_y - m_half_size_h };
-	m_vertex_pos[RIGHT_VERTEX] = { m_pos_x + m_half_size_w,m_pos_y };
-	m_vertex_pos[BOTTOM_VERTEX] = { m_pos_x,m_pos_y + m_half_size_h };
-	m_vertex_pos[LEFT_VERTEX] = { m_pos_x - m_half_size_w,m_pos_y };
-}
-
 // 各ひし形の座標(中心のx,y)と角度を初期化
-void Diamond::InitDiamondInfo() {
+void Diamond::InitDiamondInfo(DiamondPart part) {
 
-	switch (m_diamond_part) {
+	switch (part) {
 
 		// 上
 	case TOP:
@@ -99,6 +87,15 @@ void Diamond::InitDiamondInfo() {
 	}
 }
 
+// 各ひし形の頂点の座標
+void Diamond::InitVertexPos() {
+
+	m_vertex_pos[TOP_VERTEX] = { m_pos_x,m_pos_y - m_half_size_h };
+	m_vertex_pos[RIGHT_VERTEX] = { m_pos_x + m_half_size_w,m_pos_y };
+	m_vertex_pos[BOTTOM_VERTEX] = { m_pos_x,m_pos_y + m_half_size_h };
+	m_vertex_pos[LEFT_VERTEX] = { m_pos_x - m_half_size_w,m_pos_y };
+}
+
 /*----更新用関数----*/
 // マウスにクリックされたときの当たり判定
 void Diamond::ChangeSkillID() {
@@ -118,25 +115,67 @@ void Diamond::ChangeTex() {
 	switch (m_skill) {
 
 	case JUMP:
-		m_tex = JUMP_TEX;
+		m_tex = (char*)JUMP_TEX;
 		break;
 
 	case SPEED:
-		m_tex = SPEED_TEX;
+		m_tex = (char*)SPEED_TEX;
 		break;
 
 	case LIGHT:
-		m_tex = LIGHT_TEX;
+		m_tex = (char*)LIGHT_TEX;
 		break;
 
 	case STOP:
-		m_tex = STOP_TEX;
+		m_tex = (char*)STOP_TEX;
 		break;
 
 	default:
-		m_tex = NORMAL_TEX;
+		m_tex = (char*)NORMAL_TEX;
 		break;
 	}
 }
 /*----更新用関数----*/
+
+/*----ゲッター----*/
+// スキルデータを外部ファイルに保存する用
+Skill_Data Diamond::GetSkillDara() {
+
+	Skill_Data skill_data;
+
+	switch (m_skill) {
+
+	case JUMP:
+
+		skill_data = { m_skill,"Resource/Player/player_1_jump.png","Resource/Audio/SE/star_jump.wav" };
+
+		break;
+
+	case SPEED:
+
+		skill_data = { m_skill,"Resource/Player/player_1_accel.png","Resource/Audio/SE/star_accel.wav" };
+
+		break;
+
+	case LIGHT:
+
+		skill_data = { m_skill,"Resource/Player/player_1_light.png","Resource/Audio/SE/star_light.wav" };
+
+		break;
+
+	case STOP:
+
+		skill_data = { m_skill,"Resource/Player/player_1_stop.png","Resource/Audio/SE/star_stop.wav" };
+
+		break;
+
+	default:
+
+		skill_data = { m_skill,"Resource/Player/player_1_normal.png","Resource/Audio/SE/star_normal.wav" };
+
+		break;
+	}
+	return skill_data;
+}
+/*----ゲッター----*/
 
