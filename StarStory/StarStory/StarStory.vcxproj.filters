@@ -3,7 +3,6 @@
   <ItemGroup>
     <ClCompile Include="Collision\Collision.cpp" />
     <ClCompile Include="Common\Common.cpp" />
-    <ClCompile Include="Custom\CustomStar\CustomStar.cpp" />
     <ClCompile Include="Custom\Diamond\Diamond.cpp" />
     <ClCompile Include="Scene\CustomScene.cpp" />
     <ClCompile Include="Lib\Device.cpp" />
@@ -27,11 +26,11 @@
     <ClCompile Include="UI\UIObjectFactory.cpp" />
     <ClCompile Include="UI\UIManager.cpp" />
     <ClCompile Include="Lib\Sound.cpp" />
+    <ClCompile Include="Custom\CustomObjectManager\CustomObjectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
     <ClInclude Include="Common\Common.h" />
-    <ClInclude Include="Custom\CustomStar\CustomStar.h" />
     <ClInclude Include="Custom\Diamond\Diamond.h" />
     <ClInclude Include="Custom\DiamondBase\DiamondBase.h" />
     <ClInclude Include="Lib\Lib.h" />
@@ -58,5 +57,6 @@
     <ClInclude Include="UI\UIObjectID.h" />
     <ClInclude Include="SkillData\SkillData.h" />
     <ClInclude Include="SkillData\Skill_Data.h" />
+    <ClInclude Include="Custom\CustomObjectManager\CustomObjectManager.h" />
   </ItemGroup>
 </Project>

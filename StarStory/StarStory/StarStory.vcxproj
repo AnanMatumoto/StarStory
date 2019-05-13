@@ -133,7 +133,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Common\Common.cpp" />
-    <ClCompile Include="Custom\CustomStar\CustomStar.cpp">
+    <ClCompile Include="Custom\CustomObjectManager\CustomObjectManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -238,7 +238,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Custom\CustomStar\CustomStar.h">
+    <ClInclude Include="Custom\CustomObjectManager\CustomObjectManager.h">
       <SubType>
       </SubType>
     </ClInclude>
