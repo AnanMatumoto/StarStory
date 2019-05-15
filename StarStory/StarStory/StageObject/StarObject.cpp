@@ -8,16 +8,12 @@
 #include <cmath>
 namespace {
 
-	/* Todo:　Gravity
-	　　落ちるタイプのステージオブジェクトがあれば
-		ObjectBaseへ移動する
-	*/
-	const float GRAVITY  = 0.98f;
-	const int   BOOST = 3;
-	const int MAX_CHILDS = 5;
-	const float JUMP_POINT= 128.f;//ジャンプ基準値
+	const float GRAVITY        = 0.1f;	//重力
+	const int   BOOST          = 3;		//倍速
+	const int   MAX_CHILDS     = 5;		//子の最大数
+	const float JUMP_POINT	   = 128.f;	//ジャンプ基準値
+	const float LOW_JUMP_POWER = -1.2f;  //最低ジャンプ力
 }
-
 
 //-----------------------------------
 //　コンストラクタ
@@ -27,20 +23,18 @@ StarObject::StarObject(
 	float rot
 ) : ObjectBase(x, y, rot)
 {
-	m_speed  = 2.8f;
-	m_width  = 64;
-	m_height = 64;
-	m_vel.x  = 0;
+	m_speed      = 2.8f;
+	m_width      = 64;
+	m_height     = 64;
+	m_vel.x      = 0;
 	m_jump_power = -6.5f;
 	m_interval   = 60.f;
 	m_is_active  = false;
 	m_cur_child  = nullptr;
 	m_map_obj    = nullptr;
-	is_fall		 = false;
-	m_inset_y    = 0.f;
-	cur_y		 = 0.f;
-	vertex		 = 0.f;
-	gravity		 = 0.f;
+	m_is_fall	 = false;
+	m_cur_y		 = 0.f;
+	m_gravity    = 0.f;
 }
 
 //-----------------------------------
@@ -61,6 +55,7 @@ void StarObject::Update() {
 	float out_w = m_pos.x + m_width;
 	float out_h = m_pos.y + m_height;
 
+	//画面外に入った場合はゲームシーンにFAILDを通知
 	if (out_h > WINDOW_H || out_w> WINDOW_W) {
 		gc->SetResult(FAILD);
 	}
@@ -72,7 +67,6 @@ void StarObject::Draw() {
 
 	SetVertex();
 	BoxLocalTransform(m_vtx, m_width, m_height);
-
 }
 
 //-----------------------------------
@@ -96,12 +90,13 @@ void StarObject::AutomaticMove() {
 	float dis = 0.f;
 
 	if (!m_is_active) {
-		gravity += 0.1f;
+		m_gravity += GRAVITY;
 		//スキルが発動していない場合
-		AddMoveAmount(m_speed, gravity);
+		AddForce(m_speed, m_gravity);
 		RefPosition();
 	}
 	else{
+		m_gravity = 0.f;
 		//子供からもらったスキルを発動する
 		CauseToSkill(m_cur_child->GetSkill());
 	}
@@ -109,7 +104,8 @@ void StarObject::AutomaticMove() {
 	for (auto child : m_childs) {
 		
 		if (child->GetHit()) {
-			cur_y = m_pos.y;
+			m_jump_power = -6.5f;
+			m_cur_y = m_pos.y;	 //スキル発動前のY座標を保存
 			m_cur_child	= child; //子オブジェクト取得
 			m_map_obj=(MapObject*)m_cur_child->GetMapObj(); //マップオブジェクト取得
 		}
@@ -124,7 +120,7 @@ void StarObject::AutomaticMove() {
 //　マップオブジェクトを超えた場合の処理
 void StarObject::CheckOutSideTheMapObject(
 	MapObject* map_,
-	StarChild* child
+	StarChild* hit_child
 ) {
 	
 	MapObject* map = map_;
@@ -133,7 +129,7 @@ void StarObject::CheckOutSideTheMapObject(
 		float left   = map->GetVertex(0).pos.x;
 		float right  = map->GetVertex(1).pos.x;
 		float height = map->GetVertex(0).pos.y;
-		float p      = child->GetVertex(1).pos.x;
+		float p      = hit_child->GetVertex(1).pos.x; //頂点
 
 		if ( p > right || m_pos.y > height) {
 			//頂点がオブジェクトの外にいる場合
@@ -153,23 +149,23 @@ void StarObject::CauseToSkill(int skill_id) {
 	switch (skill_id)
 	{
 	case NORMAL:
-		AddMoveAmount(m_speed,0.f,2.5f);
+		AddForce(m_speed,0.f,2.5f);
 		RefPosition();
 		m_interval = 60.f;
-		is_fall = false;
+		m_is_fall = false;
 		break;
 
 	case SPEED:
-		AddMoveAmount(m_speed* BOOST);
+		AddForce(m_speed* BOOST);
 		RefPosition();
 		break;
 
 	case JUMP:
-		if (is_fall == false) {
+		if (m_is_fall == false) {
 			JumpMotion();
 		}
 		else {
-			FallMotion(is_fall);
+			FallMotion();
 		}
 		break;
 
@@ -177,7 +173,7 @@ void StarObject::CauseToSkill(int skill_id) {
 		StopMotion();
 		break;
 
-	case LIGHT:
+	case LIGHT://未実装
 		m_vel.y = 0.f;
 		break;
 	}	
@@ -185,13 +181,13 @@ void StarObject::CauseToSkill(int skill_id) {
 
 //--------------------------------
 // 移動量を追加する
-void StarObject::AddMoveAmount(
-	float x, float y,
-	float rot
+void StarObject::AddForce(
+	float vel_x, float vel_y,
+	float rot_speed
 ) {
-	m_vel.x = x;
-	m_vel.y = y;
-	m_rot += rot;
+	m_vel.x = vel_x;
+	m_vel.y = vel_y;
+	m_rot += rot_speed;
 }
 
 //--------------------------------
@@ -207,27 +203,28 @@ void StarObject::RefPosition() {
 void StarObject::JumpMotion(){
 
 	float max_y = 0.f;
-	max_y = cur_y - JUMP_POINT;
+	max_y = m_cur_y - JUMP_POINT;
 	
 	if (max_y < m_pos.y) {
-		//ジャンプ最高点に達していない
-		AddMoveAmount(0, m_jump_power,0.f);
+		//ジャンプ最高点に達するまで
+		AddForce(0, m_jump_power,0.f);
 		RefPosition();
 		m_jump_power += 0.2f;
-		if (m_jump_power >= -1.2f) {
-			m_jump_power = -1.2f;
+
+		if (m_jump_power >= LOW_JUMP_POWER) {
+			m_jump_power =  LOW_JUMP_POWER;
 		}
 	}
 	else {
-		is_fall = true;
+		m_is_fall = true;
 	}
 	
 }
 
-void StarObject::FallMotion(bool is_fall) {
+void StarObject::FallMotion() {
 		
 	m_jump_power += 0.2f;
-	AddMoveAmount(m_speed, m_jump_power);
+	AddForce(m_speed, m_jump_power);
 	RefPosition();
 	CheckOutSideTheMapObject(m_map_obj, m_cur_child);
 
@@ -236,11 +233,11 @@ void StarObject::FallMotion(bool is_fall) {
 void StarObject::StopMotion() {
 
 	if (--m_interval > 0) {
-		AddMoveAmount(0.f, 0.f, 0.f);
+		AddForce(0.f, 0.f, 0.f);
 		RefPosition();
 	}
 	else {
-		AddMoveAmount(m_speed);
+		AddForce(m_speed);
 		RefPosition();
 	}
 
