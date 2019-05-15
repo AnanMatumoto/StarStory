@@ -12,11 +12,13 @@ namespace {
 	　　落ちるタイプのステージオブジェクトがあれば
 		ObjectBaseへ移動する
 	*/
-	const float GRAVITY  = 1.6f;
+	const float GRAVITY  = 0.98f;
 	const int   BOOST = 3;
 	const int MAX_CHILDS = 5;
-	const float JUMP_POINT= 50.f;//ジャンプ基準値
+	const float JUMP_POINT= 128.f;//ジャンプ基準値
 }
+
+
 //-----------------------------------
 //　コンストラクタ
 StarObject::StarObject(
@@ -25,15 +27,20 @@ StarObject::StarObject(
 	float rot
 ) : ObjectBase(x, y, rot)
 {
-	m_speed  = 1.3f;
-	m_width  = 128;
-	m_height = 128;
+	m_speed  = 2.8f;
+	m_width  = 64;
+	m_height = 64;
 	m_vel.x  = 0;
-	m_jump_power    = -4.f;
-	m_interval = 120.f;
-	m_is_active = false;
-	m_cur_child = nullptr;
-	m_cur_obj   = nullptr;
+	m_jump_power = -6.5f;
+	m_interval   = 60.f;
+	m_is_active  = false;
+	m_cur_child  = nullptr;
+	m_map_obj    = nullptr;
+	is_fall		 = false;
+	m_inset_y    = 0.f;
+	cur_y		 = 0.f;
+	vertex		 = 0.f;
+	gravity		 = 0.f;
 }
 
 //-----------------------------------
@@ -48,11 +55,6 @@ void StarObject::Update() {
 
 	//自動操縦
 	AutomaticMove();
-
-	if (m_cur_child != nullptr) {
-		//子供からもらったスキルを発動する
-		SkillActive(m_cur_child->GetSkill());
-	}
 
 	SceneBase* gc = SceneManager::GetInstance().GetScene();
 
@@ -79,75 +81,106 @@ void StarObject::SetVertex(DWORD color) {
 
 	float ox = 0.f;
 	float oy = 0.f;
-	m_vtx[0].pos = { ox , oy,0.f,1.f };
-	m_vtx[1].pos = { ox + m_width, oy, 0.f,1.f };
-	m_vtx[2].pos = { ox + m_width, oy + m_height,0.f, 1.f };
-	m_vtx[3].pos = { ox, oy + m_height, 0.f, 1.f };
+	m_vtx[0].pos = { m_pos.x - m_width , m_pos.y - m_height, 0.f,1.f };
+	m_vtx[1].pos = { m_pos.x + m_width, m_pos.y-m_height, 0.f,1.f };
+	m_vtx[2].pos = { m_pos.x + m_width, m_pos.y + m_height,0.f, 1.f };
+	m_vtx[3].pos = { m_pos.x -m_width,  m_pos.y + m_height, 0.f, 1.f };
 }
 
 //-----------------------------------
 // 自動操作
 void StarObject::AutomaticMove() {
 
-	if (!m_is_active) {
-		//スキルが発動していない場合
-		AddMoveAmount(m_speed, GRAVITY);
-		RefPosition();
-	}
-
 	float hit_obj_w = 0;
 	float hit_obj_h = 0;
-	ObjectBase* obj = nullptr;
+	float dis = 0.f;
+
+	if (!m_is_active) {
+		gravity += 0.1f;
+		//スキルが発動していない場合
+		AddMoveAmount(m_speed, gravity);
+		RefPosition();
+	}
+	else{
+		//子供からもらったスキルを発動する
+		CauseToSkill(m_cur_child->GetSkill());
+	}
 
 	for (auto child : m_childs) {
-
-		//オブジェクトと各頂点があたっている
+		
 		if (child->GetHit()) {
-			m_cur_child = child;
-			//オブジェクト取得
-			obj = m_cur_child->GetMapObj();
-			hit_obj_w = obj->GetVertex(1).pos.x;
-			hit_obj_h = obj->GetVertex(0).pos.y;
-
-			m_is_active = true;
+			m_cur_child	= child; //子オブジェクト取得
+			m_map_obj=(MapObject*)m_cur_child->GetMapObj(); //マップオブジェクト取得
 		}
 	}
 
-	//オブジェクトの幅を超えた、またはオブジェクトより下にいる場合
-	if (m_pos.x >= hit_obj_w||m_pos.y >= hit_obj_h) {
-		m_is_active = false;
+	if (m_map_obj != nullptr&& m_cur_child != nullptr) {
+		CheckOutSideTheMapObject(m_map_obj, m_cur_child);
 	}
-	
 }
 
 //------------------------------------
+//　マップオブジェクトを超えた場合の処理
+void StarObject::CheckOutSideTheMapObject(
+	MapObject* map_,
+	StarChild* child
+) {
+	
+	MapObject* map = map_;
 
-void StarObject::SkillActive(int skill_id) {
+	if (map != nullptr) {
+		float left   = map->GetVertex(0).pos.x;
+		float right  = map->GetVertex(1).pos.x;
+		float height = map->GetVertex(0).pos.y;
+		float p      = child->GetVertex(1).pos.x;
+
+		if ( p > right || m_pos.y > height) {
+			//頂点がオブジェクトの外にいる場合
+			m_is_active = false;
+		}
+		else if ( p > left && p < right) {
+			//頂点がオブジェクトの範囲内にいる場合
+			m_is_active = true;
+		}
+	}
+}
+
+//------------------------------------
+// スキル発動処理
+void StarObject::CauseToSkill(int skill_id) {
 
 	switch (skill_id)
 	{
-	case NORMAL://スキルセットなし
-		AddMoveAmount(m_speed);
+	case NORMAL:
+		AddMoveAmount(m_speed,0.f,2.5f);
 		RefPosition();
-		m_interval = 120.f;
+		m_interval = 60.f;
+		cur_y = m_pos.y;
+		is_fall = false;
 		break;
 
-	case SPEED://加速スキル
+	case SPEED:
 		AddMoveAmount(m_speed* BOOST);
 		RefPosition();
 		break;
 
-	case JUMP://ジャンプスキル
-		JumpMotion();
+	case JUMP:
+		if (is_fall == false) {
+			JumpMotion();
+		}
+		else {
+			FallMotion(is_fall);
+		}
 		break;
-	case STOP://停止スキル
+
+	case STOP:
 		StopMotion();
 		break;
-	case LIGHT://光るスキル
+
+	case LIGHT:
 		m_vel.y = 0.f;
 		break;
-	}
-
+	}	
 }
 
 //--------------------------------
@@ -173,16 +206,31 @@ void StarObject::RefPosition() {
 // ジャンプモーション
 void StarObject::JumpMotion(){
 
-
-	if (--m_interval > 0) {
-		//ジャンプ時間内である
-		AddMoveAmount(m_speed, m_jump_power,0.f);
+	float max_y = 0.f;
+	max_y = cur_y - JUMP_POINT;
+	
+	if (max_y < m_pos.y) {
+		//ジャンプ最高点に達していない
+		AddMoveAmount(0, m_jump_power,0.f);
 		RefPosition();
+		m_jump_power += 0.2f;
+		if (m_jump_power >= -1.2f) {
+			m_jump_power = -1.2f;
+		}
 	}
 	else {
-		AddMoveAmount(0.f, GRAVITY, 0.f);
-		RefPosition();
+		is_fall = true;
 	}
+	
+}
+
+void StarObject::FallMotion(bool is_fall) {
+		
+	m_jump_power += 0.2f;
+	AddMoveAmount(m_speed, m_jump_power);
+	RefPosition();
+	CheckOutSideTheMapObject(m_map_obj, m_cur_child);
+
 }
 
 void StarObject::StopMotion() {
@@ -191,8 +239,6 @@ void StarObject::StopMotion() {
 		AddMoveAmount(0.f, 0.f, 0.f);
 		RefPosition();
 	}
-	else {
-		AddMoveAmount(m_speed);
-		RefPosition();
-	}
+
 }
+

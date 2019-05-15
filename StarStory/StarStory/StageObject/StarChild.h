@@ -33,6 +33,8 @@ public:
 	
 	ObjectBase* GetMapObj() const;
 
+	float DistanceToCeiling();
+
 private:
 	
 	// 更新処理
