@@ -109,6 +109,7 @@ void StarObject::AutomaticMove() {
 	for (auto child : m_childs) {
 		
 		if (child->GetHit()) {
+			cur_y = m_pos.y;
 			m_cur_child	= child; //子オブジェクト取得
 			m_map_obj=(MapObject*)m_cur_child->GetMapObj(); //マップオブジェクト取得
 		}
@@ -155,7 +156,6 @@ void StarObject::CauseToSkill(int skill_id) {
 		AddMoveAmount(m_speed,0.f,2.5f);
 		RefPosition();
 		m_interval = 60.f;
-		cur_y = m_pos.y;
 		is_fall = false;
 		break;
 
@@ -237,6 +237,10 @@ void StarObject::StopMotion() {
 
 	if (--m_interval > 0) {
 		AddMoveAmount(0.f, 0.f, 0.f);
+		RefPosition();
+	}
+	else {
+		AddMoveAmount(m_speed);
 		RefPosition();
 	}
 
