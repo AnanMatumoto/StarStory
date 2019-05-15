@@ -113,14 +113,19 @@ void StarChild::IsHit() {
 
 	SetVertex();
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
+
 	if (m_obj != nullptr) {
-		//マップと頂点が当たっているか
-		if (IsHitToUpper(vec, m_obj)) {
-			++m_one_flame;
-			is_hit = true;
-		}
-		else {
-			is_hit = false;
+		float right = m_obj->GetVertex(1).pos.x;
+	
+		if (vec.x >= m_obj->GetX() && vec.x <= right) {
+			//マップと頂点が当たっているか
+			if (IsHitToUpper(vec, m_obj)) {
+				++m_one_flame;
+				is_hit = true;
+			}
+			else {
+				is_hit = false;
+			}
 		}
 	}
 }
@@ -141,6 +146,7 @@ const Skill StarChild::GetSkill()const {
 //-------------------------------
 // 当たったマップオブジェクトを返す
 ObjectBase* StarChild::GetMapObj()const {
+	
 	if (m_obj != nullptr) {
 		return m_obj;
 	}
