@@ -27,6 +27,7 @@
     <ClCompile Include="UI\UIManager.cpp" />
     <ClCompile Include="Lib\Sound.cpp" />
     <ClCompile Include="Custom\CustomObjectManager\CustomObjectManager.cpp" />
+    <ClCompile Include="Lib\Color.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />

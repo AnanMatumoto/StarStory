@@ -39,6 +39,37 @@ namespace Lib {
 	}
 
 	//----------------------------------------
+	//色相指定型オーバーロード
+	void DrawPx2D(
+		const Texture& tex,
+		float x, float y,
+		D3DXCOLOR color,
+		float w, float h,
+		float depth,
+		float ox, float oy
+	) {
+
+		float x1 = x - w * (ox);//原点X座標
+		float y1 = y - h * (oy);//原点左座標
+		float x2 = x + w * (1.f - ox);//右下X座標
+		float y2 = y + h * (1.f - oy);//右下ｙ座標
+
+		Vertex vtx[4] = {
+			{{x1, y1, depth,1.f}, color, {0.f,0.f}},
+			{{x2, y1, depth,1.f}, color, {1.f,0.f}},
+			{{x2, y2, depth,1.f}, color, {1.f,1.f}},
+			{{x1, y2, depth,1.f} ,color,  {0.f,1.f}}
+		};
+
+
+		dev->SetTexture(0, tex);
+		dev->SetFVF(VERTEX_FVF);
+		dev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtx, sizeof(Vertex));
+
+	}
+
+
+	//----------------------------------------
 	//四角形描画関数
 	void DrawBox2D(
 		const Texture& tex,
@@ -60,6 +91,28 @@ namespace Lib {
 			depth,
 			color, ox, oy
 		);
+	}
+
+	//----------------------------------------
+	//色相指定型オーバーロード
+	void DrawBox2D(
+		const Texture& tex,
+		float pos_x, float pos_y,
+		D3DXCOLOR color,
+		float w, float h,
+		float depth,
+		float ox, float oy 
+	){
+		DrawPx2D(
+			tex,
+			pos_x, pos_y,
+			color,
+			tex.GetSize().x * w,
+			tex.GetSize().y * h,
+			depth,
+			ox, oy
+		);
+
 	}
 
 	//-----------------------------------------------

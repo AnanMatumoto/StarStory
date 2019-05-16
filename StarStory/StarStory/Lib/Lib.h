@@ -212,6 +212,28 @@ namespace Lib {
 	);
 
 	/*
+	
+		ピクセルサイズ描画関数
+		(※色相指定D3DXCOLOR型)
+
+		第1　：指定するテクスチャ
+		第2,3：描画したい座標
+		第4,5：幅高を【ピクセルサイズ】で指定する
+		第6　：色相
+		第7,8：オフセット値(0.5で中心座標)
+	*/
+	void DrawPx2D(
+		const Texture& tex,
+		float pos_x, float pos_y,
+		D3DXCOLOR color,
+		float width = 1.f,
+		float height = 1.f,
+		float depth = 0.f,
+		float ox = 0.f,
+		float oy = 0.f
+	);
+
+	/*
 		画像サイズ描画関数（基本は左上原点）
 	
 
@@ -232,6 +254,27 @@ namespace Lib {
 		float ox = 0.f,
 		float oy = 0.f
 		
+	);
+	
+	/*
+		画像サイズ描画関数（基本は左上原点）
+		(※色相設定D3DXCOLOR型)
+
+		第1　：指定するテクスチャ
+		第2,3：描画したい座標
+		第4,5：【倍率】を直接渡す
+		第6　：色相
+		第7,8：オフセット値(0.5で中心座標)
+	*/
+	void DrawBox2D(
+		const Texture& tex,
+		float pos_x, float pos_y,
+		D3DXCOLOR color,
+		float width = 1.f,
+		float height = 1.f,
+		float depth = 0.f,
+		float ox = 0.f,
+		float oy = 0.f
 	);
 
 	/*
@@ -445,5 +488,20 @@ namespace Lib {
 
 	};
 
+
+	//=============================
+	//　色の設定
+	//=============================
+
+	/*
+		色相の変化を作るための色作成関数
+	
+		（※各引数0.f～1.fまでの数値を指定すること）
+	*/
+	D3DXCOLOR CreateColor(
+		float red,
+		float green,
+		float blue,
+		float alpha);
 };
 
