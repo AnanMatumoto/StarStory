@@ -16,10 +16,10 @@ namespace SKILL_TABLE {
 
 	const char BASE_TEX[50] = "Resource/Custom/ui_custom_skillbase.png";			// スキル表の基礎
 	const char NORAML_SKILL_TEX[50] = "Resource/Custom/UI_custom_normal.png";		// スキル表のノーマルスキル
-	const char ACCEL_SKILL_TEX[50] = "Resource/Custom/UI_custom_accel.png";		// スキル表の加速スキル
+	const char ACCEL_SKILL_TEX[50] = "Resource/Custom/UI_custom_accel.png";			// スキル表の加速スキル
 	const char JUMP_SKILL_TEX[50] = "Resource/Custom/UI_custom_jump.png";			// スキル表のジャンプスキル
 	const char STOP_SKILL_TEX[50] = "Resource/Custom/UI_custom_stop.png";			// スキル表の停止スキル
-	const char WEAK_TEX[50] = "Resource/Custom/UI_custom_weak.png";				// スキルの弱
+	const char WEAK_TEX[50] = "Resource/Custom/UI_custom_weak.png";					// スキルの弱
 	/*----画像----*/
 
 	/*----定数----*/
