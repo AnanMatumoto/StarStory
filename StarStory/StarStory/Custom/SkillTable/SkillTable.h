@@ -1,8 +1,9 @@
 ﻿#pragma once
 
+#include<vector>
+
 #include"../../Lib/Lib.h"
 #include"../../Skill.h"
-#include<vector>
 
 // スキル表クラス
 class SkillTable {

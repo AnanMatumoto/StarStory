@@ -27,6 +27,7 @@
     <ClCompile Include="UI\UIManager.cpp" />
     <ClCompile Include="Lib\Sound.cpp" />
     <ClCompile Include="Custom\CustomObjectManager\CustomObjectManager.cpp" />
+    <ClCompile Include="SoundManager\SoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -58,5 +59,6 @@
     <ClInclude Include="SkillData\SkillData.h" />
     <ClInclude Include="SkillData\Skill_Data.h" />
     <ClInclude Include="Custom\CustomObjectManager\CustomObjectManager.h" />
+    <ClInclude Include="SoundManager\SoundManager.h" />
   </ItemGroup>
 </Project>
