@@ -1,7 +1,7 @@
 ﻿#include"SoundManager.h"
 
 // コンストラクタ
-SoundManager::SoundManager() : resource_id(OP) {
+SoundManager::SoundManager() : m_resource_id(TTITLE_BGM) {
 
 }
 
@@ -10,7 +10,7 @@ SoundManager::~SoundManager() {
 
 }
 
-// 
+// インスタンス取得
 SoundManager &SoundManager::GetInstanse() {
 
 	static SoundManager sound_manager;
@@ -18,62 +18,60 @@ SoundManager &SoundManager::GetInstanse() {
 }
 
 // サウンドファイルの読み込み
-void SoundManager::InitResource() {
+void SoundManager::InitLoadResource() {
 
 	for (int i = 0; i < SoundManager::MAX_RESOURCE_NUM; ++i) {
 
-		RegisterResource(resource_id);
+		RegisterResource(m_resource_id);
 
-		resource_id = static_cast<ResourceID>(resource_id + 1);
+		m_resource_id = static_cast<ResourceID>(m_resource_id + 1);
 	}
 }
 
 // リソースの登録
-/*
-	サウンドの定数名を決めて、音を入れておく
-*/
 void SoundManager::RegisterResource(ResourceID id) {
 
-	Lib::AudioClip& resource = m_resource[id]->GetInterface(Lib::hWnd);
-
-	m_resource[id] = &resource.GetInterface(Lib::hWnd);
+	m_resource[id] = &Lib::AudioClip::GetInterface(Lib::hWnd);
 
 	switch (id) {
 
 	case TTITLE_BGM:
 
-		m_resource[id]->LoadWaveFile("Resource/Audio/BGM/title_bgm.wav");
+		m_resource_list.push_back((char*)"Resource/Audio/BGM/title_bgm.wav");
 		break;
 
 	case GAME_BGM:
 
-		m_resource[id]->LoadWaveFile("Resource/Audio/BGM/game_main_bgm.wav");
+		m_resource_list.push_back((char*)"Resource/Audio/BGM/game_main_bgm.wav");
 		break;
 
-	case STAR_ACCEL:
+	case STAR_ACCEL_SE:
 
-		m_resource[id]->LoadWaveFile("Resource/Audio/BGM/star_accel.wav");
+		m_resource_list.push_back((char*)"Resource/Audio/SE/star_accel.wav");
 		break;
 
-	case STAR_JUMP:
+	case STAR_JUMP_SE:
 
-		m_resource[id]->LoadWaveFile("Resource/Audio/BGM/star_jump.wav");
+		m_resource_list.push_back((char*)"Resource/Audio/SE/star_jump.wav");
 		break;
 
-	case STAR_NORMAL:
+	case STAR_NORMAL_SE:
 
-		m_resource[id]->LoadWaveFile("Resource/Audio/BGM/star_normal.wav");
+		m_resource_list.push_back((char*)"Resource/Audio/SE/star_normal.wav");
 		break;
 
-	case STAR_STOP:
+	case STAR_STOP_SE:
 
-		m_resource[id]->LoadWaveFile("Resource/Audio/BGM/star_stop.wav");
+		m_resource_list.push_back((char*)"Resource/Audio/SE/star_stop.wav");
 		break;
 
 	default:
 
-
+		m_resource_list.push_back(nullptr);
 		break;
 	}
+
+	// サウンドファイルの読み込み
+	m_resource[id]->LoadWaveFile(m_resource_list[id]);
 }
 

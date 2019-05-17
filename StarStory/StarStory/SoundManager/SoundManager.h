@@ -11,7 +11,7 @@ public:
 	// サウンドリソース一覧
 	enum ResourceID {
 
-		OP,
+		//OP,
 		/*----Title----*/
 		TTITLE_BGM,
 		/*----Title----*/
@@ -21,10 +21,10 @@ public:
 		/*----Custom----*/
 		/*----Game----*/
 		GAME_BGM,
-		STAR_ACCEL,
-		STAR_JUMP,
-		STAR_NORMAL,
-		STAR_STOP,
+		STAR_ACCEL_SE,
+		STAR_JUMP_SE,
+		STAR_NORMAL_SE,
+		STAR_STOP_SE,
 		/*----Game----*/
 		/*----Result----*/
 		/*----Result----*/
@@ -46,18 +46,24 @@ public:
 	*/
 
 	// 
-	void InitResource();
+	void InitLoadResource();
 
 private:
 
-	ResourceID resource_id;
+	ResourceID m_resource_id;
 
 	// リソースの登録
 	void RegisterResource(ResourceID id);
 
+	// リソース管理
+	std::vector<char*> m_resource_list;
+
+	// サウンドファイル読み込み用変数
 	Lib::AudioClip* m_resource[MAX_RESOURCE_NUM];
 
 	// サウンドプレイヤー
 	std::vector<Lib::AudioPlayer*> m_sound;
+
+
 };
 

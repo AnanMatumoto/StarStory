@@ -68,7 +68,7 @@ private:
 
 	/*----enum----*/
 	Skill m_skill;						// スキルID保管用
-	TexID m_tex_id;	// スキル表の画像ID保管用
+	TexID m_tex_id;						// スキル表の画像ID保管用
 	/*----enum----*/
 };
 

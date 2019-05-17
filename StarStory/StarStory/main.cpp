@@ -1,5 +1,6 @@
 ﻿#include "Lib/Lib.h"
 #include "Scene/SceneManager.h"
+#include "SoundManager/SoundManager.h"
 #include <crtdbg.h>
 
 #define _CRTDBG_MAP_ALLOC
@@ -12,6 +13,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	Lib::Init(1920, 1080, "StarStory");
 	SceneManager::GetInstance().Init();
+
+	SoundManager::GetInstanse().InitLoadResource();
 
 	while (Lib::ProcessMessage()) {
 
