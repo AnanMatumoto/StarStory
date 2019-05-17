@@ -16,7 +16,7 @@ ButtonUI::ButtonUI(
 	m_height = tex.GetSize().y;
 	m_was_click = false;
 	m_click_count = 0;
-	m_color = (1.f, 1.f, 1.f, 1.f);
+	m_color = (0.f, 0.f, 0.f, 0.f);
 }
 
 //----------------------------------
@@ -71,7 +71,7 @@ void ButtonUI::IsHitToMouse() {
 	);
 
 	if (m_was_click == true) {
-		m_color = Lib::CreateColor(0.8f, 0.5f, 0.5f, 0.f);
+		m_color = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
 	}
 
 }

@@ -44,7 +44,8 @@ namespace Lib {
 					D3DPOOL_MANAGED,
 					D3DX_FILTER_LINEAR,	   // フィルタリングの指定（中間色を指定する）
 					D3DX_FILTER_LINEAR,
-					D3DCOLOR_XRGB(0, 0, 0),// アルファキーの指定（黒）
+					//D3DCOLOR_XRGB(0, 0, 0),// アルファキーの指定（黒）
+					NULL,
 					&tex_info,
 					nullptr,
 					&tex
