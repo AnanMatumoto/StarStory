@@ -64,6 +64,7 @@ namespace Lib {
 
 		dev->SetTexture(0, tex);
 		dev->SetFVF(VERTEX_FVF);
+		SetAlphaBlend();
 		dev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtx, sizeof(Vertex));
 
 	}

@@ -38,7 +38,6 @@ private:
 	bool  m_was_click;		    // クリック状態を保存するフラグ
 	int   m_click_count;		// クリック回数保存変数
 	std::string m_tex_name;	// テクスチャ画像名
-	
-
+	D3DXCOLOR m_color;
 };
 

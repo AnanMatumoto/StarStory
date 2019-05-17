@@ -16,15 +16,18 @@ ButtonUI::ButtonUI(
 	m_height = tex.GetSize().y;
 	m_was_click = false;
 	m_click_count = 0;
+	m_color = (1.f, 1.f, 1.f, 1.f);
 }
 
 //----------------------------------
 // 描画処理
 void ButtonUI::Draw() {
+
 	//ボタンの描画
 	Lib::DrawBox2D(
 		m_tex_name.c_str(),
-		m_pos.x, m_pos.y
+		m_pos.x, m_pos.y,
+		m_color
 	);
 }
 
@@ -67,5 +70,8 @@ void ButtonUI::IsHitToMouse() {
 		m_mouse
 	);
 
+	if (m_was_click == true) {
+		m_color = Lib::CreateColor(0.8f, 0.5f, 0.5f, 0.f);
+	}
 
 }
