@@ -8,7 +8,7 @@
 #include <cmath>
 namespace {
 
-	const float GRAVITY        = 0.1f;	//重力
+	const float GRAVITY        = 0.2f;	//重力
 	const int   BOOST          = 3;		//倍速
 	const int   MAX_CHILDS     = 5;		//子の最大数
 	const float JUMP_POINT	   = 128.f;	//ジャンプ基準値
@@ -89,9 +89,9 @@ void StarObject::AutomaticMove() {
 	float hit_obj_h = 0;
 	float dis = 0.f;
 
-	if (!m_is_active) {
-		m_gravity += GRAVITY;
+	if (m_is_active==false) {
 		//スキルが発動していない場合
+		m_gravity += GRAVITY;
 		AddForce(m_speed, m_gravity);
 		RefPosition();
 	}
@@ -104,6 +104,7 @@ void StarObject::AutomaticMove() {
 	for (auto child : m_childs) {
 		
 		if (child->GetHit()) {
+			m_is_fall = false;
 			m_jump_power = -6.5f;
 			m_cur_y = m_pos.y;	 //スキル発動前のY座標を保存
 			m_cur_child	= child; //子オブジェクト取得
@@ -207,7 +208,7 @@ void StarObject::JumpMotion(){
 	
 	if (max_y < m_pos.y) {
 		//ジャンプ最高点に達するまで
-		AddForce(0, m_jump_power,0.f);
+		AddForce(0.8f, m_jump_power,0.f);
 		RefPosition();
 		m_jump_power += 0.2f;
 
@@ -226,8 +227,6 @@ void StarObject::FallMotion() {
 	m_jump_power += 0.2f;
 	AddForce(m_speed, m_jump_power);
 	RefPosition();
-	CheckOutSideTheMapObject(m_map_obj, m_cur_child);
-
 }
 
 void StarObject::StopMotion() {
