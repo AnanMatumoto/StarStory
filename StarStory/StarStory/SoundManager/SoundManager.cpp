@@ -3,11 +3,14 @@
 // コンストラクタ
 SoundManager::SoundManager() : m_resource_id(TTITLE_BGM) {
 
+	// インターフェース登録
+	m_resource = &Lib::AudioClip::GetInterface(Lib::hWnd);
 }
 
 // デストラクタ
 SoundManager::~SoundManager() {
 
+	
 }
 
 // インスタンス取得
@@ -22,16 +25,19 @@ void SoundManager::InitLoadResource() {
 
 	for (int i = 0; i < SoundManager::MAX_RESOURCE_NUM; ++i) {
 
+		// リソースの登録
 		RegisterResource(m_resource_id);
 
+		// サウンドファイルの読み込み
+		m_resource->LoadWaveFile(m_resource_list[m_resource_id]);
+
+		// enum加算
 		m_resource_id = static_cast<ResourceID>(m_resource_id + 1);
 	}
 }
 
 // リソースの登録
 void SoundManager::RegisterResource(ResourceID id) {
-
-	m_resource[id] = &Lib::AudioClip::GetInterface(Lib::hWnd);
 
 	switch (id) {
 
@@ -70,8 +76,5 @@ void SoundManager::RegisterResource(ResourceID id) {
 		m_resource_list.push_back(nullptr);
 		break;
 	}
-
-	// サウンドファイルの読み込み
-	m_resource[id]->LoadWaveFile(m_resource_list[id]);
 }
 
