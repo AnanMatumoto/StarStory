@@ -25,6 +25,7 @@ enum UIObjectID {
 
 	// ゲームボタン
 	BT_GM_WIND,
+	BT_GM_FRAME,
 	BT_GM_TOCUSTOM,
 	BT_GM_STOP,
 	BT_GM_ONOFF,

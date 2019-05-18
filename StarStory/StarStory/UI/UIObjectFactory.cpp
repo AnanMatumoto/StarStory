@@ -45,6 +45,10 @@ ObjectBase* UIObjectFactory::Create(
 	case BT_GM_WIND:
 		return new ButtonUI(x, y, tex_name);
 		break;
+
+	case BT_GM_FRAME:
+		return new ButtonUI(x, y, tex_name);
+		break;
 	case BT_GM_TOCUSTOM:
 		return new ButtonUI(x,y,tex_name);
 		break;

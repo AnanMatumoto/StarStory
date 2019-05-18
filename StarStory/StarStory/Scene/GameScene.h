@@ -21,10 +21,13 @@ private:
 	//　描画処理
 	void Draw() override;
 
+	//リザルト結果描画処理
+	void DrawResult();
+
 	~GameScene() override;
 	//StageBase* stage;
 
 private:
 	SceneID m_scene_id; //遷移先保存用変数
-	Lib::AudioPlayer* m_sound;
+	//Lib::AudioPlayer* m_sound;
 };

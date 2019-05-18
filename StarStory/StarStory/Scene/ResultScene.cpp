@@ -29,15 +29,7 @@ void ResultScene::Update() {
 	UIManager& ui_mng = UIManager::GetInstance();
 	ui_mng.Update();
 
-	if (ui_mng.FindClickedUI() == BT_RS_CUSUTOM) {
-		m_state_id = SS_END;
-		m_scene_id = SC_CUSTOM;
-	}
-
-	if (ui_mng.FindClickedUI() == BT_RS_SELECT) {
-		m_state_id = SS_END;
-		m_scene_id = SC_SELECT;
-	}
+	
 }
 
 //----------------------------
