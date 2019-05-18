@@ -45,25 +45,38 @@ public:
 	sound->Play("Resource/Audio/BGM/title_bgm.wav");
 	*/
 
-	// 
+	/*----初期化関数----*/
+	// サウンドファイルの読み込み
 	void InitLoadResource();
+	/*----初期化関数----*/
+
+	/*----更新関数----*/
+	// 
+	
+	/*----更新関数----*/
 
 private:
-
-	ResourceID m_resource_id;
-
-	// リソースの登録
-	void RegisterResource(ResourceID id);
-
+	/*----vector----*/
 	// リソース管理
 	std::vector<char*> m_resource_list;
 
-	// サウンドファイル読み込み用変数
-	Lib::AudioClip* m_resource[MAX_RESOURCE_NUM];
-
 	// サウンドプレイヤー
 	std::vector<Lib::AudioPlayer*> m_sound;
+	/*----vector----*/
 
+	/*----変数----*/
+	// サウンドファイル読み込み用
+	Lib::AudioClip* m_resource;
+	/*----変数----*/
 
+	/*----関数----*/
+	// リソースの登録
+	void RegisterResource(ResourceID id);
+	/*----関数----*/
+
+	/*----enum----*/
+	// リソース一覧
+	ResourceID m_resource_id;
+	/*----enum----*/
 };
 
