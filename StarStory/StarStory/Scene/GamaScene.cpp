@@ -26,7 +26,8 @@
 #define RESULT_BACKIMG "Resource/Result/ui_result_base.png"
 #define RESULT_CUSTOM "Resource/Result/ui_result_custom.png"
 #define RESULT_SELECT "Resource/Result/ui_result_select.png"
-
+#define RESULT_FLAME_R  "Resource/Result/ui_flame_262_63.png"
+#define RESULT_FLAME_L "Resource/Result/ui_flame_262_63.png"
 
 //-------------------------------------------
 //　ゲームシーン初期化
@@ -174,8 +175,10 @@ void GameScene::DrawResult() {
 
 
 	UIManager& ui_mng = UIManager::GetInstance();
-	ui_mng.Register(BT_RS_CUSUTOM, 888, 809, RESULT_CUSTOM);
-	ui_mng.Register(BT_RS_SELECT, 1176, 809, RESULT_SELECT);
+	ui_mng.Register(BT_RS_CUSUTOM, 788, 780, RESULT_CUSTOM);
+	ui_mng.Register(BT_RS_SELECT, 1148, 780, RESULT_SELECT);
+	ui_mng.Register(BT_RS_FLAME_R, 750, 738, RESULT_FLAME_R);
+	ui_mng.Register(BT_RS_FLAME_L, 1108, 738, RESULT_FLAME_L);
 
 	Lib::DrawBoxAlpha(
 		"over_ray",

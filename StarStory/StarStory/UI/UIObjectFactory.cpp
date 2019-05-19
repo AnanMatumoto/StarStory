@@ -70,6 +70,14 @@ ObjectBase* UIObjectFactory::Create(
 	case BT_RS_TITLEBACK:
 		return new ButtonUI(x, y, tex_name);
 		break;
+
+	case BT_RS_FLAME_R:
+		return new ButtonUI(x, y, tex_name);
+		break;
+
+	case BT_RS_FLAME_L:
+		return new ButtonUI(x, y, tex_name);
+		break;
 	/*--ResultScene--*/
 	}
 	return nullptr;
