@@ -3,6 +3,7 @@
 #include "../StageObject/ObjectManager.h"
 #include "../StageObject/StarObject.h"
 #include "../UI/UIManager.h"
+#include "../SoundManager/SoundManager.h"
 
 #include "../SkillData/Skill_Data.h"
 #include <iostream>
@@ -40,6 +41,9 @@ void GameScene::Init() {
 	m_sound = new Lib::AudioPlayer();
 	m_sound->Play("Resource/Audio/BGM/game_main_bgm.wav");
 	m_sound->SetVolume(-1000);*/
+
+	// BGM再生
+	SoundManager::GetInstanse().SoundPlayer(SoundManager::GAME_BGM, SoundManager::PLAY);
 
 	ObjectManager& mng = ObjectManager::GetInstance();
 	UIManager & UImng = UIManager::GetInstance();
@@ -119,6 +123,8 @@ SceneID GameScene::End() {
 
 	//BGMの終了
 	//m_sound->Stop();
+	SoundManager::GetInstanse().SoundPlayer(SoundManager::GAME_BGM, SoundManager::STOP);
+
 	return m_scene_id;
 }
 

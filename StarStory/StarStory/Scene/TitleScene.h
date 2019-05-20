@@ -30,7 +30,7 @@ private:
 private:
 	
 	bool has_end;	//終了状態フラグ
-	Lib::AudioPlayer* sound;
+	//Lib::AudioPlayer* sound;
 
 	
 };

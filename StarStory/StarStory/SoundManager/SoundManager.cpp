@@ -10,7 +10,9 @@ SoundManager::SoundManager() : m_resource_id(TTITLE_BGM) {
 // デストラクタ
 SoundManager::~SoundManager() {
 
-	
+	for (auto x : m_sound) {
+		delete x;
+	}
 }
 
 // インスタンス取得
@@ -30,6 +32,9 @@ void SoundManager::InitLoadResource() {
 
 		// サウンドファイルの読み込み
 		m_resource->LoadWaveFile(m_resource_list[m_resource_id]);
+
+		// サウンドプレイヤー生成
+		m_sound.push_back(new Lib::AudioPlayer());
 
 		// enum加算
 		m_resource_id = static_cast<ResourceID>(m_resource_id + 1);
@@ -74,6 +79,28 @@ void SoundManager::RegisterResource(ResourceID id) {
 	default:
 
 		m_resource_list.push_back(nullptr);
+		break;
+	}
+}
+
+// サウンドプレイヤー
+void SoundManager::SoundPlayer(ResourceID id, PlayerType type, int volume) {
+
+	// tyoeによって、処理を変える
+	switch (type) {
+
+	case PLAY:
+		m_sound[id]->Play(m_resource_list[id]);
+		m_sound[id]->SetVolume(volume);
+		break;
+
+	case LOOP_PLAY:
+		m_sound[id]->LoopOnPlay(m_resource_list[id]);
+		m_sound[id]->SetVolume(volume);
+		break;
+
+	case STOP:
+		m_sound[id]->Stop();
 		break;
 	}
 }

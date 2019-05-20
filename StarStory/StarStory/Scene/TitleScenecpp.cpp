@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "../StageObject/ObjectManager.h"
 #include "../UI/UIManager.h"
+#include "../SoundManager/SoundManager.h"
 
 #define TITLE_BACK "Resource/Title/ui_title_base.png"
 #define TITLE_START "Resource/Title/ui_title_start.png"
@@ -24,10 +25,13 @@ void TitleScene::Init() {
 
 
 	//サウンド再生サンプル（直書き）
-	Lib::AudioClip& audio = Lib::AudioClip::GetInterface(Lib::hWnd);
+	/*Lib::AudioClip& audio = Lib::AudioClip::GetInterface(Lib::hWnd);
 	audio.LoadWaveFile("Resource/Audio/BGM/title_bgm.wav");
 	sound = new Lib::AudioPlayer();
-	sound->Play("Resource/Audio/BGM/title_bgm.wav");
+	sound->Play("Resource/Audio/BGM/title_bgm.wav");*/
+
+	// BGM再生
+	SoundManager::GetInstanse().SoundPlayer(SoundManager::TTITLE_BGM, SoundManager::PLAY);
 }
 
 //-----------------------------
@@ -38,7 +42,7 @@ void TitleScene::Update() {
 	mng.Update();
 	//スタートボタンが押されたら
 	if (mng.FindClickedUI() == BT_TT_START) {
-		sound->Stop();
+		//sound->Stop();
 		m_state_id = SS_END;
 	}
 	else if (mng.FindClickedUI() == BT_TT_END) {
@@ -56,6 +60,9 @@ SceneID TitleScene::End() {
 
 	//UIをリストから削除する
 	UIManager::GetInstance().AllDelete();
+
+	// BGM停止
+	SoundManager::GetInstanse().SoundPlayer(SoundManager::TTITLE_BGM, SoundManager::STOP);
 
 	if (has_end) {
 		SceneManager::GetInstance().SetQuit(true);

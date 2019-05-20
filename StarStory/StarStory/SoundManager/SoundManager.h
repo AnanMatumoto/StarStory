@@ -32,6 +32,14 @@ public:
 		MAX_RESOURCE_NUM
 	};
 
+	// 
+	enum PlayerType {
+
+		PLAY,
+		LOOP_PLAY,
+		STOP
+	};
+
 public:
 
 	SoundManager();		// コンストラクタ
@@ -51,8 +59,8 @@ public:
 	/*----初期化関数----*/
 
 	/*----更新関数----*/
-	// 
-	
+	// サウンドプレイヤー
+	void SoundPlayer(ResourceID id, PlayerType type, int volume = 0);
 	/*----更新関数----*/
 
 private:
@@ -62,6 +70,7 @@ private:
 
 	// サウンドプレイヤー
 	std::vector<Lib::AudioPlayer*> m_sound;
+	//Lib::AudioPlayer* m_sound;
 	/*----vector----*/
 
 	/*----変数----*/
