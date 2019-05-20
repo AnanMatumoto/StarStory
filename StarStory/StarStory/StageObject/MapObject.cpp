@@ -5,20 +5,20 @@
 //　コンストラクタ
 MapObject::MapObject(
 	float x, float y,
-	std::string tex_name
-): ObjectBase(x,y) {
-
+	std::string tex_name,
+	bool has_goal
+): ObjectBase(x,y)
+{
 	Lib::Texture tex(tex_name.c_str());
+	m_has_goal = has_goal;
 	m_tex_name = tex_name;
-	m_width  = tex.GetSize().x;
-	m_height = tex.GetSize().y;
+	m_width    = tex.GetSize().x;
+	m_height   = tex.GetSize().y;
 }
 
 //--------------------------------
 //　更新処理
 void MapObject::Update() {
-
-	
 
 }
 

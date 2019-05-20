@@ -28,6 +28,7 @@ public:
 	void Register(
 		StageObjectID id,
 		float x, float y,
+		bool has_goal = false,
 		std::string tex_name = "none"
 	);
 
@@ -71,7 +72,8 @@ public:
 	void Create(
 		StageObjectID id,
 		StageObjectID new_id,
-		float x, float y
+		float x, float y,
+		bool has_goal = false
 	);
 
 	//　引数でもらったidのオブジェクトを取得する

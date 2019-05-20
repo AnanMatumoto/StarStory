@@ -33,4 +33,11 @@ public:
 		float rotate = 0.f
 	)override;
 
+	ObjectBase* Create(
+		int id,
+		float x,
+		float y,
+		bool has_goal = false,
+		std::string tex_name = "none"
+	);
 };
