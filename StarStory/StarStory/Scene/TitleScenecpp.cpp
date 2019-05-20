@@ -24,8 +24,8 @@ void TitleScene::Init() {
 
 
 	//サウンド再生サンプル（直書き）
-	/*Lib::AudioClip& audio = Lib::AudioClip::GetInterface(Lib::hWnd);
-	audio.LoadWaveFile("Resource/Audio/BGM/title_bgm.wav");*/
+	Lib::AudioClip& audio = Lib::AudioClip::GetInterface(Lib::hWnd);
+	audio.LoadWaveFile("Resource/Audio/BGM/title_bgm.wav");
 	sound = new Lib::AudioPlayer();
 	sound->Play("Resource/Audio/BGM/title_bgm.wav");
 }
