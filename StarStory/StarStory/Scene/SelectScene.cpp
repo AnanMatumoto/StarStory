@@ -5,7 +5,7 @@
 
 #define STAGE_IMG "Resource/StageSelect/stage_1_cover.png"
 #define BACK_IMG "Resource/StageSelect/ui_select_base.png"
-#define BT_STAGE1 "Resource/StageSelect/Stage1_sample.png"
+#define BT_STAGE1 "Resource/StageSelect/ui_select_ep1.png"
 #define BT_BACK "Resource/StageSelect/ui_select_title.png"
 
 //--------------------------
