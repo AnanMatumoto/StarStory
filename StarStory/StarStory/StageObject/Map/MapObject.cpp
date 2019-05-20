@@ -1,5 +1,5 @@
 ﻿#include "MapObject.h"
-#include "../Lib/Lib.h"
+#include "../../Lib/Lib.h"
 
 //---------------------------------
 //　コンストラクタ
@@ -20,6 +20,12 @@ MapObject::MapObject(
 //　更新処理
 void MapObject::Update() {
 
+}
+
+//---------------------------------
+// ゴールフラグゲッター
+const bool MapObject::GetGoal()const {
+	return m_has_goal;
 }
 
 //---------------------------------

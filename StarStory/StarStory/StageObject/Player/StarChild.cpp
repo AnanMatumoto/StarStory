@@ -1,8 +1,8 @@
 #include "StarChild.h"
 #include "StarObject.h"
-#include "ObjectManager.h"
-#include "MapObject.h"
-#include "../Collision/Collision.h"
+#include "../ObjectManager.h"
+#include "../Map/MapObject.h"
+#include "../../Collision/Collision.h"
 
 //------------------------------------
 //　コンストラクタ

@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "../Common/Common.h"
-#include "ObjectBase.h"
-#include "../Skill.h"
+#include "../../Common/Common.h"
+#include "../ObjectBase.h"
+#include "../../Skill.h"
 #include <vector>
 
 class StarChild;

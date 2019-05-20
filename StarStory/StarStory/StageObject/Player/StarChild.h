@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "../Skill.h"
-#include "../Lib/Lib.h"
-#include "ObjectBase.h"
+#include "../../Skill.h"
+#include "../..//Lib/Lib.h"
+#include "../ObjectBase.h"
 #include <vector>
 #include <string>
 

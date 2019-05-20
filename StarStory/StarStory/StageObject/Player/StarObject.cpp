@@ -1,9 +1,9 @@
 ﻿#include "StarObject.h"
 #include "StarChild.h"
-#include "MapObject.h"
-#include "ObjectManager.h"
-#include "../Skill.h"
-#include "../Scene/SceneManager.h"
+#include "../Map/MapObject.h"
+#include "../ObjectManager.h"
+#include "../../Skill.h"
+#include "../../Scene/SceneManager.h"
 
 #include <cmath>
 namespace {
@@ -42,23 +42,28 @@ StarObject::StarObject(
 //　更新処理
 void StarObject::Update() {
 	
-	auto mng = ObjectManager::GetInstance();
 	//子オブジェクトを一度だけ取得する
 	if (m_childs.size() < MAX_CHILDS) {
-		m_childs = mng.GetGameObjects<StarChild>();
+		m_childs = ObjectManager::GetInstance().GetGameObjects<StarChild>();
 	}
-
-	//自動操縦
-	AutomaticMove();
-
-	SceneBase* gc = SceneManager::GetInstance().GetScene();
 
 	float out_w = m_pos.x + m_width;
 	float out_h = m_pos.y + m_height;
-
-	//画面外に入った場合はゲームシーンにFAILDを通知
+	
 	if (out_h > WINDOW_H || out_w> WINDOW_W) {
-		gc->SetResult(FAILD);
+		//画面外に入った場合はFAILDを通知
+		SceneManager::GetInstance().GetScene()->SetResult(FAILD);
+	}
+	else if(m_map_obj!= nullptr && m_map_obj->GetGoal()){
+		//ゴール地点で移動終了、CLEARを通知
+		m_pos.x = m_map_obj->GetVertex(0).pos.x+m_width;
+		m_pos.y = m_cur_y;
+		/*AddForce(0, 0, 0);
+		RefPosition();*/
+		SceneManager::GetInstance().GetScene()->SetResult(CLEAR);
+	}
+	else {
+		AutomaticMove();
 	}
 }
 
@@ -111,6 +116,10 @@ void StarObject::AutomaticMove() {
 			m_cur_y = m_pos.y;	 //スキル発動前のY座標を保存
 			m_cur_child	= child; //子オブジェクト取得
 			m_map_obj=(MapObject*)m_cur_child->GetMapObj(); //マップオブジェクト取得
+
+			if (m_map_obj->GetGoal()) {
+				return;
+			}
 		}
 	}
 
@@ -142,7 +151,9 @@ void StarObject::CheckOutSideTheMapObject(
 		else if ( p > left && p < right) {
 			//頂点がオブジェクトの範囲内にいる場合
 			m_is_active = true;
+
 			if (m_cur_skill != JUMP) {
+				//ジャンプ以外の場合はめり込みを修正する
 				m_pos.y += m_cur_child->DistanceToCeiling();
 			}
 		}
