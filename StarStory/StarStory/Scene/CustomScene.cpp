@@ -3,10 +3,10 @@
 #include "../UI/UIManager.h"
 
 /*----画像----*/
-const char CUSTOM_BASE_TEX[256]			= "Resource/Custom/UI_custom_base.png";			// 背景
-const char CUSTOM_DECISION_TEX[256]		= "Resource/Custom/UI_custom_decision.png";		// 決定ボタン
-const char CUSTOM_SERECT_TEX[256]		= "Resource/Custom/UI_custom_serect.png";		// セレクトへ戻るボタン
-const char CUSTOM_STAGE1_MAP_TEX[256]	= "Resource/Custom/stage1_map.png";				// ステージ1のマップ
+const char CUSTOM_BASE_TEX[256]			= "Resource/Custom/UI_custom_base.png";				// 背景
+const char CUSTOM_DECISION_TEX[256]		= "Resource/Custom/ui_custom_nextpage.png";			// 決定ボタン
+const char CUSTOM_SERECT_TEX[256]		= "Resource/Custom/ui_custom_stageselect.png";		// セレクトへ戻るボタン
+const char CUSTOM_STAGE1_MAP_TEX[256]	= "Resource/Custom/stage1_map.png";					// ステージ1のマップ
 /*----画像----*/
 
 //-----------------------------
