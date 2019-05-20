@@ -35,6 +35,7 @@ StarObject::StarObject(
 	m_is_fall	 = false;
 	m_cur_y		 = 0.f;
 	m_gravity    = 0.f;
+	m_rot_speed = 1.3f;
 }
 
 //-----------------------------------
@@ -98,7 +99,8 @@ void StarObject::AutomaticMove() {
 	else{
 		m_gravity = 0.f;
 		//子供からもらったスキルを発動する
-		CauseToSkill(m_cur_child->GetSkill());
+		m_cur_skill = m_cur_child->GetSkill();
+		CauseToSkill(m_cur_skill);
 	}
 
 	for (auto child : m_childs) {
@@ -135,10 +137,14 @@ void StarObject::CheckOutSideTheMapObject(
 		if ( p > right || m_pos.y > height) {
 			//頂点がオブジェクトの外にいる場合
 			m_is_active = false;
+		
 		}
 		else if ( p > left && p < right) {
 			//頂点がオブジェクトの範囲内にいる場合
 			m_is_active = true;
+			if (m_cur_skill != JUMP) {
+				m_pos.y += m_cur_child->DistanceToCeiling();
+			}
 		}
 	}
 }
@@ -219,7 +225,6 @@ void StarObject::JumpMotion(){
 	else {
 		m_is_fall = true;
 	}
-	
 }
 
 void StarObject::FallMotion() {
@@ -231,14 +236,26 @@ void StarObject::FallMotion() {
 
 void StarObject::StopMotion() {
 
-	if (--m_interval > 0) {
-		AddForce(0.f, 0.f, 0.f);
+	if (m_cur_child != nullptr) {
+		
+		if (m_cur_child->GetHit()) {
+			--m_interval;
+		}
+		else {
+			m_interval = 60.f;
+			AddForce(m_speed, 0, m_rot_speed);
+			RefPosition();
+		}
+	}
+
+	//頂点が当たっている間の処理
+	if (m_interval > 0) {
+		AddForce(0, 0, 0);
 		RefPosition();
 	}
 	else {
-		AddForce(m_speed);
+		AddForce(m_speed, 0, m_rot_speed);
 		RefPosition();
 	}
-
 }
 

@@ -68,5 +68,6 @@ private:
 	std::vector<MapObject*> m_map_obj; //マップオブジェクトのリスト
 	std::string m_se_name;			   //効果音名
 	//Lib::AudioPlayer* m_sound;
+	
 };
 
