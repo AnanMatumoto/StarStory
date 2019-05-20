@@ -3,7 +3,10 @@
   <ItemGroup>
     <ClCompile Include="Collision\Collision.cpp" />
     <ClCompile Include="Common\Common.cpp" />
+    <ClCompile Include="Custom\CustomObjectManager\CustomObjectManager.cpp" />
     <ClCompile Include="Custom\Diamond\Diamond.cpp" />
+    <ClCompile Include="Lib\Color.cpp" />
+    <ClCompile Include="Lib\Sound.cpp" />
     <ClCompile Include="Scene\CustomScene.cpp" />
     <ClCompile Include="Lib\Device.cpp" />
     <ClCompile Include="Lib\Draw2D.cpp" />
@@ -16,31 +19,27 @@
     <ClCompile Include="Lib\Texture.cpp" />
     <ClCompile Include="Scene\TitleScenecpp.cpp" />
     <ClCompile Include="Custom\SkillTable\SkillTable.cpp" />
+    <ClCompile Include="SoundManager\SoundManager.cpp" />
     <ClCompile Include="StageObject\ObjectBase.cpp" />
     <ClCompile Include="StageObject\ObjectManager.cpp" />
-    <ClCompile Include="StageObject\MapObject.cpp" />
     <ClCompile Include="StageObject\StageObjectFactory.cpp" />
-    <ClCompile Include="StageObject\StarChild.cpp" />
-    <ClCompile Include="StageObject\StarObject.cpp" />
     <ClCompile Include="UI\Button.cpp" />
     <ClCompile Include="UI\UIObjectFactory.cpp" />
     <ClCompile Include="UI\UIManager.cpp" />
-    <ClCompile Include="Lib\Sound.cpp" />
-    <ClCompile Include="Custom\CustomObjectManager\CustomObjectManager.cpp" />
-<<<<<<< HEAD
-    <ClCompile Include="Lib\Color.cpp" />
-=======
-    <ClCompile Include="SoundManager\SoundManager.cpp" />
->>>>>>> 3e3cfad235f5208d5c6f6bbc862e9636191dc6e5
+    <ClCompile Include="StageObject\Player\StarObject.cpp" />
+    <ClCompile Include="StageObject\Player\StarChild.cpp" />
+    <ClCompile Include="StageObject\Map\MapObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
     <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Custom\CustomObjectManager\CustomObjectManager.h" />
     <ClInclude Include="Custom\Diamond\Diamond.h" />
     <ClInclude Include="Custom\DiamondBase\DiamondBase.h" />
     <ClInclude Include="Lib\Lib.h" />
     <ClInclude Include="Scene\CustomScene.h" />
     <ClInclude Include="Scene\GameScene.h" />
+    <ClInclude Include="Scene\ResultID.h" />
     <ClInclude Include="Scene\ResultScene.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Scene\SceneManager.h" />
@@ -48,21 +47,19 @@
     <ClInclude Include="Scene\TitleScene.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="Custom\SkillTable\SkillTable.h" />
+    <ClInclude Include="SkillData\SkillData.h" />
+    <ClInclude Include="SkillData\Skill_Data.h" />
+    <ClInclude Include="SoundManager\SoundManager.h" />
     <ClInclude Include="StageObject\Factory.h" />
     <ClInclude Include="StageObject\ObjectBase.h" />
     <ClInclude Include="StageObject\ObjectManager.h" />
-    <ClInclude Include="StageObject\MapObject.h" />
     <ClInclude Include="StageObject\StageObjectFactory.h" />
-    <ClInclude Include="StageObject\StarChild.h" />
-    <ClInclude Include="StageObject\StarObject.h" />
     <ClInclude Include="UI\Button.h" />
     <ClInclude Include="UI\UIManager.h" />
     <ClInclude Include="UI\UIObjectFactory.h" />
-    <ClInclude Include="Scene\ResultID.h" />
     <ClInclude Include="UI\UIObjectID.h" />
-    <ClInclude Include="SkillData\SkillData.h" />
-    <ClInclude Include="SkillData\Skill_Data.h" />
-    <ClInclude Include="Custom\CustomObjectManager\CustomObjectManager.h" />
-    <ClInclude Include="SoundManager\SoundManager.h" />
+    <ClInclude Include="StageObject\Player\StarObject.h" />
+    <ClInclude Include="StageObject\Player\StarChild.h" />
+    <ClInclude Include="StageObject\Map\MapObject.h" />
   </ItemGroup>
 </Project>

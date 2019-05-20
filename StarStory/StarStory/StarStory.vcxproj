@@ -211,7 +211,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="StageObject\MapObject.cpp">
+    <ClCompile Include="StageObject\Map\MapObject.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -219,8 +219,8 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="StageObject\StarChild.cpp" />
-    <ClCompile Include="StageObject\StarObject.cpp">
+    <ClCompile Include="StageObject\Player\StarChild.cpp" />
+    <ClCompile Include="StageObject\Player\StarObject.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -323,7 +323,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StageObject\MapObject.h">
+    <ClInclude Include="StageObject\Map\MapObject.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -331,11 +331,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StageObject\StarChild.h">
+    <ClInclude Include="StageObject\Player\StarChild.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StageObject\StarObject.h">
+    <ClInclude Include="StageObject\Player\StarObject.h">
       <SubType>
       </SubType>
     </ClInclude>
