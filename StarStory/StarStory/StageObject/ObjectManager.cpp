@@ -21,12 +21,13 @@ ObjectManager& ObjectManager::GetInstance() {
 void ObjectManager::Register(
 	StageObjectID id,
 	float x, float y,
+	bool has_goal,
 	std::string tex_name
 ) {
 	StageObjectFactory obj_factory;
 	m_obj_list.emplace(
 		id,
-		obj_factory.Create(id, x, y, tex_name)
+		obj_factory.Create(id, x, y, has_goal, tex_name)
 	);
 }
 
@@ -123,11 +124,11 @@ void ObjectManager::AllDelete() {
 void ObjectManager::Create(
 	StageObjectID id,
 	StageObjectID new_id,
-	float x, float y
+	float x, float y,
+	bool has_goal
 ) {
-
 	StageObjectFactory factory;
-	m_obj_list.emplace(new_id, factory.Create(id, x, y));
+	m_obj_list.emplace(new_id, factory.Create(id, x, y, has_goal));
 }
 
 //------------------------------------

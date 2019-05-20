@@ -16,22 +16,6 @@ ObjectBase* StageObjectFactory::Create(
 ) {
 	switch (id)
 	{
-	case OBJ_TEST1:
-		return new MapObject(x, y,tex_name);
-		break;
-
-	case OBJ_TEST2:
-		return new MapObject(x, y, tex_name);
-		break;
-
-	case OBJ_TEST3:
-		return new MapObject(x, y, tex_name);
-		break;
-
-	case OBJ_TEST4:
-		return new MapObject(x, y, tex_name);
-		break;
-
 	case STAR_OBJ:
 		return new StarObject(x, y, rot);
 		break;
@@ -56,6 +40,49 @@ ObjectBase* StageObjectFactory::Create(
 		return new StarChild(x, y, tex_name, se_name, skill, rot);
 		break;
 
+	}
+	return nullptr;
+}
+
+ObjectBase* StageObjectFactory::Create(
+	int id,
+	float x,
+	float y,
+	bool has_goal,
+	std::string tex_name
+) {
+	switch (id)
+	{
+	case OBJ_1:
+		return new MapObject(x, y, tex_name, has_goal);
+		break;
+
+	case OBJ_2:
+		return new MapObject(x, y, tex_name, has_goal);
+		break;
+
+	case OBJ_3:
+		return new MapObject(x, y, tex_name, has_goal);
+		break;
+
+	case OBJ_4:
+		return new MapObject(x, y, tex_name, has_goal);
+		break;
+
+	case OBJ_5:
+		return new MapObject(x, y, tex_name, has_goal);
+		break;
+
+	case OBJ_6:
+		return new MapObject(x, y, tex_name, has_goal);
+		break;
+	case OBJ_7:
+		return new MapObject(x, y, tex_name, has_goal);
+		break;
+
+	case OBJ_8:
+		return new MapObject(x, y, tex_name, has_goal);
+		break;
 	}
 	return nullptr;
 }

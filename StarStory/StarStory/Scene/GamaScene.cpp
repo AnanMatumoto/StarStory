@@ -10,7 +10,8 @@
 #include <fstream>
 
 #define TEX_OBJ_192  "Resource/Game/object_192x192.png"
-#define TEX_OBJ_128 "Resource/Game/object_128x128.png"
+#define TEX_OBJ_128  "Resource/Game/object_128x128.png"
+#define TEX_OBJ_64   "Resource/Game/object_64x64.png"
 
 #define GAME_STAGE  "Resource/Game/stage1_background_1-1.png"
 #define GAME_UI_WND  "Resource/Game/ui_stage_base.png"
@@ -49,11 +50,15 @@ void GameScene::Init() {
 	UIManager & UImng = UIManager::GetInstance();
 
     //ステージオブジェクトの登録
-	mng.Register(OBJ_TEST1, 100, 600,TEX_OBJ_192);
-	mng.Register(OBJ_TEST2, 400, 650,TEX_OBJ_128);
-	mng.Register(OBJ_TEST3, 750, 700, TEX_OBJ_192);
-	mng.Register(OBJ_TEST4, 1200, 600, TEX_OBJ_128);
-
+	mng.Register(OBJ_1, 100,  600, false, TEX_OBJ_192);
+	mng.Register(OBJ_2, 350,  650, false, TEX_OBJ_128);
+	mng.Register(OBJ_3, 550,  700, false, TEX_OBJ_192);
+	mng.Register(OBJ_4, 810,  600, false, TEX_OBJ_128);
+	mng.Register(OBJ_5, 1000, 780, false, TEX_OBJ_192);
+	mng.Register(OBJ_6, 1250, 700, false, TEX_OBJ_64);
+	mng.Register(OBJ_7, 1350, 810, false, TEX_OBJ_192);
+	mng.Register(OBJ_8, 1580, 680, true,  TEX_OBJ_128);
+	//星のオブジェクト
 	mng.Register(STAR_OBJ, 90, 500);
 	mng.Register(STAR_CHILD1, "./Resource/skill_data_01.dat",  0, -32, 0);
 	mng.Register(STAR_CHILD2, "./Resource/skill_data.02.dat", 30, -10, 72);
