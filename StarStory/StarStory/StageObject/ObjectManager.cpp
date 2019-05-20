@@ -128,7 +128,7 @@ void ObjectManager::Create(
 	bool has_goal
 ) {
 	StageObjectFactory factory;
-	m_obj_list.emplace(new_id, factory.Create(id, x, y, has_goal));
+	m_obj_list.emplace(new_id, factory.Create(id, x, y,has_goal));
 }
 
 //------------------------------------

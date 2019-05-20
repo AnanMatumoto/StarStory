@@ -28,7 +28,7 @@ public:
 		int id,
 		float x,
 		float y,
-		std::string tex_name,
+		std::string tex_name= "none",
 		float rotate =0.f
 	) {
 		return nullptr;

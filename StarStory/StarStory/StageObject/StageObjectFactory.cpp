@@ -1,7 +1,7 @@
 ﻿#include "StageObjectFactory.h"
-#include "MapObject.h"
-#include "StarObject.h"
-#include "StarChild.h"
+#include "../StageObject/Map/MapObject.h"
+#include "../StageObject/Player/StarObject.h"
+#include "../StageObject/Player/StarChild.h"
 #include "../Skill.h"
 
 //---------------------------------

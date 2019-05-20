@@ -1,7 +1,7 @@
 ﻿#include "GameScene.h"
 #include "SceneManager.h"
 #include "../StageObject/ObjectManager.h"
-#include "../StageObject/StarObject.h"
+#include "../StageObject/Player/StarObject.h"
 #include "../UI/UIManager.h"
 #include "../SoundManager/SoundManager.h"
 
@@ -59,7 +59,7 @@ void GameScene::Init() {
 	mng.Register(OBJ_7, 1350, 810, false, TEX_OBJ_192);
 	mng.Register(OBJ_8, 1580, 680, true,  TEX_OBJ_128);
 	//星のオブジェクト
-	mng.Register(STAR_OBJ, 90, 500);
+	mng.Register(STAR_OBJ, "none",90, 500);
 	mng.Register(STAR_CHILD1, "./Resource/skill_data_01.dat",  0, -32, 0);
 	mng.Register(STAR_CHILD2, "./Resource/skill_data.02.dat", 30, -10, 72);
 	mng.Register(STAR_CHILD3, "./Resource/skill_data.03.dat", 19, 26, 144);
@@ -207,13 +207,13 @@ void GameScene::DrawResult() {
 
 		Lib::DrawBox2D(
 			GAME_FAILD,
-			640, 350
+			300, 300
 		);
 	}
 	else {
 		Lib::DrawBox2D(
 			GAME_CLEAR,
-			463, 300
+			300, 300
 		);
 	}
 	ui_mng.Draw();
