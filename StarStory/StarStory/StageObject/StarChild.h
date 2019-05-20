@@ -67,6 +67,6 @@ private:
 	int			m_one_flame;
 	std::vector<MapObject*> m_map_obj; //マップオブジェクトのリスト
 	std::string m_se_name;			   //効果音名
-	Lib::AudioPlayer* m_sound;
+	//Lib::AudioPlayer* m_sound;
 };
 

@@ -25,7 +25,7 @@ StarChild::StarChild(
 	m_skill    = skill;
 	m_obj      = nullptr;
 	m_se_name  = se_name;
-	m_sound    = new Lib::AudioPlayer();
+	//m_sound    = new Lib::AudioPlayer();
 	m_one_flame = 0;
 }
 
@@ -35,7 +35,7 @@ void StarChild::Update() {
 
 	HitToObject();
 	IsHit();
-	PlaySE();
+	//PlaySE();
 }
 
 //------------------------------------
@@ -164,12 +164,12 @@ float StarChild::DistanceToCeiling() {
 // SEˆ—
 void StarChild::PlaySE() {
 
-	Lib::AudioClip& clip = Lib::AudioClip::GetInterface();
-	clip.LoadWaveFile(m_se_name);
+	//Lib::AudioClip& clip = Lib::AudioClip::GetInterface();
+	//clip.LoadWaveFile(m_se_name);
 
-	if (m_one_flame == 1) {
-		m_sound->Play(m_se_name);
-		m_sound->SetVolume(-300);
-	}
+	//if (m_one_flame == 1) {
+	//	m_sound->Play(m_se_name);
+	//	m_sound->SetVolume(-300);
+	//}
 
 }
