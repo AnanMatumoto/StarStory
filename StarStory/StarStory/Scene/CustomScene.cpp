@@ -111,6 +111,6 @@ void CustomScene::Draw() {
 	m_custom_object_manager->Draw();
 
 	// ステージ1のマップ描画
-	Lib::DrawBox2D(CUSTOM_STAGE1_MAP_TEX, 320, 580, 0.337f, 0.37f);
+	Lib::DrawBox2D(CUSTOM_STAGE1_MAP_TEX, 320, 580, 0.334f, 0.355f);
 }
 
