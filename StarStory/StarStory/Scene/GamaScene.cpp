@@ -39,7 +39,7 @@ void GameScene::Init() {
 	m_state_id = SS_UPDATE;
 
 	// BGM再生
-	SoundManager::GetInstanse().SoundPlayer(SoundManager::GAME_BGM, SoundManager::PLAY);
+	SoundManager::GetInstanse().SoundPlayer(GAME_BGM, SoundManager::PLAY);
 
 	ObjectManager& mng = ObjectManager::GetInstance();
 	UIManager & UImng = UIManager::GetInstance();
@@ -123,7 +123,7 @@ SceneID GameScene::End() {
 
 	//BGMの終了
 	//m_sound->Stop();
-	SoundManager::GetInstanse().SoundPlayer(SoundManager::GAME_BGM, SoundManager::STOP);
+	SoundManager::GetInstanse().SoundPlayer(GAME_BGM, SoundManager::STOP);
 
 	return m_scene_id;
 }

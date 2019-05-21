@@ -89,7 +89,6 @@ protected:
 	const char NORMAL_TEX[50] = "Resource/Player/player_1_normal.png";		// NORMAL
 	const char SPEED_TEX[50] = "Resource/Player/player_1_accel.png";		// SPEED
 	const char JUMP_TEX[50] = "Resource/Player/player_1_jump.png";			// JUMP
-	const char LIGHT_TEX[50] = "Resource/Player/player_1_light.png";		// LIGHT
 	const char STOP_TEX[50] = "Resource/Player/player_1_stop.png";			// STOP
 	/*----画像----*/
 

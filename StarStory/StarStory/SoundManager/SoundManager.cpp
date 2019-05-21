@@ -25,7 +25,7 @@ SoundManager &SoundManager::GetInstanse() {
 // サウンドファイルの読み込み
 void SoundManager::InitLoadResource() {
 
-	for (int i = 0; i < SoundManager::MAX_RESOURCE_NUM; ++i) {
+	for (int i = 0; i < MAX_RESOURCE_NUM; ++i) {
 
 		// リソースの登録
 		RegisterResource(m_resource_id);
@@ -37,12 +37,12 @@ void SoundManager::InitLoadResource() {
 		m_sound.push_back(new Lib::AudioPlayer());
 
 		// enum加算
-		m_resource_id = static_cast<ResourceID>(m_resource_id + 1);
+		m_resource_id = static_cast<SoundResourceID>(m_resource_id + 1);
 	}
 }
 
 // リソースの登録
-void SoundManager::RegisterResource(ResourceID id) {
+void SoundManager::RegisterResource(SoundResourceID id) {
 
 	switch (id) {
 
@@ -84,7 +84,7 @@ void SoundManager::RegisterResource(ResourceID id) {
 }
 
 // サウンドプレイヤー
-void SoundManager::SoundPlayer(ResourceID id, PlayerType type, int volume) {
+void SoundManager::SoundPlayer(SoundResourceID id, PlayerType type, int volume) {
 
 	// tyoeによって、処理を変える
 	switch (type) {

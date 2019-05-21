@@ -53,7 +53,7 @@ void ObjectManager::Register(
 	//情報を移す
 	skill    = data.m_skill;
 	tex_name = data.tex_name;
-	se_name  = data.se_name;
+	//se_name  = data.se_name;
 
 	file.close();
 

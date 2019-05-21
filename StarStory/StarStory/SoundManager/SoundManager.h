@@ -4,54 +4,47 @@
 
 #include"../Lib/Lib.h"
 
+// サウンドリソース一覧
+enum SoundResourceID {
+
+	//OP,
+	/*----Title----*/
+	TTITLE_BGM,
+	/*----Title----*/
+	/*----Serect----*/
+	/*----Serect----*/
+	/*----Custom----*/
+	/*----Custom----*/
+	/*----Game----*/
+	GAME_BGM,
+	STAR_ACCEL_SE,
+	STAR_JUMP_SE,
+	STAR_NORMAL_SE,
+	STAR_STOP_SE,
+	/*----Game----*/
+	/*----Result----*/
+	/*----Result----*/
+
+	MAX_RESOURCE_NUM
+};
+
+// サウンドマネージャー
 class SoundManager {
 
 public:
 
-	// サウンドリソース一覧
-	enum ResourceID {
-
-		//OP,
-		/*----Title----*/
-		TTITLE_BGM,
-		/*----Title----*/
-		/*----Serect----*/
-		/*----Serect----*/
-		/*----Custom----*/
-		/*----Custom----*/
-		/*----Game----*/
-		GAME_BGM,
-		STAR_ACCEL_SE,
-		STAR_JUMP_SE,
-		STAR_NORMAL_SE,
-		STAR_STOP_SE,
-		/*----Game----*/
-		/*----Result----*/
-		/*----Result----*/
-
-		MAX_RESOURCE_NUM
-	};
-
-	// 
+	// サウンドプレイヤーの種類
 	enum PlayerType {
 
-		PLAY,
-		LOOP_PLAY,
-		STOP
+		PLAY,			// 再生
+		LOOP_PLAY,		// ループ再生
+		STOP			// 停止
 	};
 
 public:
 
-	SoundManager();		// コンストラクタ
-	~SoundManager();	// デストラクタ
-
+	// インスタンス取得
 	static SoundManager &GetInstanse();
-
-	/*
-	// サウンドの再生
-	sound = new Lib::AudioPlayer();
-	sound->Play("Resource/Audio/BGM/title_bgm.wav");
-	*/
 
 	/*----初期化関数----*/
 	// サウンドファイルの読み込み
@@ -60,10 +53,14 @@ public:
 
 	/*----更新関数----*/
 	// サウンドプレイヤー
-	void SoundPlayer(ResourceID id, PlayerType type, int volume = 0);
+	void SoundPlayer(SoundResourceID id, PlayerType type, int volume = 0);
 	/*----更新関数----*/
 
 private:
+
+	SoundManager();		// コンストラクタ
+	~SoundManager();	// デストラクタ
+
 	/*----vector----*/
 	// リソース管理
 	std::vector<char*> m_resource_list;
@@ -80,12 +77,12 @@ private:
 
 	/*----関数----*/
 	// リソースの登録
-	void RegisterResource(ResourceID id);
+	void RegisterResource(SoundResourceID id);
 	/*----関数----*/
 
 	/*----enum----*/
 	// リソース一覧
-	ResourceID m_resource_id;
+	SoundResourceID m_resource_id;
 	/*----enum----*/
 };
 

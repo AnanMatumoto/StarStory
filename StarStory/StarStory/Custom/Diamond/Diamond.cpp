@@ -122,10 +122,6 @@ void Diamond::ChangeTex() {
 		m_tex = (char*)SPEED_TEX;
 		break;
 
-	case LIGHT:
-		m_tex = (char*)LIGHT_TEX;
-		break;
-
 	case STOP:
 		m_tex = (char*)STOP_TEX;
 		break;
@@ -147,31 +143,25 @@ Skill_Data Diamond::GetSkillDara() {
 
 	case JUMP:
 
-		skill_data = { m_skill,"Resource/Player/player_1_jump.png","Resource/Audio/SE/star_jump.wav" };
+		skill_data = { m_skill,STAR_JUMP_SE,"Resource/Player/player_1_jump.png" };
 
 		break;
 
 	case SPEED:
 
-		skill_data = { m_skill,"Resource/Player/player_1_accel.png","Resource/Audio/SE/star_accel.wav" };
-
-		break;
-
-	case LIGHT:
-
-		skill_data = { m_skill,"Resource/Player/player_1_light.png","Resource/Audio/SE/star_light.wav" };
+		skill_data = { m_skill,STAR_ACCEL_SE,"Resource/Player/player_1_accel.png" };
 
 		break;
 
 	case STOP:
 
-		skill_data = { m_skill,"Resource/Player/player_1_stop.png","Resource/Audio/SE/star_stop.wav" };
+		skill_data = { m_skill,STAR_STOP_SE,"Resource/Player/player_1_stop.png" };
 
 		break;
 
 	default:
 
-		skill_data = { m_skill,"Resource/Player/player_1_normal.png","Resource/Audio/SE/star_normal.wav" };
+		skill_data = { m_skill,STAR_NORMAL_SE,"Resource/Player/player_1_normal.png" };
 
 		break;
 	}

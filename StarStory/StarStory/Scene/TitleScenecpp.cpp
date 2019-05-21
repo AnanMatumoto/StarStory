@@ -31,7 +31,7 @@ void TitleScene::Init() {
 	sound->Play("Resource/Audio/BGM/title_bgm.wav");*/
 
 	// BGM再生
-	SoundManager::GetInstanse().SoundPlayer(SoundManager::TTITLE_BGM, SoundManager::PLAY);
+	SoundManager::GetInstanse().SoundPlayer(TTITLE_BGM, SoundManager::PLAY);
 }
 
 //-----------------------------
@@ -62,7 +62,7 @@ SceneID TitleScene::End() {
 	UIManager::GetInstance().AllDelete();
 
 	// BGM停止
-	SoundManager::GetInstanse().SoundPlayer(SoundManager::TTITLE_BGM, SoundManager::STOP);
+	SoundManager::GetInstanse().SoundPlayer(TTITLE_BGM, SoundManager::STOP);
 
 	if (has_end) {
 		SceneManager::GetInstance().SetQuit(true);
