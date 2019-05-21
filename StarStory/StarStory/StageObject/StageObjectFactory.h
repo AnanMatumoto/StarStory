@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Factory.h"
+#include "../SoundManager/SoundManager.h"
 #include <string>
 
 //===================================
@@ -28,7 +29,7 @@ public:
 		float x,
 		float y,
 		std::string tex_name = "none",
-		std::string se_name = "none",
+		SoundResourceID se_name = STAR_NORMAL_SE,
 		Skill skill = NORMAL,
 		float rotate = 0.f
 	)override;

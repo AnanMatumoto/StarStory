@@ -3,6 +3,7 @@
 #include "../../Skill.h"
 #include "../..//Lib/Lib.h"
 #include "../ObjectBase.h"
+#include "../../SoundManager/SoundManager.h"
 #include <vector>
 #include <string>
 
@@ -19,7 +20,7 @@ public:
 		float x,
 		float y,
 		std::string tex_name,
-		std::string se_name,
+		SoundResourceID se_name,
 		Skill skill,
 		float rot
 	);
@@ -66,8 +67,6 @@ private:
 	bool        is_hit;
 	int			m_one_flame;
 	std::vector<MapObject*> m_map_obj; //マップオブジェクトのリスト
-	std::string m_se_name;			   //効果音名
-	//Lib::AudioPlayer* m_sound;
-	
+	SoundResourceID m_se_id;
 };
 

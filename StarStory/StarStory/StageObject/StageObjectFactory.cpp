@@ -10,7 +10,7 @@ ObjectBase* StageObjectFactory::Create(
 	int id,
 	float x, float y,
 	std::string tex_name,
-	std::string se_name,
+	SoundResourceID se_name,
 	Skill skill,
 	float rot
 ) {

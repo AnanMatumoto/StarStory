@@ -10,7 +10,7 @@ StarChild::StarChild(
 	float x,
 	float y,
 	std::string tex_name,
-	std::string se_name,
+	SoundResourceID se_id,
 	Skill skill,
 	float rot
 ) :ObjectBase(x, y, rot){
@@ -24,7 +24,7 @@ StarChild::StarChild(
 	is_hit     = false;
 	m_skill    = skill;
 	m_obj      = nullptr;
-	m_se_name  = se_name;
+	m_se_id    = se_id;
 	//m_sound    = new Lib::AudioPlayer();
 	m_one_flame = 0;
 }
@@ -35,7 +35,7 @@ void StarChild::Update() {
 
 	HitToObject();
 	IsHit();
-	//PlaySE();
+	PlaySE();
 }
 
 //------------------------------------
@@ -164,12 +164,9 @@ float StarChild::DistanceToCeiling() {
 // SEˆ—
 void StarChild::PlaySE() {
 
-	//Lib::AudioClip& clip = Lib::AudioClip::GetInterface();
-	//clip.LoadWaveFile(m_se_name);
 
-	//if (m_one_flame == 1) {
-	//	m_sound->Play(m_se_name);
-	//	m_sound->SetVolume(-300);
-	//}
+	if (m_one_flame == 1) {
+		SoundManager::GetInstanse().SoundPlayer(m_se_id, SoundManager::PLAY);
+	}
 
 }

@@ -2,6 +2,7 @@
 
 #include "../Skill.h"
 #include "ObjectBase.h"
+#include "../SoundManager/SoundManager.h"
 #include <string>
 
 //================================
@@ -50,7 +51,7 @@ public:
 		float x,
 		float y,
 		std::string tex_name,
-		std::string se_name,
+		SoundResourceID se_name,
 		Skill skill,
 		float rotate
 	) {

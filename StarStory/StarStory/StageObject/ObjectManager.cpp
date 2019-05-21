@@ -3,6 +3,7 @@
 #include "../SkillData/Skill_Data.h"
 #include "StageObjectFactory.h"
 #include "../UI/UIObjectFactory.h"
+#include "../SoundManager/SoundManager.h"
 #include "../Lib/Lib.h"
 #include <vector>
 #include <fstream>
@@ -43,7 +44,7 @@ void ObjectManager::Register(
 	Skill_Data data;
 	Skill skill;
 	std::string tex_name;
-	std::string se_name;
+	SoundResourceID se_name;
 
 	//ファイルの読み取り
 	std::fstream file;
@@ -53,7 +54,7 @@ void ObjectManager::Register(
 	//情報を移す
 	skill    = data.m_skill;
 	tex_name = data.tex_name;
-	//se_name  = data.se_name;
+	se_name  = data.m_sound_resource;
 
 	file.close();
 
