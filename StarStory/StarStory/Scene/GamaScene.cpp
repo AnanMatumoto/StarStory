@@ -30,18 +30,13 @@
 #define RESULT_SELECT "Resource/Result/ui_result_select.png"
 #define RESULT_FLAME_R  "Resource/Result/ui_flame_262_63.png"
 #define RESULT_FLAME_L "Resource/Result/ui_flame_262_63.png"
+#define RESULT_CLEAR   "Resource/Result/GameClear .png"
+#define RESULT_FAILD  "Resource/Result/GameOver.png"
 
 //-------------------------------------------
 //　ゲームシーン初期化
 void GameScene::Init() {
 	m_state_id = SS_UPDATE;
-	//stage = new StageBase();
-	
-	/*Lib::AudioClip& clip = Lib::AudioClip::GetInterface();
-	clip.LoadWaveFile("Resource/Audio/BGM/game_main_bgm.wav");
-	m_sound = new Lib::AudioPlayer();
-	m_sound->Play("Resource/Audio/BGM/game_main_bgm.wav");
-	m_sound->SetVolume(-1000);*/
 
 	// BGM再生
 	SoundManager::GetInstanse().SoundPlayer(SoundManager::GAME_BGM, SoundManager::PLAY);
@@ -191,6 +186,7 @@ void GameScene::DrawResult() {
 	ui_mng.Register(BT_RS_FLAME_R, 750, 738, RESULT_FLAME_R);
 	ui_mng.Register(BT_RS_FLAME_L, 1108, 738, RESULT_FLAME_L);
 
+
 	Lib::DrawBoxAlpha(
 		"over_ray",
 		0, 0,
@@ -207,13 +203,23 @@ void GameScene::DrawResult() {
 
 		Lib::DrawBox2D(
 			GAME_FAILD,
-			300, 300
+			648, 300
+		);
+		Lib::DrawPx2D(
+			RESULT_FAILD,
+			600, 578,
+			700,200
 		);
 	}
 	else {
 		Lib::DrawBox2D(
 			GAME_CLEAR,
-			300, 300
+			648, 300
+		);
+		Lib::DrawBox2D(
+			RESULT_FAILD,
+			600, 578,
+			700, 200
 		);
 	}
 	ui_mng.Draw();

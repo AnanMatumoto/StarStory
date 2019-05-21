@@ -33,7 +33,9 @@ enum UIObjectID {
 	// リザルト
 	BT_RS_SELECT,		//ステージセレクトへ
 	BT_RS_CUSUTOM,		//カスタムへ
-	BT_RS_TITLEBACK,//タイトル画面へ
+	BT_RS_TITLEBACK,    //タイトル画面へ
+	BT_RS_CLEAR,
+	BT_RS_FAILD,
 	BT_RS_FLAME_R,
 	BT_RS_FLAME_L,
 	/*----UI----*/
