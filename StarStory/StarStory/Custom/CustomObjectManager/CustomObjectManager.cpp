@@ -4,11 +4,11 @@
 
 // コンストラクタ
 CustomObjectManager::CustomObjectManager()
-	: m_diamond_part(Diamond::TOP),
+	: m_diamond_part(Diamond::TOP_PART),
 	skill_table_tex_id(SkillTable::BASE1) {
 
 	// ひし形の生成
-	for (int i = 0; i < Diamond::MAX_DIAMOND_NUM; ++i) {
+	for (int i = 0; i < Diamond::MAX_DIAMOND_PART_NUM; ++i) {
 
 		m_diamond_base.push_back(new Diamond(m_diamond_part));
 

@@ -44,35 +44,35 @@ void Diamond::InitDiamondInfo(DiamondPart part) {
 	switch (part) {
 
 		// 上
-	case TOP:
+	case TOP_PART:
 		m_pos_x = TOP_POS_X;
 		m_pos_y = TOP_POS_Y;
 		m_angle = TOP_ANGLE;
 		break;
 
 		// 右上
-	case TOP_RIGHT:
+	case TOP_RIGHT_PART:
 		m_pos_x = TOP_RIGHT_POS_X;
 		m_pos_y = TOP_RIGHT_POS_Y;
 		m_angle = TOP_RIGHT_ANGLE;
 		break;
 
 		// 左上
-	case TOP_LEFT:
+	case TOP_LEFT_PART:
 		m_pos_x = TOP_LEFT_POS_X;
 		m_pos_y = TOP_LEFT_POS_Y;
 		m_angle = TOP_LEFT_ANGLE;
 		break;
 
 		// 右下
-	case BOTTOM_RIGHT:
+	case BOTTOM_RIGHT_PART:
 		m_pos_x = BOTTOM_RIGHT_POS_X;
 		m_pos_y = BOTTOM_RIGHT_POS_Y;
 		m_angle = BOTTOM_RIGHT_ANGLE;
 		break;
 
 		// 左下
-	case BOTTOM_LEFT:
+	case BOTTOM_LEFT_PART:
 		m_pos_x = BOTTOM_LEFT_POS_X;
 		m_pos_y = BOTTOM_LEFT_POS_Y;
 		m_angle = BOTTOM_LEFT_ANGLE;

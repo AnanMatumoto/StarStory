@@ -44,7 +44,7 @@ private:
 	/*--ひし形の各座標、角度--*/
 	// TOPの初期座標(x,y)と角度
 	const float TOP_POS_X = 632.f;
-	const float TOP_POS_Y = 280.f;
+	const float TOP_POS_Y = 275.f;
 	const float TOP_ANGLE = 0.f;
 
 	// TOP_RIGHTの初期座標(x,y)と角度
