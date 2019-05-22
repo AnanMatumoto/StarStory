@@ -27,7 +27,7 @@ StarObject::StarObject(
 	m_width      = 64;
 	m_height     = 64;
 	m_vel.x      = 0;
-	m_jump_power = -6.5f;
+	m_jump_power = -3.5f;
 	m_interval   = 60.f;
 	m_is_active  = false;
 	m_cur_child  = nullptr;
@@ -51,20 +51,19 @@ void StarObject::Update() {
 	float out_h = m_pos.y + m_height;
 	
 	if (out_h > WINDOW_H || out_w> WINDOW_W) {
+		
 		//画面外に入った場合はFAILDを通知
 		SceneManager::GetInstance().GetScene()->SetResult(FAILD);
 	}
 	else if(m_map_obj!= nullptr && m_map_obj->GetGoal()){
+		
 		//ゴール地点で移動終了、CLEARを通知
 		m_pos.x = m_map_obj->GetVertex(0).pos.x+m_width;
 		m_pos.y = m_cur_y;
-		/*AddForce(0, 0, 0);
-		RefPosition();*/
 		SceneManager::GetInstance().GetScene()->SetResult(CLEAR);
 	}
-	else {
+
 		AutomaticMove();
-	}
 }
 
 //------------------------------------
@@ -109,23 +108,38 @@ void StarObject::AutomaticMove() {
 	}
 
 	for (auto child : m_childs) {
-		
-		if (child->GetHit()) {
-			m_is_fall = false;
-			m_jump_power = -6.5f;
-			m_cur_y = m_pos.y;	 //スキル発動前のY座標を保存
-			m_cur_child	= child; //子オブジェクト取得
-			m_map_obj=(MapObject*)m_cur_child->GetMapObj(); //マップオブジェクト取得
 
-			if (m_map_obj->GetGoal()) {
-				return;
-			}
+		if (child->GetHit()) {
+
+			StarChild* hit_child;
+			hit_child = child;
+			m_map_obj = (MapObject*)child->GetMapObj();
+
+			ChangeHitChild(hit_child);
 		}
 	}
 
 	if (m_map_obj != nullptr&& m_cur_child != nullptr) {
 		CheckOutSideTheMapObject(m_map_obj, m_cur_child);
 	}
+}
+
+void StarObject::ChangeHitChild(StarChild* child) {
+
+	if (child!= m_cur_child) {
+		ResetParameter();
+		m_cur_child = child;
+	}
+
+
+}
+
+void StarObject::ResetParameter() {
+
+	m_is_fall = false;
+	m_jump_power = -3.5f;
+	m_interval = 60.f;
+	m_cur_y = m_pos.y;
 }
 
 //------------------------------------
@@ -141,17 +155,20 @@ void StarObject::CheckOutSideTheMapObject(
 		float left   = map->GetVertex(0).pos.x;
 		float right  = map->GetVertex(1).pos.x;
 		float height = map->GetVertex(0).pos.y;
-		float p      = hit_child->GetVertex(1).pos.x; //頂点
+		float point  = hit_child->GetVertex(1).pos.x; //頂点
 
-		if ( p > right || m_pos.y > height) {
+		if ( point > right || m_pos.y > height) {
 			//頂点がオブジェクトの外にいる場合
 			m_is_active = false;
+			if (m_cur_skill == JUMP) {
+				m_is_active = true;
+			}
 		
 		}
-		else if ( p > left && p < right) {
+		else if ( point > left && point < right) {
 			//頂点がオブジェクトの範囲内にいる場合
 			m_is_active = true;
-
+			
 			if (m_cur_skill != JUMP) {
 				//ジャンプ以外の場合はめり込みを修正する
 				m_pos.y += m_cur_child->DistanceToCeiling();
@@ -223,15 +240,10 @@ void StarObject::JumpMotion(){
 	float max_y = 0.f;
 	max_y = m_cur_y - JUMP_POINT;
 	
-	if (max_y < m_pos.y) {
+	if (max_y <= m_pos.y) {
 		//ジャンプ最高点に達するまで
-		AddForce(0.8f, m_jump_power,0.f);
+		AddForce(1.4f, m_jump_power,0.f);
 		RefPosition();
-		m_jump_power += 0.2f;
-
-		if (m_jump_power >= LOW_JUMP_POWER) {
-			m_jump_power =  LOW_JUMP_POWER;
-		}
 	}
 	else {
 		m_is_fall = true;
@@ -241,26 +253,14 @@ void StarObject::JumpMotion(){
 void StarObject::FallMotion() {
 		
 	m_jump_power += 0.2f;
-	AddForce(m_speed, m_jump_power);
+	AddForce(1.4f, m_jump_power);
 	RefPosition();
 }
 
 void StarObject::StopMotion() {
 
-	if (m_cur_child != nullptr) {
-		
-		if (m_cur_child->GetHit()) {
-			--m_interval;
-		}
-		else {
-			m_interval = 60.f;
-			AddForce(m_speed, 0, m_rot_speed);
-			RefPosition();
-		}
-	}
-
 	//頂点が当たっている間の処理
-	if (m_interval > 0) {
+	if (--m_interval > 0) {
 		AddForce(0, 0, 0);
 		RefPosition();
 	}

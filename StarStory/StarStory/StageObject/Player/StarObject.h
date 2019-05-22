@@ -54,6 +54,9 @@ private:
 	*/
 	void CauseToSkill(int skill_id);
 
+	void ChangeHitChild(StarChild* skill);
+
+	void ResetParameter();
 
 	//-----------------------------
 	//スキルモーション
