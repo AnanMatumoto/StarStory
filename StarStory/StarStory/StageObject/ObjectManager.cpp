@@ -3,7 +3,7 @@
 #include "../SkillData/Skill_Data.h"
 #include "StageObjectFactory.h"
 #include "../UI/UIObjectFactory.h"
-#include "../SoundManager/SoundManager.h"
+#include "../Sound/SoundManager/SoundManager.h"
 #include "../Lib/Lib.h"
 #include <vector>
 #include <fstream>

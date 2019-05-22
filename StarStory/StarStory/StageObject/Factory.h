@@ -2,7 +2,7 @@
 
 #include "../Skill.h"
 #include "ObjectBase.h"
-#include "../SoundManager/SoundManager.h"
+#include "../Sound/SoundManager/SoundManager.h"
 #include <string>
 
 //================================

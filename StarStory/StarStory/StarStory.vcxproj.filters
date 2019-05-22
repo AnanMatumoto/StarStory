@@ -19,7 +19,6 @@
     <ClCompile Include="Lib\Texture.cpp" />
     <ClCompile Include="Scene\TitleScenecpp.cpp" />
     <ClCompile Include="Custom\SkillTable\SkillTable.cpp" />
-    <ClCompile Include="SoundManager\SoundManager.cpp" />
     <ClCompile Include="StageObject\ObjectBase.cpp" />
     <ClCompile Include="StageObject\ObjectManager.cpp" />
     <ClCompile Include="StageObject\StageObjectFactory.cpp" />
@@ -29,6 +28,7 @@
     <ClCompile Include="StageObject\Player\StarObject.cpp" />
     <ClCompile Include="StageObject\Player\StarChild.cpp" />
     <ClCompile Include="StageObject\Map\MapObject.cpp" />
+    <ClCompile Include="Sound\SoundManager\SoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -49,7 +49,6 @@
     <ClInclude Include="Custom\SkillTable\SkillTable.h" />
     <ClInclude Include="SkillData\SkillData.h" />
     <ClInclude Include="SkillData\Skill_Data.h" />
-    <ClInclude Include="SoundManager\SoundManager.h" />
     <ClInclude Include="StageObject\Factory.h" />
     <ClInclude Include="StageObject\ObjectBase.h" />
     <ClInclude Include="StageObject\ObjectManager.h" />
@@ -61,5 +60,7 @@
     <ClInclude Include="StageObject\Player\StarObject.h" />
     <ClInclude Include="StageObject\Player\StarChild.h" />
     <ClInclude Include="StageObject\Map\MapObject.h" />
+    <ClInclude Include="Sound\SoundManager\SoundManager.h" />
+    <ClInclude Include="Sound\SoundState\SoundState.h" />
   </ItemGroup>
 </Project>

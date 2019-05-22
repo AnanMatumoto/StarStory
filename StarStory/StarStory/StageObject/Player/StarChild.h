@@ -3,7 +3,7 @@
 #include "../../Skill.h"
 #include "../..//Lib/Lib.h"
 #include "../ObjectBase.h"
-#include "../../SoundManager/SoundManager.h"
+#include "../../Sound/SoundManager/SoundManager.h"
 #include <vector>
 #include <string>
 

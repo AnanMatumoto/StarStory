@@ -2,7 +2,7 @@
 
 #include<vector>
 
-#include"../Lib/Lib.h"
+#include"../../Lib/Lib.h"
 
 // サウンドリソース一覧
 enum SoundResourceID {
@@ -22,8 +22,6 @@ enum SoundResourceID {
 	STAR_NORMAL_SE,
 	STAR_STOP_SE,
 	/*----Game----*/
-	/*----Result----*/
-	/*----Result----*/
 
 	MAX_RESOURCE_NUM
 };
@@ -38,6 +36,7 @@ public:
 
 		PLAY,			// 再生
 		LOOP_PLAY,		// ループ再生
+		PAURSE,			// 一時停止
 		STOP			// 停止
 	};
 

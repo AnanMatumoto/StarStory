@@ -3,7 +3,7 @@
 #include "../StageObject/ObjectManager.h"
 #include "../StageObject/Player/StarObject.h"
 #include "../UI/UIManager.h"
-#include "../SoundManager/SoundManager.h"
+#include "../Sound/SoundManager/SoundManager.h"
 
 #include "../SkillData/Skill_Data.h"
 #include <iostream>

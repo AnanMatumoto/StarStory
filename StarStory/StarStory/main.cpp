@@ -1,6 +1,6 @@
 ﻿#include "Lib/Lib.h"
 #include "Scene/SceneManager.h"
-#include "SoundManager/SoundManager.h"
+#include "Sound/SoundManager/SoundManager.h"
 #include <crtdbg.h>
 
 #define _CRTDBG_MAP_ALLOC

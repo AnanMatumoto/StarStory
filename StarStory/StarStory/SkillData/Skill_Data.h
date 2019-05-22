@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "../Skill.h"
-#include "../SoundManager/SoundManager.h"
+#include "../Sound/SoundManager/SoundManager.h"
 
 struct Skill_Data
 {

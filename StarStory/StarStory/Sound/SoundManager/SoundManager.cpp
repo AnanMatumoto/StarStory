@@ -10,9 +10,6 @@ SoundManager::SoundManager() : m_resource_id(TTITLE_BGM) {
 // デストラクタ
 SoundManager::~SoundManager() {
 
-	for (auto x : m_sound) {
-		delete x;
-	}
 }
 
 // インスタンス取得
@@ -97,6 +94,10 @@ void SoundManager::SoundPlayer(SoundResourceID id, PlayerType type, int volume) 
 	case LOOP_PLAY:
 		m_sound[id]->LoopOnPlay(m_resource_list[id]);
 		m_sound[id]->SetVolume(volume);
+		break;
+
+	case PAURSE:
+
 		break;
 
 	case STOP:

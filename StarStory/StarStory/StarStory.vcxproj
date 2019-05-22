@@ -199,7 +199,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SoundManager\SoundManager.cpp">
+    <ClCompile Include="Sound\SoundManager\SoundManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -307,7 +307,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SoundManager\SoundManager.h">
+    <ClInclude Include="Sound\SoundState\SoundState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sound\SoundManager\SoundManager.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -2,7 +2,7 @@
 #include "SceneManager.h"
 #include "../StageObject/ObjectManager.h"
 #include "../UI/UIManager.h"
-#include "../SoundManager/SoundManager.h"
+#include "../Sound/SoundManager/SoundManager.h"
 
 #define TITLE_BACK "Resource/Title/ui_title_base.png"
 #define TITLE_START "Resource/Title/ui_title_start.png"
