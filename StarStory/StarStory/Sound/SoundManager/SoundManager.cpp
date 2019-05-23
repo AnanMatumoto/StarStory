@@ -96,7 +96,7 @@ void SoundManager::SoundPlayer(SoundResourceID id, PlayerType type, int volume) 
 		m_sound[id]->SetVolume(volume);
 		break;
 
-	case PAURSE:
+	case PAUSE:
 
 		break;
 

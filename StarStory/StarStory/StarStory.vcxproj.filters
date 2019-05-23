@@ -62,5 +62,8 @@
     <ClInclude Include="StageObject\Map\MapObject.h" />
     <ClInclude Include="Sound\SoundManager\SoundManager.h" />
     <ClInclude Include="Sound\SoundState\SoundState.h" />
+    <ClInclude Include="Sound\SoundState\SoundPlay.h" />
+    <ClInclude Include="Sound\SoundState\SoundStop.h" />
+    <ClInclude Include="Sound\SoundState\SoundPause.h" />
   </ItemGroup>
 </Project>

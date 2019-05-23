@@ -18,8 +18,8 @@ void TitleScene::Init() {
 
 	//UIの登録
 	UIManager& mng = UIManager::GetInstance();
-	mng.Register(BT_TT_START, 1000, 800, TITLE_START);
-	mng.Register(BT_TT_END,    300, 800, TITLE_END);
+	mng.Register(BT_TT_START, 347, 818, TITLE_START);
+	mng.Register(BT_TT_END,    1120, 844, TITLE_END);
 
 	HWND hwnd = Lib::hWnd;
 

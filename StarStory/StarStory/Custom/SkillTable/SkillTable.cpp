@@ -77,6 +77,8 @@ void SkillTable::Update() {
 void SkillTable::Draw() {
 
 	Lib::DrawBox2D(m_tex, m_pos.x, m_pos.y);
+	
+	Lib::DrawBox2D(NUM1_TEX, NUM_POS.x,NUM_POS.y,1.0f,1.0f,0.f, 0xff00ff00);
 }
 
 /*----初期化関数----*/
@@ -132,13 +134,13 @@ void SkillTable::InitTexID(TexID tex_id) {
 		m_pos.y += SHIFT_VALUE * 4;
 
 		break;
-
+			
 	case CUSTOM_NUM1:
-
+/*
 		m_tex = NUM1_TEX;
 
 		m_pos = NUM_POS;
-
+*/
 		break;
 
 	case CUSTOM_NUM2:

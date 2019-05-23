@@ -26,6 +26,15 @@ enum SoundResourceID {
 	MAX_RESOURCE_NUM
 };
 
+/*	[現状の使い方]
+	
+	1, SoundResourceIDにIDを追加する
+
+	2, RegisterResourceの中にリソースを追加していく
+
+	3, SoundPlayer(リソースID,プレイヤーの種類,ボリューム);
+*/
+
 // サウンドマネージャー
 class SoundManager {
 
@@ -36,7 +45,7 @@ public:
 
 		PLAY,			// 再生
 		LOOP_PLAY,		// ループ再生
-		PAURSE,			// 一時停止
+		PAUSE,			// 一時停止
 		STOP			// 停止
 	};
 

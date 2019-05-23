@@ -307,11 +307,23 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Sound\SoundState\SoundPause.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sound\SoundState\SoundPlay.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Sound\SoundState\SoundState.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="Sound\SoundManager\SoundManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sound\SoundState\SoundStop.h">
       <SubType>
       </SubType>
     </ClInclude>
