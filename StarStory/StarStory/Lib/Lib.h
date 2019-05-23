@@ -409,7 +409,7 @@ namespace Lib {
 
 	//αブレンドの設定（※外部での使用はできない）
 	void SetAlphaBlend();
-
+	void SetColorBlend();
 
 	//====================================
 	// サウンド関連
