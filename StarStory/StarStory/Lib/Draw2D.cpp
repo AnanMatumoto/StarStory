@@ -60,13 +60,11 @@ namespace Lib {
 			{{x2, y2, depth,1.f}, color, {1.f,1.f}},
 			{{x1, y2, depth,1.f} ,color,  {0.f,1.f}}
 		};
-
-
 		dev->SetTexture(0, tex);
 		dev->SetFVF(VERTEX_FVF);
 		SetAlphaBlend();
+		SetColorBlend();
 		dev->DrawPrimitiveUP(D3DPT_TRIANGLEFAN, 2, vtx, sizeof(Vertex));
-
 	}
 
 
@@ -375,6 +373,22 @@ namespace Lib {
 		dev->SetRenderState(
 			D3DRS_DESTBLEND,
 			D3DBLEND_INVSRCALPHA);
+	}
+
+	void SetColorBlend() {
+
+		dev->SetTextureStageState(
+			0, D3DTSS_COLOROP,
+			D3DTOP_MODULATE
+		);
+		dev->SetTextureStageState(
+			0, D3DTSS_COLORARG1,
+			D3DTA_TEXTURE
+		);
+		dev->SetTextureStageState(
+			0, D3DTSS_COLORARG2,
+			D3DTA_DIFFUSE
+		);
 	}
 }
 
