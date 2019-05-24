@@ -13,7 +13,7 @@
 #define TEX_OBJ_128  "Resource/Game/object_128x128.png"
 #define TEX_OBJ_64   "Resource/Game/object_64x64.png"
 
-#define GAME_STAGE  "Resource/Game/stage1_background_1-1.png"
+#define GAME_STAGE  "Resource/Game/stage1_background_1-1(3).png"
 #define GAME_UI_WND  "Resource/Game/ui_stage_base.png"
 #define GAME_UI_FLAME "Resource/Game/ui_flame_557_102.png"
 #define GAME_CUSTOM "Resource/Game/ui_stage_custom.png"
@@ -62,8 +62,8 @@ void GameScene::Init() {
 	mng.Register(STAR_CHILD5, "./Resource/skill_data.05.dat",-30, -10, 288);
 
 	//UIの登録
-	UImng.Register(BT_GM_WIND, 60, 51, GAME_UI_WND);
-	UImng.Register(BT_GM_FRAME, 5, 0, GAME_UI_FLAME);
+	/*UImng.Register(BT_GM_WIND, 60, 51, GAME_UI_WND);
+	UImng.Register(BT_GM_FRAME, 5, 0, GAME_UI_FLAME);*/
 	UImng.Register(BT_GM_TOCUSTOM, 89,67,GAME_CUSTOM);
 	UImng.Register(BT_GM_STOP, 525, 65, GAME_STOP );
 	UImng.Register(BT_GM_ONOFF, 292, 67,GAME_OFF );
@@ -122,7 +122,6 @@ SceneID GameScene::End() {
 
 
 	//BGMの終了
-	//m_sound->Stop();
 	SoundManager::GetInstanse().SoundPlayer(GAME_BGM, SoundManager::STOP);
 
 	return m_scene_id;
@@ -164,6 +163,9 @@ void GameScene::Draw() {
 		1.f
 	);
 	
+	Lib::DrawBox2D(GAME_UI_WND, 60, 51);
+	Lib::DrawBox2D(GAME_UI_FLAME, 5, 0);
+
 	// ステージオブジェクト描画
 	ObjectManager::GetInstance().Draw();
 	UIManager::GetInstance().Draw();
@@ -183,9 +185,8 @@ void GameScene::DrawResult() {
 	UIManager& ui_mng = UIManager::GetInstance();
 	ui_mng.Register(BT_RS_CUSUTOM, 788, 780, RESULT_CUSTOM);
 	ui_mng.Register(BT_RS_SELECT, 1148, 780, RESULT_SELECT);
-	ui_mng.Register(BT_RS_FLAME_R, 750, 738, RESULT_FLAME_R);
-	ui_mng.Register(BT_RS_FLAME_L, 1108, 738, RESULT_FLAME_L);
-
+	/*ui_mng.Register(BT_RS_FLAME_R, 750, 738, RESULT_FLAME_R);
+	ui_mng.Register(BT_RS_FLAME_L, 1108, 738, RESULT_FLAME_L);*/
 
 	Lib::DrawBoxAlpha(
 		"over_ray",
@@ -198,6 +199,9 @@ void GameScene::DrawResult() {
 		RESULT_BACKIMG,
 		463, 193
 	);
+
+	Lib::DrawBox2D(RESULT_FLAME_R, 750, 738);
+	Lib::DrawBox2D(RESULT_FLAME_L, 1108, 738);
 
 	if (m_result == FAILD) {
 
@@ -229,5 +233,4 @@ void GameScene::DrawResult() {
 // デストラクタ
 GameScene::~GameScene() {
 
-	/*delete m_sound;*/
 }

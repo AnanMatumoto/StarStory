@@ -34,10 +34,12 @@ private:
 
 private:
 
-	Vec2  m_mouse;			// マウス座標保存用変数
+	Vec2  m_mouse;				// マウス座標保存用変数
+	Vec2  m_on_mouse;			// マウス座標保存用変数
 	bool  m_was_click;		    // クリック状態を保存するフラグ
+	bool  m_was_on_drag;		// マウスの位置保存用
 	int   m_click_count;		// クリック回数保存変数
-	std::string m_tex_name;	// テクスチャ画像名
+	std::string m_tex_name;		// テクスチャ画像名
 	D3DXCOLOR m_color;
 };
 

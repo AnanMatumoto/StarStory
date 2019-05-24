@@ -51,6 +51,15 @@ void ButtonUI::Update() {
 		return true;
 	}
 	return false;
+	if (m_was_on_drag == true) {
+		++m_click_count;
+
+		if (m_click_count >= 2) {
+			m_click_count = 0;
+		}
+		return true;
+	}
+	return false;
 }
 
  //------------------------------
@@ -62,6 +71,7 @@ void ButtonUI::Update() {
 //当たったかどうかの判定
 void ButtonUI::IsHitToMouse() {
 
+	// クリック処理
 	m_mouse = Lib::GetMousePoint();
 	
 	m_was_click = Collision::IsInSquare(
@@ -70,8 +80,19 @@ void ButtonUI::IsHitToMouse() {
 		m_mouse
 	);
 
-	if (m_was_click == true) {
+	// カーソルが乗っているのか
+	m_on_mouse = Lib::GetPointOnDrag();
+
+	m_was_on_drag = Collision::IsInSquare(
+		m_pos,
+		m_width, m_height,
+		m_on_mouse
+	);
+
+	if (m_was_on_drag == true) {
 		m_color = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
 	}
-
+	else {
+		m_color = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
+	}
 }

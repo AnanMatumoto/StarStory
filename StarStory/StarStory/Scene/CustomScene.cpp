@@ -101,7 +101,7 @@ SceneID CustomScene::Control() {
 void CustomScene::Draw() {
 
 	// 背景
-	Lib::DrawBox2D(CUSTOM_BASE_TEX, 0, 0);
+	Lib::DrawBox2D(CUSTOM_BASE_TEX,0,0);
 
 	// UI描画
 	UIManager::GetInstance().Draw();
