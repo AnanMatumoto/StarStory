@@ -30,9 +30,6 @@ ObjectBase* UIObjectFactory::Create(
 		break;
 
 	/*--CustomScene--*/
-	case CT_BASE:								// 背景
-		return new ButtonUI(x, y, tex_name);
-			break;
 	case BT_CT_DECISION:						// 決定ボタン
 		return new ButtonUI(x, y, tex_name);
 		break;

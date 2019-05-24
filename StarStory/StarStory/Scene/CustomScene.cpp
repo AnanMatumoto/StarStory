@@ -18,10 +18,8 @@ void CustomScene::Init() {
 	UIManager & UImng = UIManager::GetInstance();
 
 	// UI生成
-	UImng.Register(CT_BASE, 0, 0, CUSTOM_BASE_TEX);						// 背景
 	UImng.Register(BT_CT_TOSELECT, 1015, 792, CUSTOM_SERECT_TEX);		// 決定ボタン
 	UImng.Register(BT_CT_DECISION, 1309, 876, CUSTOM_DECISION_TEX);		// セレクト画面へ戻るボタン
-	//UImng.Register(CT_STAGE1_MAP, 320, 580, CUSTOM_STAGE1_MAP);		// ステージ1のマップ
 
 	// カスタムオブジェクト生成
 	m_custom_object_manager = new CustomObjectManager();
@@ -68,8 +66,6 @@ SceneID CustomScene::End() {
 	// UIをリストから削除
 	UIManager::GetInstance().Delete(BT_CT_TOSELECT);	// セレクト画面へ戻るボタン
 	UIManager::GetInstance().Delete(BT_CT_DECISION);	// 決定ボタン
-	UIManager::GetInstance().Delete(CT_BASE);			// 背景
-	//UIManager::GetInstance().Delete(CT_STAGE1_MAP);	// ステージ1のマップ
 
 	// カスタムオブジェクト削除
 	delete m_custom_object_manager;
@@ -103,6 +99,9 @@ SceneID CustomScene::Control() {
 //----------------------------
 //　カスタムシーン描画
 void CustomScene::Draw() {
+
+	// 背景
+	Lib::DrawBox2D(CUSTOM_BASE_TEX, 0, 0);
 
 	// UI描画
 	UIManager::GetInstance().Draw();

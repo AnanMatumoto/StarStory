@@ -18,7 +18,6 @@ enum UIObjectID {
 	BT_SL_BACK,
 
 	/*----カスタム----*/
-	CT_BASE,				// 背景
 	BT_CT_TOSELECT,			// セレクトへ戻るボタン
 	BT_CT_DECISION,			// 決定ボタン
 	/*----カスタム----*/
