@@ -10,7 +10,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-
 	Lib::Init(1920, 1080, "StarStory");
 	SceneManager::GetInstance().Init();
 
@@ -23,18 +22,20 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		//　描画開始
 		Lib::DrawBegin(0xe0e0ff);
 		
-		
 		SceneManager::GetInstance().Update();
 		if (SceneManager::GetInstance().IsQuitWindow()) {
 			return WM_QUIT;
 		}
 
+		// マウスカーソル画像描画
+		/*Vec2 mourse = Lib::GetPointOnDrag();
+		Lib::DrawBox2D("Resource/Game/ui_stage_x1.png", mourse.x, mourse.y);*/
 
 		//　描画終了
 		Lib::DrawEnd();
-
 	}
 	Lib::AppEnd();
 
 	return 0;
 }
+

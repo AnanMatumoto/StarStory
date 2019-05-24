@@ -57,6 +57,11 @@ namespace Lib {
 			is_click = false;
 			break;
 
+			// マウスカーソル(表示or非表示)
+		case WM_CREATE:
+			ShowCursor(TRUE);
+			break;
+
 		case WM_RBUTTONUP:
 		case WM_MBUTTONUP:
 		case WM_MOUSEMOVE:
