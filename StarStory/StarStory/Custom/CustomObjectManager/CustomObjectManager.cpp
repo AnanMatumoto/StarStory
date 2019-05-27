@@ -7,6 +7,7 @@ CustomObjectManager::CustomObjectManager()
 	: m_diamond_part(Diamond::TOP_PART),
 	skill_table_tex_id(SkillTable::BASE1) {
 
+	// ひし形生成
 	m_diamond_base.push_back(new Diamond(Diamond::TOP_PART, "./Resource/skill_data_01.dat"));
 	m_diamond_base.push_back(new Diamond(Diamond::TOP_RIGHT_PART, "./Resource/skill_data.02.dat"));
 	m_diamond_base.push_back(new Diamond(Diamond::BOTTOM_RIGHT_PART, "./Resource/skill_data.03.dat"));
@@ -20,6 +21,8 @@ CustomObjectManager::CustomObjectManager()
 
 		skill_table_tex_id = static_cast<SkillTable::TexID>(skill_table_tex_id + 1);
 	}
+
+	m_skill_table[SkillTable::NORMAL_SKILL]->SetActiveSkill(true);
 }
 
 // デストラクタ
@@ -65,29 +68,65 @@ CustomObjectManager::~CustomObjectManager() {
 // 更新
 void CustomObjectManager::Update() {
 
-	// ひし形の生成
+	// ひし形の更新
 	for (auto x : m_diamond_base) {
 		
 		x->Update();
 	}
 
-	// スキルベースの生成
+	// スキルテーブルの更新
 	for (auto x : m_skill_table) {
 
 		x->Update();
+	}
+
+	if (m_skill_table[SkillTable::NORMAL_SKILL]->GetActiveSkill() == true) {
+
+		m_skill_table[SkillTable::CUSTOM_NUM1]->SetColor(Lib::CreateColor(1.f, 1.f, 1.f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM2]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM3]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM4]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::NORMAL_SKILL]->SetActiveSkill(false);
+	}
+
+	if (m_skill_table[SkillTable::ACCEL_SKILL]->GetActiveSkill() == true) {
+
+		m_skill_table[SkillTable::CUSTOM_NUM2]->SetColor(Lib::CreateColor(1.f, 1.f, 1.f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM1]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM3]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM4]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::ACCEL_SKILL]->SetActiveSkill(false);
+	}
+
+	if (m_skill_table[SkillTable::JUMP_SKILL]->GetActiveSkill() == true) {
+
+		m_skill_table[SkillTable::CUSTOM_NUM3]->SetColor(Lib::CreateColor(1.f, 1.f, 1.f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM1]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM2]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM4]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::JUMP_SKILL]->SetActiveSkill(false);
+	}
+
+	if (m_skill_table[SkillTable::STOP_SKILL]->GetActiveSkill() == true) {
+
+		m_skill_table[SkillTable::CUSTOM_NUM4]->SetColor(Lib::CreateColor(1.f, 1.f, 1.f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM1]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM2]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::CUSTOM_NUM3]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+		m_skill_table[SkillTable::STOP_SKILL]->SetActiveSkill(false);
 	}
 }
 
 // 描画
 void CustomObjectManager::Draw() {
 
-	// ひし形の生成
+	// ひし形の描画
 	for (auto x : m_diamond_base) {
 
 		x->Draw();
 	}
 
-	// スキルの生成
+	// スキルテーブルの描画
 	for (auto x : m_skill_table) {
 
 		x->Draw();

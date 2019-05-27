@@ -104,7 +104,7 @@ protected:
 	char* m_tex;		// ひし形の描画用変数
 
 	Skill_Data m_skill_data;	// スキルデータ読み込み用インスタンス
-	std::fstream m_file;		// 
+	std::fstream m_file;		// バイナリファイル読み込み用
 	/*----変数----*/
 
 	/*----enum----*/

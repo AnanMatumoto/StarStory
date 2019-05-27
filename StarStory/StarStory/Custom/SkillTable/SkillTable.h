@@ -30,7 +30,7 @@ public:
 		/*----スキル横の数字----*/
 
 		NORMAL_SKILL,	// ノーマルスキル
-		ACCEL_SKIL,		// 加速スキル
+		ACCEL_SKILL,	// 加速スキル
 		JUMP_SKILL,		// ジャンプスキル
 		STOP_SKILL,		// 停止スキル
 
@@ -56,20 +56,28 @@ public:
 	void Update();	// 更新
 	void Draw();	// 描画
 
+	// セッター
+	void SetColor(D3DXCOLOR color);
+	void SetActiveSkill(bool is_active_skill);
+
+	// ゲッター
+	bool GetActiveSkill();
+
 private:
 	/*----変数----*/
 	Vec2 m_pos;				// 描画用座標
 	Lib::Texture m_tex;		// 描画画像用
-	D3DXCOLOR m_color;
+	D3DXCOLOR m_color;		// 透明度変更用
+	bool m_is_active_skill;	// スキルをクリックしているかどうか
 	/*----変数----*/
 
 	/*----関数----*/
-	void InitTexID(TexID tex_id);
+	void InitTexID(TexID tex_id);	// テクスチャIDの初期化
 	/*----関数----*/
 
 	/*----enum----*/
-	Skill m_skill;						// スキルID保管用
-	TexID m_tex_id;						// スキル表の画像ID保管用
+	Skill m_skill;		// スキルID保管用
+	TexID m_tex_id;		// スキル表の画像ID保管用
 	/*----enum----*/
 };
 

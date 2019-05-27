@@ -30,7 +30,7 @@ private:
 	// 各ひし形の座標(中心のx,y)と角度を初期化
 	void InitDiamondInfo(DiamondPart part);
 
-	// スキルIDの
+	// スキルIDをバイナリファイルから読み込む
 	void InitSkillID(std::string data_file);
 	/*----初期化関数----*/
 

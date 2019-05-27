@@ -98,7 +98,7 @@ void Diamond::InitVertexPos() {
 	m_vertex_pos[LEFT_VERTEX] = { m_pos_x - m_half_size_w,m_pos_y };
 }
 
-// 
+// スキルデータをバイナリファイルから読み込む
 void Diamond::InitSkillID(std::string data_file) {
 
 	m_file.open(data_file, std::ios::binary | std::ios::in);

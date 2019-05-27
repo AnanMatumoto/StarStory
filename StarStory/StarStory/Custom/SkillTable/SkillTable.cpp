@@ -36,7 +36,9 @@ namespace SKILL_TABLE {
 using namespace SKILL_TABLE;
 
 // コンストラクタ
-SkillTable::SkillTable(TexID tex_id){
+SkillTable::SkillTable(TexID tex_id):
+	m_color(Lib::CreateColor(1.f, 1.f, 1.f, 0.f)),
+	m_is_active_skill(false){
 
 	// スキルID識別
 	InitTexID(tex_id);
@@ -52,10 +54,10 @@ SkillTable::~SkillTable() {
 void SkillTable::Update() {
 
 	// スキルのテクスチャの時に当たり判定を取る
-	if (m_tex_id 
-		== NORMAL_SKILL 
-		|| ACCEL_SKIL 
-		|| JUMP_SKILL 
+	if (m_tex_id
+		== NORMAL_SKILL
+		|| ACCEL_SKILL
+		|| JUMP_SKILL
 		|| STOP_SKILL) {
 
 		// マウス座標の取得
@@ -69,9 +71,9 @@ void SkillTable::Update() {
 			// スキルをセット
 			Skill_ID &skill_id = Skill_ID::GetInstance();
 			skill_id.SetSkillID(m_skill);
+
+			m_is_active_skill = true;
 		}
-
-
 	}
 }
 
@@ -81,11 +83,23 @@ void SkillTable::Draw() {
 	Lib::DrawBox2D(m_tex, m_pos.x, m_pos.y, m_color);
 }
 
+// セッター
+void SkillTable::SetColor(D3DXCOLOR color) {
+	m_color = color;
+}
+
+void SkillTable::SetActiveSkill(bool is_active_skill) {
+	m_is_active_skill = is_active_skill;
+}
+
+// ゲッター
+bool SkillTable::GetActiveSkill() {
+	return m_is_active_skill;
+}
+
 /*----初期化関数----*/
 // スキル表の画像ID
 void SkillTable::InitTexID(TexID tex_id) {
-
-	m_color = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
 
 	switch (tex_id) {
 
@@ -175,16 +189,6 @@ void SkillTable::InitTexID(TexID tex_id) {
 
 		break;
 
-	case CUSTOM_NUM5:
-
-		m_tex = NUM5_TEX;
-
-		m_pos = NUM_POS;
-
-		m_pos.y += SHIFT_VALUE * 4;
-
-		break;
-
 	case NORMAL_SKILL:
 
 		m_tex = NORAML_SKILL_TEX;
@@ -195,7 +199,7 @@ void SkillTable::InitTexID(TexID tex_id) {
 
 		break;
 
-	case ACCEL_SKIL:
+	case ACCEL_SKILL:
 
 		m_tex = ACCEL_SKILL_TEX;
 
