@@ -5,6 +5,8 @@
 #include"../../Skill.h"
 #include "../../SkillData/Skill_Data.h"
 
+#include<fstream>
+
 // ひし形基底クラス
 class DiamondBase {
 
@@ -38,7 +40,8 @@ public:
 	// コンストラクタ
 	DiamondBase() :
 		// スキルの種類初期化(最初はすべて、NORMALで描画)
-		m_skill(NORMAL) {
+		m_skill(NORMAL),
+		m_file("none"){
 
 		// サイズ初期化
 		m_size_w = DIAMOND_W;
@@ -98,7 +101,10 @@ protected:
 
 	Vec2 m_vertex_pos[MAX_DIAMOND_VERTEX_NUM];		// ひし形の頂点情報
 
-	char* m_tex;						// ひし形の描画用変数
+	char* m_tex;		// ひし形の描画用変数
+
+	Skill_Data m_skill_data;	// スキルデータ読み込み用インスタンス
+	std::fstream m_file;		// 
 	/*----変数----*/
 
 	/*----enum----*/

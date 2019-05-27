@@ -77,6 +77,30 @@ bool SceneManager::IsQuitWindow() {
 //　デストラクタ
 SceneManager::~SceneManager() {
 
+	std::fstream file[5];
+
+	Skill_Data skill_data{ Skill::NORMAL,SoundResourceID::STAR_NORMAL_SE,"Resource/Player/player_1_normal.png" };
+
+	file[0].open("./Resource/skill_data_01.dat", std::ios::binary | std::ios::out);
+	file[0].write((char*)&skill_data, sizeof(Skill_Data));
+	file[0].close();
+
+	file[1].open("./Resource/skill_data.02.dat", std::ios::binary | std::ios::out);
+	file[1].write((char*)&skill_data, sizeof(Skill_Data));
+	file[1].close();
+
+	file[2].open("./Resource/skill_data.03.dat", std::ios::binary | std::ios::out);
+	file[2].write((char*)&skill_data, sizeof(Skill_Data));
+	file[2].close();
+
+	file[3].open("./Resource/skill_data.04.dat", std::ios::binary | std::ios::out);
+	file[3].write((char*)&skill_data, sizeof(Skill_Data));
+	file[3].close();
+
+	file[4].open("./Resource/skill_data.05.dat", std::ios::binary | std::ios::out);
+	file[4].write((char*)&skill_data, sizeof(Skill_Data));
+	file[4].close();
+
 	//リスト内の破棄
 	for (auto & it : scene_list) {
 		delete it.second;

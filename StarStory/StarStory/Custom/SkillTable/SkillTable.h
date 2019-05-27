@@ -60,6 +60,7 @@ private:
 	/*----変数----*/
 	Vec2 m_pos;				// 描画用座標
 	Lib::Texture m_tex;		// 描画画像用
+	D3DXCOLOR m_color;
 	/*----変数----*/
 
 	/*----関数----*/

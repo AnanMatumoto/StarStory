@@ -7,13 +7,11 @@ CustomObjectManager::CustomObjectManager()
 	: m_diamond_part(Diamond::TOP_PART),
 	skill_table_tex_id(SkillTable::BASE1) {
 
-	// ひし形の生成
-	for (int i = 0; i < Diamond::MAX_DIAMOND_PART_NUM; ++i) {
-
-		m_diamond_base.push_back(new Diamond(m_diamond_part));
-
-		m_diamond_part = static_cast<Diamond::DiamondPart>(m_diamond_part + 1);
-	}
+	m_diamond_base.push_back(new Diamond(Diamond::TOP_PART, "./Resource/skill_data_01.dat"));
+	m_diamond_base.push_back(new Diamond(Diamond::TOP_RIGHT_PART, "./Resource/skill_data.02.dat"));
+	m_diamond_base.push_back(new Diamond(Diamond::BOTTOM_RIGHT_PART, "./Resource/skill_data.03.dat"));
+	m_diamond_base.push_back(new Diamond(Diamond::BOTTOM_LEFT_PART, "./Resource/skill_data.04.dat"));
+	m_diamond_base.push_back(new Diamond(Diamond::TOP_LEFT_PART, "./Resource/skill_data.05.dat"));
 
 	// スキルテーブルの生成
 	for (int i = 0; i < SkillTable::MAX_TEX_NUM; ++i) {

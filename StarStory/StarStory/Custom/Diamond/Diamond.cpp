@@ -2,13 +2,15 @@
 #include"../../Lib/Lib.h"
 
 // コンストラクタ
-Diamond::Diamond(DiamondPart part) {
+Diamond::Diamond(DiamondPart part, std::string data_file) {
 
 	// ひし形の座標、角度を入れる
 	InitDiamondInfo(part);
 
 	// ひし形の頂点座標を入れる
 	InitVertexPos();
+
+	InitSkillID(data_file);
 }
 
 // デストラクタ
@@ -95,6 +97,19 @@ void Diamond::InitVertexPos() {
 	m_vertex_pos[BOTTOM_VERTEX] = { m_pos_x,m_pos_y + m_half_size_h };
 	m_vertex_pos[LEFT_VERTEX] = { m_pos_x - m_half_size_w,m_pos_y };
 }
+
+// 
+void Diamond::InitSkillID(std::string data_file) {
+
+	m_file.open(data_file, std::ios::binary | std::ios::in);
+	m_file.read((char*)&m_skill_data, sizeof(Skill_Data));
+
+	m_skill = m_skill_data.m_skill;
+
+	m_file.close();
+
+}
+/*----初期化関数----*/
 
 /*----更新用関数----*/
 // マウスにクリックされたときの当たり判定

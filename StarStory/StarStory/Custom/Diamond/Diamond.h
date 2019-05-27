@@ -7,7 +7,7 @@ class Diamond :public DiamondBase {
 
 public:
 	// コンストラクタ
-	Diamond(DiamondPart part);
+	Diamond(DiamondPart part, std::string data_file);
 
 	// デストラクタ
 	~Diamond()override;
@@ -29,6 +29,9 @@ private:
 
 	// 各ひし形の座標(中心のx,y)と角度を初期化
 	void InitDiamondInfo(DiamondPart part);
+
+	// スキルIDの
+	void InitSkillID(std::string data_file);
 	/*----初期化関数----*/
 
 	/*----更新用関数----*/

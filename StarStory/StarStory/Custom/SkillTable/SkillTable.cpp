@@ -70,24 +70,22 @@ void SkillTable::Update() {
 			Skill_ID &skill_id = Skill_ID::GetInstance();
 			skill_id.SetSkillID(m_skill);
 		}
+
+
 	}
 }
 
 // 描画
 void SkillTable::Draw() {
 
-	Lib::DrawBox2D(m_tex, m_pos.x, m_pos.y);
-	
-	Lib::DrawBox2D(NUM1_TEX, NUM_POS.x,NUM_POS.y,1.0f,1.0f,0.f, Lib::CreateColor(1.f, 1.f, 1.f, 0.f));
-	Lib::DrawBox2D(NUM2_TEX, NUM_POS.x,NUM_POS.y + SHIFT_VALUE,1.0f,1.0f,0.f, Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-	Lib::DrawBox2D(NUM3_TEX, NUM_POS.x,NUM_POS.y + SHIFT_VALUE*2,1.0f,1.0f,0.f, Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-	Lib::DrawBox2D(NUM4_TEX, NUM_POS.x,NUM_POS.y + SHIFT_VALUE*3,1.0f,1.0f,0.f, Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-	Lib::DrawBox2D(NUM5_TEX, NUM_POS.x,NUM_POS.y + SHIFT_VALUE*4,1.0f,1.0f,0.f, Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
+	Lib::DrawBox2D(m_tex, m_pos.x, m_pos.y, m_color);
 }
 
 /*----初期化関数----*/
 // スキル表の画像ID
 void SkillTable::InitTexID(TexID tex_id) {
+
+	m_color = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
 
 	switch (tex_id) {
 
@@ -140,51 +138,51 @@ void SkillTable::InitTexID(TexID tex_id) {
 		break;
 			
 	case CUSTOM_NUM1:
-/*
+
 		m_tex = NUM1_TEX;
 
 		m_pos = NUM_POS;
-*/
+
 		break;
 
 	case CUSTOM_NUM2:
-/*
+
 		m_tex = NUM2_TEX;
 
 		m_pos = NUM_POS;
 
 		m_pos.y += SHIFT_VALUE;
-*/
+
 		break;
 
 	case CUSTOM_NUM3:
-/*
+
 		m_tex = NUM3_TEX;
 
 		m_pos = NUM_POS;
 
 		m_pos.y += SHIFT_VALUE * 2;
-*/
+
 		break;
 
 	case CUSTOM_NUM4:
-/*
+
 		m_tex = NUM4_TEX;
 
 		m_pos = NUM_POS;
 
 		m_pos.y += SHIFT_VALUE * 3;
-*/
+
 		break;
 
 	case CUSTOM_NUM5:
-/*
+
 		m_tex = NUM5_TEX;
 
 		m_pos = NUM_POS;
 
 		m_pos.y += SHIFT_VALUE * 4;
-*/
+
 		break;
 
 	case NORMAL_SKILL:
