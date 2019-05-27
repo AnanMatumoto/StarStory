@@ -47,7 +47,6 @@ SkillTable::SkillTable(TexID tex_id):
 // デストラクタ
 SkillTable::~SkillTable() {
 
-	m_tex_id = BASE1;
 }
 
 // 更新
@@ -83,19 +82,24 @@ void SkillTable::Draw() {
 	Lib::DrawBox2D(m_tex, m_pos.x, m_pos.y, m_color);
 }
 
-// セッター
+/*----セッター----*/
+// 明度変更用
 void SkillTable::SetColor(D3DXCOLOR color) {
 	m_color = color;
 }
 
+// スキルの選択状況の変更用
 void SkillTable::SetActiveSkill(bool is_active_skill) {
 	m_is_active_skill = is_active_skill;
 }
+/*----セッター----*/
 
-// ゲッター
+/*----ゲッター----*/
+// スキルの選択状況の取得
 bool SkillTable::GetActiveSkill() {
 	return m_is_active_skill;
 }
+/*----ゲッター----*/
 
 /*----初期化関数----*/
 // スキル表の画像ID
@@ -270,16 +274,6 @@ void SkillTable::InitTexID(TexID tex_id) {
 		m_pos = STRENGTH_POS;
 
 		m_pos.y += SHIFT_VALUE * 3;
-
-		break;
-
-	case STRENGTH5:
-
-		m_tex = WEAK_TEX;
-
-		m_pos = STRENGTH_POS;
-
-		m_pos.y += SHIFT_VALUE * 4;
 
 		break;
 
