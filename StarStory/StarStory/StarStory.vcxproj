@@ -153,6 +153,30 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ReviewCustomObjectManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ReviewCustomScene.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ReviewDiamond.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ReviewDiamondBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ReviewSkillTable.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ReviewSoundManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Scene\CustomScene.cpp">
       <SubType>
       </SubType>
@@ -263,6 +287,34 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Lib\Lib.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ReviewCustomObjectManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ReviewCustomScene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ReviewDiamond.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ReviewDiamondBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ReviewSkill.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ReviewSkillTable.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ReviewSoundManager.h">
       <SubType>
       </SubType>
     </ClInclude>
