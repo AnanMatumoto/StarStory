@@ -30,6 +30,12 @@
     <ClCompile Include="StageObject\Map\MapObject.cpp" />
     <ClCompile Include="Sound\SoundManager\SoundManager.cpp" />
     <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp" />
+    <ClCompile Include="ReviewCustomScene.cpp" />
+    <ClCompile Include="ReviewCustomObjectManager.cpp" />
+    <ClCompile Include="ReviewDiamond.cpp" />
+    <ClCompile Include="ReviewDiamondBase.cpp" />
+    <ClCompile Include="ReviewSkillTable.cpp" />
+    <ClCompile Include="ReviewSoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -66,5 +72,12 @@
     <ClInclude Include="Sound\SoundState\SoundPlay.h" />
     <ClInclude Include="Sound\SoundState\SoundStop.h" />
     <ClInclude Include="Sound\SoundState\SoundPause.h" />
+    <ClInclude Include="ReviewCustomObjectManager.h" />
+    <ClInclude Include="ReviewCustomScene.h" />
+    <ClInclude Include="ReviewDiamond.h" />
+    <ClInclude Include="ReviewDiamondBase.h" />
+    <ClInclude Include="ReviewSkillTable.h" />
+    <ClInclude Include="ReviewSkill.h" />
+    <ClInclude Include="ReviewSoundManager.h" />
   </ItemGroup>
 </Project>
