@@ -13,7 +13,7 @@
 #define TEX_OBJ_128  "Resource/Game/object_128x128.png"
 #define TEX_OBJ_64   "Resource/Game/object_64x64.png"
 
-#define GAME_STAGE  "Resource/Game/stage1_background_1-1(3).png"
+#define GAME_STAGE  "Resource/Game/stage1_back_graund.png"
 #define GAME_UI_WND  "Resource/Game/ui_stage_base.png"
 #define GAME_UI_FLAME "Resource/Game/ui_flame_557_102.png"
 #define GAME_CUSTOM "Resource/Game/ui_stage_custom.png"
@@ -62,11 +62,8 @@ void GameScene::Init() {
 	mng.Register(STAR_CHILD5, "./Resource/skill_data.05.dat",-30, -10, 288);
 
 	//UIの登録
-	/*UImng.Register(BT_GM_WIND, 60, 51, GAME_UI_WND);
-	UImng.Register(BT_GM_FRAME, 5, 0, GAME_UI_FLAME);*/
-	UImng.Register(BT_GM_TOCUSTOM, 89,67,GAME_CUSTOM);
-	UImng.Register(BT_GM_STOP, 525, 65, GAME_STOP );
-	UImng.Register(BT_GM_ONOFF, 292, 67,GAME_OFF );
+	UImng.Register(BT_GM_TOCUSTOM, 139,67,GAME_CUSTOM);
+	UImng.Register(BT_GM_STOP, 355, 65, GAME_STOP );
 	m_result = NO_RESULT;
 }
 
@@ -76,12 +73,6 @@ void GameScene::Update() {
 
 	UIManager& ui_mng = UIManager::GetInstance();
 	ui_mng.Update();
-
-	// プレーヤーがクリアまたはゲームオーバーである
-	/*if (m_result > 0) {
-		m_state_id = SS_END;
-		m_scene_id = SC_RESULT;
-	}*/
 
 	//　カスタムボタンが押された
 	if (ui_mng.FindClickedUI() == BT_GM_TOCUSTOM) {
@@ -119,7 +110,6 @@ SceneID GameScene::End() {
 	
 	// オブジェクトの削除
 	ObjectManager::GetInstance().AllDelete();
-
 
 	//BGMの終了
 	SoundManager::GetInstanse().SoundPlayer(GAME_BGM, SoundManager::STOP);
@@ -185,8 +175,6 @@ void GameScene::DrawResult() {
 	UIManager& ui_mng = UIManager::GetInstance();
 	ui_mng.Register(BT_RS_CUSUTOM, 788, 780, RESULT_CUSTOM);
 	ui_mng.Register(BT_RS_SELECT, 1148, 780, RESULT_SELECT);
-	/*ui_mng.Register(BT_RS_FLAME_R, 750, 738, RESULT_FLAME_R);
-	ui_mng.Register(BT_RS_FLAME_L, 1108, 738, RESULT_FLAME_L);*/
 
 	Lib::DrawBoxAlpha(
 		"over_ray",
