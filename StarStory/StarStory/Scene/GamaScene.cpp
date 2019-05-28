@@ -13,7 +13,7 @@
 #define TEX_OBJ_128  "Resource/Game/object_128x128.png"
 #define TEX_OBJ_64   "Resource/Game/object_64x64.png"
 
-#define GAME_STAGE  "Resource/Game/stage1_back_graund.png"
+#define GAME_STAGE  "Resource/Game/stage1_background_1-1_1920×1080_ｄ (1).png"
 #define GAME_UI_WND  "Resource/Game/ui_stage_base.png"
 #define GAME_UI_FLAME "Resource/Game/ui_flame_557_102.png"
 #define GAME_CUSTOM "Resource/Game/ui_stage_custom.png"
