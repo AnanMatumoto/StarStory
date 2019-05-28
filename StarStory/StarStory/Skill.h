@@ -40,7 +40,7 @@ private:
 	// スキルID保管用
 	Skill m_skill;
 
-	// コンストラクタ(隠しコンストラクタ)
+	// コンストラクタ
 	Skill_ID() : m_skill(NORMAL) {};
 
 };

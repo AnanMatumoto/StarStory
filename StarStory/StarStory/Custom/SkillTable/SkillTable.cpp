@@ -2,43 +2,37 @@
 #include"../../Collision/Collision.h"
 #include"../../Skill.h"
 
-// スキル表に必要なもの
-namespace SKILL_TABLE {
-	/*----画像----*/
+/*----画像----*/
 
-	/*----スキル横の数字----*/
-	const char NUM1_TEX[50] = "Resource/Custom/ui_custom_num1.png";
-	const char NUM2_TEX[50] = "Resource/Custom/ui_custom_num2.png";
-	const char NUM3_TEX[50] = "Resource/Custom/ui_custom_num3.png";
-	const char NUM4_TEX[50] = "Resource/Custom/ui_custom_num4.png";
-	const char NUM5_TEX[50] = "Resource/Custom/ui_custom_num5.png";
-	/*----スキル横の数字----*/
+/*----スキル横の数字----*/
+const char SkillTable::NUM1_TEX[50] = "Resource/Custom/ui_custom_num1.png";
+const char SkillTable::NUM2_TEX[50] = "Resource/Custom/ui_custom_num2.png";
+const char SkillTable::NUM3_TEX[50] = "Resource/Custom/ui_custom_num3.png";
+const char SkillTable::NUM4_TEX[50] = "Resource/Custom/ui_custom_num4.png";
+const char SkillTable::NUM5_TEX[50] = "Resource/Custom/ui_custom_num5.png";
+/*----スキル横の数字----*/
 
-	const char BASE_TEX[50] = "Resource/Custom/ui_custom_skillbase.png";			// スキル表の基礎
-	const char NORAML_SKILL_TEX[50] = "Resource/Custom/UI_custom_normal.png";		// スキル表のノーマルスキル
-	const char ACCEL_SKILL_TEX[50] = "Resource/Custom/UI_custom_accel.png";			// スキル表の加速スキル
-	const char JUMP_SKILL_TEX[50] = "Resource/Custom/UI_custom_jump.png";			// スキル表のジャンプスキル
-	const char STOP_SKILL_TEX[50] = "Resource/Custom/UI_custom_stop.png";			// スキル表の停止スキル
-	const char WEAK_TEX[50] = "Resource/Custom/UI_custom_weak.png";					// スキルの弱
-	/*----画像----*/
+const char SkillTable::BASE_TEX[50] = "Resource/Custom/ui_custom_skillbase.png";			// スキル表の基礎
+const char SkillTable::NORAML_SKILL_TEX[50] = "Resource/Custom/UI_custom_normal.png";		// スキル表のノーマルスキル
+const char SkillTable::ACCEL_SKILL_TEX[50] = "Resource/Custom/UI_custom_accel.png";			// スキル表の加速スキル
+const char SkillTable::JUMP_SKILL_TEX[50] = "Resource/Custom/UI_custom_jump.png";			// スキル表のジャンプスキル
+const char SkillTable::STOP_SKILL_TEX[50] = "Resource/Custom/UI_custom_stop.png";			// スキル表の停止スキル
+const char SkillTable::WEAK_TEX[50] = "Resource/Custom/UI_custom_weak.png";					// スキルの弱
+/*----画像----*/
 
-	/*----定数----*/
-	const float SHIFT_VALUE = 104;		// スキル表の画像をずらす値
+/*----定数----*/
+const float SkillTable::SHIFT_VALUE = 104;		// スキル表の画像をずらす値
 
-	// 画像の初期位置
-	const Vec2 BASE_POS = { 1075.f,218.f };
-	const Vec2 SKILL_POS = { 1183.f,233.f };
-	const Vec2 NUM_POS = { 1106.f,244.f };
-	const Vec2 STRENGTH_POS = { 1569.f,237.f };
-	/*----定数----*/
-}
-
-using namespace SKILL_TABLE;
+// 画像の初期位置
+const Vec2 SkillTable::BASE_POS = { 1075.f,218.f };
+const Vec2 SkillTable::SKILL_POS = { 1183.f,233.f };
+const Vec2 SkillTable::NUM_POS = { 1106.f,244.f };
+const Vec2 SkillTable::STRENGTH_POS = { 1569.f,237.f };
+/*----定数----*/
 
 // コンストラクタ
 SkillTable::SkillTable(TexID tex_id):
-	m_color(Lib::CreateColor(1.f, 1.f, 1.f, 0.f)),
-	m_is_active_skill(false){
+	m_brightness(Lib::CreateColor(1.f, 1.f, 1.f, 0.f)){
 
 	// スキルID識別
 	InitTexID(tex_id);
@@ -52,60 +46,49 @@ SkillTable::~SkillTable() {
 // 更新
 void SkillTable::Update() {
 
-	// スキルのテクスチャの時に当たり判定を取る
-	if (m_tex_id
-		== NORMAL_SKILL
-		|| ACCEL_SKILL
-		|| JUMP_SKILL
-		|| STOP_SKILL) {
+	// アクティブなスキルに対応するNUMを明るくする
+	if (m_tex_id == CUSTOM_NUM1 && Skill_ID::GetInstance().GetSkillID() == NORMAL) {
+		m_brightness = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
+	}
+	else if (m_tex_id == CUSTOM_NUM1 && Skill_ID::GetInstance().GetSkillID() != NORMAL) {
+		m_brightness = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
+	}
 
-		// マウス座標の取得
-		Vec2 mouse_pos = Lib::GetMousePoint();
+	if (m_tex_id == CUSTOM_NUM2 && Skill_ID::GetInstance().GetSkillID() == SPEED) {
+		m_brightness = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
+	}
+	else if (m_tex_id == CUSTOM_NUM2 && Skill_ID::GetInstance().GetSkillID() != SPEED) {
+		m_brightness = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
+	}
 
-		// マウスが表にあるスキルのどれかをクリックしたら
-		if (Collision::IsInSquare(
-			m_pos, m_tex.GetSize().x, m_tex.GetSize().y,
-			mouse_pos) == true) {
+	if (m_tex_id == CUSTOM_NUM3 && Skill_ID::GetInstance().GetSkillID() == JUMP) {
+		m_brightness = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
+	}
+	else if (m_tex_id == CUSTOM_NUM3 && Skill_ID::GetInstance().GetSkillID() != JUMP) {
+		m_brightness = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
+	}
 
-			// スキルをセット
-			Skill_ID &skill_id = Skill_ID::GetInstance();
-			skill_id.SetSkillID(m_skill);
-
-			m_is_active_skill = true;
-		}
+	if (m_tex_id == CUSTOM_NUM4 && Skill_ID::GetInstance().GetSkillID() == STOP) {
+		m_brightness = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
+	}
+	else if (m_tex_id == CUSTOM_NUM4 && Skill_ID::GetInstance().GetSkillID() != STOP) {
+		m_brightness = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
 	}
 }
 
 // 描画
 void SkillTable::Draw() {
 
-	Lib::DrawBox2D(m_tex, m_pos.x, m_pos.y, m_color);
+	Lib::DrawBox2D(m_tex, m_pos.x, m_pos.y, m_brightness);
 }
-
-/*----セッター----*/
-// 明度変更用
-void SkillTable::SetColor(D3DXCOLOR color) {
-	m_color = color;
-}
-
-// スキルの選択状況の変更用
-void SkillTable::SetActiveSkill(bool is_active_skill) {
-	m_is_active_skill = is_active_skill;
-}
-/*----セッター----*/
-
-/*----ゲッター----*/
-// スキルの選択状況の取得
-bool SkillTable::GetActiveSkill() {
-	return m_is_active_skill;
-}
-/*----ゲッター----*/
 
 /*----初期化関数----*/
 // スキル表の画像ID
 void SkillTable::InitTexID(TexID tex_id) {
 
-	switch (tex_id) {
+	m_tex_id = tex_id;
+
+	switch (m_tex_id) {
 
 	case BASE1:
 
@@ -279,8 +262,28 @@ void SkillTable::InitTexID(TexID tex_id) {
 
 	default :
 
+		m_tex = "hoge";
+
+		m_pos = { 0,0 };
+
 		break;
 	}
 }
 /*----初期化関数----*/
+
+// クリックされたときにskill.hにスキルを渡す
+void SkillTable::ClickSkillSet() {
+
+	// マウス座標の取得
+	Vec2 mouse_pos = Lib::GetMousePoint();
+
+	// マウスが表にあるスキルのどれかをクリックしたら
+	if (Collision::IsInSquare(
+		m_pos, m_tex.GetSize().x, m_tex.GetSize().y,
+		mouse_pos) == true) {
+
+		// スキルをセット
+		Skill_ID::GetInstance().SetSkillID(m_skill);
+	}
+}
 

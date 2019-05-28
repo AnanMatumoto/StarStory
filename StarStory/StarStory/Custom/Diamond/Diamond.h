@@ -46,29 +46,29 @@ private:
 	/*--定数--*/
 	/*--ひし形の各座標、角度--*/
 	// TOPの初期座標(x,y)と角度
-	const float TOP_POS_X = 632.f;
-	const float TOP_POS_Y = 275.f;
-	const float TOP_ANGLE = 0.f;
+	static const float TOP_POS_X;
+	static const float TOP_POS_Y;
+	static const float TOP_ANGLE;
 
 	// TOP_RIGHTの初期座標(x,y)と角度
-	const float TOP_RIGHT_POS_X = TOP_POS_X + 99.f;
-	const float TOP_RIGHT_POS_Y = TOP_POS_Y + 72.f;
-	const float TOP_RIGHT_ANGLE = TOP_ANGLE + 1.26f;
+	static const float TOP_RIGHT_POS_X;
+	static const float TOP_RIGHT_POS_Y;
+	static const float TOP_RIGHT_ANGLE;
 
 	// TOP_LEFTの初期座標(x,y)と角度
-	const float TOP_LEFT_POS_X = TOP_POS_X - 99.f;
-	const float TOP_LEFT_POS_Y = TOP_POS_Y + 72.f;
-	const float TOP_LEFT_ANGLE = TOP_ANGLE - 1.26f;
+	static const float TOP_LEFT_POS_X;
+	static const float TOP_LEFT_POS_Y;
+	static const float TOP_LEFT_ANGLE;
 
 	// BOTTOM_RIGHTの初期座標(x,y)と角度
-	const float BOTTOM_RIGHT_POS_X = TOP_POS_X + 61.f;
-	const float BOTTOM_RIGHT_POS_Y = TOP_POS_Y + 189.f;
-	const float BOTTOM_RIGHT_ANGLE = TOP_ANGLE + 2.51f;
+	static const float BOTTOM_RIGHT_POS_X;
+	static const float BOTTOM_RIGHT_POS_Y;
+	static const float BOTTOM_RIGHT_ANGLE;
 
 	// BOTTOM_LEFTの初期座標(x,y)と角度
-	const float BOTTOM_LEFT_POS_X = TOP_POS_X - 61.f;
-	const float BOTTOM_LEFT_POS_Y = TOP_POS_Y + 189.f;
-	const float BOTTOM_LEFT_ANGLE = TOP_ANGLE - 2.51f;
+	static const float BOTTOM_LEFT_POS_X;
+	static const float BOTTOM_LEFT_POS_Y;
+	static const float BOTTOM_LEFT_ANGLE;
 	/*--ひし形の各座標、角度--*/
 	/*--定数--*/
 };

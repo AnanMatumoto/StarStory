@@ -67,6 +67,9 @@ SceneID CustomScene::End() {
 	UIManager::GetInstance().Delete(BT_CT_TOSELECT);	// セレクト画面へ戻るボタン
 	UIManager::GetInstance().Delete(BT_CT_DECISION);	// 決定ボタン
 
+	// スキル情報をNONEにする
+	Skill_ID::GetInstance().SetSkillID(Skill::NORMAL);
+
 	// カスタムオブジェクト削除
 	delete m_custom_object_manager;
 

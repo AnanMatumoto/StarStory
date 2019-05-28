@@ -56,19 +56,15 @@ public:
 	void Update();	// 更新
 	void Draw();	// 描画
 
-	// セッター
-	void SetColor(D3DXCOLOR color);
-	void SetActiveSkill(bool is_active_skill);
+	void ClickSkillSet();
 
-	// ゲッター
-	bool GetActiveSkill();
+	void SetBrightness(D3DXCOLOR brightness);
 
 private:
 	/*----変数----*/
 	Vec2 m_pos;				// 描画用座標
 	Lib::Texture m_tex;		// 描画画像用
-	D3DXCOLOR m_color;		// 透明度変更用
-	bool m_is_active_skill;	// スキルをクリックしているかどうか
+	D3DXCOLOR m_brightness;		// 透明度変更用
 	/*----変数----*/
 
 	/*----関数----*/
@@ -79,5 +75,32 @@ private:
 	Skill m_skill;		// スキルID保管用
 	TexID m_tex_id;		// スキル表の画像ID保管用
 	/*----enum----*/
+
+private:
+	/*----スキル横の数字----*/
+	static const char NUM1_TEX[50];
+	static const char NUM2_TEX[50];
+	static const char NUM3_TEX[50];
+	static const char NUM4_TEX[50];
+	static const char NUM5_TEX[50];
+	/*----スキル横の数字----*/
+
+	static const char BASE_TEX[50];				// スキル表の基礎
+	static const char NORAML_SKILL_TEX[50];		// スキル表のノーマルスキル
+	static const char ACCEL_SKILL_TEX[50];		// スキル表の加速スキル
+	static const char JUMP_SKILL_TEX[50];		// スキル表のジャンプスキル
+	static const char STOP_SKILL_TEX[50];		// スキル表の停止スキル
+	static const char WEAK_TEX[50];				// スキルの弱
+	/*----画像----*/
+
+	/*----定数----*/
+	static const float SHIFT_VALUE;		// スキル表の画像をずらす値
+
+	// 画像の初期位置
+	static const Vec2 BASE_POS;
+	static const Vec2 SKILL_POS;
+	static const Vec2 NUM_POS;
+	static const Vec2 STRENGTH_POS;
+	/*----定数----*/
 };
 

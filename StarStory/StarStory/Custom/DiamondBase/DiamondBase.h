@@ -115,20 +115,20 @@ protected:
 
 protected:
 	/*----画像----*/
-	const char NORMAL_TEX[50] = "Resource/Custom/Player_normal_384×384.png";		// NORMAL
-	const char SPEED_TEX[50] = "Resource/Custom/Player_accel_384×384.png";			// SPEED
-	const char JUMP_TEX[50] = "Resource/Custom/Player_jump_384×384.png";			// JUMP
-	const char STOP_TEX[50] = "Resource/Custom/Player_stop_384×384.png";			// STOP
+	static const char NORMAL_TEX[50]; 	// NORMAL
+	static const char SPEED_TEX[50];	// SPEED
+	static const char JUMP_TEX[50];		// JUMP
+	static const char STOP_TEX[50]; 	// STOP
 	/*----画像----*/
 
 private:
 	/*----定数----*/
-	const float DIAMOND_W = 384.f;	// ひし形の幅
-	const float DIAMOND_H = 384.f; 	// ひし形の高さ
+	static const float DIAMOND_W;	// ひし形の幅
+	static const float DIAMOND_H;	// ひし形の高さ
 
 	// 当たり判定用
-	const float COLLISION_DIAMOND_W = DIAMOND_W / 6;		// ひし形の幅
-	const float COLLISION_DIAMOND_H = DIAMOND_H / 6;		// ひし形の高さ
+	static const float COLLISION_DIAMOND_W;		// ひし形の幅
+	static const float COLLISION_DIAMOND_H;		// ひし形の高さ
 	/*----定数----*/
 };
 

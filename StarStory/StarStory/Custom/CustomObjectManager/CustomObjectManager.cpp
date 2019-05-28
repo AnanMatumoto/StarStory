@@ -21,8 +21,6 @@ CustomObjectManager::CustomObjectManager()
 
 		skill_table_tex_id = static_cast<SkillTable::TexID>(skill_table_tex_id + 1);
 	}
-
-	m_skill_table[SkillTable::NORMAL_SKILL]->SetActiveSkill(true);
 }
 
 // デストラクタ
@@ -70,7 +68,7 @@ void CustomObjectManager::Update() {
 
 	// ひし形の更新
 	for (auto x : m_diamond_base) {
-		
+
 		x->Update();
 	}
 
@@ -80,41 +78,10 @@ void CustomObjectManager::Update() {
 		x->Update();
 	}
 
-	if (m_skill_table[SkillTable::NORMAL_SKILL]->GetActiveSkill() == true) {
-
-		m_skill_table[SkillTable::CUSTOM_NUM1]->SetColor(Lib::CreateColor(1.f, 1.f, 1.f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM2]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM3]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM4]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::NORMAL_SKILL]->SetActiveSkill(false);
-	}
-
-	if (m_skill_table[SkillTable::ACCEL_SKILL]->GetActiveSkill() == true) {
-
-		m_skill_table[SkillTable::CUSTOM_NUM2]->SetColor(Lib::CreateColor(1.f, 1.f, 1.f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM1]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM3]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM4]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::ACCEL_SKILL]->SetActiveSkill(false);
-	}
-
-	if (m_skill_table[SkillTable::JUMP_SKILL]->GetActiveSkill() == true) {
-
-		m_skill_table[SkillTable::CUSTOM_NUM3]->SetColor(Lib::CreateColor(1.f, 1.f, 1.f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM1]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM2]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM4]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::JUMP_SKILL]->SetActiveSkill(false);
-	}
-
-	if (m_skill_table[SkillTable::STOP_SKILL]->GetActiveSkill() == true) {
-
-		m_skill_table[SkillTable::CUSTOM_NUM4]->SetColor(Lib::CreateColor(1.f, 1.f, 1.f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM1]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM2]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::CUSTOM_NUM3]->SetColor(Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f));
-		m_skill_table[SkillTable::STOP_SKILL]->SetActiveSkill(false);
-	}
+	m_skill_table[SkillTable::NORMAL_SKILL]->ClickSkillSet();
+	m_skill_table[SkillTable::ACCEL_SKILL]->ClickSkillSet();
+	m_skill_table[SkillTable::JUMP_SKILL]->ClickSkillSet();
+	m_skill_table[SkillTable::STOP_SKILL]->ClickSkillSet();
 }
 
 // 描画

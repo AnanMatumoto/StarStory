@@ -1,8 +1,28 @@
 ﻿#include"Diamond.h"
 #include"../../Lib/Lib.h"
 
+const float Diamond::TOP_POS_X = 632.f;
+const float Diamond::TOP_POS_Y = 275.f;
+const float Diamond::TOP_ANGLE = 0.f;
+
+const float Diamond::TOP_RIGHT_POS_X = TOP_POS_X + 99.f;
+const float Diamond::TOP_RIGHT_POS_Y = TOP_POS_Y + 72.f;
+const float Diamond::TOP_RIGHT_ANGLE = TOP_ANGLE + 1.26f;
+
+const float Diamond::TOP_LEFT_POS_X = TOP_POS_X - 99.f;
+const float Diamond::TOP_LEFT_POS_Y = TOP_POS_Y + 72.f;
+const float Diamond::TOP_LEFT_ANGLE = TOP_ANGLE - 1.26f;
+
+const float Diamond::BOTTOM_RIGHT_POS_X = TOP_POS_X + 61.f;
+const float Diamond::BOTTOM_RIGHT_POS_Y = TOP_POS_Y + 189.f;
+const float Diamond::BOTTOM_RIGHT_ANGLE = TOP_ANGLE + 2.51f;
+
+const float Diamond::BOTTOM_LEFT_POS_X = TOP_POS_X - 61.f;
+const float Diamond::BOTTOM_LEFT_POS_Y = TOP_POS_Y + 189.f;
+const float Diamond::BOTTOM_LEFT_ANGLE = TOP_ANGLE - 2.51f;
+
 // コンストラクタ
-Diamond::Diamond(DiamondPart part, std::string data_file) {
+Diamond::Diamond(DiamondPart part, std::string data_file){
 
 	// ひし形の座標、角度を入れる
 	InitDiamondInfo(part);

@@ -29,6 +29,7 @@
     <ClCompile Include="StageObject\Player\StarChild.cpp" />
     <ClCompile Include="StageObject\Map\MapObject.cpp" />
     <ClCompile Include="Sound\SoundManager\SoundManager.cpp" />
+    <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
