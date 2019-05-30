@@ -44,10 +44,10 @@ public:
 		m_file("none"){
 
 		// サイズ初期化
-		m_size_w = DIAMOND_W;
-		m_size_h = DIAMOND_H;
-		m_half_size_w = COLLISION_DIAMOND_W;
-		m_half_size_h = COLLISION_DIAMOND_H;
+		m_size_w = SIZE_W;
+		m_size_h = SIZE_H;
+		m_collision_w = COLLISION_W;
+		m_collision_h = COLLISION_H;
 	};
 
 	// デストラクタ
@@ -96,8 +96,8 @@ protected:
 	float m_angle;				// 角度
 	float m_size_w;				// 描画の時に使う幅
 	float m_size_h;				// 描画の時に使う高さ
-	float m_half_size_w;		// 当たり判定の時に使う幅
-	float m_half_size_h;		// 当たり判定の時に使う高さ
+	float m_collision_w;		// 当たり判定の時に使う幅
+	float m_collision_h;		// 当たり判定の時に使う高さ
 
 	Vec2 m_vertex_pos[MAX_DIAMOND_VERTEX_NUM];		// ひし形の頂点情報
 
@@ -123,12 +123,12 @@ protected:
 
 private:
 	/*----定数----*/
-	static const float DIAMOND_W;	// ひし形の幅
-	static const float DIAMOND_H;	// ひし形の高さ
+	static const float SIZE_W;	// ひし形の幅
+	static const float SIZE_H;	// ひし形の高さ
 
 	// 当たり判定用
-	static const float COLLISION_DIAMOND_W;		// ひし形の幅
-	static const float COLLISION_DIAMOND_H;		// ひし形の高さ
+	static const float COLLISION_W;		// ひし形の幅
+	static const float COLLISION_H;		// ひし形の高さ
 	/*----定数----*/
 };
 

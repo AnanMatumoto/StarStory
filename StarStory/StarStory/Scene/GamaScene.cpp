@@ -56,10 +56,10 @@ void GameScene::Init() {
 	//星のオブジェクト
 	mng.Register(STAR_OBJ, "none",90, 500);
 	mng.Register(STAR_CHILD1, "./Resource/skill_data_01.dat",  0, -32, 0);
-	mng.Register(STAR_CHILD2, "./Resource/skill_data.02.dat", 30, -10, 72);
-	mng.Register(STAR_CHILD3, "./Resource/skill_data.03.dat", 19, 26, 144);
-	mng.Register(STAR_CHILD4, "./Resource/skill_data.04.dat",-19, 26, 216);
-	mng.Register(STAR_CHILD5, "./Resource/skill_data.05.dat",-30, -10, 288);
+	mng.Register(STAR_CHILD2, "./Resource/skill_data_02.dat", 30, -10, 72);
+	mng.Register(STAR_CHILD3, "./Resource/skill_data_03.dat", 19, 26, 144);
+	mng.Register(STAR_CHILD4, "./Resource/skill_data_04.dat",-19, 26, 216);
+	mng.Register(STAR_CHILD5, "./Resource/skill_data_05.dat",-30, -10, 288);
 
 	//UIの登録
 	/*UImng.Register(BT_GM_WIND, 60, 51, GAME_UI_WND);

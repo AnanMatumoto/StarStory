@@ -5,14 +5,18 @@
 // コンストラクタ
 CustomObjectManager::CustomObjectManager()
 	: m_diamond_part(Diamond::TOP_PART),
-	skill_table_tex_id(SkillTable::BASE1) {
+	skill_table_tex_id(SkillTable::BASE1){
 
-	// ひし形生成
-	m_diamond_base.push_back(new Diamond(Diamond::TOP_PART, "./Resource/skill_data_01.dat"));
-	m_diamond_base.push_back(new Diamond(Diamond::TOP_RIGHT_PART, "./Resource/skill_data.02.dat"));
-	m_diamond_base.push_back(new Diamond(Diamond::BOTTOM_RIGHT_PART, "./Resource/skill_data.03.dat"));
-	m_diamond_base.push_back(new Diamond(Diamond::BOTTOM_LEFT_PART, "./Resource/skill_data.04.dat"));
-	m_diamond_base.push_back(new Diamond(Diamond::TOP_LEFT_PART, "./Resource/skill_data.05.dat"));
+	for (int i = 0; i < Diamond::MAX_DIAMOND_PART_NUM; ++i) {
+
+		std::string dat = "./Resource/skill_data_0";
+		dat += std::to_string(i + 1);
+		dat += ".dat";
+
+		m_diamond_list.push_back(new Diamond(m_diamond_part,dat));
+
+		m_diamond_part = static_cast<Diamond::DiamondPart>(m_diamond_part + 1);
+	}
 
 	// スキルテーブルの生成
 	for (int i = 0; i < SkillTable::MAX_TEX_NUM; ++i) {
@@ -26,40 +30,29 @@ CustomObjectManager::CustomObjectManager()
 // デストラクタ
 CustomObjectManager::~CustomObjectManager() {
 
-	// スキルデータを外部ファイルに保存
-	std::fstream file[5];
-	file[0].open("./Resource/skill_data_01.dat", std::ios::binary | std::ios::out);
-	file[0].write((char*)&m_diamond_base[0]->GetSkillDara(), sizeof(Skill_Data));
-	file[0].close();
+	for (int i = 0; i < Diamond::MAX_DIAMOND_PART_NUM; ++i) {
 
-	file[1].open("./Resource/skill_data.02.dat", std::ios::binary | std::ios::out);
-	file[1].write((char*)&m_diamond_base[1]->GetSkillDara(), sizeof(Skill_Data));
-	file[1].close();
+		std::string dat = "./Resource/skill_data_0";
+		dat += std::to_string(i + 1);
+		dat += ".dat";
 
-	file[2].open("./Resource/skill_data.03.dat", std::ios::binary | std::ios::out);
-	file[2].write((char*)&m_diamond_base[2]->GetSkillDara(), sizeof(Skill_Data));
-	file[2].close();
-
-	file[3].open("./Resource/skill_data.04.dat", std::ios::binary | std::ios::out);
-	file[3].write((char*)&m_diamond_base[3]->GetSkillDara(), sizeof(Skill_Data));
-	file[3].close();
-
-	file[4].open("./Resource/skill_data.05.dat", std::ios::binary | std::ios::out);
-	file[4].write((char*)&m_diamond_base[4]->GetSkillDara(), sizeof(Skill_Data));
-	file[4].close();
+		file.open(dat, std::ios::binary | std::ios::out);
+		file.write((char*)&m_diamond_list[i]->GetSkillDara(), sizeof(Skill_Data));
+		file.close();
+	}
 
 	// ひし形の削除
-	for (auto x : m_diamond_base) {
+	for (auto diamond : m_diamond_list) {
 
-		delete x;
-		x = nullptr;
+		delete diamond;
+		diamond = nullptr;
 	}
 
 	// スキルテーブルの削除
-	for (auto x : m_skill_table) {
+	for (auto skill_table : m_skill_table) {
 
-		delete x;
-		x = nullptr;
+		delete skill_table;
+		skill_table = nullptr;
 	}
 }
 
@@ -67,15 +60,15 @@ CustomObjectManager::~CustomObjectManager() {
 void CustomObjectManager::Update() {
 
 	// ひし形の更新
-	for (auto x : m_diamond_base) {
+	for (auto diamod : m_diamond_list) {
 
-		x->Update();
+		diamod->Update();
 	}
 
 	// スキルテーブルの更新
-	for (auto x : m_skill_table) {
+	for (auto skill_table : m_skill_table) {
 
-		x->Update();
+		skill_table->Update();
 	}
 
 	m_skill_table[SkillTable::NORMAL_SKILL]->ClickSkillSet();
@@ -88,15 +81,15 @@ void CustomObjectManager::Update() {
 void CustomObjectManager::Draw() {
 
 	// ひし形の描画
-	for (auto x : m_diamond_base) {
+	for (auto diamond : m_diamond_list) {
 
-		x->Draw();
+		diamond->Draw();
 	}
 
 	// スキルテーブルの描画
-	for (auto x : m_skill_table) {
+	for (auto skill_table : m_skill_table) {
 
-		x->Draw();
+		skill_table->Draw();
 	}
 }
 

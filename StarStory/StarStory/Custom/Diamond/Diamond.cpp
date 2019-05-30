@@ -112,10 +112,10 @@ void Diamond::InitDiamondInfo(DiamondPart part) {
 // 各ひし形の頂点の座標
 void Diamond::InitVertexPos() {
 
-	m_vertex_pos[TOP_VERTEX] = { m_pos_x,m_pos_y - m_half_size_h };
-	m_vertex_pos[RIGHT_VERTEX] = { m_pos_x + m_half_size_w,m_pos_y };
-	m_vertex_pos[BOTTOM_VERTEX] = { m_pos_x,m_pos_y + m_half_size_h };
-	m_vertex_pos[LEFT_VERTEX] = { m_pos_x - m_half_size_w,m_pos_y };
+	m_vertex_pos[TOP_VERTEX] = { m_pos_x,m_pos_y - m_collision_h };
+	m_vertex_pos[RIGHT_VERTEX] = { m_pos_x + m_collision_w,m_pos_y };
+	m_vertex_pos[BOTTOM_VERTEX] = { m_pos_x,m_pos_y + m_collision_h };
+	m_vertex_pos[LEFT_VERTEX] = { m_pos_x - m_collision_w,m_pos_y };
 }
 
 // スキルデータをバイナリファイルから読み込む

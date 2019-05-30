@@ -21,7 +21,9 @@ public:
 
 private:
 
-	std::vector<DiamondBase*> m_diamond_base;		// ひし形の実体化
+	std::fstream file;
+
+	std::vector<DiamondBase*> m_diamond_list;		// ひし形の実体化
 	std::vector<SkillTable*> m_skill_table;			// スキルベースの実体化
 
 	/*----enum----*/
