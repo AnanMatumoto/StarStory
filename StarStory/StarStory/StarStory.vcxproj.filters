@@ -30,6 +30,7 @@
     <ClCompile Include="StageObject\Map\MapObject.cpp" />
     <ClCompile Include="Sound\SoundManager\SoundManager.cpp" />
     <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp" />
+    <ClCompile Include="Lib\Animation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />

@@ -145,6 +145,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Lib\Animation.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Lib\Color.cpp">
       <SubType>
       </SubType>

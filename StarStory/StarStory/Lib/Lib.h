@@ -125,6 +125,53 @@ namespace Lib {
 
 	};
 
+
+	class Animation {
+
+	public:
+
+		/*
+		< キーの生成 >
+		num_key: キーの数
+		
+		生成後、キーに対応する値（float型）の配列が生成される。
+		*/
+		void CreateKey(int num_key);
+		
+		/*
+		< キーの値をセットする >
+		　index  : CrateKeyで生成した配列のインデックス
+		  key  : キー
+		  value: キーに対応する値
+		*/
+		void SetKeyValue(
+			int index,
+			float key,
+			float value,
+			bool is_loop);
+
+		void SetDuration(DWORD duration);
+		void SetStartTime(DWORD start_time);
+		
+		bool GetValue(DWORD time, float* p_value, bool *is_end);
+
+
+	private:
+
+		float GetFraction(DWORD time);
+		int GetBeginIndex(float fraction);
+
+		int    m_num_key;
+		float* m_keys;
+		float* m_values;
+		BOOL  m_is_loop;
+		DWORD m_duration;
+		DWORD m_start_time;
+
+
+
+	};
+
 	//=========================================
 	//　キー・マウス処理関連
 	//=========================================
