@@ -140,7 +140,7 @@ namespace Lib {
 		
 		/*
 		< キーの値をセットする >
-		　index  : CrateKeyで生成した配列のインデックス
+		　index: CrateKeyで生成した配列のインデックス
 		  key  : キー
 		  value: キーに対応する値
 		*/
@@ -150,17 +150,33 @@ namespace Lib {
 			float value,
 			bool is_loop);
 
+		/*
+		<アニメーションの継続時間をセットする>
+		　duration: アニメーションの継続時間
+		　（timeGetTime関数でセットする）
+		*/
 		void SetDuration(DWORD duration);
+		
+		/*
+		<スタート時間をセットする>
+		start_time:アニメーションの開始時刻
+		（timeGetTime関数で取得）
+		*/
 		void SetStartTime(DWORD start_time);
 		
-		bool GetValue(DWORD time, float* p_value, bool *is_end);
+		/*
+		<キーの値を取得する>
+		time    :現在の時刻
+		p_value :値（アドレス）
+		p_is_end:終了判定フラグ
+		*/
+		bool GetValue(DWORD time, float* p_value, bool *p_is_end);
 
 
 	private:
 
 		float GetFraction(DWORD time);
 		int GetBeginIndex(float fraction);
-
 		int    m_num_key;
 		float* m_keys;
 		float* m_values;
