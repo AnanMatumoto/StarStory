@@ -464,7 +464,7 @@ namespace Lib {
 		const Texture& tex,
 		float pos_x[], float pos_y[],
 		float obj_num,
-		float h, float w,
+		float height, float width,
 		float angle,
 		DWORD color,
 		float ox, float oy
@@ -473,6 +473,31 @@ namespace Lib {
 	//αブレンドの設定（※外部での使用はできない）
 	void SetAlphaBlend();
 	void SetColorBlend();
+
+	/*
+	   UVアニメーション関数
+	   第1 ：テクスチャ名
+	　 第2 ：統合画像の長さ
+	   第3 ：現在の描画番号
+	   第4 ：深度
+	   第5 :ｘ座標
+	   第6 : ｙ座標
+	   第7 : 高さ
+	   第8 ：幅
+	   第9 ：ｘオフセット値（デフォルト（0.f）
+	   第10：yオフセット値（デフォルト（0.f）
+	   第11：色相
+	*/
+	void AnimationUV(
+		const Texture& tex,
+		int   length,
+		int   cur_num,
+		float depth,
+		float pos_x, float pos_y,
+		float height, float width,
+		float ox=0.f, float oy=0.f,
+		DWORD color = 0x00ffffff
+	);
 
 	//====================================
 	// サウンド関連

@@ -296,8 +296,8 @@ namespace Lib {
 
 
 		Vertex vtx[4] = {
-			{{-ox, (0.5f - oy), 0.f,1.f},color,{0.f,0.5f}},
-			{{(0.5f - ox),-oy,0.f,1.f},color,{0.5f,1.f}},
+			{{-ox, (0.5f - oy), 0.5f,1.f},color,{0.f,0.5f}},
+			{{(0.5f - ox),-oy,0.5f,1.f},color,{0.5f,1.f}},
 			{{(1.f - ox),(0.5f - oy),0.f,1.f},color,{1.f,0.5f}},
 			{{(0.5f - ox),(1.f - oy),0.f,1.f},color,{0.5f, 0.f}}
 		};
@@ -389,6 +389,50 @@ namespace Lib {
 			0, D3DTSS_COLORARG2,
 			D3DTA_DIFFUSE
 		);
+	}
+
+	void AnimationUV(
+		const Texture& tex,
+		int   length,
+		int   slice_num,
+		float depth,
+		float pos_x, float pos_y,
+		float h, float w,
+		float ox, float oy,
+		DWORD color
+	) {
+		float x1 = pos_x - w * (ox);
+		float y1 = pos_y - h * (oy);
+		float x2 = pos_x + w * (1.f - ox);
+		float y2 = pos_y + h * (1.f - oy);
+
+		if (length <= 0 || slice_num <=0) {
+			return;
+		}
+		
+		//一枚当たりの画像UV
+		float slice_size = 1.0 / length;
+
+		float uv_x1 =slice_size*slice_num;
+		float uv_y1 = 0.f;
+		float uv_x2 = uv_x1 + slice_size;
+		float uv_y2 = 1.f;
+
+		Vertex vtx[4] = {
+			{{x1,y1,depth,1.f},color,{uv_x1,uv_y1}},
+			{{x2,y1,depth,1.f},color,{uv_x2,uv_y1}},
+			{{x2,y2,depth,1.f},color,{uv_x2,uv_y2}},
+			{{x1,y2,depth,1.f},color,{uv_x1,uv_y2}}
+		};
+
+		dev->SetTexture(0, tex);
+		dev->SetFVF(VERTEX_FVF);
+		SetAlphaBlend();
+		SetColorBlend();
+		dev->DrawPrimitiveUP(
+			D3DPT_TRIANGLEFAN,
+			2, vtx,
+			sizeof(Vertex));
 	}
 }
 
