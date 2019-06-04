@@ -18,14 +18,13 @@ StarChild::StarChild(
 	m_width    = 46.f;
 	m_height   = 64.f;
 	m_tex_name = tex_name;
-	m_parent   = ObjectManager::GetInstance().FindObject(STAR_OBJ);
+	m_parent   = nullptr;
 	m_map_obj  = ObjectManager::GetInstance().GetGameObjects<MapObject>();
 	m_obj_width = 0.f;
 	is_hit     = false;
 	m_skill    = skill;
 	m_obj      = nullptr;
 	m_se_id    = se_id;
-	//m_sound    = new Lib::AudioPlayer();
 	m_one_flame = 0;
 }
 
@@ -55,10 +54,10 @@ void StarChild::SetVertex(DWORD color) {
 	
 	float ox = 0.5f;
 	float oy = 0.5f;
-	m_vtx[0] = { {(0.5f - ox),oy,0.f,1.f}, color,{0.31f,0.5f} };
-	m_vtx[1] = { {ox,(0.5f + oy), 0.f,1.f},color,{0.5f,0.78f} };
-	m_vtx[2] = { {(0.5f + ox),oy, 0.f, 1.f},color,{0.69f,0.5f} };
-	m_vtx[3] = { {ox,(0.5f - oy), 0.f,1.f},color,{0.5f,0.228f} };
+	m_vtx[0] = { {(0.5f - ox),oy,0.5f,1.f}, color,{0.31f,0.5f} };
+	m_vtx[1] = { {ox,(0.5f + oy), 0.5f,1.f},color,{0.5f,0.78f} };
+	m_vtx[2] = { {(0.5f + ox),oy, 0.5f, 1.f},color,{0.69f,0.5f} };
+	m_vtx[3] = { {ox,(0.5f - oy), 0.5f,1.f},color,{0.5f,0.228f} };
 
 	DiamondLocalTransform(m_vtx, m_width, m_height);
 	RefParentVertex(m_vtx);
@@ -69,6 +68,10 @@ void StarChild::SetVertex(DWORD color) {
 //親の座標を自身に反映する
 void StarChild::RefParentVertex(Vertex vtx[4]) {
 	
+	if (m_parent == nullptr) {
+		m_parent = ObjectManager::GetInstance().FindObject(STAR_OBJ);
+	}
+
 	//親の座標を取得
 	float pos_x = m_parent->GetX();
 	float pos_y = m_parent->GetY();

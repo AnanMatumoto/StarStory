@@ -6,6 +6,11 @@
 #include "../../Scene/SceneManager.h"
 
 #include <cmath>
+
+#define STOP_EFFECT "Resource/Player/stop_effect.png"
+
+int speed = 0;
+
 namespace {
 
 	const float GRAVITY        = 0.2f;	//重力
@@ -72,6 +77,23 @@ void StarObject::Draw() {
 
 	SetVertex();
 	BoxLocalTransform(m_vtx, m_width, m_height);
+
+	//++speed;
+	//if (speed >= 0) {
+	//	Lib::AnimationUV(
+	//		STOP_EFFECT,
+	//		11,
+	//		speed/3.f,
+	//		0.1f,
+	//		m_pos.x - m_width,
+	//		m_pos.y - m_height,
+	//		128, 128
+	//	);
+	//}
+	//else if (speed > 11) {
+	//	speed = 0;
+	//}
+
 }
 
 //-----------------------------------
@@ -80,10 +102,10 @@ void StarObject::SetVertex(DWORD color) {
 
 	float ox = 0.f;
 	float oy = 0.f;
-	m_vtx[0].pos = { m_pos.x - m_width , m_pos.y - m_height, 0.f,1.f };
-	m_vtx[1].pos = { m_pos.x + m_width, m_pos.y-m_height, 0.f,1.f };
-	m_vtx[2].pos = { m_pos.x + m_width, m_pos.y + m_height,0.f, 1.f };
-	m_vtx[3].pos = { m_pos.x -m_width,  m_pos.y + m_height, 0.f, 1.f };
+	m_vtx[0].pos = { m_pos.x - m_width , m_pos.y - m_height, 0.3f,1.f };
+	m_vtx[1].pos = { m_pos.x + m_width, m_pos.y-m_height, 0.3f,1.f };
+	m_vtx[2].pos = { m_pos.x + m_width, m_pos.y + m_height,0.3f, 1.f };
+	m_vtx[3].pos = { m_pos.x -m_width,  m_pos.y + m_height, 0.3f, 1.f };
 }
 
 //-----------------------------------

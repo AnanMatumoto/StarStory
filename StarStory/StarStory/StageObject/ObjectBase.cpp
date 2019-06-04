@@ -118,6 +118,7 @@ void ObjectBase::DiamondLocalTransform(
 		
 		vtx[i].pos.x = new_x + pos_x;
 		vtx[i].pos.y = new_y + pos_y;
+		vtx[i].pos.z - 0.2f;
 	}
 }
 
