@@ -4,10 +4,11 @@
 #include "../ObjectManager.h"
 #include "../../Skill.h"
 #include "../../Scene/SceneManager.h"
-
 #include <cmath>
 
-#define STOP_EFFECT "Resource/Player/stop_effect.png"
+#define STOP_EFFECT  "Resource/Player/stop_effect.png"
+#define SPEED_EFFECT "Resource/Player/speed_effect.png"
+#define JUMP_EFFECT  "Resource/Player/jump_effect.png"
 
 int speed = 0;
 
@@ -17,7 +18,6 @@ namespace {
 	const int   BOOST          = 3;		//倍速
 	const int   MAX_CHILDS     = 5;		//子の最大数
 	const float JUMP_POINT	   = 128.f;	//ジャンプ基準値
-	const float LOW_JUMP_POWER = -1.2f;  //最低ジャンプ力
 }
 
 //-----------------------------------
@@ -28,19 +28,20 @@ StarObject::StarObject(
 	float rot
 ) : ObjectBase(x, y, rot)
 {
-	m_speed      = 2.8f;
-	m_width      = 64;
-	m_height     = 64;
-	m_vel.x      = 0;
-	m_jump_power = -3.5f;
-	m_interval   = 60.f;
-	m_is_active  = false;
-	m_cur_child  = nullptr;
-	m_map_obj    = nullptr;
-	m_is_fall	 = false;
-	m_cur_y		 = 0.f;
-	m_gravity    = 0.f;
-	m_rot_speed = 1.3f;
+	m_speed       = 2.8f;
+	m_width       = 64;
+	m_height      = 64;
+	m_vel.x       = 0;
+	m_jump_power  = -3.5f;
+	m_interval    = 60.f;
+	m_cur_y       = 0.f;
+	m_gravity     = 0.f;
+	m_rot_speed   = 1.3f;
+	m_is_fall     = false;
+	m_is_active   = false;
+	m_cur_child   = nullptr;
+	m_map_obj     = nullptr;
+	m_effect_anim = AnimationParameter();
 }
 
 //-----------------------------------
@@ -67,8 +68,9 @@ void StarObject::Update() {
 		m_pos.y = m_cur_y;
 		SceneManager::GetInstance().GetScene()->SetResult(CLEAR);
 	}
-
+	else {
 		AutomaticMove();
+	}
 }
 
 //------------------------------------
@@ -77,22 +79,21 @@ void StarObject::Draw() {
 
 	SetVertex();
 	BoxLocalTransform(m_vtx, m_width, m_height);
+	
 
-	//++speed;
-	//if (speed >= 0) {
-	//	Lib::AnimationUV(
-	//		STOP_EFFECT,
-	//		11,
-	//		speed/3.f,
-	//		0.1f,
-	//		m_pos.x - m_width,
-	//		m_pos.y - m_height,
-	//		128, 128
-	//	);
-	//}
-	//else if (speed > 11) {
-	//	speed = 0;
-	//}
+	
+	if (speed >= 0&&m_is_active) {
+
+		Lib::AnimationUV(
+			m_effect_anim,
+			0.1f,
+			128, 128
+		);
+		++speed;
+	}
+	else if(speed >m_effect_anim.length){
+		speed = 0;
+	}
 
 }
 
@@ -102,10 +103,11 @@ void StarObject::SetVertex(DWORD color) {
 
 	float ox = 0.f;
 	float oy = 0.f;
-	m_vtx[0].pos = { m_pos.x - m_width , m_pos.y - m_height, 0.3f,1.f };
-	m_vtx[1].pos = { m_pos.x + m_width, m_pos.y-m_height, 0.3f,1.f };
-	m_vtx[2].pos = { m_pos.x + m_width, m_pos.y + m_height,0.3f, 1.f };
-	m_vtx[3].pos = { m_pos.x -m_width,  m_pos.y + m_height, 0.3f, 1.f };
+	m_vtx[0].pos = { m_pos.x - m_width
+		, m_pos.y - m_height, 0.3f,1.f };
+	m_vtx[1].pos = { m_pos.x + m_width,  m_pos.y-m_height, 0.3f,1.f };
+	m_vtx[2].pos = { m_pos.x + m_width,  m_pos.y + m_height,0.3f, 1.f };
+	m_vtx[3].pos = { m_pos.x -m_width,   m_pos.y + m_height, 0.3f, 1.f };
 }
 
 //-----------------------------------
@@ -172,29 +174,30 @@ void StarObject::CheckOutSideTheMapObject(
 ) {
 	
 	MapObject* map = map_;
+	if (map == nullptr) {
+		return;
+	}
 
-	if (map != nullptr) {
-		float left   = map->GetVertex(0).pos.x;
-		float right  = map->GetVertex(1).pos.x;
-		float height = map->GetVertex(0).pos.y;
-		float point  = hit_child->GetVertex(1).pos.x; //頂点
+	float left   = map->GetVertex(0).pos.x;
+	float right  = map->GetVertex(1).pos.x;
+	float height = map->GetVertex(0).pos.y;
+	float point  = hit_child->GetVertex(1).pos.x; 
 
-		if ( point > right || m_pos.y > height) {
-			//頂点がオブジェクトの外にいる場合
-			m_is_active = false;
-			if (m_cur_skill == JUMP) {
-				m_is_active = true;
-			}
-		
-		}
-		else if ( point > left && point < right) {
-			//頂点がオブジェクトの範囲内にいる場合
+	if ( point > right || m_pos.y > height) {
+		//頂点がオブジェクトの外にいる場合
+		m_is_active = false;
+		if (m_cur_skill == JUMP) {
 			m_is_active = true;
-			
-			if (m_cur_skill != JUMP) {
-				//ジャンプ以外の場合はめり込みを修正する
-				m_pos.y += m_cur_child->DistanceToCeiling();
-			}
+		}
+	
+	}
+	else if ( point > left && point < right) {
+		//頂点がオブジェクトの範囲内にいる場合
+		m_is_active = true;
+		
+		if (m_cur_skill != JUMP) {
+			//ジャンプ以外の場合はめり込みを修正する
+			m_pos.y += m_cur_child->DistanceToCeiling();
 		}
 	}
 }
@@ -206,33 +209,46 @@ void StarObject::CauseToSkill(int skill_id) {
 	switch (skill_id)
 	{
 	case NORMAL:
-		AddForce(m_speed,0.f,2.5f);
+		AddForce(m_speed, 0.f, 2.5f);
 		RefPosition();
 		m_interval = 60.f;
 		m_is_fall = false;
+		m_effect_anim.SetParameter( 0, 0,{ 0,0 },"none");
 		break;
 
 	case SPEED:
 		AddForce(m_speed* BOOST);
 		RefPosition();
+		m_effect_anim.SetParameter(
+			9, speed/3.f,
+			{ m_pos.x-70, m_pos.y-m_height },
+			SPEED_EFFECT);
 		break;
 
 	case JUMP:
 		if (m_is_fall == false) {
 			JumpMotion();
+			m_effect_anim.SetParameter(
+				8, speed,
+				{ m_pos.x-m_width, m_pos.y + 23 },
+				JUMP_EFFECT);
 		}
 		else {
 			FallMotion();
 		}
+		
 		break;
 
 	case STOP:
 		StopMotion();
+		m_effect_anim.SetParameter(
+			11, speed,
+			{ m_pos.x -m_width,m_pos.y-m_height }, STOP_EFFECT);
 		break;
 
-	case LIGHT://未実装
-		m_vel.y = 0.f;
-		break;
+	//case LIGHT://未実装
+	//	m_vel.y = 0.f;
+	//	break;
 	}	
 }
 
