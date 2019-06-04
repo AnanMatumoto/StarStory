@@ -67,5 +67,6 @@
     <ClInclude Include="Sound\SoundState\SoundPlay.h" />
     <ClInclude Include="Sound\SoundState\SoundStop.h" />
     <ClInclude Include="Sound\SoundState\SoundPause.h" />
+    <ClInclude Include="Lib\AnimationParameter.h" />
   </ItemGroup>
 </Project>

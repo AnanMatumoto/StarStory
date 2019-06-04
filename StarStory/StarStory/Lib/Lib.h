@@ -1,4 +1,5 @@
 ﻿#include "../Common/Common.h"
+#include "AnimationParameter.h"
 #include <d3d9.h>
 #include<d3dx9.h>
 #include <dsound.h>
@@ -498,6 +499,17 @@ namespace Lib {
 		float ox=0.f, float oy=0.f,
 		DWORD color = 0x00ffffff
 	);
+
+	/*
+	　　UVアニメーション（オーバーロード）
+	  　
+	   第1 :アニメーションパラメーター構造体
+	   第2 :深度
+	*/
+	void AnimationUV(
+		AnimationParameter& param,
+		float depth,
+		float width, float height);
 
 	//====================================
 	// サウンド関連

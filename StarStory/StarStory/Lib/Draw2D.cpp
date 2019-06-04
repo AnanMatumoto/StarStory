@@ -434,5 +434,22 @@ namespace Lib {
 			2, vtx,
 			sizeof(Vertex));
 	}
+
+	void AnimationUV(
+		AnimationParameter& param,
+		float depth,
+		float width, float height
+	) {
+		AnimationUV(
+			param.name.c_str(),
+			param.length,
+			param.speed,
+			depth,
+			param.ofset.x,
+			param.ofset.y,
+			width, height
+		);
+
+	}
 }
 
