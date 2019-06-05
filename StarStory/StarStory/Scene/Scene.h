@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "ResultID.h"
+#include "../Scene/ResultScene/ResultID.h"
 
 //==============================
 //　状態ID

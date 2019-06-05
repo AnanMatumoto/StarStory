@@ -1,6 +1,6 @@
 #include "StarChild.h"
 #include "StarObject.h"
-#include "../ObjectManager.h"
+#include "../ObjectManager/ObjectManager.h"
 #include "../Map/MapObject.h"
 #include "../../Collision/Collision.h"
 

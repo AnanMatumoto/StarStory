@@ -1,9 +1,9 @@
 ﻿#include "StarObject.h"
 #include "StarChild.h"
-#include "../Map/MapObject.h"
-#include "../ObjectManager.h"
 #include "../../Skill.h"
-#include "../../Scene/SceneManager.h"
+#include "../Map/MapObject.h"
+#include "../ObjectManager/ObjectManager.h"
+#include "../../Scene/SceneManager/SceneManager.h"
 #include <cmath>
 
 #define STOP_EFFECT  "Resource/Player/stop_effect.png"

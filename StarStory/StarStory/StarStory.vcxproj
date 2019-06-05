@@ -157,7 +157,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Scene\CustomScene.cpp">
+    <ClCompile Include="Scene\CusutomScene\CustomScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -171,7 +171,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Scene\GamaScene.cpp">
+    <ClCompile Include="Scene\GameScene\GamaScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -183,15 +183,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Scene\ResultScene.cpp">
+    <ClCompile Include="Scene\ResultScene\ResultScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Scene\SceneManager.cpp">
+    <ClCompile Include="Scene\SceneManager\SceneManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Scene\SelectScene.cpp">
+    <ClCompile Include="Scene\SelectScene\SelectScene.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -199,7 +199,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Scene\TitleScenecpp.cpp">
+    <ClCompile Include="Scene\TitleScene\TitleScenecpp.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -215,7 +215,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="StageObject\ObjectManager.cpp">
+    <ClCompile Include="StageObject\ObjectManager\ObjectManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -223,7 +223,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="StageObject\StageObjectFactory.cpp">
+    <ClCompile Include="StageObject\ObjectFactory\StageObjectFactory.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -232,15 +232,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="UI\Button.cpp">
+    <ClCompile Include="UI\Button\Button.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="UI\UIObjectFactory.cpp">
+    <ClCompile Include="UI\UIFactory\UIObjectFactory.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="UI\UIManager.cpp">
+    <ClCompile Include="UI\UIManager\UIManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -274,19 +274,19 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Scene\CustomScene.h">
+    <ClInclude Include="Scene\CusutomScene\CustomScene.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Scene\GameScene.h">
+    <ClInclude Include="Scene\GameScene\GameScene.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Scene\ResultID.h">
+    <ClInclude Include="Scene\ResultScene\ResultID.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Scene\ResultScene.h">
+    <ClInclude Include="Scene\ResultScene\ResultScene.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -294,15 +294,15 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Scene\SceneManager.h">
+    <ClInclude Include="Scene\SceneManager\SceneManager.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Scene\SelectScene.h">
+    <ClInclude Include="Scene\SelectScene\SelectScene.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Scene\TitleScene.h">
+    <ClInclude Include="Scene\TitleScene\TitleScene.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -347,7 +347,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StageObject\ObjectManager.h">
+    <ClInclude Include="StageObject\ObjectManager\ObjectManager.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -355,7 +355,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="StageObject\StageObjectFactory.h">
+    <ClInclude Include="StageObject\ObjectFactory\StageObjectFactory.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -367,15 +367,19 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="UI\Button.h">
+    <ClInclude Include="StageObject\StageObjectID.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="UI\UIManager.h">
+    <ClInclude Include="UI\Button\Button.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="UI\UIObjectFactory.h">
+    <ClInclude Include="UI\UIManager\UIManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UI\UIFactory\UIObjectFactory.h">
       <SubType>
       </SubType>
     </ClInclude>

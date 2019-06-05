@@ -8,35 +8,32 @@ enum UIObjectID {
 
 	BT_NONE,
 
-	/*----UI----*/
-	// タイトルボタン
-	BT_TT_START,		//タイトル画面スタート
-	BT_TT_END,			//  　〃　　　終了
+	/*----タイトル----*/
+	BT_TITLE_START,							
+	BT_TITLE_END,				    
 
-	// ステージセレクトボタン
-	BT_SL_STAGE,
-	BT_SL_BACK,
+	/*---ステージセレクト----*/
+	BT_SELECT_STAGE,				
+	BT_SELECT_BACK,				   
 
 	/*----カスタム----*/
-	BT_CT_TOSELECT,			// セレクトへ戻るボタン
-	BT_CT_DECISION,			// 決定ボタン
-	/*----カスタム----*/
+	BT_CUSTOM_BACK,				
+	BT_CUSTOM_DECISION,		
+	/*----ゲーム本編---*/
+	BT_GAME_WIND,
+	BT_GAME_FRAME,
+	BT_GAME_BACK,
+	BT_GAME_STOP,
+	BT_GAME_ONOFF,
 
-	// ゲームボタン
-	BT_GM_WIND,
-	BT_GM_FRAME,
-	BT_GM_TOCUSTOM,
-	BT_GM_STOP,
-	BT_GM_ONOFF,
-
-	// リザルト
-	BT_RS_SELECT,		//ステージセレクトへ
-	BT_RS_CUSUTOM,		//カスタムへ
-	BT_RS_TITLEBACK,    //タイトル画面へ
-	BT_RS_CLEAR,
-	BT_RS_FAILD,
-	BT_RS_FLAME_R,
-	BT_RS_FLAME_L,
+	/*-----リザルト------*/
+	BT_RESULT_BACK_SELECT,		
+	BT_RESULT_BACK_CUSTOM,		
+	BT_RESULT_BACK_TITLE,    
+	BT_RESULT_CLEAR,
+	BT_RESULT_FAILD,
+	BT_RESULT_FRAME_R,
+	BT_RESULT_FRAME_L,
 	/*----UI----*/
 
 	MAX_NUM
