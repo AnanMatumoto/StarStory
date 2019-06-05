@@ -24,52 +24,72 @@ public:
 
 	//　更新処理
 	virtual void Update()   = 0;
+	
 	//　描画処理
 	virtual void Draw  ()   = 0;
-	//　頂点情報をセットする
+	
+	/*
+	頂点情報をセットする
+	引数：
+	　　color(頂点カラー)
+	*/
 	virtual void SetVertex(DWORD color = 0x00ffffff) {}
+	
 	//　削除フラグをセットする
 	void Delete();
+	
 	//　削除状態かどうかを返す
     const bool IsDelete()const;
 
-public:
 	//　X座標ゲッター
 	const float GetX()const;
+	
 	//　Y座標ゲッター
 	const float GetY()const;
+
 	//  回転角度ゲッター
 	const float GetRot()const;
-	//  幅ゲッター
-	const float GetWidth()const;
-	//　高さゲッター
-	const float GetHeight()const;
 
-	// 　頂点情報ゲッターオーバーロード（指定した頂点情報を取得）
-	const Vertex GetVertex(int prim_num)const;
+	/*
+	頂点情報ゲッターオーバーロード（指定した頂点情報を取得）
+	引数：
+	　　prim_num(頂点の番号)
+	*/const Vertex GetVertex(int prim_num)const;
 
 protected:
-
-	//　頂点情報ゲッター
-	const Vertex* GetVertex()const;
 	
-
-
-	//　矩形用ローカル座標変換
+	/*
+	矩形用ローカル座標変換
+	引数：
+	　　vtx  (頂点座標)
+	  　width(オブジェクトの幅)
+	    height(オブジェクトの高さ)
+	*/
 	void BoxLocalTransform(
 		Vertex vtx[4],
 		float width,
 		float height
 	);
 
-	//　菱形用ローカル座標変換
+	/*
+	菱形用ローカル座標変換
+	引数：
+	　　vtx  (頂点座標)
+	  　width(オブジェクトの幅)
+	    height(オブジェクトの高さ)
+	*/
 	void DiamondLocalTransform(
 		Vertex vtx[4],
 		float width,
 		float height
 	);
 
-	//　オブジェクトの上面を返す
+	/*
+	オブジェクトの上の辺と当たったかを返す
+	引数：
+	　point(星のとある頂点)
+	  boj  (マップオブジェクト)
+	*/
 	bool IsHitToUpper(Vec2 point, ObjectBase* obj);
 
 protected:

@@ -2,18 +2,21 @@
 
 namespace Lib {
 
+	/*
+	色の生成処理
+	*/
 	D3DXCOLOR CreateColor(
-		float r,
-		float g,
-		float b,
-		float a
+		float red,
+		float gleen,
+		float blue,
+		float alpha
 	) {
 
 		D3DXCOLOR color;
-		color.r = (FLOAT)r;
-		color.g = (FLOAT)g;
-		color.b = (FLOAT)b;
-		color.a = (FLOAT)a;
+		color.r = (FLOAT)red;
+		color.g = (FLOAT)gleen;
+		color.b = (FLOAT)blue;
+		color.a = (FLOAT)alpha;
 
 		return color;
 	}

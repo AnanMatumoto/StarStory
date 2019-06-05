@@ -23,7 +23,7 @@ StarChild::StarChild(
 	m_obj_width = 0.f;
 	is_hit     = false;
 	m_skill    = skill;
-	m_obj      = nullptr;
+	m_cur_obj      = nullptr;
 	m_se_id    = se_id;
 	m_one_flame = 0;
 }
@@ -107,7 +107,7 @@ void StarChild::HitToObject() {
 		float right = obj->GetVertex(1).pos.x;
 		//頂点がオブジェクトの幅の中なら保存
 		if (vec.x >= obj->GetX() && vec.x <= right) {
-				m_obj = obj;
+				m_cur_obj = obj;
 		}
 	}
 }
@@ -117,12 +117,12 @@ void StarChild::IsHit() {
 	SetVertex();
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
-	if (m_obj != nullptr) {
-		float right = m_obj->GetVertex(1).pos.x;
+	if (m_cur_obj != nullptr) {
+		float right = m_cur_obj->GetVertex(1).pos.x;
 	
-		if (vec.x >= m_obj->GetX() && vec.x <= right) {
+		if (vec.x >= m_cur_obj->GetX() && vec.x <= right) {
 			//マップと頂点が当たっているか
-			if (IsHitToUpper(vec, m_obj)) {
+			if (IsHitToUpper(vec, m_cur_obj)) {
 				++m_one_flame;
 				is_hit = true;
 			}
@@ -150,15 +150,17 @@ const Skill StarChild::GetSkill()const {
 // 当たったマップオブジェクトを返す
 ObjectBase* StarChild::GetMapObj()const {
 	
-	if (m_obj != nullptr) {
-		return m_obj;
+	if (m_cur_obj != nullptr) {
+		return m_cur_obj;
 	}
 }
 
-float StarChild::DistanceToCeiling() {
+//--------------------------------------
+//マップオブジェクトとのめり込み距離を取得
+float StarChild::GetDistanceToCeiling() {
 
-	if (m_obj != nullptr) {
-		float obj_y = m_obj->GetVertex(0).pos.y;
+	if (m_cur_obj != nullptr) {
+		float obj_y = m_cur_obj->GetVertex(0).pos.y;
 		return obj_y - m_vtx[1].pos.y;
 	}
 }

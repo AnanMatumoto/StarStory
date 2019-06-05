@@ -32,9 +32,11 @@ public:
 	// スキル名ゲッター
 	const Skill GetSkill()const;
 	
+	//現在当たっているマップオブジェクトゲッター
 	ObjectBase* GetMapObj() const;
 
-	float DistanceToCeiling();
+	//オブジェクトの上の辺とめり込んだ距離を取得
+	float GetDistanceToCeiling();
 
 private:
 	
@@ -50,23 +52,24 @@ private:
 	// 親の座標を反映する
 	void RefParentVertex(Vertex vtx[4]);
 
+	//当たったオブジェクトを取得する
 	void HitToObject();
-
+	
+	//当たり判定状態フラグゲッター
 	void IsHit();
 
-
-	//■■■仮■■■
+	//SE再生処理
 	void PlaySE();
 
 private:
 
 	ObjectBase* m_parent;			    //親オブジェクト
 	Skill       m_skill;			    //スキル
-	ObjectBase* m_obj;
-	float       m_obj_width;		   // マップオブジェクトの幅
-	bool        is_hit;
-	int			m_one_flame;
-	std::vector<MapObject*> m_map_obj; //マップオブジェクトのリスト
+	ObjectBase* m_cur_obj;				//現在のマップオブジェクト
+	float       m_obj_width;		    //マップオブジェクトの幅
+	bool        is_hit;					//当たり判定状態フラグ
+	int			m_one_flame;			//一フレーム取得用変数
+	std::vector<MapObject*> m_map_obj;  //マップオブジェクトのリスト
 	SoundResourceID m_se_id;
 };
 

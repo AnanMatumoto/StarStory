@@ -37,7 +37,11 @@ public:
 	//  描画処理
 	void Draw();
 
-	//  IDで指定したオブジェクトを削除する
+	/* 
+	IDで指定したオブジェクトを削除する
+	引数：
+	　　id(UIオブジェクトのID)
+	*/
 	void Delete(UIObjectID id);
 
 	//　リスト内にあるオブジェクトを全て削除する
@@ -46,7 +50,11 @@ public:
 	//  クリックされたUIのIDを返す
 	UIObjectID FindClickedUI();
 
-	//  スイッチ式のUIに対するONとOFF状態を判定する
+	/* 
+	スイッチ式のUIに対するONとOFF状態を判定する
+	引数：
+	　id(判定対象のUIオブジェクトID)
+	*/
 	bool SwithOnUI(UIObjectID id);
 
 

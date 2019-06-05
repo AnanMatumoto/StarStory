@@ -31,24 +31,6 @@ const float ObjectBase::GetRot()const {
 }
 
 //-----------------------------------
-// 頂点情報ゲッター
-const Vertex* ObjectBase::GetVertex()const {
-	return m_vtx;
-}
-
-//-----------------------------------
-//　幅ゲッター
-const float ObjectBase::GetWidth()const {
-	return m_width;
-}
-
-//------------------------------------
-//　高さゲッター
-const float ObjectBase::GetHeight()const {
-	return m_height;
-}
-
-//-----------------------------------
 //　頂点情報ゲッター（オーバーロード）
 const Vertex ObjectBase::GetVertex(int prim_num)const {
 	return m_vtx[prim_num];

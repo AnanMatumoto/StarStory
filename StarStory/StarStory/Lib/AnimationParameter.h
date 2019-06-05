@@ -8,6 +8,7 @@
 
 struct  AnimationParameter
 {
+	//コンストラクタ
 	AnimationParameter() {
 		length = 0;
 		speed = 0;
@@ -23,16 +24,24 @@ struct  AnimationParameter
 		this->name = param.name;
 	}
 
+	/*
+	UVアニメーションのパラメーターセット
+	引数：
+	　　anim_length (アニメーション枚数のの長さ)
+	  　anim_speed  (アニメーション速度)
+	    ofset       (描画位置x,y座標)
+		anim_name   (アニメーション画像名)
+	*/
 	void SetParameter(
 		int anim_length,
 		int anim_speed,
 		Vec2 ofset_,
-		std::string effect_name_
+		std::string anim_name_
 	) {
 		length = anim_length;
 		speed = anim_speed;
 		ofset = ofset_;
-		name = effect_name_;
+		name = anim_name_;
 	}
 
 

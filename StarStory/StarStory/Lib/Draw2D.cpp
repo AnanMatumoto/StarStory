@@ -375,22 +375,23 @@ namespace Lib {
 			D3DBLEND_INVSRCALPHA);
 	}
 
+	//--------------------------------------
+	//　カラーブレンドの設定
 	void SetColorBlend() {
 
 		dev->SetTextureStageState(
 			0, D3DTSS_COLOROP,
-			D3DTOP_MODULATE
-		);
+			D3DTOP_MODULATE);
 		dev->SetTextureStageState(
 			0, D3DTSS_COLORARG1,
-			D3DTA_TEXTURE
-		);
+			D3DTA_TEXTURE);
 		dev->SetTextureStageState(
 			0, D3DTSS_COLORARG2,
-			D3DTA_DIFFUSE
-		);
+			D3DTA_DIFFUSE);
 	}
 
+	//----------------------------------
+	// UVアニメーション関数
 	void AnimationUV(
 		const Texture& tex,
 		int   length,
@@ -410,7 +411,7 @@ namespace Lib {
 			return;
 		}
 		
-		//一枚当たりの画像UV
+		//一枚当たりの画像UVサイズ
 		float slice_size = 1.0 / length;
 
 		float uv_x1 =slice_size*slice_num;
@@ -435,6 +436,8 @@ namespace Lib {
 			sizeof(Vertex));
 	}
 
+	//--------------------------------
+	//　UVアニメーション（オーバーロード）
 	void AnimationUV(
 		AnimationParameter& param,
 		float depth,

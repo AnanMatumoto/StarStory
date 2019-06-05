@@ -15,12 +15,13 @@
 
 #define NOMINMAX
 
-
+//----------------------
+//頂点情報構造体
 struct Vertex
 {
-	D3DXVECTOR4 pos;
-	DWORD		col;
-	D3DXVECTOR2 uv;
+	D3DXVECTOR4 pos; //頂点座標
+	DWORD		col; //色相
+	D3DXVECTOR2 uv;  //UV座標
 
 };
 
@@ -45,22 +46,48 @@ namespace Lib {
 		}
 		AppEnd();							 // アプリ終了処理
 	*/
+
+	/*
+	ウィンドウプロシージャ
+		メッセージを受け取る
+	*/
 	LRESULT CALLBACK WinProc(
 		HWND hwnd, UINT msg,
 		WPARAM wp, LPARAM lp
 	);
-
+	
+	/*
+	ウィンドウ初期化処理
+	引数:
+		width :ウィンドウの幅
+		height:ウィンドウの高さ
+		title :ウィンドウ名
+	*/
 	void Init(
-		int w, int h,
+		int width, int height,
 		const char* title
 	);
 	
+	/*
+	Windowsのデバイス設定
+	引数：
+	　h_instance:インスタンスハンドル
+	　class_name：ウィンドウ名（※識別用）
+	  wc　　　　：ウィンドウクラス構造体
+	*/
 	void SetWinDevice(
 		HINSTANCE h_instance,
 		const char* class_name,
 		WNDCLASSEX *wc
 	);
 
+	/*
+	ウィンドウの作成処理
+	引数：
+	　h_instance：ウィンドウハンドル
+	　class_name：ウィンドウ名（※識別用）
+	  const_char：ウィンドウ名
+	*/
 	void MakeWindow(
 		HINSTANCE h_instance,
 		const char* class_name,
@@ -68,11 +95,33 @@ namespace Lib {
 		int w, int h
 	);
 
+	/*
+	DirectX９の初期化処理
+	*/
 	void InitD3D9();
+
+	/*
+	ウィンドウ終了処理
+	　　DirectX９のリリース処理を行う
+	*/
 	void AppEnd();
+
+	/*
+	ウィンドウメッセージ処理
+	*/
 	bool ProcessMessage();
+
+	/*
+	描画開始処理
+	引数：
+	　Back_color：描画背景色
+	*/
 	void DrawBegin(DWORD back_color = 0xe0e0ff
 	);
+
+	/*
+	描画終了処理
+	*/
 	void DrawEnd();
 
 	//================================================
@@ -102,7 +151,9 @@ namespace Lib {
 			 const char* name = tex.GetName();
 		*/
 
-		// コンストラクタ
+		/*
+		コンストラクタ
+		*/
 		Texture() :tex(nullptr), size(0.f, 0.f) {}
 		Texture(const char* file_name);
 		Texture(const Texture& t);
@@ -111,81 +162,27 @@ namespace Lib {
 		operator LPDIRECT3DTEXTURE9()const {
 			return tex;
 		};
+		
+		/*
+		テクスチャサイズ取得関数
+		*/
 		const D3DXVECTOR2& GetSize() const {
 			return size;
 		};
+
+		/*
+		テクスチャ名取得関数
+		*/
 		const std::string& GetName() const {
 			return name;
 		};
+
 		~Texture();
 	private:
 
 		LPDIRECT3DTEXTURE9 tex;
 		D3DXVECTOR2 size;
 		std::string name;
-
-	};
-
-
-	class Animation {
-
-	public:
-
-		/*
-		< キーの生成 >
-		num_key: キーの数
-		
-		生成後、キーに対応する値（float型）の配列が生成される。
-		*/
-		void CreateKey(int num_key);
-		
-		/*
-		< キーの値をセットする >
-		　index: CrateKeyで生成した配列のインデックス
-		  key  : キー
-		  value: キーに対応する値
-		*/
-		void SetKeyValue(
-			int index,
-			float key,
-			float value,
-			bool is_loop);
-
-		/*
-		<アニメーションの継続時間をセットする>
-		　duration: アニメーションの継続時間
-		　（timeGetTime関数でセットする）
-		*/
-		void SetDuration(DWORD duration);
-		
-		/*
-		<スタート時間をセットする>
-		start_time:アニメーションの開始時刻
-		（timeGetTime関数で取得）
-		*/
-		void SetStartTime(DWORD start_time);
-		
-		/*
-		<キーの値を取得する>
-		time    :現在の時刻
-		p_value :値（アドレス）
-		p_is_end:終了判定フラグ
-		*/
-		bool GetValue(DWORD time, float* p_value, bool *p_is_end);
-
-
-	private:
-
-		float GetFraction(DWORD time);
-		int GetBeginIndex(float fraction);
-		int    m_num_key;
-		float* m_keys;
-		float* m_values;
-		BOOL  m_is_loop;
-		DWORD m_duration;
-		DWORD m_start_time;
-
-
 
 	};
 
@@ -206,9 +203,31 @@ namespace Lib {
 		   KeyOff('VK_SPACE');// スペースキーを離した瞬間
 		}
 	*/
+
+	/*
+	入力情報更新処理
+	*/
 	void KeyUpdate();
-	bool KeyOn(int nVirtKey);
-	bool KeyPress(int nVirtKey);
+	
+	/*
+	キーボード押印処理
+	引数：
+	　n_virtkey:押されたキー
+	*/
+	bool KeyOn(int n_virtKey);
+	
+	/*
+	キーボードを押した瞬間の処理
+	 引数：
+	　n_virtkey:押されたキー
+	*/
+	bool KeyPress(int n_virtKey);
+	
+	/*
+	キーボードを離した時の処理
+	 引数：
+	　n_virtkey:離されたキー
+	*/
 	bool KeyOff(int nVirtKey);
 	
 
@@ -246,7 +265,7 @@ namespace Lib {
 
 	/*
 		ピクセルサイズ描画関数（基本は左上原点）
-
+	引数：
 		第1　：指定するテクスチャ
 		第2,3：描画したい座標
 		第4,5：幅高を【ピクセルサイズ】で指定する
@@ -279,7 +298,7 @@ namespace Lib {
 	
 		ピクセルサイズ描画関数
 		(※色相指定D3DXCOLOR型)
-
+	引数：
 		第1　：指定するテクスチャ
 		第2,3：描画したい座標
 		第4,5：幅高を【ピクセルサイズ】で指定する
@@ -299,8 +318,7 @@ namespace Lib {
 
 	/*
 		画像サイズ描画関数（基本は左上原点）
-	
-
+	引数：
 		第1　：指定するテクスチャ
 		第2,3：描画したい座標
 		第4,5：【倍率】を直接渡す
@@ -323,7 +341,7 @@ namespace Lib {
 	/*
 		画像サイズ描画関数（基本は左上原点）
 		(※色相設定D3DXCOLOR型)
-
+	引数：
 		第1　：指定するテクスチャ
 		第2,3：描画したい座標
 		第4,5：【倍率】を直接渡す
@@ -343,7 +361,7 @@ namespace Lib {
 
 	/*
 		頂点座標四角形描画関数
-
+	引数：
 		第1：指定するテクスチャ
 		第2：描画する頂点情報
 	*/
@@ -354,7 +372,7 @@ namespace Lib {
 
 	/*
 		透過効果付板ポリゴン
-	
+	引数：
 		第1  ：指定するテクスチャ
 		第2,3：XY座標
 		第4　：色相
@@ -375,7 +393,7 @@ namespace Lib {
 
 	/*
 		三角形描画関数（ピクセルサイズ）
-
+	引数：
 		第1：画像名
 		第2：頂点情報
 		第3：X座標
@@ -399,7 +417,7 @@ namespace Lib {
 
 	/*
 		三角形回転描画関数（ピクセルサイズ）
-
+	引数：
 		第1　：指定するテクスチャ
 		第2　：回転角度（内部でラジアン変換有り）
 		第3.4：自身の座標
@@ -426,7 +444,7 @@ namespace Lib {
 
 	/*
 		回転付菱形描画関数
-
+	引数：
 		第1　：指定するテクスチャ
 		第2,3：XY座標
 		第4,5：中心から頂点角までの長さ（対角線の半分）
@@ -452,7 +470,7 @@ namespace Lib {
 
 	/*
 		回転付菱形描画関数（複数指定可能）
-
+	引数：
 		第1  ：指定するテクスチャ
 		第2,3：XY座標（中心座標）
 		第4  ：オブジェクトの最大数
@@ -477,6 +495,7 @@ namespace Lib {
 
 	/*
 	   UVアニメーション関数
+	引数：
 	   第1 ：テクスチャ名
 	　 第2 ：統合画像の長さ
 	   第3 ：現在の描画番号
@@ -502,7 +521,7 @@ namespace Lib {
 
 	/*
 	　　UVアニメーション（オーバーロード）
-	  　
+	 引数：
 	   第1 :アニメーションパラメーター構造体
 	   第2 :深度
 	*/
@@ -519,6 +538,7 @@ namespace Lib {
 	AudioClip
 		waveファイルを管理する
 	*/
+
 	class AudioClip{
 
 	public:
@@ -567,7 +587,11 @@ namespace Lib {
 		// 再生（再生終了後、頭出し設定をして終了する）
 		void Play(std::string sound_naem);
 		
-		// ループ再生
+		/*
+		ループ再生
+		引数：
+		　sound_name:ループさせたいwaveファイル名
+		*/
 		void LoopOnPlay(std::string sound_name);
 		
 		// 停止
@@ -582,8 +606,8 @@ namespace Lib {
 
 	private:
 		IDirectSoundBuffer8* m_sec_buf; //セカンダリバッファ
-		WAVEFORMATEX m_format;
-		DWORD m_size;
+		WAVEFORMATEX m_format;			//データフォーマット構造体
+		DWORD m_size;					//waveファイルのサイズ
 
 
 	};

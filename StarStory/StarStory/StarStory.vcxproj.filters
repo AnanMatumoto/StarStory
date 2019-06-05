@@ -19,7 +19,6 @@
     <ClCompile Include="StageObject\Map\MapObject.cpp" />
     <ClCompile Include="Sound\SoundManager\SoundManager.cpp" />
     <ClCompile Include="Custom\DiamondBase\DiamondBase.cpp" />
-    <ClCompile Include="Lib\Animation.cpp" />
     <ClCompile Include="UI\UIFactory\UIObjectFactory.cpp" />
     <ClCompile Include="UI\Button\Button.cpp" />
     <ClCompile Include="UI\UIManager\UIManager.cpp" />

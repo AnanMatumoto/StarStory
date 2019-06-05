@@ -197,7 +197,7 @@ void StarObject::CheckOutSideTheMapObject(
 		
 		if (m_cur_skill != JUMP) {
 			//ジャンプ以外の場合はめり込みを修正する
-			m_pos.y += m_cur_child->DistanceToCeiling();
+			m_pos.y += m_cur_child->GetDistanceToCeiling();
 		}
 	}
 }

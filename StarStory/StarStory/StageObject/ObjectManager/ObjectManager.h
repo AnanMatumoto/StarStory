@@ -99,7 +99,4 @@ public:
 private:
 
 	std::unordered_map<StageObjectID, ObjectBase*> m_obj_list; // オブジェクトリスト
-	std::unordered_map<StageObjectID, ObjectBase*>
-		m_UI_list;
-
 };
