@@ -64,14 +64,9 @@ void SceneManager::SetQuit(bool has_quit) {
 
 //--------------------------------------
 //シーン終了処理
-bool SceneManager::IsQuitWindow() {
-	if (is_quit) {
-		return true;
-	}
-	return false;
+bool SceneManager::GetQuitWindow() {
+	return is_quit;
 }
-
-
 
 //--------------------------------------
 //　デストラクタ

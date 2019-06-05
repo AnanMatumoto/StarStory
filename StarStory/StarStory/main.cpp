@@ -23,16 +23,14 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		Lib::DrawBegin(0xe0e0ff);
 		
 		SceneManager::GetInstance().Update();
-		if (SceneManager::GetInstance().IsQuitWindow()) {
-			return WM_QUIT;
-		}
-
-		// マウスカーソル画像描画
-		/*Vec2 mourse = Lib::GetPointOnDrag();
-		Lib::DrawBox2D("Resource/Game/ui_stage_x1.png", mourse.x, mourse.y);*/
-
+		
 		//　描画終了
 		Lib::DrawEnd();
+
+		//終了処理
+		if (SceneManager::GetInstance().GetQuitWindow()) {
+			break;
+		}
 	}
 	Lib::AppEnd();
 

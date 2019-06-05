@@ -17,34 +17,43 @@ public:
 	*/
 	static SceneManager& GetInstance();
 	/*
-	 Init：
-		初期化処理。各シーンをリストに登録。
+	初期化処理
+		各シーンをリストに登録。
 		初めにタイトルシーンをセットする。
 	*/
 	void Init();
 
 	/*
-  	  Update:
-		更新処理。シーン間の遷移を管理する。
+  	更新処理
+		シーン間の遷移を管理する。
 	*/
 	void Update();
 
 	/*
-	 ChangeScene:
+	シーン切り替え処理	
 		現在のシーンの終わりをnow_sceneで取得し、
 		シーンの切り替えを行う。
+	引数：
+	　　　Scene_ID(現在のシーンID)
 	*/
 	void ChangeScene(SceneID scene_id);
 
 	/*
-	GetScene:
-		現行シーンを取得する
+	現行シーンを取得する
 	*/
 	SceneBase* GetScene();
 
+	/*
+	  終了状態をセットする
+	引数：
+	　　has_quit(終了状態フラグ)
+	*/
 	void SetQuit(bool has_quit);
 
-	bool IsQuitWindow();
+	/*
+	   終了状態に入ったフラグを取得する
+	*/
+	 bool GetQuitWindow();
 
 	
 
