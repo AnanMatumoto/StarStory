@@ -1,10 +1,8 @@
 ﻿#include "ObjectManager.h"
-#include "Factory.h"
-#include "../SkillData/Skill_Data.h"
-#include "StageObjectFactory.h"
-#include "../UI/UIObjectFactory.h"
-#include "../Sound/SoundManager/SoundManager.h"
-#include "../Lib/Lib.h"
+#include "../../SkillData/Skill_Data.h"
+#include "../ObjectFactory/StageObjectFactory.h"
+#include "../../Sound/SoundManager/SoundManager.h"
+#include "../../Lib/Lib.h"
 #include <vector>
 #include <fstream>
 #include <iostream>

@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "Factory.h"
-#include "../Sound/SoundManager/SoundManager.h"
+#include "../Factory.h"
+#include "../../Sound/SoundManager/SoundManager.h"
 #include <string>
 
 //===================================

@@ -1,7 +1,7 @@
 ﻿#include "UIManager.h"
-#include "UIObjectFactory.h"
-#include "../Lib/Lib.h"
-#include "Button.h"
+#include "../../Lib/Lib.h"
+#include "../UIFactory/UIObjectFactory.h"
+#include "../Button/Button.h"
 #include <vector>
 
 //-------------------------------

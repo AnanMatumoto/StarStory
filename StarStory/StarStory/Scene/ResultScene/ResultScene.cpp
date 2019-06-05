@@ -1,7 +1,7 @@
 ﻿#include "ResultScene.h"
-#include "SceneManager.h"
-#include "../Lib/Lib.h"
-#include "../UI/UIManager.h"
+#include "../../Lib/Lib.h"
+#include "../../UI/UIManager/UIManager.h"
+#include "../SceneManager/SceneManager.h"
 
 #define RESULT_BACKIMG "Resource/Result/ui_result_base.png"
 #define RESULT_CUSTOM "Resource/Result/ui_result_custom.png"
@@ -17,8 +17,8 @@ void ResultScene::Init() {
 
 	//UIの登録
 	UIManager& mng = UIManager::GetInstance();
-	mng.Register(BT_RS_CUSUTOM, 888, 809,   RESULT_CUSTOM);
-	mng.Register(BT_RS_SELECT, 1176, 809,   RESULT_SELECT);
+	mng.Register(BT_RESULT_BACK_CUSTOM, 888, 809,   RESULT_CUSTOM);
+	mng.Register(BT_RESULT_BACK_SELECT, 1176, 809,   RESULT_SELECT);
 
 }
 

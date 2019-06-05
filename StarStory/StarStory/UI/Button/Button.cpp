@@ -1,6 +1,6 @@
 ﻿#include"Button.h"
-#include"../Lib/Lib.h"
-#include "../Collision/Collision.h"
+#include"../../Lib/Lib.h"
+#include "../../Collision/Collision.h"
 
 //---------------------------------
 //コンストラクタ

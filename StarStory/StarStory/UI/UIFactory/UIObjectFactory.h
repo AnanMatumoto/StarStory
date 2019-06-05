@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../StageObject/Factory.h"
+#include "../../StageObject/Factory.h"
 #include <string>
 
 

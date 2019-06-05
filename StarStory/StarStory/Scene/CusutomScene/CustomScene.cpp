@@ -1,6 +1,6 @@
 ﻿#include "CustomScene.h"
-#include "SceneManager.h"
-#include "../UI/UIManager.h"
+#include "../SceneManager/SceneManager.h"
+#include "../../UI/UIManager/UIManager.h"
 
 /*----画像----*/
 const char CUSTOM_BASE_TEX[256]			= "Resource/Custom/ui_custom_base_ver2.png";				// 背景
@@ -18,8 +18,8 @@ void CustomScene::Init() {
 	UIManager & UImng = UIManager::GetInstance();
 
 	// UI生成
-	UImng.Register(BT_CT_TOSELECT, 1015, 792, CUSTOM_SERECT_TEX);		// 決定ボタン
-	UImng.Register(BT_CT_DECISION, 1309, 876, CUSTOM_DECISION_TEX);		// セレクト画面へ戻るボタン
+	UImng.Register(BT_CUSTOM_BACK, 1015, 792, CUSTOM_SERECT_TEX);		// 決定ボタン
+	UImng.Register(BT_CUSTOM_DECISION, 1309, 876, CUSTOM_DECISION_TEX);		// セレクト画面へ戻るボタン
 
 	// カスタムオブジェクト生成
 	m_custom_object_manager = new CustomObjectManager();
@@ -34,7 +34,7 @@ void CustomScene::Update() {
 	ui_mng.Update();
 
 	// 決定ボタンが押されたら
-	if (ui_mng.FindClickedUI() == BT_CT_DECISION) {
+	if (ui_mng.FindClickedUI() == BT_CUSTOM_DECISION) {
 
 		// ゲーム画面へ進むに変更
 		m_scene_id = SC_GAME;
@@ -44,7 +44,7 @@ void CustomScene::Update() {
 	}
 
 	// セレクト確認ボタンが押されたら
-	if (ui_mng.FindClickedUI() == BT_CT_TOSELECT) {
+	if (ui_mng.FindClickedUI() == BT_CUSTOM_BACK) {
 
 		// セレクト画面へ戻るに変更
 		m_scene_id = SC_SELECT;
@@ -64,8 +64,8 @@ SceneID CustomScene::End() {
 	m_state_id = SS_INIT;
 
 	// UIをリストから削除
-	UIManager::GetInstance().Delete(BT_CT_TOSELECT);	// セレクト画面へ戻るボタン
-	UIManager::GetInstance().Delete(BT_CT_DECISION);	// 決定ボタン
+	UIManager::GetInstance().Delete(BT_CUSTOM_BACK);	// セレクト画面へ戻るボタン
+	UIManager::GetInstance().Delete(BT_CUSTOM_DECISION);	// 決定ボタン
 
 	// スキル情報をNONEにする
 	Skill_ID::GetInstance().SetSkillID(Skill::NORMAL);

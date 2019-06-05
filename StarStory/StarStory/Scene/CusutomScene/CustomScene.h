@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "Scene.h"
-#include"../Custom/CustomObjectManager/CustomObjectManager.h"
-#include"../Skill.h"
+#include "../Scene.h"
+#include"../../Custom/CustomObjectManager/CustomObjectManager.h"
+#include"../../Skill.h"
 
 //=================================
 //  カスタム画面クラス

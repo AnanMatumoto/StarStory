@@ -1,7 +1,8 @@
 ﻿#pragma once
 
-#include"ObjectBase.h"
-#include "../Skill.h"
+#include"../ObjectBase.h"
+#include "../../Skill.h"
+#include "../StageObjectID.h"
 #include <unordered_map>
 #include <string>
 

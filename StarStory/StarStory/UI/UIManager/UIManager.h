@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "../StageObject/ObjectBase.h"
-#include "UIObjectID.h"
+#include "../../StageObject/ObjectBase.h"
+#include "../UIObjectID.h"
 #include <unordered_map>
 #include <string>
 

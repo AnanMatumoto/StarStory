@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include"../StageObject/ObjectBase.h"
+#include"../../StageObject/ObjectBase.h"
 #include <string>
 
 class ButtonUI : public ObjectBase {

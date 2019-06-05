@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "Scene.h"
+#include "../Scene.h"
 #include <vector>
-#include "../Lib/Lib.h"
+#include "../../Lib/Lib.h"
 
 class ObjectBase;
 

@@ -1,11 +1,11 @@
 ﻿#include "GameScene.h"
-#include "SceneManager.h"
-#include "../StageObject/ObjectManager.h"
-#include "../StageObject/Player/StarObject.h"
-#include "../UI/UIManager.h"
-#include "../Sound/SoundManager/SoundManager.h"
+#include "../SceneManager/SceneManager.h"
+#include "../../StageObject/ObjectManager/ObjectManager.h"
+#include "../../StageObject/Player/StarObject.h"
+#include "../../UI/UIManager/UIManager.h"
+#include "../../Sound/SoundManager/SoundManager.h"
 
-#include "../SkillData/Skill_Data.h"
+#include "../../SkillData/Skill_Data.h"
 #include <iostream>
 #include <fstream>
 
@@ -63,8 +63,8 @@ void GameScene::Init() {
 	mng.Register(STAR_OBJ, "none", 90, 500);
 
 	//UIの登録
-	UImng.Register(BT_GM_TOCUSTOM, 139,67,GAME_CUSTOM);
-	UImng.Register(BT_GM_STOP, 355, 65, GAME_STOP );
+	UImng.Register(BT_GAME_BACK, 139,67,GAME_CUSTOM);
+	UImng.Register(BT_GAME_STOP, 355, 65, GAME_STOP );
 	m_result = NO_RESULT;
 }
 
@@ -76,23 +76,23 @@ void GameScene::Update() {
 	ui_mng.Update();
 
 	//　カスタムボタンが押された
-	if (ui_mng.FindClickedUI() == BT_GM_TOCUSTOM) {
+	if (ui_mng.FindClickedUI() == BT_GAME_BACK) {
 		m_state_id = SS_END;
 		m_scene_id = SC_CUSTOM;
 	}
 
-	if (ui_mng.SwithOnUI(BT_GM_STOP)==false) {
+	if (ui_mng.SwithOnUI(BT_GAME_STOP)==false) {
 		// ステージオブジェクト更新
 		ObjectManager::GetInstance().Update();
 	}
 
 	if (m_result > 0) {
-		if (ui_mng.FindClickedUI() == BT_RS_CUSUTOM) {
+		if (ui_mng.FindClickedUI() == BT_RESULT_BACK_CUSTOM) {
 			m_state_id = SS_END;
 			m_scene_id = SC_CUSTOM;
 		}
 
-		if (ui_mng.FindClickedUI() == BT_RS_SELECT) {
+		if (ui_mng.FindClickedUI() == BT_RESULT_BACK_SELECT) {
 			m_state_id = SS_END;
 			m_scene_id = SC_SELECT;
 		}
@@ -174,8 +174,8 @@ void GameScene::DrawResult() {
 
 
 	UIManager& ui_mng = UIManager::GetInstance();
-	ui_mng.Register(BT_RS_CUSUTOM, 788, 780, RESULT_CUSTOM);
-	ui_mng.Register(BT_RS_SELECT, 1148, 780, RESULT_SELECT);
+	ui_mng.Register(BT_RESULT_BACK_CUSTOM, 788, 780, RESULT_CUSTOM);
+	ui_mng.Register(BT_RESULT_BACK_SELECT, 1148, 780, RESULT_SELECT);
 
 	Lib::DrawBoxAlpha(
 		"over_ray",

@@ -1,9 +1,9 @@
 ﻿#include "SceneManager.h"
-#include "TitleScene.h"
-#include "CustomScene.h"
-#include "SelectScene.h"
-#include "GameScene.h"
-#include "ResultScene.h"
+#include "../TitleScene/TitleScene.h"
+#include "../CusutomScene/CustomScene.h"
+#include "../SelectScene/SelectScene.h"
+#include "../GameScene/GameScene.h"
+#include "../ResultScene/ResultScene.h"
 
 //---------------------------------
 //インスタンス取得

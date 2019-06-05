@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "Scene.h"
-#include "../Lib/Lib.h"
+#include "../Scene.h"
+#include "../../Lib/Lib.h"
 //=================================
 //　ゲーム画面クラス
 //=================================

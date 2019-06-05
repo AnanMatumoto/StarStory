@@ -1,8 +1,8 @@
 ﻿#include "TitleScene.h"
-#include "SceneManager.h"
-#include "../StageObject/ObjectManager.h"
-#include "../UI/UIManager.h"
-#include "../Sound/SoundManager/SoundManager.h"
+#include "../SceneManager/SceneManager.h"
+#include "../../UI/UIManager/UIManager.h"
+#include "../../Sound/SoundManager/SoundManager.h"
+#include "../../StageObject/ObjectManager/ObjectManager.h"
 
 #define TITLE_BACK "Resource/Title/ui_title_base.png"
 #define TITLE_START "Resource/Title/ui_title_start.png"
@@ -18,8 +18,8 @@ void TitleScene::Init() {
 
 	//UIの登録
 	UIManager& mng = UIManager::GetInstance();
-	mng.Register(BT_TT_START, 347, 818, TITLE_START);
-	mng.Register(BT_TT_END,    1120, 844, TITLE_END);
+	mng.Register(BT_TITLE_START, 347, 818, TITLE_START);
+	mng.Register(BT_TITLE_END,    1120, 844, TITLE_END);
 
 	HWND hwnd = Lib::hWnd;
 
@@ -34,11 +34,11 @@ void TitleScene::Update() {
 	UIManager& mng = UIManager::GetInstance();
 	mng.Update();
 	//スタートボタンが押されたら
-	if (mng.FindClickedUI() == BT_TT_START) {
+	if (mng.FindClickedUI() == BT_TITLE_START) {
 		//sound->Stop();
 		m_state_id = SS_END;
 	}
-	else if (mng.FindClickedUI() == BT_TT_END) {
+	else if (mng.FindClickedUI() == BT_TITLE_END) {
 		m_state_id = SS_END;
 		has_end = true;
 	}

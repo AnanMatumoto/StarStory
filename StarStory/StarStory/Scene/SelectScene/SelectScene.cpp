@@ -1,7 +1,7 @@
 ﻿#include"SelectScene.h"
-#include"SceneManager.h"
-#include "../Lib/Lib.h"
-#include "../UI/UIManager.h"
+#include"../SceneManager/SceneManager.h"
+#include "../../Lib/Lib.h"
+#include "../../UI/UIManager/UIManager.h"
 
 #define STAGE_IMG "Resource/StageSelect/stage_1_cover.png"
 #define BACK_IMG "Resource/StageSelect/ui_select_base.png"
@@ -14,8 +14,8 @@ void SelectScene::Init() {
 
 	m_state_id = SS_UPDATE;
 	UIManager& ui_mng = UIManager::GetInstance();
-	ui_mng.Register(BT_SL_STAGE, 1057, 632, BT_STAGE1);
-	ui_mng.Register(BT_SL_BACK, 1354, 64, BT_BACK);
+	ui_mng.Register(BT_SELECT_STAGE, 1057, 632, BT_STAGE1);
+	ui_mng.Register(BT_SELECT_BACK, 1354, 64, BT_BACK);
 }
 
 //---------------------------
@@ -24,11 +24,11 @@ void SelectScene::Update() {
 	
 	UIManager& ui_mng =UIManager::GetInstance();
 	
-	if (ui_mng.FindClickedUI() == BT_SL_STAGE) {
+	if (ui_mng.FindClickedUI() == BT_SELECT_STAGE) {
 		m_state_id = SS_END;
 		m_scene_id = SC_CUSTOM;
 	}
-	else if(ui_mng.FindClickedUI()==BT_SL_BACK) {
+	else if(ui_mng.FindClickedUI()==BT_SELECT_BACK) {
 		m_state_id = SS_END;
 		m_scene_id = SC_TITLE;
 	}
