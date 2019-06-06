@@ -51,43 +51,21 @@ public:
 	};
 
 	// デストラクタ
-	virtual ~DiamondBase() {
-
-
-	};
+	virtual ~DiamondBase() {};
 
 	/*----関数----*/
 	virtual void Update() = 0;		// 更新
 	virtual void Draw() = 0;		// 描画
 
 	// ゲッター
-	virtual Skill_Data GetSkillDara() = 0;		// スキルデータを外部ファイルに保存する用
+	Skill_Data GetSkillDara();		// スキルデータを外部ファイルに保存する用
 	/*----関数----*/
 
 protected:
-	/*----関数----*/
+	/*----更新関数----*/
 	// マウスにクリックされた時の当たり判定
-	bool IsHitMouse() {
-
-		// マウスの座標取得
-		Vec2 mouse_pos = Lib::GetMousePoint();
-
-		// マウスとの当たり判定
-		if (Collision::IsInDiamond(
-			m_vertex_pos[TOP_VERTEX],
-			m_vertex_pos[RIGHT_VERTEX],
-			m_vertex_pos[BOTTOM_VERTEX],
-			m_vertex_pos[LEFT_VERTEX],
-			mouse_pos) == true) {
-
-			return true;
-		}
-		else {
-
-			return false;
-		}
-	}
-	/*----関数----*/
+	bool IsHitMouse();
+	/*----更新関数----*/
 
 protected:
 	/*----変数----*/
@@ -115,10 +93,10 @@ protected:
 
 protected:
 	/*----画像----*/
-	static const char NORMAL_TEX[50]; 	// NORMAL
-	static const char SPEED_TEX[50];	// SPEED
-	static const char JUMP_TEX[50];		// JUMP
-	static const char STOP_TEX[50]; 	// STOP
+	static const char *NORMAL_TEX; 	// NORMAL
+	static const char *SPEED_TEX;	// SPEED
+	static const char *JUMP_TEX;	// JUMP
+	static const char *STOP_TEX; 	// STOP
 	/*----画像----*/
 
 private:
