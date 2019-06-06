@@ -168,39 +168,3 @@ void Diamond::ChangeTex() {
 }
 /*----更新用関数----*/
 
-/*----ゲッター----*/
-// スキルデータを外部ファイルに保存する用
-Skill_Data Diamond::GetSkillDara() {
-
-	Skill_Data skill_data;
-
-	switch (m_skill) {
-
-	case JUMP:
-
-		skill_data = { m_skill,STAR_JUMP_SE,"Resource/Player/player_1_jump.png" };
-
-		break;
-
-	case SPEED:
-
-		skill_data = { m_skill,STAR_ACCEL_SE,"Resource/Player/player_1_accel.png" };
-
-		break;
-
-	case STOP:
-
-		skill_data = { m_skill,STAR_STOP_SE,"Resource/Player/player_1_stop.png" };
-
-		break;
-
-	default:
-
-		skill_data = { m_skill,STAR_NORMAL_SE,"Resource/Player/player_1_normal.png" };
-
-		break;
-	}
-	return skill_data;
-}
-/*----ゲッター----*/
-

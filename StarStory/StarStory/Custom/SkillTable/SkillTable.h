@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include<vector>
-
 #include"../../Lib/Lib.h"
 #include"../../Skill.h"
+
+#include<vector>
 
 // スキル表クラス
 class SkillTable {
@@ -58,8 +58,6 @@ public:
 
 	void ClickSkillSet();
 
-	void SetBrightness(D3DXCOLOR brightness);
-
 private:
 	/*----変数----*/
 	Vec2 m_pos;				// 描画用座標
@@ -78,19 +76,19 @@ private:
 
 private:
 	/*----スキル横の数字----*/
-	static const char NUM1_TEX[50];
-	static const char NUM2_TEX[50];
-	static const char NUM3_TEX[50];
-	static const char NUM4_TEX[50];
-	static const char NUM5_TEX[50];
+	static const char *NUM1_TEX;
+	static const char *NUM2_TEX;
+	static const char *NUM3_TEX;
+	static const char *NUM4_TEX;
+	static const char *NUM5_TEX;
 	/*----スキル横の数字----*/
 
-	static const char BASE_TEX[50];				// スキル表の基礎
-	static const char NORAML_SKILL_TEX[50];		// スキル表のノーマルスキル
-	static const char ACCEL_SKILL_TEX[50];		// スキル表の加速スキル
-	static const char JUMP_SKILL_TEX[50];		// スキル表のジャンプスキル
-	static const char STOP_SKILL_TEX[50];		// スキル表の停止スキル
-	static const char WEAK_TEX[50];				// スキルの弱
+	static const char *BASE_TEX;				// スキル表の基礎
+	static const char *NORAML_SKILL_TEX;		// スキル表のノーマルスキル
+	static const char *ACCEL_SKILL_TEX;		// スキル表の加速スキル
+	static const char *JUMP_SKILL_TEX;		// スキル表のジャンプスキル
+	static const char *STOP_SKILL_TEX;		// スキル表の停止スキル
+	static const char *WEAK_TEX;				// スキルの弱
 	/*----画像----*/
 
 	/*----定数----*/

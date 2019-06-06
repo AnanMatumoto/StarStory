@@ -5,19 +5,19 @@
 /*----画像----*/
 
 /*----スキル横の数字----*/
-const char SkillTable::NUM1_TEX[50] = "Resource/Custom/ui_custom_num1.png";
-const char SkillTable::NUM2_TEX[50] = "Resource/Custom/ui_custom_num2.png";
-const char SkillTable::NUM3_TEX[50] = "Resource/Custom/ui_custom_num3.png";
-const char SkillTable::NUM4_TEX[50] = "Resource/Custom/ui_custom_num4.png";
-const char SkillTable::NUM5_TEX[50] = "Resource/Custom/ui_custom_num5.png";
+const char *SkillTable::NUM1_TEX = "Resource/Custom/ui_custom_num1.png";
+const char *SkillTable::NUM2_TEX = "Resource/Custom/ui_custom_num2.png";
+const char *SkillTable::NUM3_TEX = "Resource/Custom/ui_custom_num3.png";
+const char *SkillTable::NUM4_TEX = "Resource/Custom/ui_custom_num4.png";
+const char *SkillTable::NUM5_TEX = "Resource/Custom/ui_custom_num5.png";
 /*----スキル横の数字----*/
 
-const char SkillTable::BASE_TEX[50] = "Resource/Custom/ui_custom_skillbase.png";			// スキル表の基礎
-const char SkillTable::NORAML_SKILL_TEX[50] = "Resource/Custom/UI_custom_normal.png";		// スキル表のノーマルスキル
-const char SkillTable::ACCEL_SKILL_TEX[50] = "Resource/Custom/UI_custom_accel.png";			// スキル表の加速スキル
-const char SkillTable::JUMP_SKILL_TEX[50] = "Resource/Custom/UI_custom_jump.png";			// スキル表のジャンプスキル
-const char SkillTable::STOP_SKILL_TEX[50] = "Resource/Custom/UI_custom_stop.png";			// スキル表の停止スキル
-const char SkillTable::WEAK_TEX[50] = "Resource/Custom/UI_custom_weak.png";					// スキルの弱
+const char *SkillTable::BASE_TEX = "Resource/Custom/ui_custom_skillbase.png";			// スキル表の基礎
+const char *SkillTable::NORAML_SKILL_TEX = "Resource/Custom/UI_custom_normal.png";		// スキル表のノーマルスキル
+const char *SkillTable::ACCEL_SKILL_TEX = "Resource/Custom/UI_custom_accel.png";		// スキル表の加速スキル
+const char *SkillTable::JUMP_SKILL_TEX = "Resource/Custom/UI_custom_jump.png";			// スキル表のジャンプスキル
+const char *SkillTable::STOP_SKILL_TEX = "Resource/Custom/UI_custom_stop.png";			// スキル表の停止スキル
+const char *SkillTable::WEAK_TEX = "Resource/Custom/UI_custom_weak.png";				// スキルの弱
 /*----画像----*/
 
 /*----定数----*/

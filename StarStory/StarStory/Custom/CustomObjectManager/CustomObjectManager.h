@@ -31,3 +31,4 @@ private:
 	SkillTable::TexID skill_table_tex_id;		// スキル表の各画像
 	/*----enum----*/
 };
+

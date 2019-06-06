@@ -9,19 +9,6 @@ public:
 	// コンストラクタ
 	Diamond(DiamondPart part, std::string data_file);
 
-	// デストラクタ
-	~Diamond()override;
-
-	/*----関数----*/
-	void Update()override;		// 更新
-
-	void Draw()override;		// 描画
-	/*----関数----*/
-
-	/*----ゲッター----*/
-	Skill_Data GetSkillDara();		// スキルデータを外部ファイルに保存する用
-	/*----ゲッター----*/
-
 private:
 	/*----初期化関数----*/
 	// 各ひし形の頂点の座標
@@ -41,6 +28,19 @@ private:
 	// ひし形のスキルを判定して描画画像を変える
 	void ChangeTex();
 	/*----更新用関数----*/
+
+	// デストラクタ
+	~Diamond()override;
+
+	/*----関数----*/
+	void Update()override;		// 更新
+
+	void Draw()override;		// 描画
+	/*----関数----*/
+
+	/*----ゲッター----*/
+	//Skill_Data GetSkillDara();		// スキルデータを外部ファイルに保存する用
+	/*----ゲッター----*/
 
 private:
 	/*--定数--*/
