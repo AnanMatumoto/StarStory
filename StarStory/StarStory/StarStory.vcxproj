@@ -153,6 +153,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ResourceListLoader\ResourceListLoader.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Scene\CusutomScene\CustomScene.cpp">
       <SubType>
       </SubType>
@@ -267,6 +271,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Lib\Lib.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ResourceListLoader\ResourceListLoader.h">
       <SubType>
       </SubType>
     </ClInclude>

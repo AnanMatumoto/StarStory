@@ -30,6 +30,7 @@
     <ClCompile Include="Scene\ResultScene\ResultScene.cpp" />
     <ClCompile Include="Scene\SelectScene\SelectScene.cpp" />
     <ClCompile Include="Scene\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="ResourceListLoader\ResourceListLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -68,5 +69,6 @@
     <ClInclude Include="Scene\ResultScene\ResultID.h" />
     <ClInclude Include="Scene\SelectScene\SelectScene.h" />
     <ClInclude Include="Scene\SceneManager\SceneManager.h" />
+    <ClInclude Include="ResourceListLoader\ResourceListLoader.h" />
   </ItemGroup>
 </Project>
