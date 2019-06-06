@@ -4,7 +4,7 @@
 #include "../SelectScene/SelectScene.h"
 #include "../GameScene/GameScene.h"
 #include "../ResultScene/ResultScene.h"
-
+#include "../../ResourceListLoader/ResourceListLoader.h"
 //---------------------------------
 //インスタンス取得
 SceneManager& SceneManager::GetInstance() {
@@ -15,6 +15,8 @@ SceneManager& SceneManager::GetInstance() {
 //--------------------------------
 //  シーン初期化
 void SceneManager::Init() {
+	
+	ResourceListLoader::GetInstance().LoadResourceName();
 
 	//シーンの登録
 	scene_list.emplace(SC_TITLE,  new TitleScene());

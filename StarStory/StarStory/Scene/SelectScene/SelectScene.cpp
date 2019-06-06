@@ -2,20 +2,18 @@
 #include"../SceneManager/SceneManager.h"
 #include "../../Lib/Lib.h"
 #include "../../UI/UIManager/UIManager.h"
-
-#define STAGE_IMG "Resource/StageSelect/stage_1_cover.png"
-#define BACK_IMG "Resource/StageSelect/ui_select_base.png"
-#define BT_STAGE1 "Resource/StageSelect/ui_select_ep1.png"
-#define BT_BACK "Resource/StageSelect/ui_select_title.png"
+#include "../../ResourceListLoader/ResourceListLoader.h"
 
 //--------------------------
 //　セレクトシーン初期化
 void SelectScene::Init() {
 
+	auto loader =ResourceListLoader::GetInstance();
+
 	m_state_id = SS_UPDATE;
 	UIManager& ui_mng = UIManager::GetInstance();
-	ui_mng.Register(BT_SELECT_STAGE, 1057, 632, BT_STAGE1);
-	ui_mng.Register(BT_SELECT_BACK, 1354, 64, BT_BACK);
+	ui_mng.Register(BT_SELECT_STAGE, 1057, 632, loader.GetName(PNG_SELECT_STAGE1));
+	ui_mng.Register(BT_SELECT_BACK, 1354, 64, loader.GetName(PNG_SELECT_BACK));
 }
 
 //---------------------------
@@ -73,13 +71,15 @@ SceneID SelectScene::Control() {
 //　セレクトシーン描画
 void SelectScene::Draw() {
 
+	auto loader = ResourceListLoader::GetInstance();
+
 	Lib::DrawBox2D(
-		BACK_IMG,
+		loader.GetName(PNG_SELECT_BOOK),
 		0, 0
 	);
 
 	Lib::DrawPx2D(
-		STAGE_IMG,
+		loader.GetName(PNG_SELECT_BACK_GROUND),
 		510, 220,
 		1210,742
 	);

@@ -4,10 +4,7 @@
 #include "../../Sound/SoundManager/SoundManager.h"
 #include "../../StageObject/ObjectManager/ObjectManager.h"
 
-#define TITLE_BACK "Resource/Title/ui_title_base.png"
-#define TITLE_START "Resource/Title/ui_title_start.png"
-#define TITLE_END	"Resource/Title/ui_title_end.png"
-
+#include "../../ResourceListLoader/ResourceListLoader.h"
 
 //-----------------------------
 //　タイトルシーン初期化
@@ -15,13 +12,12 @@ void TitleScene::Init() {
 	
 	m_state_id = SS_UPDATE;
 	has_end = false;
+	auto loader = ResourceListLoader::GetInstance();
 
 	//UIの登録
 	UIManager& mng = UIManager::GetInstance();
-	mng.Register(BT_TITLE_START, 347, 818, TITLE_START);
-	mng.Register(BT_TITLE_END,    1120, 844, TITLE_END);
-
-	HWND hwnd = Lib::hWnd;
+	mng.Register(BT_TITLE_START, 347, 818, loader.GetName(PNG_TITLE_START));
+	mng.Register(BT_TITLE_END,   1120, 844, loader.GetName(PNG_TITLE_END));
 
 	// BGM再生
 	SoundManager::GetInstanse().SoundPlayer(TTITLE_BGM, SoundManager::PLAY);
@@ -92,10 +88,11 @@ SceneID TitleScene::Control() {
 void TitleScene::Draw() {
 
 	float x = 0, y = 0;
+	auto loader = ResourceListLoader::GetInstance();
 
 	//タイトル描画（仮）
 	Lib::DrawPx2D(
-		TITLE_BACK,
+		loader.GetName(PNG_TITLE_BACK_GROUND),
 		x, y,1920,1080
 	);
 	UIManager::GetInstance().Draw();
