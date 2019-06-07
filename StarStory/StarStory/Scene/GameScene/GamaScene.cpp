@@ -15,17 +15,17 @@ void GameScene::Init() {
 	SoundManager::GetInstanse().SoundPlayer(GAME_BGM, SoundManager::PLAY);
 	ObjectManager& mng = ObjectManager::GetInstance();
 	UIManager & UImng  = UIManager::GetInstance();
-	auto loader        = ResourceListLoader::GetInstance();
+	auto res           = ResourceListLoader::GetInstance();
 
     //ステージオブジェクトの登録
-	mng.Register(OBJ_1, 100,  600, false, loader.GetName(PNG_GAME_OBJ_192));
-	mng.Register(OBJ_2, 350,  650, false, loader.GetName(PNG_GAME_OBJ_128));
-	mng.Register(OBJ_3, 550,  700, false, loader.GetName(PNG_GAME_OBJ_192));
-	mng.Register(OBJ_4, 810,  600, false, loader.GetName(PNG_GAME_OBJ_128));
-	mng.Register(OBJ_5, 1000, 780, false, loader.GetName(PNG_GAME_OBJ_192));
-	mng.Register(OBJ_6, 1250, 700, false, loader.GetName(PNG_GAME_OBJ_64));
-	mng.Register(OBJ_7, 1350, 810, false, loader.GetName(PNG_GAME_OBJ_192));
-	mng.Register(OBJ_8, 1580, 680, true,  loader.GetName(PNG_GAME_OBJ_128));
+	mng.Register(OBJ_1, 100,  600, false, res.GetName(PNG_GAME_OBJ_192));
+	mng.Register(OBJ_2, 350,  650, false, res.GetName(PNG_GAME_OBJ_128));
+	mng.Register(OBJ_3, 550,  700, false, res.GetName(PNG_GAME_OBJ_192));
+	mng.Register(OBJ_4, 810,  600, false, res.GetName(PNG_GAME_OBJ_128));
+	mng.Register(OBJ_5, 1000, 780, false, res.GetName(PNG_GAME_OBJ_192));
+	mng.Register(OBJ_6, 1250, 700, false, res.GetName(PNG_GAME_OBJ_64));
+	mng.Register(OBJ_7, 1350, 810, false, res.GetName(PNG_GAME_OBJ_192));
+	mng.Register(OBJ_8, 1580, 680, true,  res.GetName(PNG_GAME_OBJ_128));
 	
 	//星のオブジェクト
 	mng.Register(STAR_CHILD1, "./Resource/skill_data_01.dat",  0, -32, 0);
@@ -36,8 +36,8 @@ void GameScene::Init() {
 	mng.Register(STAR_OBJ, "none", 90, 500);
 
 	//ボタンUIの登録
-	UImng.Register(BT_GAME_BACK, 139,67,loader.GetName(PNG_GAME_BACK));
-	UImng.Register(BT_GAME_STOP, 355, 65, loader.GetName(PNG_GAME_STOP));
+	UImng.Register(BT_GAME_BACK, 139,67,res.GetName(PNG_GAME_BACK));
+	UImng.Register(BT_GAME_STOP, 355, 65, res.GetName(PNG_GAME_STOP));
 	m_result = NO_RESULT;
 }
 
@@ -118,11 +118,11 @@ SceneID GameScene::Control() {
 void GameScene::Draw() {
 
 	UIManager& ui_mng = UIManager::GetInstance();
-	auto loader = ResourceListLoader::GetInstance();
+	auto res = ResourceListLoader::GetInstance();
 	//ステージ背景
-	Lib::DrawPx2D(loader.GetName(PNG_GAME_BACK_GROUND),0, 0,1920,1080,1.f);
-	Lib::DrawBox2D(loader.GetName(PNG_GAME_WIND), 60, 51);
-	Lib::DrawBox2D(loader.GetName(PNG_GAME_FRAME), 5, 0);
+	Lib::DrawPx2D(res.GetName(PNG_GAME_BACK_GROUND),0, 0,1920,1080,1.f);
+	Lib::DrawBox2D(res.GetName(PNG_GAME_WIND), 60, 51);
+	Lib::DrawBox2D(res.GetName(PNG_GAME_FRAME), 5, 0);
 
 	// ステージオブジェクト描画
 	ObjectManager::GetInstance().Draw();
@@ -139,10 +139,10 @@ void GameScene::Draw() {
 //リザルト結果を描画する
 void GameScene::DrawResult() {
 
-	auto loader = ResourceListLoader::GetInstance();
+	auto res = ResourceListLoader::GetInstance();
 	UIManager& ui_mng = UIManager::GetInstance();
-	ui_mng.Register(BT_RESULT_BACK_CUSTOM, 788, 780,loader.GetName(PNG_RESULT_TO_CUSTOM));
-	ui_mng.Register(BT_RESULT_BACK_SELECT, 1148, 780, loader.GetName(PNG_RESULT_TO_SELECT));
+	ui_mng.Register(BT_RESULT_BACK_CUSTOM, 788, 780,res.GetName(PNG_RESULT_TO_CUSTOM));
+	ui_mng.Register(BT_RESULT_BACK_SELECT, 1148, 780, res.GetName(PNG_RESULT_TO_SELECT));
 
 	Lib::DrawBoxAlpha(
 		"over_ray",
@@ -152,35 +152,35 @@ void GameScene::DrawResult() {
 	);
 
 	Lib::DrawBox2D(
-		loader.GetName(PNG_RESULT_WIND),
+		res.GetName(PNG_RESULT_WIND),
 		463, 193
 	);
 
 	Lib::DrawBox2D(
-		loader.GetName(PNG_RESULT_FRAME_R),
+		res.GetName(PNG_RESULT_FRAME_R),
 		750, 738);
 
 	Lib::DrawBox2D(
-		loader.GetName(PNG_RESULT_FRAME_L),
+		res.GetName(PNG_RESULT_FRAME_L),
 		1108, 738);
 
 	if (m_result == FAILD) {
 		Lib::DrawBox2D(
-			loader.GetName(PNG_RESULT_FAILD),
+			res.GetName(PNG_RESULT_FAILD),
 			648, 300
 		);
 		Lib::DrawPx2D(
-			loader.GetName(PNG_RESULT_ROGO_FAILD),
+			res.GetName(PNG_RESULT_ROGO_FAILD),
 			600, 578,
 			700,200);
 	}
 	else {
 		Lib::DrawBox2D(
-			loader.GetName(PNG_RESULT_CLEAR),
+			res.GetName(PNG_RESULT_CLEAR),
 			648, 300);
 
 		Lib::DrawBox2D(
-			loader.GetName(PNG_RESULT_ROGO_CLEAR),
+			res.GetName(PNG_RESULT_ROGO_CLEAR),
 			600, 578,
 			700, 200);
 	}

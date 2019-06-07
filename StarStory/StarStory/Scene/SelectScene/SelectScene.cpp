@@ -8,12 +8,12 @@
 //　セレクトシーン初期化
 void SelectScene::Init() {
 
-	auto loader =ResourceListLoader::GetInstance();
+	auto res =ResourceListLoader::GetInstance();
 
 	m_state_id = SS_UPDATE;
 	UIManager& ui_mng = UIManager::GetInstance();
-	ui_mng.Register(BT_SELECT_STAGE, 1057, 632, loader.GetName(PNG_SELECT_STAGE1));
-	ui_mng.Register(BT_SELECT_BACK, 1354, 64, loader.GetName(PNG_SELECT_BACK));
+	ui_mng.Register(BT_SELECT_STAGE, 1057, 632, res.GetName(PNG_SELECT_STAGE1));
+	ui_mng.Register(BT_SELECT_BACK, 1354, 64, res.GetName(PNG_SELECT_BACK));
 }
 
 //---------------------------
@@ -71,15 +71,15 @@ SceneID SelectScene::Control() {
 //　セレクトシーン描画
 void SelectScene::Draw() {
 
-	auto loader = ResourceListLoader::GetInstance();
+	auto res = ResourceListLoader::GetInstance();
 
 	Lib::DrawBox2D(
-		loader.GetName(PNG_SELECT_BOOK),
+		res.GetName(PNG_SELECT_BOOK),
 		0, 0
 	);
 
 	Lib::DrawPx2D(
-		loader.GetName(PNG_SELECT_BACK_GROUND),
+		res.GetName(PNG_SELECT_BACK_GROUND),
 		510, 220,
 		1210,742
 	);
