@@ -80,7 +80,7 @@ private:
 	);
 
 	// 移動量を座標に反映する
-	void RefPosition();
+	void ReflectPosition();
 
 	// ジャンプモーション
 	void JumpMotion();

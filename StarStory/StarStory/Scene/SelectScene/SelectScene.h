@@ -23,7 +23,7 @@ private:
 	~SelectScene()override{}
 
 private:
-	SceneID m_scene_id;
+	SceneID m_select_id;
 
 };
 

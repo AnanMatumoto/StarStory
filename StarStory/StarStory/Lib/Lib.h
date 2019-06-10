@@ -257,7 +257,7 @@ namespace Lib {
 	使用例：
 		bool was_click = Lib::HasOneClickOnMouse();
 	*/
-	const bool  HasOneClickOnMouse();
+	const bool HasClickOnMouse();
 
 	//============================================
 	// 2D描画処理

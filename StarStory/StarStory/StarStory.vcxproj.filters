@@ -25,12 +25,12 @@
     <ClCompile Include="StageObject\ObjectFactory\StageObjectFactory.cpp" />
     <ClCompile Include="StageObject\ObjectManager\ObjectManager.cpp" />
     <ClCompile Include="Scene\CusutomScene\CustomScene.cpp" />
-    <ClCompile Include="Scene\TitleScene\TitleScenecpp.cpp" />
     <ClCompile Include="Scene\GameScene\GamaScene.cpp" />
     <ClCompile Include="Scene\ResultScene\ResultScene.cpp" />
     <ClCompile Include="Scene\SelectScene\SelectScene.cpp" />
     <ClCompile Include="Scene\SceneManager\SceneManager.cpp" />
-    <ClCompile Include="ResourceListLoader\ResourceListLoader.cpp" />
+    <ClCompile Include="ResourceNameLoader\ResourceNameLoader.cpp" />
+    <ClCompile Include="Scene\TitleScene\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -69,6 +69,6 @@
     <ClInclude Include="Scene\ResultScene\ResultID.h" />
     <ClInclude Include="Scene\SelectScene\SelectScene.h" />
     <ClInclude Include="Scene\SceneManager\SceneManager.h" />
-    <ClInclude Include="ResourceListLoader\ResourceListLoader.h" />
+    <ClInclude Include="ResourceNameLoader\ResourceNameLoader.h" />
   </ItemGroup>
 </Project>

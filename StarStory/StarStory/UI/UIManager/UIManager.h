@@ -55,7 +55,7 @@ public:
 	引数：
 	　id(判定対象のUIオブジェクトID)
 	*/
-	bool SwithOnUI(UIObjectID id);
+	bool SwitchOnUI(UIObjectID id);
 
 
 private:

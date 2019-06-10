@@ -2,13 +2,13 @@
 #include"../SceneManager/SceneManager.h"
 #include "../../Lib/Lib.h"
 #include "../../UI/UIManager/UIManager.h"
-#include "../../ResourceListLoader/ResourceListLoader.h"
+#include "../../ResourceNameLoader/ResourceNameLoader.h"
 
 //--------------------------
 //　セレクトシーン初期化
 void SelectScene::Init() {
 
-	auto res =ResourceListLoader::GetInstance();
+	auto res =ResourceNameLoader::GetInstance();
 
 	m_state_id = SS_UPDATE;
 	UIManager& ui_mng = UIManager::GetInstance();
@@ -24,11 +24,11 @@ void SelectScene::Update() {
 	
 	if (ui_mng.FindClickedUI() == BT_SELECT_STAGE) {
 		m_state_id = SS_END;
-		m_scene_id = SC_CUSTOM;
+		m_select_id = SC_CUSTOM;
 	}
 	else if(ui_mng.FindClickedUI()==BT_SELECT_BACK) {
 		m_state_id = SS_END;
-		m_scene_id = SC_TITLE;
+		m_select_id = SC_TITLE;
 	}
 
 	ui_mng.Update();
@@ -42,7 +42,7 @@ SceneID SelectScene::End() {
 	m_state_id = SS_INIT;
 	UIManager::GetInstance().AllDelete();
 
-	return m_scene_id;
+	return m_select_id;
 }
 
 //----------------------------
@@ -71,7 +71,7 @@ SceneID SelectScene::Control() {
 //　セレクトシーン描画
 void SelectScene::Draw() {
 
-	auto res = ResourceListLoader::GetInstance();
+	auto res = ResourceNameLoader::GetInstance();
 
 	Lib::DrawBox2D(
 		res.GetName(PNG_SELECT_BOOK),

@@ -7,11 +7,11 @@
 //---------------------------------
 //　フラグを削除状態にセットする
 void ObjectBase::Delete() {
-	is_delete = true;
+	m_is_delete = true;
 }
 
 const bool ObjectBase::IsDelete() const {
-	return is_delete;
+	return m_is_delete;
 }
 
 //---------------------------------

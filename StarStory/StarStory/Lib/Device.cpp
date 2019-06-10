@@ -11,8 +11,8 @@ namespace {
 		POINT end = { 0,0 };  //クリック時の座標を取得
 	}pt;
 
-	int is_drag = false; //ドラッグ判定変数
-	int is_click = false;//ダブルクリック判定変数
+	bool is_drag  = false; //ドラッグ判定変数
+	bool is_click = false;//ダブルクリック判定変数
 };
 
 namespace Lib {
@@ -96,7 +96,7 @@ namespace Lib {
 	void Init(int w, int h, const char* title) {
 
 		HINSTANCE h_instance = GetModuleHandle(nullptr);
-		const char* class_name = "TEST";
+		const char* class_name = "StarStory";
 		WNDCLASSEX wc = {};
 
 		//ウィンドウデバイスの設定
@@ -272,19 +272,19 @@ namespace Lib {
 	// マウス入力処理
 	Vec2 GetMousePoint() {
 
-		Vec2 vec(pt.end.x, pt.end.y);
+		Vec2 vec(((float)pt.end.x), ((float)pt.end.y));
 		return vec;
 	}
 
 	//----------------------------------------
 	//　マウスの位置を取得する
 	Vec2 GetPointOnDrag() {
-		Vec2 vec(pt.start.x, pt.start.y);
+		Vec2 vec(((float)pt.start.x), ((float)pt.start.y));
 		return vec;
 	}
 	//------------------------------------
 	//　マウスの左クリックの判定を返す
-	const bool HasOneClickOnMouse() {
+	const bool HasClickOnMouse() {
 		if (is_click) {
 			return true;
 		}

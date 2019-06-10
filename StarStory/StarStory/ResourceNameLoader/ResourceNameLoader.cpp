@@ -1,6 +1,6 @@
-﻿#include "ResourceListLoader.h"
+﻿#include "ResourceNameLoader.h"
 
-void ResourceListLoader::LoadResourceName(){
+void ResourceNameLoader::EntryResourceName(){
 
 	//タイトルシーン使用画像
 	m_list.emplace(PNG_TITLE_BACK_GROUND,  "Resource/Title/ui_title_base.png");
@@ -40,7 +40,7 @@ void ResourceListLoader::LoadResourceName(){
 	m_list.emplace(PNG_RESULT_ROGO_FAILD,  "Resource/Result/GameOver.png");
 	m_list.emplace(PNG_RESULT_ROGO_CLEAR,  "Resource/Result/GameClear.png");
 }
-const char* ResourceListLoader::GetName(ResourceID id) {
+const char* ResourceNameLoader::GetName(ResourceID id) {
 
 	auto it = m_list.find(id);
 	if (it != m_list.end()) {

@@ -4,7 +4,7 @@
 #include "../SelectScene/SelectScene.h"
 #include "../GameScene/GameScene.h"
 #include "../ResultScene/ResultScene.h"
-#include "../../ResourceListLoader/ResourceListLoader.h"
+#include "../../ResourceNameLoader/ResourceNameLoader.h"
 //---------------------------------
 //インスタンス取得
 SceneManager& SceneManager::GetInstance() {
@@ -14,9 +14,9 @@ SceneManager& SceneManager::GetInstance() {
 
 //--------------------------------
 //  シーン初期化
-void SceneManager::Init() {
+void SceneManager::Init(SceneID id) {
 	
-	ResourceListLoader::GetInstance().LoadResourceName();
+	ResourceNameLoader::GetInstance().EntryResourceName();
 
 	//シーンの登録
 	scene_list.emplace(SC_TITLE,  new TitleScene());
@@ -26,7 +26,7 @@ void SceneManager::Init() {
 	scene_list.emplace(SC_RESULT, new ResultScene());
 
 	//初期設定でタイトルをセットする
-	m_now_id = SC_TITLE;
+	m_now_id = id;
 	m_scene = scene_list[m_now_id];
 }
 
@@ -61,13 +61,13 @@ SceneBase* SceneManager::GetScene() {
 //--------------------------------------
 //　ウィンドウ終了フラグゲッター
 void SceneManager::SetQuit(bool has_quit) {
-	is_quit = has_quit;
+	m_is_quit = has_quit;
 }
 
 //--------------------------------------
 //シーン終了処理
 bool SceneManager::GetQuitWindow() {
-	return is_quit;
+	return m_is_quit;
 }
 
 //--------------------------------------

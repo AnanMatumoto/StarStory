@@ -15,16 +15,16 @@ StarChild::StarChild(
 	float rot
 ) :ObjectBase(x, y, rot){
 
-	m_width    = 46.f;
-	m_height   = 64.f;
-	m_tex_name = tex_name;
-	m_parent   = nullptr;
-	m_map_obj  = ObjectManager::GetInstance().GetGameObjects<MapObject>();
+	m_width     = 46.f;
+	m_height    = 64.f;
+	m_tex_name  = tex_name;
+	m_parent    = nullptr;
+	m_map_obj   = ObjectManager::GetInstance().GetGameObjects<MapObject>();
 	m_obj_width = 0.f;
-	is_hit     = false;
-	m_skill    = skill;
-	m_cur_obj      = nullptr;
-	m_se_id    = se_id;
+	is_hit      = false;
+	m_skill     = skill;
+	m_cur_obj   = nullptr;
+	m_se_id     = se_id;
 	m_one_flame = 0;
 }
 
@@ -34,7 +34,6 @@ void StarChild::Update() {
 
 	HitToObject();
 	IsHit();
-	PlaySE();
 }
 
 //------------------------------------
@@ -117,18 +116,20 @@ void StarChild::IsHit() {
 	SetVertex();
 	Vec2 vec = { m_vtx[1].pos.x, m_vtx[1].pos.y };
 
-	if (m_cur_obj != nullptr) {
-		float right = m_cur_obj->GetVertex(1).pos.x;
-	
-		if (vec.x >= m_cur_obj->GetX() && vec.x <= right) {
-			//マップと頂点が当たっているか
-			if (IsHitToUpper(vec, m_cur_obj)) {
-				++m_one_flame;
-				is_hit = true;
-			}
-			else {
-				is_hit = false;
-			}
+	if (m_cur_obj == nullptr) {
+		return;
+	}
+
+	float right = m_cur_obj->GetVertex(1).pos.x;
+	if (vec.x >= m_cur_obj->GetX() && vec.x <= right) {
+		//マップと頂点が当たっているか
+		if (IsHitToUpper(vec, m_cur_obj)) {
+			++m_one_flame;
+			PlaySE();
+			is_hit = true;
+		}
+		else {
+			is_hit = false;
 		}
 	}
 }
@@ -169,9 +170,9 @@ float StarChild::GetDistanceToCeiling() {
 // SE処理
 void StarChild::PlaySE() {
 
-
 	if (m_one_flame == 1) {
 		SoundManager::GetInstanse().SoundPlayer(m_se_id, SoundManager::PLAY);
+		m_one_flame = 0;
 	}
 
 }

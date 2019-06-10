@@ -7,5 +7,5 @@ struct Skill_Data
 {
 	Skill m_skill;
 	SoundResourceID m_sound_resource;
-    char  tex_name[50];
+    char  m_tex_name[50];
 };

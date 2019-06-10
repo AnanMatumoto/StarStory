@@ -16,7 +16,7 @@ public:
 
 
 	/*
-	   オブジェクトの生成を行う
+	   星オブジェクトの生成を行う
 
 	   第1:　オブジェクトID
 	   第2:  X座標
@@ -34,7 +34,7 @@ public:
 		float rotate = 0.f
 	)override;
 
-	ObjectBase* Create(
+	ObjectBase* CreateMap(
 		int id,
 		float x,
 		float y,

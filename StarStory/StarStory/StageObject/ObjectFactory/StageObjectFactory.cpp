@@ -38,7 +38,7 @@ ObjectBase* StageObjectFactory::Create(
 
 //-------------------------------------
 // マップオブジェクト生成処理（オーバーロード）
-ObjectBase* StageObjectFactory::Create(
+ObjectBase* StageObjectFactory::CreateMap(
 	int id,
 	float x,
 	float y,

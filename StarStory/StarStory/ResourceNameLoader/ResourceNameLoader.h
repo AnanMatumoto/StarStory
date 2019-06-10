@@ -43,16 +43,16 @@ enum ResourceID {
 	PNG_MAX_NUM,
 };
 
-class ResourceListLoader {
+class ResourceNameLoader {
 
 public:
 
-	static ResourceListLoader& GetInstance() {
-		static ResourceListLoader list_loder;
+	static ResourceNameLoader& GetInstance() {
+		static ResourceNameLoader list_loder;
 	    return list_loder;
 	}
 
-	void LoadResourceName();
+	void EntryResourceName();
 	const char* GetName(ResourceID id);
 
 

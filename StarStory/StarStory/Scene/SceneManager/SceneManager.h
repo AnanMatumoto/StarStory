@@ -21,7 +21,7 @@ public:
 		各シーンをリストに登録。
 		初めにタイトルシーンをセットする。
 	*/
-	void Init();
+	void Init(SceneID scene_id);
 
 	/*
   	更新処理
@@ -64,5 +64,5 @@ private:
 	std::unordered_map<SceneID, SceneBase*> scene_list; //  シーンリスト
 	SceneBase* m_scene;		// 現行シーン格納用
 	SceneID    m_now_id;	// 更新されるシーンID格納用
-	bool is_quit;			//終了処理
+	bool m_is_quit;			//終了処理
 };

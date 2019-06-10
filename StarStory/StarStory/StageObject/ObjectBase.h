@@ -15,7 +15,7 @@ public:
 
 		m_width = 0;
 		m_height = 0;
-		is_delete = false;
+		m_is_delete = false;
 
 		memset(m_vtx, 0, sizeof(m_vtx));
 
@@ -51,7 +51,7 @@ public:
 	const float GetRot()const;
 
 	/*
-	頂点情報ゲッターオーバーロード（指定した頂点情報を取得）
+	頂点情報ゲッター(指定した頂点情報を取得）
 	引数：
 	　　prim_num(頂点の番号)
 	*/const Vertex GetVertex(int prim_num)const;
@@ -99,6 +99,6 @@ protected:
 	float m_height;			 // 高さ
 	std::string m_tex_name;  // 画像名
 	float m_rot;			 // 回転角度
-	bool  is_delete;		 // 削除状態を示すフラグ
+	bool  m_is_delete;		 // 削除状態を示すフラグ
 };
 

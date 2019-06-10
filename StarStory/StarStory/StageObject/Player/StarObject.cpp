@@ -122,7 +122,7 @@ void StarObject::AutomaticMove() {
 		//スキルが発動していない場合
 		m_gravity += GRAVITY;
 		AddForce(m_speed, m_gravity);
-		RefPosition();
+		ReflectPosition();
 	}
 	else{
 		m_gravity = 0.f;
@@ -137,6 +137,10 @@ void StarObject::AutomaticMove() {
 
 			StarChild* hit_child;
 			hit_child = child;
+
+			if (hit_child == nullptr) {
+				return;
+			}
 			m_map_obj = (MapObject*)child->GetMapObj();
 
 			ChangeHitChild(hit_child);
@@ -178,12 +182,16 @@ void StarObject::CheckOutSideTheMapObject(
 		return;
 	}
 
+	if (hit_child == nullptr) {
+		return;
+	}
+
 	float left   = map->GetVertex(0).pos.x;
 	float right  = map->GetVertex(1).pos.x;
-	float height = map->GetVertex(0).pos.y;
+	float top = map->GetVertex(0).pos.y;
 	float point  = hit_child->GetVertex(1).pos.x; 
 
-	if ( point > right || m_pos.y > height) {
+	if ( point > right || m_pos.y > top) {
 		//頂点がオブジェクトの外にいる場合
 		m_is_active = false;
 		if (m_cur_skill == JUMP) {
@@ -210,7 +218,7 @@ void StarObject::CauseToSkill(int skill_id) {
 	{
 	case NORMAL:
 		AddForce(m_speed, 0.f, 2.5f);
-		RefPosition();
+		ReflectPosition();
 		m_interval = 60.f;
 		m_is_fall = false;
 		m_effect_anim.SetParameter( 0, 0,{ 0,0 },"none");
@@ -218,7 +226,7 @@ void StarObject::CauseToSkill(int skill_id) {
 
 	case SPEED:
 		AddForce(m_speed* BOOST);
-		RefPosition();
+		ReflectPosition();
 		m_effect_anim.SetParameter(
 			9, speed/3.f,
 			{ m_pos.x-70, m_pos.y-m_height },
@@ -265,7 +273,7 @@ void StarObject::AddForce(
 
 //--------------------------------
 // 移動量を座標に反映する
-void StarObject::RefPosition() {
+void StarObject::ReflectPosition() {
 
 	m_pos.x += m_vel.x;
 	m_pos.y += m_vel.y;
@@ -281,7 +289,7 @@ void StarObject::JumpMotion(){
 	if (max_y <= m_pos.y) {
 		//ジャンプ最高点に達するまで
 		AddForce(1.4f, m_jump_power,0.f);
-		RefPosition();
+		ReflectPosition();
 	}
 	else {
 		m_is_fall = true;
@@ -292,7 +300,7 @@ void StarObject::FallMotion() {
 		
 	m_jump_power += 0.2f;
 	AddForce(1.4f, m_jump_power);
-	RefPosition();
+	ReflectPosition();
 }
 
 void StarObject::StopMotion() {
@@ -300,11 +308,11 @@ void StarObject::StopMotion() {
 	//頂点が当たっている間の処理
 	if (--m_interval > 0) {
 		AddForce(0, 0, 0);
-		RefPosition();
+		ReflectPosition();
 	}
 	else {
 		AddForce(m_speed, 0, m_rot_speed);
-		RefPosition();
+		ReflectPosition();
 	}
 }
 

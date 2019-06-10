@@ -2,7 +2,7 @@
 #include "../../StageObject/ObjectManager/ObjectManager.h"
 #include "../../UI/UIManager/UIManager.h"
 #include "../../Sound/SoundManager/SoundManager.h"
-#include "../../ResourceListLoader/ResourceListLoader.h"
+#include "../../ResourceNameLoader/ResourceNameLoader.h"
 #include <iostream>
 #include <fstream>
 
@@ -15,7 +15,7 @@ void GameScene::Init() {
 	SoundManager::GetInstanse().SoundPlayer(GAME_BGM, SoundManager::PLAY);
 	ObjectManager& mng = ObjectManager::GetInstance();
 	UIManager & UImng  = UIManager::GetInstance();
-	auto res           = ResourceListLoader::GetInstance();
+	auto res           = ResourceNameLoader::GetInstance();
 
     //ステージオブジェクトの登録
 	mng.Register(OBJ_1, 100,  600, false, res.GetName(PNG_GAME_OBJ_192));
@@ -54,7 +54,7 @@ void GameScene::Update() {
 		m_scene_id = SC_CUSTOM;
 	}
 
-	if (ui_mng.SwithOnUI(BT_GAME_STOP)==false) {
+	if (ui_mng.SwitchOnUI(BT_GAME_STOP)==false) {
 		// ステージオブジェクト更新
 		ObjectManager::GetInstance().Update();
 	}
@@ -118,7 +118,7 @@ SceneID GameScene::Control() {
 void GameScene::Draw() {
 
 	UIManager& ui_mng = UIManager::GetInstance();
-	auto res = ResourceListLoader::GetInstance();
+	auto res = ResourceNameLoader::GetInstance();
 	//ステージ背景
 	Lib::DrawPx2D(res.GetName(PNG_GAME_BACK_GROUND),0, 0,1920,1080,1.f);
 	Lib::DrawBox2D(res.GetName(PNG_GAME_WIND), 60, 51);
@@ -129,7 +129,7 @@ void GameScene::Draw() {
 	UIManager::GetInstance().Draw();
 
 	//リザルト描画
-	if (m_result > 0) {
+	if (m_result > NO_RESULT) {
 		DrawResult();
 	}
 
@@ -139,7 +139,7 @@ void GameScene::Draw() {
 //リザルト結果を描画する
 void GameScene::DrawResult() {
 
-	auto res = ResourceListLoader::GetInstance();
+	auto res = ResourceNameLoader::GetInstance();
 	UIManager& ui_mng = UIManager::GetInstance();
 	ui_mng.Register(BT_RESULT_BACK_CUSTOM, 788, 780,res.GetName(PNG_RESULT_TO_CUSTOM));
 	ui_mng.Register(BT_RESULT_BACK_SELECT, 1148, 780, res.GetName(PNG_RESULT_TO_SELECT));

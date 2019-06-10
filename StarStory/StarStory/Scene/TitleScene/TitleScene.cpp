@@ -4,7 +4,7 @@
 #include "../../Sound/SoundManager/SoundManager.h"
 #include "../../StageObject/ObjectManager/ObjectManager.h"
 
-#include "../../ResourceListLoader/ResourceListLoader.h"
+#include "../../ResourceNameLoader/ResourceNameLoader.h"
 
 //-----------------------------
 //　タイトルシーン初期化
@@ -12,7 +12,7 @@ void TitleScene::Init() {
 	
 	m_state_id = SS_UPDATE;
 	has_end = false;
-	auto res = ResourceListLoader::GetInstance();
+	auto res = ResourceNameLoader::GetInstance();
 
 	//UIの登録
 	UIManager& mng = UIManager::GetInstance();
@@ -88,7 +88,7 @@ SceneID TitleScene::Control() {
 void TitleScene::Draw() {
 
 	float x = 0, y = 0;
-	auto res = ResourceListLoader::GetInstance();
+	auto res = ResourceNameLoader::GetInstance();
 
 	//タイトル描画（仮）
 	Lib::DrawPx2D(

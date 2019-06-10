@@ -83,7 +83,7 @@ UIObjectID UIManager::FindClickedUI() {
 
 //--------------------------------------------
 //  スイッチ式のUIに対するONとOFF状態を判定する
-bool UIManager::SwithOnUI(UIObjectID id) {
+bool UIManager::SwitchOnUI(UIObjectID id) {
 
 	auto ui = m_UI_list.find(id);
 	if (ui != m_UI_list.end()) {

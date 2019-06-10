@@ -26,7 +26,7 @@ void ObjectManager::Register(
 	StageObjectFactory obj_factory;
 	m_obj_list.emplace(
 		id,
-		obj_factory.Create(id, x, y, has_goal, tex_name)
+		obj_factory.CreateMap(id, x, y, has_goal, tex_name)
 	);
 }
 
@@ -51,7 +51,7 @@ void ObjectManager::Register(
 
 	//情報を移す
 	skill    = data.m_skill;
-	tex_name = data.tex_name;
+	tex_name = data.m_tex_name;
 	se_name  = data.m_sound_resource;
 
 	file.close();
@@ -127,7 +127,7 @@ void ObjectManager::Create(
 	bool has_goal
 ) {
 	StageObjectFactory factory;
-	m_obj_list.emplace(new_id, factory.Create(id, x, y,has_goal));
+	m_obj_list.emplace(new_id, factory.CreateMap(id, x, y,has_goal));
 }
 
 //------------------------------------
