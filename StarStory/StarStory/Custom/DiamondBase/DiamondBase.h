@@ -41,14 +41,11 @@ public:
 	DiamondBase() :
 		// スキルの種類初期化(最初はすべて、NORMALで描画)
 		m_skill(NORMAL),
-		m_file("none"){
-
-		// サイズ初期化
-		m_size_w = SIZE_W;
-		m_size_h = SIZE_H;
-		m_collision_w = COLLISION_W;
-		m_collision_h = COLLISION_H;
-	};
+		m_file("none"),
+		m_size_w(SIZE_W),
+		m_size_h(SIZE_H),
+		m_collision_w(COLLISION_W),
+		m_collision_h(COLLISION_H){};
 
 	// デストラクタ
 	virtual ~DiamondBase() {};
