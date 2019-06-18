@@ -33,7 +33,7 @@ private:
 private:
 	/*----削除----*/
 	// デストラクタ
-	~Diamond()override;
+	~Diamond()override {};
 	/*----削除----*/
 private:
 	/*--定数--*/

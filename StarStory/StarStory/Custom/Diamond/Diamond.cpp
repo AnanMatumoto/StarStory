@@ -59,12 +59,6 @@ void Diamond::Draw() {
 }
 /*----描画----*/
 
-/*----デストラクタ----*/
-Diamond::~Diamond() {
-
-}
-/*----デストラクタ----*/
-
 /*----初期化関数----*/
 /*----各ひし形の座標(中心のx,y)と角度を初期化----*/
 void Diamond::InitDiamondInfo(DiamondPart part) {

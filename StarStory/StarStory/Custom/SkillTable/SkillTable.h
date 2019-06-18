@@ -32,7 +32,7 @@ public :
 	// 描画
 	void Draw();
 	// デストラクタ
-	~SkillTable();
+	~SkillTable() {};
 private:
 	/*----画像----*/
 	/*----番号----*/
