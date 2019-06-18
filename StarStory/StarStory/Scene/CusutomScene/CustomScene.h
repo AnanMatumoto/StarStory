@@ -29,7 +29,7 @@ private:
 	// デストラクタ
 	~CustomScene()override {}
 
-	// カスタムスターの実体化
+	// カスタムオブジェクトのインスタンス
 	CustomObjectManager *m_custom_object_manager;
 
 	/*----enum----*/

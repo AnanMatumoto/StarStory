@@ -9,7 +9,7 @@ enum SoundResourceID {
 
 	//OP,
 	/*----Title----*/
-	TTITLE_BGM,
+	TITLE_BGM,
 	/*----Title----*/
 	/*----Serect----*/
 	/*----Serect----*/

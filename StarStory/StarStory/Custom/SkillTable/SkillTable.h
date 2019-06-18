@@ -1,104 +1,118 @@
 ﻿#pragma once
 
-#include"../../Lib/Lib.h"
-#include"../../Skill.h"
+#include "../../Lib/Lib.h"
+#include "../../SkillData/Skill_Data.h"
+#include "../DiamondBase/DiamondBase.h"
 
-#include<vector>
+#include <fstream>
 
-// スキル表クラス
+// スキル表
 class SkillTable {
-
 public:
 	/*----enum----*/
-	// スキル表に使う画像のID
-	enum TexID {
+	// オブジェクトID
+	enum ObjectID {
+		// 番号
+		CUSTOM_NUM,
+		// スキル
+		SKILL,
+		// 右方向の三角形
+		RIGHT_TRIANGLE,
+		// 左方向の三角形
+		LEFT_TRIANGLE,
 
-		/*----スキル表の基礎----*/
-		BASE1,
-		BASE2,
-		BASE3,
-		BASE4,
-		BASE5,
-		/*----スキル表の基礎----*/
-
-		/*----スキル横の数字----*/
-		CUSTOM_NUM1,
-		CUSTOM_NUM2,
-		CUSTOM_NUM3,
-		CUSTOM_NUM4,
-		CUSTOM_NUM5,
-		/*----スキル横の数字----*/
-
-		NORMAL_SKILL,	// ノーマルスキル
-		ACCEL_SKILL,	// 加速スキル
-		JUMP_SKILL,		// ジャンプスキル
-		STOP_SKILL,		// 停止スキル
-
-		/*----強弱----*/
-		STRENGTH1,
-		STRENGTH2,
-		STRENGTH3,
-		STRENGTH4,
-		STRENGTH5,
-		/*----強弱----*/
-
-		MAX_TEX_NUM
+		MAX_OBJECT_NUM
 	};
 	/*----enum----*/
-
-public:
+public :
 	// コンストラクタ
-	SkillTable(TexID skill_table_tex_id);
-
+	SkillTable(DiamondBase::DiamondPart diamond_part, std::string data_file);
+	// 更新
+	void Update();
+	// 描画
+	void Draw();
 	// デストラクタ
 	~SkillTable();
-
-	void Update();	// 更新
-	void Draw();	// 描画
-
-	void ClickSkillSet();
-
 private:
-	/*----変数----*/
-	Vec2 m_pos;				// 描画用座標
-	Lib::Texture m_tex;		// 描画画像用
-	D3DXCOLOR m_brightness;		// 透明度変更用
-	/*----変数----*/
-
-	/*----関数----*/
-	void InitTexID(TexID tex_id);	// テクスチャIDの初期化
-	/*----関数----*/
-
-	/*----enum----*/
-	Skill m_skill;		// スキルID保管用
-	TexID m_tex_id;		// スキル表の画像ID保管用
-	/*----enum----*/
-
-private:
-	/*----スキル横の数字----*/
+	/*----画像----*/
+	/*----番号----*/
 	static const char *NUM1_TEX;
 	static const char *NUM2_TEX;
 	static const char *NUM3_TEX;
 	static const char *NUM4_TEX;
 	static const char *NUM5_TEX;
-	/*----スキル横の数字----*/
-
-	static const char *BASE_TEX;				// スキル表の基礎
-	static const char *NORAML_SKILL_TEX;		// スキル表のノーマルスキル
-	static const char *ACCEL_SKILL_TEX;		// スキル表の加速スキル
-	static const char *JUMP_SKILL_TEX;		// スキル表のジャンプスキル
-	static const char *STOP_SKILL_TEX;		// スキル表の停止スキル
-	static const char *WEAK_TEX;				// スキルの弱
+	/*----番号----*/
+	// ノーマルスキル
+	static const char *NORMAL_SKILL_TEX;
+	// 加速スキル
+	static const char *ACCEL_SKILL_TEX;
+	// ジャンプスキル
+	static const char *JUMP_SKILL_TEX;
+	// 停止スキル
+	static const char *STOP_SKILL_TEX;
+	// 右向きの三角形
+	static const char *RIGHT_TRIANGLE_TEX;
+	// 左向きの三角形
+	static const char *LEFT_TRIANGLE_TEX;
 	/*----画像----*/
-
+private:
 	/*----定数----*/
-	static const float SHIFT_VALUE;		// スキル表の画像をずらす値
-
-	// 画像の初期位置
-	static const Vec2 BASE_POS;
+	// スキル表の画像をずらす値
+	static const float SHIFT_VALUE;
+	/*----画像の初期位置----*/
+	// 番号
+	static const Vec2 CUSTOM_NUM_POS;
+	// スキル
 	static const Vec2 SKILL_POS;
-	static const Vec2 NUM_POS;
-	static const Vec2 STRENGTH_POS;
+	// 右向き三角形
+	static const Vec2 RIGHT_TRIANGLE_POS;
+	// 左向け三角形
+	static const Vec2 LEFT_TRIANGLE_POS;
+	/*----画像の初期位置----*/
 	/*----定数----*/
+private:
+	/*----変数----*/
+	// 座標
+	Vec2 m_pos[MAX_OBJECT_NUM];
+	// 画像
+	Lib::Texture m_tex[MAX_OBJECT_NUM];
+	// バイナリファイル読み込み用
+	std::fstream m_file;
+	//
+	bool m_is_click;
+	/*----変数----*/
+private:
+	/*----enum----*/
+	// オブジェクトID
+	ObjectID m_object_id;
+	// スキルID
+	Skill m_skill;
+	// ひし形の番号
+	DiamondBase::DiamondPart m_diamond_part;
+	/*----enum----*/
+private:
+	/*----インスタンス----*/
+	// スキルデータを外部ファイルに保存する用
+	Skill_Data m_skill_data;
+	/*----インスタンス----*/
+private:
+	/*----初期化----*/
+	// 各オブジェクトの座標の初期化
+	void InitObjetPos(DiamondBase::DiamondPart diamond_part);
+	// 各オブジェクトの画像の初期化
+	void InitObjectTex();
+	// 番号画像初期化
+	void InitNumTex();
+	/*----初期化----*/
+private:
+	/*----更新----*/
+	// スキルID変更
+	void ChangeSkillID();
+	/*----更新----*/
+private :
+	/*----描画----*/
+	// スキル画像変更
+	void ChangeSkillTex();
+	/*----描画----*/
 };
 

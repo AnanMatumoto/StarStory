@@ -13,9 +13,7 @@ enum Skill {
 // スキルIDクラス
 // シングルトン
 class Skill_ID {
-
 public:
-
 	// インスタンス取得
 	static Skill_ID &GetInstance() {
 
@@ -24,25 +22,28 @@ public:
 	}
 
 	// セッター
-	void SetSkillID(Skill skill) {
-
-		m_skill = skill;
+	void SetSkillID(Skill skill_id, int diamond_part) {
+		m_diamond_skill_list[diamond_part] = skill_id;
 	}
 
 	// ゲッター
-	Skill GetSkillID() {
-
-		return m_skill;
+	Skill GetSkillID(int diamond_part) {
+		return m_diamond_skill_list[diamond_part];
 	}
 
+// 変数
 private:
+	// 各ひし形のスキル保管用
+	Skill m_diamond_skill_list[5];
 
-	// スキルID保管用
-	Skill m_skill;
-
+// 関数
+private:
 	// コンストラクタ
-	Skill_ID() : m_skill(NORMAL) {};
-
+	Skill_ID()  {
+		for (int i = 0; i < 5; ++i) {
+			m_diamond_skill_list[i] = NORMAL;
+		}
+	};
 };
 
 

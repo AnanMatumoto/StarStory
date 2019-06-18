@@ -12,7 +12,6 @@
     <ClCompile Include="Lib\KeyBoard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Lib\Texture.cpp" />
-    <ClCompile Include="Custom\SkillTable\SkillTable.cpp" />
     <ClCompile Include="StageObject\ObjectBase.cpp" />
     <ClCompile Include="StageObject\Player\StarObject.cpp" />
     <ClCompile Include="StageObject\Player\StarChild.cpp" />
@@ -31,6 +30,7 @@
     <ClCompile Include="Scene\SceneManager\SceneManager.cpp" />
     <ClCompile Include="ResourceNameLoader\ResourceNameLoader.cpp" />
     <ClCompile Include="Scene\TitleScene\TitleScene.cpp" />
+    <ClCompile Include="Custom\SkillTable\SkillTable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Collision\Collision.h" />
@@ -41,7 +41,6 @@
     <ClInclude Include="Lib\Lib.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="Skill.h" />
-    <ClInclude Include="Custom\SkillTable\SkillTable.h" />
     <ClInclude Include="SkillData\SkillData.h" />
     <ClInclude Include="SkillData\Skill_Data.h" />
     <ClInclude Include="StageObject\Factory.h" />
@@ -70,5 +69,6 @@
     <ClInclude Include="Scene\SelectScene\SelectScene.h" />
     <ClInclude Include="Scene\SceneManager\SceneManager.h" />
     <ClInclude Include="ResourceNameLoader\ResourceNameLoader.h" />
+    <ClInclude Include="Custom\SkillTable\SkillTable.h" />
   </ItemGroup>
 </Project>

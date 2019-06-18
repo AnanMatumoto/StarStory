@@ -314,12 +314,12 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Custom\SkillTable\SkillTable.h">
+    <ClInclude Include="SkillData\SkillData.h" />
+    <ClInclude Include="SkillData\Skill_Data.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SkillData\SkillData.h" />
-    <ClInclude Include="SkillData\Skill_Data.h">
+    <ClInclude Include="Custom\SkillTable\SkillTable.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -1,7 +1,7 @@
 ﻿#include"SoundManager.h"
 
 // コンストラクタ
-SoundManager::SoundManager() : m_resource_id(TTITLE_BGM) {
+SoundManager::SoundManager() : m_resource_id(TITLE_BGM) {
 
 	// インターフェース登録
 	m_resource = &Lib::AudioClip::GetInterface(Lib::hWnd);
@@ -43,7 +43,7 @@ void SoundManager::RegisterResource(SoundResourceID id) {
 
 	switch (id) {
 
-	case TTITLE_BGM:
+	case TITLE_BGM:
 
 		m_resource_list.push_back((char*)"Resource/Audio/BGM/title_bgm.wav");
 		break;

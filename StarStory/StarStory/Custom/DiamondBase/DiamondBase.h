@@ -9,7 +9,6 @@
 
 // ひし形基底クラス
 class DiamondBase {
-
 public:
 	/*----enum----*/
 	// ひし形の設置場所
@@ -23,7 +22,6 @@ public:
 
 		MAX_DIAMOND_PART_NUM
 	};
-
 	// ひし形の頂点の場所
 	enum DiamondVertex {
 
@@ -35,7 +33,6 @@ public:
 		MAX_DIAMOND_VERTEX_NUM
 	};
 	/*----enum----*/
-
 public:
 	// コンストラクタ
 	DiamondBase() :
@@ -46,64 +43,76 @@ public:
 		m_size_h(SIZE_H),
 		m_collision_w(COLLISION_W),
 		m_collision_h(COLLISION_H){};
-
+	// 更新
+	virtual void Update() = 0;
+	// 描画
+	virtual void Draw() = 0;
 	// デストラクタ
 	virtual ~DiamondBase() {};
-
-	/*----関数----*/
-	virtual void Update() = 0;		// 更新
-	virtual void Draw() = 0;		// 描画
-
-	// ゲッター
-	Skill_Data GetSkillDara();		// スキルデータを外部ファイルに保存する用
-	/*----関数----*/
-
-protected:
-	/*----更新関数----*/
-	// マウスにクリックされた時の当たり判定
-	bool IsHitMouse();
-	/*----更新関数----*/
-
+public:
+	/*----ゲッター----*/
+	// スキルデータを外部ファイルに保存する用
+	Skill_Data GetSkillDara();
+	/*----ゲッター----*/
 protected:
 	/*----変数----*/
-	float m_pos_x;				// x座標(ひし形の中心座標)
-	float m_pos_y;				// y座標(ひし形の中心座標)
-	float m_angle;				// 角度
-	float m_size_w;				// 描画の時に使う幅
-	float m_size_h;				// 描画の時に使う高さ
-	float m_collision_w;		// 当たり判定の時に使う幅
-	float m_collision_h;		// 当たり判定の時に使う高さ
-
-	Vec2 m_vertex_pos[MAX_DIAMOND_VERTEX_NUM];		// ひし形の頂点情報
-
-	char* m_tex;		// ひし形の描画用変数
-
-	Skill_Data m_skill_data;	// スキルデータ読み込み用インスタンス
-	std::fstream m_file;		// バイナリファイル読み込み用
+	// x座標(ひし形の中心座標)
+	float m_pos_x;
+	// y座標(ひし形の中心座標)
+	float m_pos_y;
+	// 角度
+	float m_angle;
+	// 描画の時に使う幅
+	float m_size_w;
+	// 描画の時に使う高さ
+	float m_size_h;
+	// 当たり判定の時に使う幅
+	float m_collision_w;
+	// 当たり判定の時に使う高さ
+	float m_collision_h;
+	// ひし形の頂点情報
+	Vec2 m_vertex_pos[MAX_DIAMOND_VERTEX_NUM];
+	// ひし形の描画用変数
+	char* m_tex;
+	// バイナリファイル読み込み用
+	std::fstream m_file;
 	/*----変数----*/
-
+protected:
+	/*----インスタンス----*/
+	// スキルデータ読み込み用インスタンス
+	Skill_Data m_skill_data;
+	/*----インスタンス----*/
+protected:
 	/*----enum----*/
-	DiamondVertex m_diamond_vertex;		// ひし形の頂点の場所
-	Skill m_skill;						// スキルの情報
-	DiamondPart m_diamond_part;			// ひし形を置く場所
+	// ひし形の頂点の場所
+	DiamondVertex m_diamond_vertex;
+	// スキルの情報
+	Skill m_skill;
+	// ひし形を置く場所
+	DiamondPart m_diamond_part;
 	/*----enum----*/
-
 protected:
 	/*----画像----*/
-	static const char *NORMAL_TEX; 	// NORMAL
-	static const char *SPEED_TEX;	// SPEED
-	static const char *JUMP_TEX;	// JUMP
-	static const char *STOP_TEX; 	// STOP
+	// NORMAL
+	static const char *NORMAL_TEX;
+	// SPEED
+	static const char *SPEED_TEX;
+	// JUMP
+	static const char *JUMP_TEX;
+	// STOP
+	static const char *STOP_TEX;
 	/*----画像----*/
-
 private:
 	/*----定数----*/
-	static const float SIZE_W;	// ひし形の幅
-	static const float SIZE_H;	// ひし形の高さ
+	/*----描画用----*/
+	static const float SIZE_W;
+	static const float SIZE_H;
+	/*----描画用----*/
 
-	// 当たり判定用
+	/*----当たり判定用----*/
 	static const float COLLISION_W;		// ひし形の幅
 	static const float COLLISION_H;		// ひし形の高さ
+	/*----当たり判定用----*/
 	/*----定数----*/
 };
 

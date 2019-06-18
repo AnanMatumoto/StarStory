@@ -1,289 +1,200 @@
-﻿#include"SkillTable.h"
-#include"../../Collision/Collision.h"
-#include"../../Skill.h"
+﻿#include "SkillTable.h"
+#include "../../Collision/Collision.h"
 
 /*----画像----*/
-
-/*----スキル横の数字----*/
+/*----番号----*/
 const char *SkillTable::NUM1_TEX = "Resource/Custom/ui_custom_num1.png";
 const char *SkillTable::NUM2_TEX = "Resource/Custom/ui_custom_num2.png";
 const char *SkillTable::NUM3_TEX = "Resource/Custom/ui_custom_num3.png";
 const char *SkillTable::NUM4_TEX = "Resource/Custom/ui_custom_num4.png";
 const char *SkillTable::NUM5_TEX = "Resource/Custom/ui_custom_num5.png";
-/*----スキル横の数字----*/
-
-const char *SkillTable::BASE_TEX = "Resource/Custom/ui_custom_skillbase.png";			// スキル表の基礎
-const char *SkillTable::NORAML_SKILL_TEX = "Resource/Custom/UI_custom_normal.png";		// スキル表のノーマルスキル
-const char *SkillTable::ACCEL_SKILL_TEX = "Resource/Custom/UI_custom_accel.png";		// スキル表の加速スキル
-const char *SkillTable::JUMP_SKILL_TEX = "Resource/Custom/UI_custom_jump.png";			// スキル表のジャンプスキル
-const char *SkillTable::STOP_SKILL_TEX = "Resource/Custom/UI_custom_stop.png";			// スキル表の停止スキル
-const char *SkillTable::WEAK_TEX = "Resource/Custom/UI_custom_weak.png";				// スキルの弱
+/*----番号----*/
+// ノーマルスキル
+const char *SkillTable::NORMAL_SKILL_TEX = "Resource/Custom/UI_custom_normal.png";
+// 加速スキル
+const char *SkillTable::ACCEL_SKILL_TEX = "Resource/Custom/UI_custom_accel.png";
+// ジャンプスキル
+const char *SkillTable::JUMP_SKILL_TEX = "Resource/Custom/UI_custom_jump.png";
+// 停止スキル
+const char *SkillTable::STOP_SKILL_TEX = "Resource/Custom/UI_custom_stop.png";
+// 右向きの三角形
+const char *SkillTable::RIGHT_TRIANGLE_TEX = "Resource/Custom/UI_custom_right.png";
+// 左向きの三角形
+const char *SkillTable::LEFT_TRIANGLE_TEX = "Resource/Custom/UI_custom_left.png";
 /*----画像----*/
 
 /*----定数----*/
-const float SkillTable::SHIFT_VALUE = 104;		// スキル表の画像をずらす値
-
-// 画像の初期位置
-const Vec2 SkillTable::BASE_POS = { 1075.f,218.f };
-const Vec2 SkillTable::SKILL_POS = { 1183.f,233.f };
-const Vec2 SkillTable::NUM_POS = { 1106.f,244.f };
-const Vec2 SkillTable::STRENGTH_POS = { 1569.f,237.f };
+// スキル表の画像をずらす値
+const float SkillTable::SHIFT_VALUE = 104;
+/*----画像の初期位置----*/
+// 番号
+const Vec2 SkillTable::CUSTOM_NUM_POS{ 1106.f,244.f };
+// スキル
+const Vec2 SkillTable::SKILL_POS{ 1250.f,233.f };
+// 右向き三角形
+const Vec2 SkillTable::RIGHT_TRIANGLE_POS{ 1640.f,250.f };
+// 左向け三角形
+const Vec2 SkillTable::LEFT_TRIANGLE_POS{ 1200.f,250.f };
+/*----画像の初期位置----*/
 /*----定数----*/
 
-// コンストラクタ
-SkillTable::SkillTable(TexID tex_id):
-	m_brightness(Lib::CreateColor(1.f, 1.f, 1.f, 0.f)){
+/*----コンストラクタ----*/
+SkillTable::SkillTable(DiamondBase::DiamondPart diamond_part, std::string data_file) :
+	m_is_click(true),
+	m_diamond_part(diamond_part){
+	// スキルIDをバイナリデータから取得
+	m_file.open(data_file, std::ios::binary | std::ios::in);
+	m_file.read((char*)&m_skill_data, sizeof(Skill_Data));
+	m_skill = m_skill_data.m_skill;
+	m_file.close();
 
-	// スキルID識別
-	InitTexID(tex_id);
-};
+	// 各オブジェクトの座標の初期化
+	InitObjetPos(diamond_part);
+	// 各オブジェクトの画像の初期化
+	InitObjectTex();
+	// 番号画像初期化
+	InitNumTex();
+}
+/*----コンストラクタ----*/
 
-// デストラクタ
+/*----更新----*/
+void SkillTable::Update() {
+	// スキルID変更
+	ChangeSkillID();
+}
+/*----更新----*/
+
+/*----描画----*/
+void SkillTable::Draw() {
+	// スキル画像変更用
+	ChangeSkillTex();
+	// オブジェクト描画
+	for (int i = 0; i < MAX_OBJECT_NUM; ++i) {
+		Lib::DrawBox2D(m_tex[m_object_id], m_pos[m_object_id].x, m_pos[m_object_id].y);
+		m_object_id = static_cast<ObjectID>(m_object_id + 1);
+	}
+	// オブジェクトIDリセット
+	m_object_id = CUSTOM_NUM;
+}
+/*----描画----*/
+
+/*----デストラクタ----*/
 SkillTable::~SkillTable() {
 
 }
+/*----デストラクタ----*/
 
-// 更新
-void SkillTable::Update() {
-
-	// アクティブなスキルに対応するNUMを明るくする
-	if (m_tex_id == CUSTOM_NUM1 && Skill_ID::GetInstance().GetSkillID() == NORMAL) {
-		m_brightness = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
-	}
-	else if (m_tex_id == CUSTOM_NUM1 && Skill_ID::GetInstance().GetSkillID() != NORMAL) {
-		m_brightness = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
-	}
-
-	if (m_tex_id == CUSTOM_NUM2 && Skill_ID::GetInstance().GetSkillID() == SPEED) {
-		m_brightness = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
-	}
-	else if (m_tex_id == CUSTOM_NUM2 && Skill_ID::GetInstance().GetSkillID() != SPEED) {
-		m_brightness = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
-	}
-
-	if (m_tex_id == CUSTOM_NUM3 && Skill_ID::GetInstance().GetSkillID() == JUMP) {
-		m_brightness = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
-	}
-	else if (m_tex_id == CUSTOM_NUM3 && Skill_ID::GetInstance().GetSkillID() != JUMP) {
-		m_brightness = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
-	}
-
-	if (m_tex_id == CUSTOM_NUM4 && Skill_ID::GetInstance().GetSkillID() == STOP) {
-		m_brightness = Lib::CreateColor(1.f, 1.f, 1.f, 0.f);
-	}
-	else if (m_tex_id == CUSTOM_NUM4 && Skill_ID::GetInstance().GetSkillID() != STOP) {
-		m_brightness = Lib::CreateColor(0.5f, 0.5f, 0.5f, 0.f);
-	}
+/*----初期化----*/
+/*----各オブジェクトの座標の初期化----*/
+void SkillTable::InitObjetPos(DiamondBase::DiamondPart diamond_part) {
+	m_pos[CUSTOM_NUM] = CUSTOM_NUM_POS;
+	m_pos[CUSTOM_NUM].y += SHIFT_VALUE * m_diamond_part;
+	m_pos[SKILL] = SKILL_POS;
+	m_pos[SKILL].y += SHIFT_VALUE * m_diamond_part;
+	m_pos[RIGHT_TRIANGLE] = RIGHT_TRIANGLE_POS;
+	m_pos[RIGHT_TRIANGLE].y += SHIFT_VALUE * m_diamond_part;
+	m_pos[LEFT_TRIANGLE] = LEFT_TRIANGLE_POS;
+	m_pos[LEFT_TRIANGLE].y += SHIFT_VALUE * m_diamond_part;
 }
+/*----各オブジェクトの座標の初期化----*/
 
-// 描画
-void SkillTable::Draw() {
-
-	Lib::DrawBox2D(m_tex, m_pos.x, m_pos.y, m_brightness);
+/*----各オブジェクトの画像の初期化----*/
+void SkillTable::InitObjectTex() {
+	m_tex[RIGHT_TRIANGLE] = RIGHT_TRIANGLE_TEX;
+	m_tex[LEFT_TRIANGLE] = LEFT_TRIANGLE_TEX;
+	m_tex[SKILL] = NORMAL_SKILL_TEX;
+	m_tex[CUSTOM_NUM] = NUM1_TEX;
 }
+/*----各オブジェクトの画像の初期化----*/
 
-/*----初期化関数----*/
-// スキル表の画像ID
-void SkillTable::InitTexID(TexID tex_id) {
-
-	m_tex_id = tex_id;
-
-	switch (m_tex_id) {
-
-	case BASE1:
-
-		m_tex = BASE_TEX;
-
-		m_pos = BASE_POS;
-
+/*----番号画像初期化----*/
+void SkillTable::InitNumTex() {
+	// 番号によって画像変更
+	switch (m_diamond_part) {
+	case DiamondBase::DiamondPart::TOP_PART:
+		m_tex[CUSTOM_NUM] = NUM1_TEX;
 		break;
-
-	case BASE2:
-
-		m_tex = BASE_TEX;
-
-		m_pos = BASE_POS;
-
-		m_pos.y += SHIFT_VALUE;
-
+	case DiamondBase::DiamondPart::TOP_RIGHT_PART:
+		m_tex[CUSTOM_NUM] = NUM2_TEX;
 		break;
-
-	case BASE3:
-
-		m_tex = BASE_TEX;
-
-		m_pos = BASE_POS;
-
-		m_pos.y += SHIFT_VALUE * 2;
-
+	case DiamondBase::DiamondPart::BOTTOM_RIGHT_PART:
+		m_tex[CUSTOM_NUM] = NUM3_TEX;
 		break;
-
-	case BASE4:
-
-		m_tex = BASE_TEX;
-
-		m_pos = BASE_POS;
-
-		m_pos.y += SHIFT_VALUE * 3;
-
+	case DiamondBase::DiamondPart::BOTTOM_LEFT_PART:
+		m_tex[CUSTOM_NUM] = NUM4_TEX;
 		break;
-
-	case BASE5:
-
-		m_tex = BASE_TEX;
-
-		m_pos = BASE_POS;
-
-		m_pos.y += SHIFT_VALUE * 4;
-
-		break;
-			
-	case CUSTOM_NUM1:
-
-		m_tex = NUM1_TEX;
-
-		m_pos = NUM_POS;
-
-		break;
-
-	case CUSTOM_NUM2:
-
-		m_tex = NUM2_TEX;
-
-		m_pos = NUM_POS;
-
-		m_pos.y += SHIFT_VALUE;
-
-		break;
-
-	case CUSTOM_NUM3:
-
-		m_tex = NUM3_TEX;
-
-		m_pos = NUM_POS;
-
-		m_pos.y += SHIFT_VALUE * 2;
-
-		break;
-
-	case CUSTOM_NUM4:
-
-		m_tex = NUM4_TEX;
-
-		m_pos = NUM_POS;
-
-		m_pos.y += SHIFT_VALUE * 3;
-
-		break;
-
-	case NORMAL_SKILL:
-
-		m_tex = NORAML_SKILL_TEX;
-
-		m_pos = SKILL_POS;
-
-		m_skill = NORMAL;
-
-		break;
-
-	case ACCEL_SKILL:
-
-		m_tex = ACCEL_SKILL_TEX;
-
-		m_pos = SKILL_POS;
-
-		m_pos.y += SHIFT_VALUE;
-
-		m_skill = SPEED;
-
-		break;
-
-	case JUMP_SKILL:
-
-		m_tex = JUMP_SKILL_TEX;
-
-		m_pos = SKILL_POS;
-
-		m_pos.y += SHIFT_VALUE * 2;
-
-		m_skill = JUMP;
-
-		break;
-
-	case STOP_SKILL:
-
-		m_tex = STOP_SKILL_TEX;
-
-		m_pos = SKILL_POS;
-
-		m_pos.y += SHIFT_VALUE * 3;
-
-		m_skill = STOP;
-
-		break;
-
-	case STRENGTH1:
-
-		m_tex = WEAK_TEX;
-
-		m_pos = STRENGTH_POS;
-
-		break;
-
-	case STRENGTH2:
-
-		m_tex = WEAK_TEX;
-
-		m_pos = STRENGTH_POS;
-
-		m_pos.y += SHIFT_VALUE;
-
-		break;
-
-	case STRENGTH3:
-
-		m_tex = WEAK_TEX;
-
-		m_pos = STRENGTH_POS;
-
-		m_pos.y += SHIFT_VALUE * 2;
-
-		break;
-
-	case STRENGTH4:
-
-		m_tex = WEAK_TEX;
-
-		m_pos = STRENGTH_POS;
-
-		m_pos.y += SHIFT_VALUE * 3;
-
-		break;
-
-	default :
-
-		m_tex = "hoge";
-
-		m_pos = { 0,0 };
-
+	case DiamondBase::DiamondPart::TOP_LEFT_PART:
+		m_tex[CUSTOM_NUM] = NUM5_TEX;
 		break;
 	}
 }
-/*----初期化関数----*/
+/*----番号画像初期化----*/
+/*----初期化----*/
 
-// クリックされたときにskill.hにスキルを渡す
-void SkillTable::ClickSkillSet() {
-
+/*----更新----*/
+/*----スキルID変更----*/
+void SkillTable::ChangeSkillID() {
 	// マウス座標の取得
 	Vec2 mouse_pos = Lib::GetMousePoint();
 
-	// マウスが表にあるスキルのどれかをクリックしたら
+	// 右三角形
 	if (Collision::IsInSquare(
-		m_pos, m_tex.GetSize().x, m_tex.GetSize().y,
-		mouse_pos) == true) {
+		m_pos[RIGHT_TRIANGLE],
+		m_tex[RIGHT_TRIANGLE].GetSize().x, m_tex[RIGHT_TRIANGLE].GetSize().y,
+		mouse_pos) == true
+		&& m_is_click == true) {
 
-		// スキルをセット
-		Skill_ID::GetInstance().SetSkillID(m_skill);
+		m_is_click = false;
+
+		m_skill = static_cast<Skill>(m_skill + 1);
+		if (m_skill > STOP) {
+			m_skill = NORMAL;
+		}
+		Skill_ID::GetInstance().SetSkillID(m_skill, m_diamond_part);
+	}
+	if (Collision::IsInSquare(
+		m_pos[LEFT_TRIANGLE],
+		m_tex[LEFT_TRIANGLE].GetSize().x, m_tex[LEFT_TRIANGLE].GetSize().y,
+		mouse_pos) == true
+		&& m_is_click == true) {
+
+		m_is_click = false;
+
+		m_skill = static_cast<Skill>(m_skill - 1);
+		if (m_skill < NORMAL) {
+			m_skill = STOP;
+		}
+		Skill_ID::GetInstance().SetSkillID(m_skill, m_diamond_part);
+	}
+	// マウス座標の情報が{0,0}の時もう一度クリックできるように
+	if (mouse_pos.x == 0.f && mouse_pos.y == 0.f) {
+		m_is_click = true;
 	}
 }
+/*----スキルID変更----*/
+/*----更新----*/
+
+/*----描画----*/
+/*----スキル画像変更用----*/
+void SkillTable::ChangeSkillTex() {
+	// スキルによって画像変更
+	switch (m_skill) {
+	case JUMP:
+		m_tex[SKILL] = JUMP_SKILL_TEX;
+		break;
+
+	case SPEED:
+		m_tex[SKILL] = ACCEL_SKILL_TEX;
+		break;
+
+	case STOP:
+		m_tex[SKILL] = STOP_SKILL_TEX;
+		break;
+
+	default:
+		m_tex[SKILL] = NORMAL_SKILL_TEX;
+		break;
+	}
+}
+/*----描画----*/
 

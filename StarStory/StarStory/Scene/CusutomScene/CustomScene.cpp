@@ -3,10 +3,14 @@
 #include "../../UI/UIManager/UIManager.h"
 
 /*----画像----*/
-const char CUSTOM_BASE_TEX[256]			= "Resource/Custom/ui_custom_base_ver2.png";				// 背景
-const char CUSTOM_DECISION_TEX[256]		= "Resource/Custom/ui_custom_nextpage.png";			// 決定ボタン
-const char CUSTOM_SERECT_TEX[256]		= "Resource/Custom/ui_custom_stageselect.png";		// セレクトへ戻るボタン
-const char CUSTOM_STAGE1_MAP_TEX[256]	= "Resource/Custom/stage1_map.png";					// ステージ1のマップ
+// 背景
+const char CUSTOM_BASE_TEX[256]			= "Resource/Custom/ui_custom_base_ver2.png";
+// 決定ボタン
+const char CUSTOM_DECISION_TEX[256]		= "Resource/Custom/ui_custom_nextpage.png";
+// セレクトへ戻るボタン
+const char CUSTOM_SERECT_TEX[256]		= "Resource/Custom/ui_custom_stageselect.png";
+// ステージ1のマップ
+const char CUSTOM_STAGE1_MAP_TEX[256]	= "Resource/Custom/stage1_map.png";
 /*----画像----*/
 
 //-----------------------------
@@ -15,11 +19,13 @@ void CustomScene::Init() {
 
 	m_state_id = SS_UPDATE;
 
+	/*----UI生成----*/
 	UIManager & UImng = UIManager::GetInstance();
-
-	// UI生成
-	UImng.Register(BT_CUSTOM_BACK, 1015, 792, CUSTOM_SERECT_TEX);		// 決定ボタン
-	UImng.Register(BT_CUSTOM_DECISION, 1309, 876, CUSTOM_DECISION_TEX);		// セレクト画面へ戻るボタン
+	// 決定ボタン
+	UImng.Register(BT_CUSTOM_BACK, 1015, 792, CUSTOM_SERECT_TEX);
+	// セレクト画面へ戻るボタン
+	UImng.Register(BT_CUSTOM_DECISION, 1309, 876, CUSTOM_DECISION_TEX);
+	/*----UI生成----*/
 
 	// カスタムオブジェクト生成
 	m_custom_object_manager = new CustomObjectManager();
@@ -64,11 +70,8 @@ SceneID CustomScene::End() {
 	m_state_id = SS_INIT;
 
 	// UIをリストから削除
-	UIManager::GetInstance().Delete(BT_CUSTOM_BACK);	// セレクト画面へ戻るボタン
+	UIManager::GetInstance().Delete(BT_CUSTOM_BACK);		// セレクト画面へ戻るボタン
 	UIManager::GetInstance().Delete(BT_CUSTOM_DECISION);	// 決定ボタン
-
-	// スキル情報をNONEにする
-	Skill_ID::GetInstance().SetSkillID(Skill::NORMAL);
 
 	// カスタムオブジェクト削除
 	delete m_custom_object_manager;

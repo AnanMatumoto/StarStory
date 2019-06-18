@@ -20,7 +20,7 @@ void TitleScene::Init() {
 	mng.Register(BT_TITLE_END,   1120, 844, res.GetName(PNG_TITLE_END));
 
 	// BGM再生
-	SoundManager::GetInstanse().SoundPlayer(TTITLE_BGM, SoundManager::PLAY);
+	SoundManager::GetInstanse().SoundPlayer(TITLE_BGM, SoundManager::PLAY);
 }
 
 //-----------------------------
@@ -51,7 +51,7 @@ SceneID TitleScene::End() {
 	UIManager::GetInstance().AllDelete();
 
 	// BGM停止
-	SoundManager::GetInstanse().SoundPlayer(TTITLE_BGM, SoundManager::STOP);
+	SoundManager::GetInstanse().SoundPlayer(TITLE_BGM, SoundManager::STOP);
 
 	if (has_end) {
 		SceneManager::GetInstance().SetQuit(true);

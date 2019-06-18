@@ -2,34 +2,60 @@
 
 #include <fstream>
 
-// コンストラクタ
-CustomObjectManager::CustomObjectManager()
-	: m_diamond_part(Diamond::TOP_PART),
-	skill_table_tex_id(SkillTable::BASE1){
+/*----コンストラクタ----*/
+CustomObjectManager::CustomObjectManager() :
+	m_diamond_part(Diamond::TOP_PART),
+	m_skill_table_object_id(SkillTable::CUSTOM_NUM){
 
+	// オブジェクト生成
 	for (int i = 0; i < Diamond::MAX_DIAMOND_PART_NUM; ++i) {
 
 		std::string dat = "./Resource/skill_data_0";
 		dat += std::to_string(i + 1);
 		dat += ".dat";
 
+		// 星生成
 		m_diamond_list.push_back(new Diamond(m_diamond_part,dat));
+		// スキル表生成
+		m_skill_table.push_back(new SkillTable(m_diamond_part, dat));
 
 		m_diamond_part = static_cast<Diamond::DiamondPart>(m_diamond_part + 1);
 	}
+}
+/*----コンストラクタ----*/
 
-	// スキルテーブルの生成
-	for (int i = 0; i < SkillTable::MAX_TEX_NUM; ++i) {
-
-		m_skill_table.push_back(new SkillTable(skill_table_tex_id));
-
-		skill_table_tex_id = static_cast<SkillTable::TexID>(skill_table_tex_id + 1);
+/*----更新----*/
+void CustomObjectManager::Update() {
+	// ひし形の更新
+	for (auto diamod : m_diamond_list) {
+		diamod->Update();
+	}
+	// スキルテーブルの更新
+	for (auto skill_table : m_skill_table) {
+		skill_table->Update();
 	}
 }
+/*----更新----*/
 
-// デストラクタ
+/*----描画----*/
+void CustomObjectManager::Draw() {
+	// ひし形の描画
+	for (auto diamond : m_diamond_list) {
+
+		diamond->Draw();
+	}
+	// スキルテーブルの描画
+	for (auto skill_table : m_skill_table) {
+
+		skill_table->Draw();
+	}
+}
+/*----描画----*/
+
+/*----デストラクタ----*/
 CustomObjectManager::~CustomObjectManager() {
 
+	// ひし形のスキル情報をバイナリデータに出力
 	for (int i = 0; i < Diamond::MAX_DIAMOND_PART_NUM; ++i) {
 
 		std::string dat = "./Resource/skill_data_0";
@@ -40,56 +66,16 @@ CustomObjectManager::~CustomObjectManager() {
 		file.write((char*)&m_diamond_list[i]->GetSkillDara(), sizeof(Skill_Data));
 		file.close();
 	}
-
 	// ひし形の削除
 	for (auto diamond : m_diamond_list) {
-
 		delete diamond;
 		diamond = nullptr;
 	}
-
 	// スキルテーブルの削除
 	for (auto skill_table : m_skill_table) {
-
 		delete skill_table;
 		skill_table = nullptr;
 	}
 }
-
-// 更新
-void CustomObjectManager::Update() {
-
-	// ひし形の更新
-	for (auto diamod : m_diamond_list) {
-
-		diamod->Update();
-	}
-
-	// スキルテーブルの更新
-	for (auto skill_table : m_skill_table) {
-
-		skill_table->Update();
-	}
-
-	m_skill_table[SkillTable::NORMAL_SKILL]->ClickSkillSet();
-	m_skill_table[SkillTable::ACCEL_SKILL]->ClickSkillSet();
-	m_skill_table[SkillTable::JUMP_SKILL]->ClickSkillSet();
-	m_skill_table[SkillTable::STOP_SKILL]->ClickSkillSet();
-}
-
-// 描画
-void CustomObjectManager::Draw() {
-
-	// ひし形の描画
-	for (auto diamond : m_diamond_list) {
-
-		diamond->Draw();
-	}
-
-	// スキルテーブルの描画
-	for (auto skill_table : m_skill_table) {
-
-		skill_table->Draw();
-	}
-}
+/*----デストラクタ----*/
 
