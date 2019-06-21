@@ -29,6 +29,7 @@ namespace Lib {
 		WPARAM wp, LPARAM lp
 	) {
 		//unsigned short int x = 0, y = 0;
+		int timer = 0;
 
 		switch (msg)
 		{
@@ -46,7 +47,13 @@ namespace Lib {
 		*/
 			// マウスボタンクリック開始時
 		case WM_LBUTTONDOWN:  // 左
-			is_click = true;
+
+			if (++timer >= 1.f) {
+				is_click = true;
+				pt.end.x = pt.start.x;
+				pt.end.y = pt.start.y;
+			}
+
 			break;
 
 		case WM_RBUTTONDOWN:  // 右
@@ -55,6 +62,7 @@ namespace Lib {
 			// マウスボタンクリック終了時
 		case WM_LBUTTONUP:
 			is_click = false;
+			pt.end = { 0,0 };
 			break;
 
 			// マウスカーソル(表示or非表示)
@@ -74,17 +82,6 @@ namespace Lib {
 		case WM_SYSKEYDOWN: // システムキー押下開始時
 		case WM_SYSKEYUP:   // システムキー終了時
 			return 0;
-		}
-
-		//マウスクリック処理
-		if (is_click==true) {
-			//クリック状態の場合
-			pt.end.x = pt.start.x;
-			pt.end.y = pt.start.y;
-		}
-		else {
-			pt.end.x = 0;
-			pt.end.y = 0;
 		}
 
 		return DefWindowProc(hwnd, msg, wp, lp);
@@ -285,7 +282,7 @@ namespace Lib {
 	//------------------------------------
 	//　マウスの左クリックの判定を返す
 	const bool HasClickOnMouse() {
-		if (is_click) {
+		if (is_click ==true) {
 			return true;
 		}
 		return false;
