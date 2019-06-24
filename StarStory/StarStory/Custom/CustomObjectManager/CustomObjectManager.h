@@ -21,11 +21,14 @@ private:
 	/*----変数----*/
 	// バイナリファイル読み込み用
 	std::fstream file;
+	/*----変数----*/
+private:
+	/*----配列----*/
 	// ひし形の実体化
 	std::vector<DiamondBase*> m_diamond_list;
 	// スキルベースの実体化
 	std::vector<SkillTable*> m_skill_table;
-	/*----変数----*/
+	/*----配列----*/
 private:
 	/*----enum----*/
 	// ひし形の各位置

@@ -2,6 +2,7 @@
 
 #include <fstream>
 
+/*----public----*/
 /*----コンストラクタ----*/
 CustomObjectManager::CustomObjectManager() :
 	m_diamond_part(Diamond::TOP_PART),
@@ -78,4 +79,5 @@ CustomObjectManager::~CustomObjectManager() {
 	}
 }
 /*----デストラクタ----*/
+/*----public----*/
 

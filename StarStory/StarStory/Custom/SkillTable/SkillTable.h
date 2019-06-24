@@ -72,15 +72,18 @@ private:
 	/*----定数----*/
 private:
 	/*----変数----*/
+	// バイナリファイル読み込み用
+	std::fstream m_file;
+	// クリックしたかどうか
+	bool m_is_click;
+	/*----変数----*/
+private:
+	/*----配列----*/
 	// 座標
 	Vec2 m_pos[MAX_OBJECT_NUM];
 	// 画像
 	Lib::Texture m_tex[MAX_OBJECT_NUM];
-	// バイナリファイル読み込み用
-	std::fstream m_file;
-	//
-	bool m_is_click;
-	/*----変数----*/
+	/*----配列----*/
 private:
 	/*----enum----*/
 	// オブジェクトID
