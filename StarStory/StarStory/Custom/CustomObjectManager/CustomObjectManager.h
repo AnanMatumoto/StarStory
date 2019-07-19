@@ -20,7 +20,7 @@ public:
 private:
 	/*----変数----*/
 	// バイナリファイル読み込み用
-	std::fstream file;
+	std::fstream m_file;
 	/*----変数----*/
 private:
 	/*----配列----*/

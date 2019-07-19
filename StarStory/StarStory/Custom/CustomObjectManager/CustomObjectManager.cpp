@@ -63,9 +63,9 @@ CustomObjectManager::~CustomObjectManager() {
 		dat += std::to_string(i + 1);
 		dat += ".dat";
 
-		file.open(dat, std::ios::binary | std::ios::out);
-		file.write((char*)&m_diamond_list[i]->GetSkillDara(), sizeof(Skill_Data));
-		file.close();
+		m_file.open(dat, std::ios::binary | std::ios::out);
+		m_file.write((char*)&m_diamond_list[i]->GetSkillDara(), sizeof(Skill_Data));
+		m_file.close();
 	}
 	// ひし形の削除
 	for (auto diamond : m_diamond_list) {
