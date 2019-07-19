@@ -78,12 +78,6 @@ void SkillTable::Draw() {
 }
 /*----描画----*/
 
-/*----デストラクタ----*/
-SkillTable::~SkillTable() {
-
-}
-/*----デストラクタ----*/
-
 /*----初期化----*/
 /*----各オブジェクトの座標の初期化----*/
 void SkillTable::InitObjetPos(DiamondBase::DiamondPart diamond_part) {

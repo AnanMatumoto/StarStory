@@ -13,22 +13,29 @@ public:
 	/*----enum----*/
 	// ひし形の設置場所
 	enum DiamondPart {
-
-		TOP_PART,			// 上(基準点)
-		TOP_RIGHT_PART,		// 右上
-		BOTTOM_RIGHT_PART,	// 右下
-		BOTTOM_LEFT_PART,	// 左下
-		TOP_LEFT_PART,		// 左上
+		// 上(基準点)
+		TOP_PART,
+		// 右上
+		TOP_RIGHT_PART,
+		// 右下
+		BOTTOM_RIGHT_PART,
+		// 左下
+		BOTTOM_LEFT_PART,
+		// 左上
+		TOP_LEFT_PART,
 
 		MAX_DIAMOND_PART_NUM
 	};
 	// ひし形の頂点の場所
 	enum DiamondVertex {
-
-		TOP_VERTEX,		// 上
-		RIGHT_VERTEX,	// 右
-		BOTTOM_VERTEX,	// 下
-		LEFT_VERTEX,	// 左
+		// 上
+		TOP_VERTEX,
+		// 右
+		RIGHT_VERTEX,
+		// 下
+		BOTTOM_VERTEX,
+		// 左
+		LEFT_VERTEX,
 
 		MAX_DIAMOND_VERTEX_NUM
 	};
@@ -36,13 +43,11 @@ public:
 public:
 	// コンストラクタ
 	DiamondBase() :
-		// スキルの種類初期化(最初はすべて、NORMALで描画)
 		m_skill(NORMAL),
 		m_file("none"),
 		m_size_w(SIZE_W),
-		m_size_h(SIZE_H),
-		m_collision_w(COLLISION_W),
-		m_collision_h(COLLISION_H){};
+		m_size_h(SIZE_H)
+	{};
 	// 更新
 	virtual void Update() = 0;
 	// 描画
@@ -70,13 +75,16 @@ protected:
 	float m_collision_w;
 	// 当たり判定の時に使う高さ
 	float m_collision_h;
-	// ひし形の頂点情報
-	Vec2 m_vertex_pos[MAX_DIAMOND_VERTEX_NUM];
 	// ひし形の描画用変数
 	char* m_tex;
 	// バイナリファイル読み込み用
 	std::fstream m_file;
 	/*----変数----*/
+protected:
+	/*----配列----*/
+	// ひし形の頂点情報
+	Vec2 m_vertex_pos[MAX_DIAMOND_VERTEX_NUM];
+	/*----配列----*/
 protected:
 	/*----インスタンス----*/
 	// スキルデータ読み込み用インスタンス
@@ -102,17 +110,12 @@ protected:
 	// STOP
 	static const char *STOP_TEX;
 	/*----画像----*/
-private:
+protected:
 	/*----定数----*/
-	/*----描画用----*/
+	// 幅
 	static const float SIZE_W;
+	// 高さ
 	static const float SIZE_H;
-	/*----描画用----*/
-
-	/*----当たり判定用----*/
-	static const float COLLISION_W;		// ひし形の幅
-	static const float COLLISION_H;		// ひし形の高さ
-	/*----当たり判定用----*/
 	/*----定数----*/
 };
 

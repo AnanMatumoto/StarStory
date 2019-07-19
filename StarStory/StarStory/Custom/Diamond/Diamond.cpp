@@ -1,6 +1,22 @@
 ﻿#include"Diamond.h"
 #include"../../Lib/Lib.h"
 
+/*----public----*/
+/*----コンストラクタ----*/
+Diamond::Diamond(DiamondPart part, std::string data_file) {
+	// ひし形の位置代入
+	m_diamond_part = part;
+	// ひし形の座標、角度を入れる
+	InitDiamondInfo(m_diamond_part);
+	// ひし形の頂点座標を入れる
+	InitVertexPos();
+	// スキルデータをバイナリファイルから読み込む
+	InitSkillID(data_file);
+}
+/*----コンストラクタ----*/
+/*----public----*/
+
+/*----private----*/
 /*--定数--*/
 /*--ひし形の各座標、角度--*/
 // TOPの初期座標(x,y)と角度
@@ -25,45 +41,6 @@ const float Diamond::BOTTOM_LEFT_POS_Y = TOP_POS_Y + 189.f;
 const float Diamond::BOTTOM_LEFT_ANGLE = TOP_ANGLE - 2.51f;
 /*--ひし形の各座標、角度--*/
 /*--定数--*/
-
-/*----コンストラクタ----*/
-Diamond::Diamond(DiamondPart part, std::string data_file){
-	// ひし形の位置代入
-	m_diamond_part = part;
-	// ひし形の座標、角度を入れる
-	InitDiamondInfo(m_diamond_part);
-	// ひし形の頂点座標を入れる
-	InitVertexPos();
-	// スキルデータをバイナリファイルから読み込む
-	InitSkillID(data_file);
-}
-/*----コンストラクタ----*/
-
-/*----更新----*/
-void Diamond::Update() {
-	// スキルID更新
-	UpdateSkillID();
-}
-/*----更新----*/
-
-/*----描画----*/
-void Diamond::Draw() {
-	// スキルIDによって、画像を変更
-	ChangeTex();
-	// ひし形描画
-	Lib::DrawDaiamond2D(
-		m_tex,
-		m_pos_x, m_pos_y,
-		m_size_h, m_size_w,
-		m_angle);
-}
-/*----描画----*/
-
-/*----デストラクタ----*/
-Diamond::~Diamond() {
-
-}
-/*----デストラクタ----*/
 
 /*----初期化関数----*/
 /*----各ひし形の座標(中心のx,y)と角度を初期化----*/
@@ -129,35 +106,57 @@ void Diamond::InitSkillID(std::string data_file) {
 /*----初期化関数----*/
 
 /*----更新用関数----*/
+/*----更新----*/
+void Diamond::Update() {
+	// スキルID更新
+	UpdateSkillID();
+}
+/*----更新----*/
+
 /*----スキルIDによって、画像を変更----*/
 void Diamond::UpdateSkillID() {
 	// スキルIDを取得する
 	m_skill = Skill_ID::GetInstance().GetSkillID(m_diamond_part);
 }
 /*----スキルIDによって、画像を変更----*/
+/*----更新用関数----*/
+
+/*----描画用関数----*/
+/*----描画----*/
+void Diamond::Draw() {
+	// スキルIDによって、画像を変更
+	ChangeTex();
+	// ひし形描画
+	Lib::DrawDaiamond2D(
+		m_tex,
+		m_pos_x, m_pos_y,
+		m_size_h, m_size_w,
+		m_angle);
+}
+/*----描画----*/
 
 /*----ひし形のスキルを判定して描画画像を変える----*/
 void Diamond::ChangeTex() {
 	// スキルによって画像変更
 	switch (m_skill) {
-	// ジャンプスキル
+		// ジャンプスキル
 	case JUMP:
 		m_tex = (char*)JUMP_TEX;
 		break;
-	// 加速スキル
+		// 加速スキル
 	case SPEED:
 		m_tex = (char*)SPEED_TEX;
 		break;
-	// 停止スキル
+		// 停止スキル
 	case STOP:
 		m_tex = (char*)STOP_TEX;
 		break;
-	// ノーマルスキル
+		// ノーマルスキル
 	default:
 		m_tex = (char*)NORMAL_TEX;
 		break;
 	}
 }
 /*----ひし形のスキルを判定して描画画像を変える----*/
-/*----更新用関数----*/
-
+/*----描画用関数----*/
+/*----private----*/
