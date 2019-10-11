@@ -22,7 +22,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		Lib::DrawBegin(0xe0e0ff);
 
 		SceneManager::GetInstance().Update();
-
+		 //hogehoge
 		//　描画終了
 		Lib::DrawEnd();
 
